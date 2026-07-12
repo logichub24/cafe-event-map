@@ -1,4 +1,4 @@
-// 기상청 초단기실황 API CORS 프록시 (Vercel 서버리스 함수)
+// 기상청 단기예보 API CORS 프록시 (Vercel 서버리스 함수)
 const https = require('https');
 
 const KMA_KEY = process.env.KMA_API_KEY;
@@ -17,23 +17,40 @@ function latLngToGrid(lat, lng) {
   return { nx: Math.floor(ra*Math.sin(theta)+XO+.5), ny: Math.floor(ro-ra*Math.cos(theta)+YO+.5) };
 }
 
-function baseDateTime() {
-  const now = new Date(Date.now() - 10*60*1000);
+// 단기예보 발표 시각 (02,05,08,11,14,17,20,23시 발표, 약 10분 후 데이터 생성)
+function getFcstBaseTime() {
+  const now = new Date(Date.now() + 9*3600*1000); // KST
+  const h = now.getUTCHours();
+  const baseHours = [2,5,8,11,14,17,20,23];
+  // 현재 시각 기준 가장 최근 발표 시각 선택
+  let base = 23;
+  for (const bh of baseHours) {
+    if (h >= bh) base = bh;
+  }
   const p = n => String(n).padStart(2,'0');
-  return {
-    date: `${now.getFullYear()}${p(now.getMonth()+1)}${p(now.getDate())}`,
-    time: `${p(now.getHours())}00`,
-  };
+  const d = now.getUTCFullYear() + p(now.getUTCMonth()+1) + p(now.getUTCDate());
+  return { date: d, time: `${p(base)}00` };
 }
 
 // PTY(강수형태) + SKY(하늘상태) → WMO-like code
 function toWeatherCode(pty, sky) {
-  if (pty === 1 || pty === 4 || pty === 5) return 61; // 비/소나기
-  if (pty === 2 || pty === 6) return 67;               // 비+눈
-  if (pty === 3 || pty === 7) return 71;               // 눈
-  if (sky === 1) return 0;   // 맑음
-  if (sky === 3) return 2;   // 구름조금
-  return 3;                  // 흐림
+  if (pty === 1 || pty === 4) return 61; // 비/소나기
+  if (pty === 2) return 67;              // 비+눈
+  if (pty === 3) return 71;              // 눈
+  if (sky === 1) return 0;              // 맑음
+  if (sky === 3) return 2;              // 구름조금
+  return 3;                             // 흐림
+}
+
+function fetchUrl(url) {
+  return new Promise((resolve, reject) => {
+    const r = https.get(url, resp => {
+      const chunks = [];
+      resp.on('data', c => chunks.push(c));
+      resp.on('end', () => resolve(Buffer.concat(chunks).toString('utf-8')));
+    });
+    r.on('error', reject);
+  });
 }
 
 module.exports = async (req, res) => {
@@ -44,35 +61,38 @@ module.exports = async (req, res) => {
   const lat = parseFloat(req.query.lat || '37.5665');
   const lng = parseFloat(req.query.lng || '126.978');
   const { nx, ny } = latLngToGrid(lat, lng);
-  const { date, time } = baseDateTime();
+  const { date, time } = getFcstBaseTime();
 
-  const kmaUrl = `https://apihub.kma.go.kr/api/typ02/openApi/VilageFcstInfoService_2.0/getUltraSrtNcst?pageNo=1&numOfRows=10&dataType=JSON&base_date=${date}&base_time=${time}&nx=${nx}&ny=${ny}&authKey=${KMA_KEY}`;
+  // 단기예보 (getVilageFcst) — 가장 가까운 예보 시각의 TMP, PTY, SKY 조회
+  const kmaUrl = `https://apihub.kma.go.kr/api/typ02/openApi/VilageFcstInfoService_2.0/getVilageFcst?pageNo=1&numOfRows=60&dataType=JSON&base_date=${date}&base_time=${time}&nx=${nx}&ny=${ny}&authKey=${KMA_KEY}`;
 
   try {
-    const body = await new Promise((resolve, reject) => {
-      const r = https.get(kmaUrl, resp => {
-        const chunks = [];
-        resp.on('data', c => chunks.push(c));
-        resp.on('end', () => resolve(Buffer.concat(chunks).toString('utf-8')));
-      });
-      r.on('error', reject);
-    });
-
+    const body = await fetchUrl(kmaUrl);
     const data = JSON.parse(body);
     const items = data?.response?.body?.items?.item || [];
+
+    if (items.length === 0) {
+      return res.status(502).json({ error: 'no items', raw: data?.response?.header });
+    }
+
+    // 가장 가까운 예보 시각 첫 번째 항목 기준으로 값 취합
+    const fcstTimes = [...new Set(items.map(i => i.fcstTime))].sort();
+    const targetTime = fcstTimes[0];
     const get = cat => {
-      const it = items.find(i => i.category === cat);
-      return it ? parseFloat(it.obsrValue) : null;
+      const it = items.find(i => i.category === cat && i.fcstTime === targetTime);
+      return it ? parseFloat(it.fcstValue) : null;
     };
 
-    const temp  = get('T1H');
-    const pty   = get('PTY') ?? 0;
-    const sky   = get('SKY') ?? 1;
-    const rain  = pty > 0;
-    const code  = toWeatherCode(pty, sky);
+    const temp = get('TMP');
+    const pty  = get('PTY') ?? 0;
+    const sky  = get('SKY') ?? 1;
+
+    if (temp === null) {
+      return res.status(502).json({ error: 'TMP not found', items: items.slice(0,5) });
+    }
 
     res.setHeader('Content-Type', 'application/json; charset=utf-8');
-    res.status(200).json({ temp: Math.round(temp), rain, code, nx, ny, source: 'kma' });
+    res.status(200).json({ temp: Math.round(temp), rain: pty > 0, code: toWeatherCode(pty, sky), nx, ny, source: 'kma' });
   } catch (e) {
     res.status(502).json({ error: e.message });
   }
