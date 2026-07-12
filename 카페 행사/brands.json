@@ -1,0 +1,218 @@
+[
+  {
+    "name": "스타벅스",
+    "short": "벅스",
+    "color": "#00704A",
+    "dark": false,
+    "site": "https://www.starbucks.co.kr",
+    "event": "https://www.starbucks.co.kr/whats_new/newList.do"
+  },
+  {
+    "name": "투썸플레이스",
+    "short": "투썸",
+    "color": "#C8102E",
+    "dark": false,
+    "site": "https://www.twosome.co.kr",
+    "event": "https://www.twosome.co.kr/promotion/eventList.do"
+  },
+  {
+    "name": "이디야커피",
+    "short": "이디야",
+    "color": "#1B3A8B",
+    "dark": false,
+    "site": "https://www.ediya.com",
+    "event": "https://www.ediya.com/contents/event.html"
+  },
+  {
+    "name": "메가MGC커피",
+    "short": "메가",
+    "color": "#F5B700",
+    "dark": true,
+    "site": "https://www.mega-mgccoffee.com",
+    "event": "https://www.mega-mgccoffee.com/event/"
+  },
+  {
+    "name": "컴포즈커피",
+    "short": "컴포즈",
+    "color": "#FFCB05",
+    "dark": true,
+    "site": "https://composecoffee.com",
+    "event": "https://composecoffee.com/menu/event"
+  },
+  {
+    "name": "빽다방",
+    "short": "빽",
+    "color": "#F7D417",
+    "dark": true,
+    "site": "https://www.paikdabang.com",
+    "event": "https://www.paikdabang.com/notice/"
+  },
+  {
+    "name": "할리스",
+    "short": "할리스",
+    "color": "#B01E28",
+    "dark": false,
+    "site": "https://www.hollys.co.kr",
+    "event": "https://www.hollys.co.kr/event/eventList.do"
+  },
+  {
+    "name": "커피빈",
+    "short": "빈",
+    "color": "#5A2D28",
+    "dark": false,
+    "site": "https://www.coffeebeankorea.com",
+    "event": "https://www.coffeebeankorea.com/event/list.asp"
+  },
+  {
+    "name": "더벤티",
+    "short": "벤티",
+    "color": "#0033A0",
+    "dark": false,
+    "site": "https://www.theventi.co.kr",
+    "event": "https://www.theventi.co.kr"
+  },
+  {
+    "name": "매머드커피",
+    "short": "매머드",
+    "color": "#6E4A2E",
+    "dark": false,
+    "site": "https://mammoth-coffee.com",
+    "event": "https://mammoth-coffee.com"
+  },
+  {
+    "name": "엔제리너스",
+    "short": "엔제리",
+    "color": "#D71920",
+    "dark": false,
+    "site": "https://www.angelinus.com",
+    "event": "https://www.angelinus.com/event/"
+  },
+  {
+    "name": "폴 바셋",
+    "short": "폴바셋",
+    "color": "#1A1A1A",
+    "dark": false,
+    "site": "https://www.paulbassett.co.kr",
+    "event": "https://www.paulbassett.co.kr"
+  },
+  {
+    "name": "탐앤탐스",
+    "short": "탐탐",
+    "color": "#7B1E2B",
+    "dark": false,
+    "site": "https://www.tomntoms.com",
+    "event": "https://www.tomntoms.com/event/"
+  },
+  {
+    "name": "감성커피",
+    "short": "감성",
+    "color": "#E7A100",
+    "dark": true,
+    "site": "",
+    "event": ""
+  },
+  {
+    "name": "더리터",
+    "short": "리터",
+    "color": "#2AA84A",
+    "dark": false,
+    "site": "",
+    "event": ""
+  },
+  {
+    "name": "하삼동커피",
+    "short": "하삼동",
+    "color": "#1E7A3D",
+    "dark": false,
+    "site": "",
+    "event": ""
+  },
+  {
+    "name": "봄봄",
+    "short": "봄봄",
+    "color": "#EC6F9C",
+    "dark": false,
+    "site": "",
+    "event": ""
+  },
+  {
+    "name": "텐퍼센트커피",
+    "short": "10%",
+    "color": "#111827",
+    "dark": false,
+    "site": "",
+    "event": ""
+  },
+  {
+    "name": "커피에반하다",
+    "short": "반하다",
+    "color": "#7C3AED",
+    "dark": false,
+    "site": "",
+    "event": ""
+  },
+  {
+    "name": "카페베네",
+    "short": "베네",
+    "color": "#2B6CB0",
+    "dark": false,
+    "site": "https://www.caffebene.co.kr",
+    "event": "https://www.caffebene.co.kr"
+  },
+  {
+    "name": "달콤커피",
+    "short": "달콤",
+    "color": "#F97316",
+    "dark": false,
+    "site": "https://dalkomm.com",
+    "event": "https://dalkomm.com"
+  },
+  {
+    "name": "드롭탑",
+    "short": "드롭탑",
+    "color": "#0EA5E9",
+    "dark": false,
+    "site": "https://www.droptop.co.kr",
+    "event": "https://www.droptop.co.kr"
+  },
+  {
+    "name": "커피나무",
+    "short": "커피나무",
+    "color": "#65A30D",
+    "dark": false,
+    "site": "",
+    "event": ""
+  },
+  {
+    "name": "토프레소",
+    "short": "토프레소",
+    "color": "#DC2626",
+    "dark": false,
+    "site": "",
+    "event": ""
+  },
+  {
+    "name": "공차",
+    "short": "공차",
+    "color": "#92400E",
+    "dark": false,
+    "site": "https://www.gong-cha-kr.com",
+    "event": "https://www.gong-cha-kr.com"
+  },
+  {
+    "name": "커피스미스",
+    "short": "스미스",
+    "color": "#374151",
+    "dark": false,
+    "site": "",
+    "event": ""
+  },
+  {
+    "name": "빈스앤베리즈",
+    "short": "빈스",
+    "color": "#7E22CE",
+    "dark": false,
+    "site": "",
+    "event": ""
+  }
+]

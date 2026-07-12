@@ -1,0 +1,15 @@
+{
+  "name": "cafe-event-map",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "fetch:stores": "node scripts/fetchStores.js",
+    "gen:events": "node scripts/genSampleData.js",
+    "dev": "node scripts/devserver.js",
+    "build:toss": "node scripts/build-toss.js"
+  },
+  "devDependencies": {
+    "@apps-in-toss/web-framework": "^2.9.2"
+  }
+}
