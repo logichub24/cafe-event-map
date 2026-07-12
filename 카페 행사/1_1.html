@@ -739,11 +739,10 @@
                 } catch(e) { break; }
             }
             return all.map(d => {
-                const brand = detectBrandFromName(d.place_name);
-                if (!brand) return null;
+                const brand = detectBrandFromName(d.place_name) || d.place_name;
                 const deals = MASTER_DB.filter(p => p.events[brand]);
                 return { brand, name: d.place_name, lat: parseFloat(d.y), lng: parseFloat(d.x), address: d.road_address_name || d.address_name, phone: d.phone, deals, itemCount: deals.length };
-            }).filter(Boolean);
+            });
         }
 
         // 토스인앱 등 외부 빌드 환경(WebView 패키지)에 넣어도 데이터는 항상 GitHub Pages의 최신본을
@@ -1055,23 +1054,21 @@
             mapMarkers.forEach(m => map.removeLayer(m));
             mapMarkers = [];
             storeMarkersData = [];
-            const bounds = map.getBounds();
             const center = map.getCenter();
             // 카카오 실데이터 우선, 없으면 가상 DB
             const sourceDB = kakaoStoresCache.length > 0 ? kakaoStoresCache : allVirtualStoresDB;
             sourceDB.forEach(store => {
                 if (mapBrandFilter && store.brand !== mapBrandFilter) return;
                 if (!storePassesAmenityFilter(store)) return;
-                // 지도 화면에 보이는 매장 전체 표시 (반경 원은 시각적 컨텍스트용)
-                if (!bounds.contains([store.lat, store.lng])) return;
+                const dist = map.distance(center, [store.lat, store.lng]);
+                if (dist > currentRadius) return;
                 storeMarkersData.push(store);
-                const iconHtml = `
-                    <div class="custom-marker" style="width: 40px; height: 40px; font-size: 11px; z-index: 20; ${brandChipStyle(store.brand)}">
-                        ${brandLabel(store.brand)}
-                    </div>
-                `;
+                const hasBrand = !!BRAND_INFO[store.brand];
+                const iconHtml = hasBrand
+                    ? `<div class="custom-marker" style="width:40px;height:40px;font-size:11px;z-index:20;${brandChipStyle(store.brand)}">${brandLabel(store.brand)}</div>`
+                    : `<div class="custom-marker" style="width:36px;height:36px;font-size:10px;z-index:10;background:#6b7280;color:#fff;border:2px solid #fff;box-shadow:0 2px 5px rgba(0,0,0,0.3)">카페</div>`;
                 const icon = L.divIcon({ className: 'bg-transparent', html: iconHtml, iconSize: [40, 40], iconAnchor: [20, 20] });
-                const marker = L.marker([store.lat, store.lng], {icon: icon}).addTo(map);
+                const marker = L.marker([store.lat, store.lng], {icon}).addTo(map);
                 marker.on('click', () => openStore(store));
                 mapMarkers.push(marker);
             });
