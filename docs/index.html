@@ -1809,17 +1809,8 @@
         function openBrandPicker() {
             const modal = document.getElementById('brandPickerModal');
             const grid = document.getElementById('brandPickerGrid');
-            // 검색 결과에 있는 브랜드 집합
-            const searchQuery = document.getElementById('searchInput')?.value.trim().toLowerCase() || '';
-            const searchedBrands = new Set();
-            if (searchQuery) {
-                MASTER_DB.filter(p =>
-                    matchSearch(p.name, searchQuery) ||
-                    matchSearch(Object.keys(p.events)[0] || '', searchQuery) ||
-                    matchSearch(p.eventTitle || '', searchQuery) ||
-                    matchSearch(p.category || '', searchQuery)
-                ).forEach(p => Object.keys(p.events).forEach(b => searchedBrands.add(b)));
-            }
+            // 현재 지도 반경 내 매장 브랜드 집합
+            const nearbyBrands = new Set(storeMarkersData.map(s => s.brand));
             // 전체 브랜드를 격자로 렌더
             let html = `<button onclick="setMapBrandFilter(null); closeBrandPicker()"
                 class="col-span-4 py-2 rounded-xl text-[12px] font-black border ${mapBrandFilter === null ? 'bg-gray-900 text-white border-gray-900' : 'bg-gray-100 text-gray-600 border-gray-200'}">
@@ -1827,16 +1818,16 @@
             </button>`;
             CAFE_BRANDS.forEach(b => {
                 const active = mapBrandFilter === b.name;
-                const hasResult = searchedBrands.size > 0 && searchedBrands.has(b.name);
+                const nearby = nearbyBrands.has(b.name);
                 let style, extra = '';
                 if (active) {
                     style = `background-color:${b.color};color:${b.dark?'#1f2937':'#fff'};border-color:transparent`;
-                } else if (hasResult) {
-                    // 검색 결과 있는 브랜드: 브랜드 색상 배경 + 흰 점
-                    style = `background-color:${b.color}22;color:${b.color};border-color:${b.color};border-width:2px`;
-                    extra = `<span style="display:block;font-size:8px;color:${b.color};margin-top:1px">●</span>`;
+                } else if (nearby) {
+                    // 반경 내 매장 있는 브랜드: 브랜드 색상 테두리 강조
+                    style = `background-color:${b.color}18;color:${b.color};border-color:${b.color};border-width:2px`;
+                    extra = `<span style="display:block;font-size:7px;color:${b.color};margin-top:1px;letter-spacing:-0.5px">내 주변</span>`;
                 } else {
-                    style = `background:#f9fafb;color:${b.color};border-color:#e5e7eb`;
+                    style = `background:#f9fafb;color:#9ca3af;border-color:#e5e7eb`;
                 }
                 html += `<button onclick="setMapBrandFilter('${b.name}'); closeBrandPicker()"
                     class="py-2 rounded-xl text-[11px] font-black border transition active:scale-95"
@@ -1844,8 +1835,8 @@
                     ${b.short}${extra}
                 </button>`;
             });
-            if (searchedBrands.size > 0) {
-                html = `<p class="col-span-4 text-[10px] text-indigo-500 font-bold mb-1">● 검색 결과 포함 브랜드</p>` + html;
+            if (nearbyBrands.size > 0) {
+                html = `<p class="col-span-4 text-[10px] font-bold mb-1" style="color:#6366f1">● 내 주변 반경 내 브랜드</p>` + html;
             }
             grid.innerHTML = html;
             modal.classList.remove('hidden');
