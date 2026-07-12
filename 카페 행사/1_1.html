@@ -2117,7 +2117,9 @@
             window._ddayBannerTimer = setTimeout(closeDdayBanner, 5000);
         }
 
-        // ── 날씨 엔진 (Open-Meteo — 브라우저 CORS 지원, 무료) ───────────────
+        // ── 날씨 엔진 (편의점행사 앱과 동일 방식: 기상청 실측 우선, Open-Meteo fallback) ──
+        const KMA_KEY = '41d44570cca7921b6fce48322f6a6c3fe85a8eb13d5fb17e3d214ea0a59dfe54';
+
         // WMO 코드 → { icon, cls, label }
         function wmoInfo(code) {
             if (code === 0)   return { icon:'☀️', cls:'weather-sun',   label:'맑음' };
@@ -2131,25 +2133,92 @@
             return                   { icon:'⛈', cls:'weather-rain',  label:'뇌우' };
         }
 
+        // 위경도 → 기상청 격자(nx, ny)
+        function toKmaGrid(lat, lon) {
+            const RE = 6371.00877, GRID = 5.0, SLAT1 = 30.0, SLAT2 = 60.0, OLON = 126.0, OLAT = 38.0, XO = 43, YO = 136;
+            const DEGRAD = Math.PI / 180.0;
+            const re = RE / GRID;
+            const slat1 = SLAT1 * DEGRAD, slat2 = SLAT2 * DEGRAD, olon = OLON * DEGRAD, olat = OLAT * DEGRAD;
+            let sn = Math.tan(Math.PI * 0.25 + slat2 * 0.5) / Math.tan(Math.PI * 0.25 + slat1 * 0.5);
+            sn = Math.log(Math.cos(slat1) / Math.cos(slat2)) / Math.log(sn);
+            let sf = Math.tan(Math.PI * 0.25 + slat1 * 0.5);
+            sf = Math.pow(sf, sn) * Math.cos(slat1) / sn;
+            let ro = Math.tan(Math.PI * 0.25 + olat * 0.5);
+            ro = re * sf / Math.pow(ro, sn);
+            let ra = Math.tan(Math.PI * 0.25 + lat * DEGRAD * 0.5);
+            ra = re * sf / Math.pow(ra, sn);
+            let theta = lon * DEGRAD - olon;
+            if (theta > Math.PI) theta -= 2.0 * Math.PI;
+            if (theta < -Math.PI) theta += 2.0 * Math.PI;
+            theta *= sn;
+            return { nx: Math.floor(ra * Math.sin(theta) + XO + 0.5), ny: Math.floor(ro - ra * Math.cos(theta) + YO + 0.5) };
+        }
+
+        // 초단기실황 기준시각 (매시 40분 이후에 해당 정시 데이터 생성)
+        function kmaBaseDateTime() {
+            const kst = new Date(Date.now() + 9 * 3600 * 1000);
+            if (kst.getUTCMinutes() < 40) kst.setUTCHours(kst.getUTCHours() - 1);
+            const p = n => String(n).padStart(2, '0');
+            return {
+                base_date: `${kst.getUTCFullYear()}${p(kst.getUTCMonth() + 1)}${p(kst.getUTCDate())}`,
+                base_time: `${p(kst.getUTCHours())}00`,
+            };
+        }
+
+        // PTY(강수형태) → WMO 유사 코드
+        function ptyToCode(pty) {
+            if (pty === 3 || pty === 7) return 73;
+            if (pty === 2 || pty === 6) return 73;
+            if (pty === 1 || pty === 5) return 61;
+            return null;
+        }
+
+        // 기상청 초단기실황 (공공데이터포털 — CORS 허용)
+        async function fetchKmaNowcast(lat, lng) {
+            const { nx, ny } = toKmaGrid(lat, lng);
+            const { base_date, base_time } = kmaBaseDateTime();
+            const url = `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst?serviceKey=${KMA_KEY}&pageNo=1&numOfRows=100&dataType=JSON&base_date=${base_date}&base_time=${base_time}&nx=${nx}&ny=${ny}`;
+            const res = await fetch(url);
+            if (!res.ok) return null;
+            const j = await res.json();
+            const items = j?.response?.body?.items?.item;
+            if (!Array.isArray(items)) return null;
+            const get = cat => items.find(it => it.category === cat)?.obsrValue;
+            const t1h = parseFloat(get('T1H'));
+            if (Number.isNaN(t1h)) return null;
+            const rn1 = parseFloat(get('RN1'));
+            return { temp: t1h, pty: parseInt(get('PTY'), 10), rn1: Number.isNaN(rn1) ? 0 : rn1 };
+        }
+
         async function fetchWeather(lat, lng) {
             try {
-                let weatherData;
-                // 1순위: 기상청 프록시 (/api/weather — Vercel 배포 또는 로컬 devserver)
+                // 1) Open-Meteo — 하늘상태 코드 확보 및 기본 fallback
+                let base = null;
                 try {
-                    const r = await fetch(`/api/weather?lat=${lat.toFixed(4)}&lng=${lng.toFixed(4)}`);
-                    if (r.ok) {
-                        const d = await r.json();
-                        if (d.temp != null) weatherData = d;
+                    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current=temperature_2m,weather_code,precipitation`;
+                    const res = await fetch(url);
+                    if (res.ok) {
+                        const j = await res.json();
+                        if (j.current) base = { temp: Math.round(j.current.temperature_2m), code: j.current.weather_code, rain: j.current.precipitation > 0 };
                     }
                 } catch(_) {}
-                // 2순위: Open-Meteo fallback (Toss WebView 등 프록시 불가 환경)
-                if (!weatherData) {
-                    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat.toFixed(4)}&longitude=${lng.toFixed(4)}&current=temperature_2m,precipitation,weather_code&timezone=Asia%2FSeoul`;
-                    const res = await fetch(url);
-                    const data = await res.json();
-                    const c = data.current;
-                    weatherData = { temp: Math.round(c.temperature_2m), rain: c.precipitation > 0, code: c.weather_code };
+
+                // 2) 기상청 실측으로 기온·강수 덮어쓰기
+                const kma = await fetchKmaNowcast(lat, lng).catch(() => null);
+                let weatherData;
+                if (kma) {
+                    const ptyCode = ptyToCode(kma.pty);
+                    weatherData = {
+                        temp: Math.round(kma.temp),
+                        code: ptyCode !== null ? ptyCode : (base ? base.code : 0),
+                        rain: kma.pty > 0 || kma.rn1 > 0,
+                    };
+                } else if (base) {
+                    weatherData = base;
+                } else {
+                    return;
                 }
+
                 window._weatherData = weatherData;
                 renderWeatherChip();
                 // 날씨 데이터 도착 전 미리보기가 이미 떴으면 제목만 갱신
