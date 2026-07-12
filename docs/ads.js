@@ -1880,9 +1880,9 @@ var require_ads = __commonJS({
   "\uCE74\uD398 \uD589\uC0AC/ads.js"() {
     init_dist3();
     var AD_CONFIG = {
-      banner: "ait.v2.live.45bb0aad48d04636",
-      interstitial: "ait.v2.live.1c35b52379294244",
-      rewarded: "ait.v2.live.710d4eb070854a59"
+      banner: "ait.v2.live.6ee2e927b62c4a18",
+      interstitial: "ait.v2.live.de853f34f3674829",
+      rewarded: "ait.v2.live.a1d0d9ff00454a96"
     };
     var interstitialReady = false;
     var rewardAdReady = false;
