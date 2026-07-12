@@ -1,0 +1,2455 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>카페행사맵</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="icon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <script>if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        html, body { width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden; background-color: #e5e7eb; display: flex; justify-content: center; align-items: center; }
+        
+        #app-container {
+            width: 100%; height: 100%; margin: 0 auto;
+            background-color: #f3f4f6; position: relative; overflow: hidden;
+        }
+
+        /* PC 환경 모바일 뷰어 시뮬레이션 */
+        @media (min-width: 431px) {
+            #app-container {
+                width: 390px; height: 844px; max-height: 92vh; border-radius: 40px;
+                box-shadow: 0 25px 50px -12px rgba(0,0,0,0.3);
+            }
+        }
+        
+        #map { height: 100%; width: 100%; z-index: 10; }
+        
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        @keyframes weather-sun { 0%,100%{transform:rotate(0deg) scale(1)} 50%{transform:rotate(20deg) scale(1.15)} }
+        @keyframes weather-rain { 0%,100%{transform:translateY(0)} 50%{transform:translateY(2px)} }
+        @keyframes weather-cloud { 0%,100%{transform:translateX(0)} 50%{transform:translateX(3px)} }
+        @keyframes weather-snow { 0%{transform:rotate(0)} 100%{transform:rotate(360deg)} }
+        .weather-sun  { animation: weather-sun  2.5s ease-in-out infinite; display:inline-block; }
+        .weather-rain { animation: weather-rain 0.8s ease-in-out infinite; display:inline-block; }
+        .weather-cloud{ animation: weather-cloud 3s ease-in-out infinite; display:inline-block; }
+        .weather-snow { animation: weather-snow 4s linear infinite; display:inline-block; }
+        
+        /* 마커 디자인 */
+        .custom-marker {
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold; color: white; border-radius: 50%;
+            border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.3); position: relative;
+            transition: transform 0.2s;
+        }
+        .custom-marker:hover { transform: scale(1.1); z-index: 50 !important; }
+        /* 카페 마커 색상은 BRAND_INFO의 hex를 inline style로 적용(brandChipStyle) */
+        
+        .badge-count {
+            position: absolute; top: -5px; right: -5px; background-color: #EF4444;
+            color: white; font-size: 10px; padding: 2px 5px; border-radius: 10px; border: 1px solid white;
+        }
+        
+        .bottom-sheet {
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 78vh;
+            background: white; border-top-left-radius: 24px; border-top-right-radius: 24px;
+            box-shadow: 0 -10px 25px rgba(0,0,0,0.15);
+            transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 5000; display: flex; flex-direction: column;
+        }
+        .bottom-sheet.active { transform: translateY(0); }
+        .category-btn.active { background-color: #111827; color: white; border-color: #111827; }
+        /* 토스 앱 안에서는 토스 자체 헤더와 중복되는 타이틀 캡슐을 숨겨서 위쪽 공간을 확보 */
+        body.in-toss-app #titlePill { display: none; }
+
+        /* [개선 2] 네비게이션 탭 모달 전용 CSS (맥락 복구, 블러 배경, 팝업형 시트) */
+        .tab-modal {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 60px;
+            z-index: 3000; display: flex; flex-direction: column; justify-content: flex-end;
+            pointer-events: none; overflow: hidden;
+        }
+        .tab-modal.active { pointer-events: auto; z-index: 3100; }
+        
+        .tab-modal-bg {
+            position: absolute; inset: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px);
+            opacity: 0; transition: opacity 0.3s ease; pointer-events: none;
+        }
+        .tab-modal.active .tab-modal-bg { opacity: 1; pointer-events: auto; }
+        
+        .tab-modal-content {
+            position: relative; background: #f9fafb; width: 100%; height: 88%;
+            border-radius: 24px 24px 0 0; display: flex; flex-direction: column;
+            transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 -10px 25px rgba(0,0,0,0.2);
+        }
+        .tab-modal.active .tab-modal-content { transform: translateY(0); }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800 selection:bg-blue-100">
+
+    <div id="app-container">
+
+        <!-- 상단 미니 헤더 -->
+        <div class="absolute top-0 left-0 w-full z-[100] pointer-events-none flex flex-col pt-3">
+            <div class="px-3 pb-2 flex items-center justify-between">
+                <!-- 토스 앱 안에서는 토스 자체 헤더가 이미 앱 이름을 보여주므로 중복되는 이 캡슐은 숨김(ads.js의 in-toss-app 클래스) -->
+                <div id="titlePill" class="bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-full shadow-sm border border-gray-100 pointer-events-auto inline-flex items-center gap-2">
+                    <h1 class="text-sm font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-green-700 tracking-tight leading-none m-0">카페행사맵</h1>
+                    <div class="w-px h-3 bg-gray-200"></div>
+                    <p class="text-[10px] text-gray-500 font-bold leading-none m-0 pt-0.5">오늘 기준 행사</p>
+                </div>
+                <button onclick="openSettings()" class="w-9 h-9 bg-white/95 backdrop-blur-md rounded-full shadow-sm border border-gray-100 flex items-center justify-center text-gray-500 pointer-events-auto hover:bg-gray-50 active:scale-95 transition shrink-0 ml-auto">
+                    <i class="fa-solid fa-gear text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Scrollable Info Chips -->
+            <div class="flex overflow-x-auto hide-scrollbar px-3 gap-2 pointer-events-auto pb-2">
+                <button onclick="openTabModal('top10Modal', 'top10')" class="bg-white border border-gray-100 rounded-full pl-1 pr-3 py-1 flex items-center gap-1.5 shadow-sm shrink-0 hover:bg-gray-50 active:scale-95 transition">
+                    <div class="w-6 h-6 rounded-full bg-yellow-100 flex items-center justify-center text-[10px]">🥇</div>
+                    <div class="text-left flex flex-col">
+                        <span class="text-[10px] font-black text-gray-900 leading-none mt-0.5">하겐다즈 파인트</span>
+                        <span class="text-[8px] text-blue-600 font-bold leading-none mt-1">15,900원 절약</span>
+                    </div>
+                </button>
+                <button onclick="openTabModal('allDealsModal', 'alldeals')" class="bg-white border border-gray-100 rounded-full pl-1 pr-3 py-1 flex items-center gap-1.5 shadow-sm shrink-0 hover:bg-gray-50 active:scale-95 transition">
+                    <div class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center text-[10px]">✨</div>
+                    <div class="text-left flex flex-col">
+                        <span class="text-[10px] font-black text-gray-900 leading-none mt-0.5">오늘 새 행사</span>
+                        <span id="newDealCount" class="text-[8px] text-emerald-600 font-bold leading-none mt-1">0개</span>
+                    </div>
+                </button>
+                <button onclick="showToast('오늘 마감되는 행사입니다.')" class="bg-white border border-gray-100 rounded-full pl-1 pr-3 py-1 flex items-center gap-1.5 shadow-sm shrink-0 hover:bg-gray-50 active:scale-95 transition">
+                    <div class="w-6 h-6 rounded-full bg-rose-100 flex items-center justify-center text-[10px]">🚨</div>
+                    <div class="text-left flex flex-col">
+                        <span class="text-[10px] font-black text-gray-900 leading-none mt-0.5">오늘 종료</span>
+                        <span id="endingDealCount" class="text-[8px] text-rose-600 font-bold leading-none mt-1">0개</span>
+                    </div>
+                </button>
+            </div>
+
+            <!-- 브랜드 + 편의정보 필터 바 (JS로 채움) -->
+            <div id="mapFilterBar" class="flex overflow-x-auto hide-scrollbar px-3 gap-1.5 pointer-events-auto pb-1 items-center"></div>
+            <!-- 실시간 날씨 칩 -->
+            <div id="weatherBar" class="px-3 pb-2 pointer-events-auto hidden">
+                <div class="inline-flex items-center gap-1.5 bg-white/95 rounded-full px-3 py-1 shadow-sm border border-gray-100">
+                    <span id="weatherIcon" class="text-sm weather-icon-anim">🌤</span>
+                    <span id="weatherTemp" class="text-[11px] font-black text-gray-800">--°C</span>
+                    <span class="w-px h-3 bg-gray-200"></span>
+                    <span id="weatherDesc" class="text-[10px] font-medium text-gray-400">날씨 확인 중</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 우측 맵 컨트롤 패널 정렬 -->
+        <div id="mapControlPanel" class="absolute right-3 bottom-[120px] z-[400] flex flex-col gap-2 pointer-events-none items-end">
+            <!-- 리스트/지도 뷰 토글 -->
+            <button id="listViewToggleBtn" onclick="toggleListView()" class="w-[38px] h-[38px] bg-white/95 backdrop-blur-md rounded-full shadow-md border border-gray-100 flex items-center justify-center text-gray-600 pointer-events-auto hover:bg-gray-50 active:scale-95 transition" title="리스트 뷰">
+                <i class="fa-solid fa-list text-lg"></i>
+            </button>
+            <!-- 지역/주소 검색 -->
+            <button onclick="openLocationSearch()" class="w-[38px] h-[38px] bg-white/95 backdrop-blur-md rounded-full shadow-md border border-gray-100 flex items-center justify-center text-gray-600 pointer-events-auto hover:bg-gray-50 active:scale-95 transition">
+                <i class="fa-solid fa-magnifying-glass text-lg"></i>
+            </button>
+
+            <!-- 위성 보기 토글 -->
+            <button id="satelliteToggleBtn" onclick="toggleSatelliteView()" class="w-[38px] h-[38px] bg-white/95 backdrop-blur-md rounded-full shadow-md border border-gray-100 flex items-center justify-center text-gray-600 pointer-events-auto hover:bg-gray-50 active:scale-95 transition">
+                <i class="fa-solid fa-satellite text-lg"></i>
+            </button>
+
+            <!-- GPS Button -->
+            <button onclick="findMyLocation()" class="w-[38px] h-[38px] bg-white/95 backdrop-blur-md rounded-full shadow-md border border-gray-100 flex items-center justify-center text-blue-600 pointer-events-auto hover:bg-gray-50 active:scale-95 transition">
+                <i class="fa-solid fa-location-crosshairs text-lg"></i>
+            </button>
+            
+            <!-- Radius Selector (2×2 그리드 + 5km 리워드) -->
+            <div class="bg-white/95 backdrop-blur-md rounded-2xl shadow-md border border-gray-100 grid grid-cols-2 overflow-hidden pointer-events-auto w-[76px]">
+                <button onclick="setRadius(300)" id="rad300" class="text-[9px] font-black py-2 w-full border-b border-r border-gray-100 text-gray-500 hover:bg-gray-50 transition">300m</button>
+                <button onclick="setRadius(500)" id="rad500" class="text-[9px] font-black py-2 w-full border-b border-gray-100 text-blue-600 bg-blue-50 transition">500m</button>
+                <button onclick="setRadius(1000)" id="rad1000" class="text-[9px] font-black py-2 w-full border-b border-r border-gray-100 text-gray-500 hover:bg-gray-50 transition">1km</button>
+                <button onclick="setRadius(2000)" id="rad2000" class="text-[9px] font-black py-2 w-full border-b border-gray-100 text-gray-500 hover:bg-gray-50 transition">2km</button>
+                <button onclick="requestRadius5km()" id="rad5000" class="text-[9px] font-black py-2 w-full col-span-2 text-amber-600 hover:bg-amber-50 transition flex items-center justify-center gap-1"><i class="fa-solid fa-play text-[8px]"></i>5km</button>
+            </div>
+        </div>
+
+        <!-- Re-search Area Button -->
+        <button id="reSearchBtn" onclick="searchInCurrentArea()" class="absolute bottom-[110px] left-1/2 transform -translate-x-1/2 z-[500] bg-gray-900 text-white px-4 py-2.5 rounded-full text-[12px] font-bold shadow-[0_4px_15px_rgba(0,0,0,0.3)] flex items-center gap-2 transition-all duration-300 opacity-0 pointer-events-none translate-y-[10px]">
+            <i class="fa-solid fa-rotate-right text-blue-400"></i> 이 지역 재검색
+        </button>
+
+        <!-- Ad Banner (Above Nav) - 토스인앱 환경이면 ads.js가 실제 배너로 교체, 아니면 더미 표시 유지 -->
+        <div class="absolute bottom-[60px] left-0 w-full bg-white/90 backdrop-blur-sm border-t border-gray-100 p-1.5 z-[250] flex justify-center items-center pointer-events-none">
+            <div id="adBannerSlot" class="bg-gray-100 w-full max-w-sm h-10 flex items-center justify-center rounded-lg border border-gray-200 cursor-pointer pointer-events-auto" onclick="showToast('광고 페이지로 이동합니다.')">
+                <span class="text-[10px] text-gray-400 font-bold">Google Ad: 카페 신메뉴·쿠폰 모아보기</span>
+            </div>
+        </div>
+
+        <!-- 하단 네비게이션 바 -->
+        <nav class="absolute bottom-0 left-0 w-full h-[60px] bg-white border-t border-gray-200 z-[4000] flex justify-around items-center px-1 pb-safe shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
+            <button id="nav-home" onclick="goHome()" class="nav-btn flex flex-col items-center justify-center w-full h-full text-blue-600 transition">
+                <i class="fa-solid fa-map-location-dot text-[18px] mb-1"></i>
+                <span class="text-[9px] font-black tracking-tight">지도</span>
+            </button>
+            <button id="nav-search" onclick="openTabModal('searchModal', 'search')" class="nav-btn flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-gray-900 transition">
+                <i class="fa-solid fa-magnifying-glass text-[18px] mb-1 text-indigo-500"></i>
+                <span class="text-[9px] font-bold tracking-tight text-indigo-600">검색</span>
+            </button>
+            <button id="nav-nearby" onclick="openTabModal('nearbyRankingModal', 'nearby')" class="nav-btn flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-gray-900 transition">
+                <i class="fa-solid fa-store text-[18px] mb-1"></i>
+                <span class="text-[9px] font-bold tracking-tight">주변랭킹</span>
+            </button>
+            <button id="nav-wishlist" onclick="openTabModal('wishlistModal', 'wishlist')" class="nav-btn flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-gray-900 transition relative">
+                <i class="fa-solid fa-heart text-[18px] mb-1"></i>
+                <span class="text-[9px] font-bold tracking-tight">찜목록</span>
+                <span id="wishBadge" class="absolute top-1.5 right-[15px] bg-rose-500 text-white text-[8px] font-bold w-3.5 h-3.5 flex items-center justify-center rounded-full hidden shadow-sm ring-1 ring-white">0</span>
+            </button>
+            <button id="nav-savings" onclick="openSavings()" class="nav-btn flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-gray-900 transition relative">
+                <i class="fa-solid fa-wallet text-[18px] mb-1"></i>
+                <span class="text-[9px] font-bold tracking-tight">내지갑</span>
+            </button>
+        </nav>
+
+        <!-- Map Container -->
+        <div id="map"></div>
+
+        <div id="toast" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-900/90 backdrop-blur-md text-white px-5 py-3 rounded-2xl text-sm font-medium shadow-2xl z-[6000] opacity-0 pointer-events-none transition-all duration-300 flex flex-col items-center gap-2 text-center max-w-[80%] border border-gray-700">
+            <i class="fa-solid fa-bell text-yellow-400 text-2xl mb-1"></i>
+            <span id="toastMsg">알림 메시지</span>
+        </div>
+
+
+        <!-- 1. 비교검색 모달 -->
+        <div id="searchModal" class="tab-modal">
+            <div class="tab-modal-bg" onclick="goHome()"></div>
+            <div class="tab-modal-content">
+                <div class="p-4 border-b border-gray-100 flex items-center gap-3 bg-white sticky top-0 z-20 shrink-0 rounded-t-[24px]">
+                    <button onclick="goHome()" class="text-gray-500 hover:text-gray-800 p-2"><i class="fa-solid fa-arrow-left text-xl"></i></button>
+                    <div class="flex-1 relative">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 transform -translate-y-1/2 text-indigo-500"></i>
+                        <input type="text" id="searchInput" oninput="performSearch()" placeholder="메뉴·브랜드·행사명 검색 (예: 아메리카노)" class="w-full bg-indigo-50 text-gray-900 rounded-full py-2.5 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 font-bold placeholder-indigo-300">
+                    </div>
+                </div>
+                <div id="searchBrandChips" class="flex gap-2 px-4 py-2 border-b border-gray-100 overflow-x-auto hide-scrollbar shrink-0 items-center"></div>
+                <div class="flex-1 overflow-y-auto pb-4">
+                    <div id="searchEmptyState" class="p-6 flex flex-col items-center">
+                        <div class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-xl mb-4 text-xs font-black w-full text-center">💡 카페 메뉴·브랜드·행사를 한 번에 검색하세요!</div>
+                        <div class="flex flex-wrap gap-2 w-full pb-2">
+                            <button onclick="quickSearch('아메리카노')" class="text-xs font-bold text-gray-600 bg-white border border-gray-200 px-3 py-2 rounded-lg shadow-sm active:scale-95">☕ 아메리카노</button>
+                            <button onclick="quickSearch('라떼')" class="text-xs font-bold text-gray-600 bg-white border border-gray-200 px-3 py-2 rounded-lg shadow-sm active:scale-95">🥛 라떼</button>
+                            <button onclick="quickSearch('디저트')" class="text-xs font-bold text-gray-600 bg-white border border-gray-200 px-3 py-2 rounded-lg shadow-sm active:scale-95">🍰 디저트</button>
+                            <button onclick="quickSearch('베이커리')" class="text-xs font-bold text-gray-600 bg-white border border-gray-200 px-3 py-2 rounded-lg shadow-sm active:scale-95">🥐 베이커리</button>
+                            <button onclick="quickSearch('쿠폰')" class="text-xs font-bold text-gray-600 bg-white border border-gray-200 px-3 py-2 rounded-lg shadow-sm active:scale-95">🎟️ 쿠폰</button>
+                        </div>
+                    </div>
+                    <div id="searchResultsList" class="hidden space-y-2 p-2"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. 찜목록 모달 -->
+        <div id="wishlistModal" class="tab-modal">
+            <div class="tab-modal-bg" onclick="goHome()"></div>
+            <div class="tab-modal-content">
+                <div class="p-4 border-b border-gray-100 flex items-center gap-3 bg-white sticky top-0 z-20 shrink-0 rounded-t-[24px]">
+                    <button onclick="goHome()" class="text-gray-500 hover:text-gray-800 p-2"><i class="fa-solid fa-arrow-left text-xl"></i></button>
+                    <div class="flex-1">
+                        <h3 class="font-black text-lg text-gray-900"><i class="fa-solid fa-heart text-rose-500 mr-1"></i> 내가 찜한 상품</h3>
+                        <p class="text-[10px] text-gray-500 font-bold leading-tight">행사 여부를 브랜드를 넘어 모아봅니다.</p>
+                    </div>
+                    <button onclick="shareWishlist()" class="w-9 h-9 rounded-full bg-rose-50 border border-rose-100 flex items-center justify-center text-rose-500 hover:bg-rose-100 active:scale-95 transition shrink-0" title="찜 목록 공유">
+                        <i class="fa-solid fa-share-nodes text-sm"></i>
+                    </button>
+                </div>
+                <div class="flex-1 overflow-y-auto pb-4">
+                    <div id="wishlistList" class="p-2 space-y-2"></div>
+                    <div id="recentlyViewedSection" class="hidden px-2 pb-2">
+                        <p class="text-xs font-black text-gray-400 px-1 pt-3 pb-2 border-t border-gray-100">최근 본 상품</p>
+                        <div id="recentlyViewedList" class="space-y-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. 주변랭킹 모달 -->
+        <div id="nearbyRankingModal" class="tab-modal">
+            <div class="tab-modal-bg" onclick="goHome()"></div>
+            <div class="tab-modal-content">
+                <div class="p-4 border-b border-gray-100 flex items-center gap-3 bg-white sticky top-0 z-20 shrink-0 rounded-t-[24px]">
+                    <button onclick="goHome()" class="text-gray-500 hover:text-gray-800 p-2"><i class="fa-solid fa-arrow-left text-xl"></i></button>
+                    <div>
+                        <h3 class="font-black text-lg text-gray-900"><i class="fa-solid fa-store text-blue-500 mr-1"></i> 주변 매장 랭킹</h3>
+                        <p class="text-[10px] text-gray-500 font-bold leading-tight">현재 반경 내 행사 상품이 많은 순서</p>
+                    </div>
+                </div>
+                <div class="flex-1 overflow-y-auto p-4 pb-4 space-y-3" id="nearbyRankingList"></div>
+            </div>
+        </div>
+
+        <!-- 4. TOP10 모달 -->
+        <div id="top10Modal" class="tab-modal">
+            <div class="tab-modal-bg" onclick="goHome()"></div>
+            <div class="tab-modal-content">
+                <div class="p-4 border-b border-gray-100 flex items-center gap-3 bg-white sticky top-0 z-20 shrink-0 rounded-t-[24px]">
+                    <button onclick="goHome()" class="text-gray-500 hover:text-gray-800 p-2"><i class="fa-solid fa-arrow-left text-xl"></i></button>
+                    <div>
+                        <h3 class="font-black text-lg text-gray-900"><i class="fa-solid fa-fire text-rose-500 mr-1"></i> 역대급 가성비 TOP 10</h3>
+                        <p class="text-[10px] text-gray-500 font-bold leading-tight">할인 금액이 가장 큰 마스터 상품 랭킹</p>
+                    </div>
+                </div>
+                <div class="flex-1 overflow-y-auto p-2 pb-4 space-y-2" id="top10List"></div>
+            </div>
+        </div>
+
+
+        <!-- 매장 상품 바텀 시트 (높이 55vh로 맵과 공존) -->
+        <div id="bottomSheet" class="bottom-sheet pointer-events-auto">
+            <div class="w-full flex justify-center py-3 cursor-pointer shrink-0" onclick="closeSheet()">
+                <div class="w-12 h-1.5 bg-gray-300 rounded-full"></div>
+            </div>
+            <div class="px-4 pb-3 border-b border-gray-100 shrink-0">
+                <div class="flex items-center gap-3">
+                    <div id="bsStoreLogo" class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center font-black text-purple-700 text-sm shadow-inner shrink-0">CU</div>
+                    <div class="flex-1 min-w-0">
+                        <h2 id="bsStoreName" class="text-base font-black text-gray-900 truncate">CU 강남역점</h2>
+                        <div id="bsAmenities" class="flex items-center flex-wrap gap-1 text-[10px] font-medium text-gray-500 mt-0.5"></div>
+                    </div>
+                    <div class="flex gap-2 shrink-0">
+                        <button id="bsCallBtn" onclick="callStore()" class="hidden flex-col items-center justify-center gap-1 bg-emerald-50 text-emerald-600 w-14 py-2 rounded-xl hover:bg-emerald-100 transition active:scale-95">
+                            <i class="fa-solid fa-phone text-base"></i>
+                            <span class="text-[10px] font-bold">전화</span>
+                        </button>
+                        <button onclick="openDirections()" class="flex flex-col items-center justify-center gap-1 bg-blue-50 text-blue-600 w-14 py-2 rounded-xl hover:bg-blue-100 transition active:scale-95">
+                            <i class="fa-solid fa-route text-base"></i>
+                            <span class="text-[10px] font-bold">길찾기</span>
+                        </button>
+                        <button onclick="closeSheet()" class="flex flex-col items-center justify-center gap-1 bg-gray-100 text-gray-500 w-14 py-2 rounded-xl hover:bg-gray-200 transition active:scale-95">
+                            <i class="fa-solid fa-xmark text-base"></i>
+                            <span class="text-[10px] font-bold">닫기</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="px-5 py-3 border-b border-gray-100 shrink-0 bg-white z-10 shadow-sm flex flex-col gap-3">
+                <div class="flex gap-1.5 pb-1" id="categoryContainer"></div>
+                <div class="flex justify-between items-center">
+                    <span id="bsItemCount" class="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded-md">총 0개</span>
+                    <div class="flex items-center gap-2 text-xs text-gray-500">
+                        <button id="filterDiscountBtn" onclick="toggleDealTypeFilter('할인')" class="text-[10px] font-bold px-2 py-1.5 rounded-md border border-gray-200 text-gray-500 bg-white transition shadow-sm active:scale-95">할인만</button>
+                        <button id="filterCouponBtn" onclick="toggleDealTypeFilter('쿠폰')" class="text-[10px] font-bold px-2 py-1.5 rounded-md border border-gray-200 text-gray-500 bg-white transition shadow-sm active:scale-95">쿠폰만</button>
+                        <div class="bg-gray-50 rounded-lg px-2 py-1 border border-gray-100 flex items-center gap-1 shadow-sm">
+                            <i class="fa-solid fa-sort"></i>
+                            <select id="sortSelect" onchange="renderDeals()" class="bg-transparent border-none outline-none font-bold text-gray-700 cursor-pointer appearance-none pl-1">
+                                <option value="recommend">절약 큰 순</option>
+                                <option value="priceLow">가격 낮은 순</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="px-4 py-1.5 bg-amber-50 border-b border-amber-100 shrink-0">
+                <p class="text-[10px] text-amber-700 font-medium">⚠️ 표시 가격은 브랜드 공식 메뉴판 기준 참고 가격입니다. 매장·지역별로 다를 수 있으니 주문 전 확인하세요.</p>
+            </div>
+            <div class="flex-1 overflow-y-auto bg-gray-50 p-2 pb-6 space-y-2" id="dealsList"></div>
+        </div>
+
+        <!-- 내 지갑(저금통) 모달 -->
+        <div id="savingsModal" class="absolute inset-0 bg-black/70 ui-overlay hidden flex-col items-center justify-center p-4 z-[6000]">
+            <div class="bg-white rounded-[2rem] w-full max-w-sm overflow-hidden shadow-2xl transform transition-all border border-gray-200">
+                <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-6 text-center relative border-b border-gray-700">
+                    <button onclick="closeSavings()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition"><i class="fa-solid fa-xmark text-xl"></i></button>
+                    <div class="w-16 h-16 bg-gray-700 rounded-full mx-auto flex items-center justify-center text-3xl mb-3 shadow-inner border border-gray-600">🐷</div>
+                    <h3 class="text-gray-300 text-sm font-bold">나의 누적 카페 할인 절약액</h3>
+                    <p class="text-white text-3xl font-black mt-1"><span id="totalSaved">0</span><span class="text-xl font-bold text-gray-400 ml-1">원</span></p>
+                </div>
+                <div class="overflow-y-auto hide-scrollbar flex flex-col bg-gray-50" style="max-height:60vh">
+                    <div class="p-5 flex flex-col gap-3">
+                    <!-- 이번 주 행사 캘린더 -->
+                    <div id="weekCalendarBox" class="w-full bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+                        <p class="text-xs font-black text-gray-500 mb-3 flex items-center gap-1.5"><i class="fa-solid fa-calendar-week text-blue-500"></i> 이번 주 행사 캘린더</p>
+                        <div id="weekCalendar" class="flex gap-1 justify-between"></div>
+                        <p class="text-[10px] text-gray-400 mt-2 text-center">카페 행사 정보는 매일 갱신됩니다</p>
+                    </div>
+                    <div id="dailyChartBox" class="w-full bg-white rounded-2xl p-4 shadow-sm border border-gray-100 hidden">
+                        <p class="text-xs font-black text-gray-500 mb-3">최근 7일 절약 현황</p>
+                        <div id="dailyChart" class="flex items-end gap-1 h-16"></div>
+                    </div>
+                    <div class="w-full bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex flex-col" style="max-height:180px">
+                        <h4 class="text-sm font-bold text-gray-800 border-b pb-2 mb-3 flex justify-between items-center shrink-0">
+                            <span>최근 담은 내역</span>
+                            <button onclick="clearSavings()" class="text-[10px] bg-gray-100 text-gray-500 px-2 py-1 rounded hover:bg-red-50 hover:text-red-500 transition font-bold">내역 초기화</button>
+                        </h4>
+                        <ul id="savingsHistory" class="space-y-3 overflow-y-auto flex-1 pr-2 hide-scrollbar">
+                            <li class="text-center text-xs text-gray-400 py-4">상품의 [+] 버튼을 눌러 담아보세요.</li>
+                        </ul>
+                    </div>
+                    <button onclick="closeSavings()" class="w-full py-3.5 bg-gray-900 text-white font-bold rounded-xl shadow-md shrink-0 hover:bg-gray-800 active:scale-95 transition">확인 완료</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 첫 실행 온보딩: 행사 데이터 특성 안내 -->
+        <div id="onboardingModal" class="absolute inset-0 bg-black/70 hidden flex-col items-center justify-center p-5 z-[7000]">
+            <div class="bg-white rounded-[2rem] w-full max-w-sm overflow-hidden shadow-2xl">
+                <div class="bg-gradient-to-br from-emerald-600 to-green-700 p-6 text-center">
+                    <div class="text-4xl mb-2">☕</div>
+                    <h3 class="text-white text-lg font-black">시작하기 전에 확인해주세요</h3>
+                </div>
+                <div class="p-6 space-y-4">
+                    <div class="flex items-start gap-3">
+                        <span class="text-xl shrink-0">ℹ️</span>
+                        <p class="text-sm text-gray-700 leading-relaxed">본 앱에서 제공하는 모든 정보(행사·매장·편의정보 등)는 <b>참고용</b>이며, 실제와 다를 수 있습니다. 중요한 사항은 반드시 해당 브랜드 공식 채널 또는 매장에서 직접 확인하시기 바랍니다.</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-xl shrink-0">📋</span>
+                        <p class="text-sm text-gray-700 leading-relaxed">행사 정보는 <b>브랜드 공식 공지·공개 정보 기준</b>입니다. 매장별 적용 여부·가격·쿠폰 조건·운영시간은 실제 매장 상황에 따라 다를 수 있으니, 방문 전 브랜드 공식 앱이나 해당 매장에 확인해주세요.</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-xl shrink-0">🐾</span>
+                        <p class="text-sm text-gray-700 leading-relaxed"><b>반려동물 동반 가능 여부</b>는 매장별 운영 정책에 따라 다를 수 있습니다. 표시된 정보는 참고용이며, 방문 전 매장 확인을 권장합니다.</p>
+                    </div>
+                </div>
+                <div class="p-5 pt-0">
+                    <button onclick="closeOnboarding()" class="w-full py-3.5 bg-gray-900 text-white font-bold rounded-xl shadow-md hover:bg-gray-800 active:scale-95 transition">확인했습니다</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 설정 -->
+        <div id="settingsModal" class="absolute inset-0 bg-black/70 hidden flex-col items-center justify-center p-5 z-[7000]">
+            <div class="bg-white rounded-[2rem] w-full max-w-sm overflow-hidden shadow-2xl">
+                <div class="p-5 border-b border-gray-100 flex items-center justify-between">
+                    <h3 class="font-black text-lg text-gray-900"><i class="fa-solid fa-gear text-gray-400 mr-1"></i> 설정</h3>
+                    <button onclick="closeSettings()" class="text-gray-400 hover:text-gray-700 p-1"><i class="fa-solid fa-xmark text-xl"></i></button>
+                </div>
+                <div class="p-5 space-y-5 overflow-y-auto max-h-[70vh]">
+                    <!-- 알림 설정 -->
+                    <div>
+                        <p class="text-sm font-bold text-gray-800 mb-2"><i class="fa-solid fa-bell text-blue-500 mr-1"></i> 알림 설정</p>
+                        <div class="bg-gray-50 rounded-xl p-3.5 space-y-3">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-xs font-bold text-gray-700">매주 월요일 새 행사 알림</p>
+                                    <p class="text-[10px] text-gray-400">새 행사가 시작되는 월요일 아침 9시</p>
+                                </div>
+                                <button id="notifNewDealToggle" onclick="toggleNotification('newDeal')" class="w-10 h-6 rounded-full bg-gray-200 relative transition-colors shrink-0">
+                                    <span class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform" id="notifNewDealKnob"></span>
+                                </button>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-xs font-bold text-gray-700">일요일 행사 마감 예고 알림</p>
+                                    <p class="text-[10px] text-gray-400">이번 주 행사가 끝나는 일요일 오전 10시</p>
+                                </div>
+                                <button id="notifEndingToggle" onclick="toggleNotification('ending')" class="w-10 h-6 rounded-full bg-gray-200 relative transition-colors shrink-0">
+                                    <span class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform" id="notifEndingKnob"></span>
+                                </button>
+                            </div>
+                            <p id="notifStatusMsg" class="text-[10px] text-gray-400 text-center hidden">알림 권한이 필요합니다. 아래 버튼을 눌러 허용해주세요.</p>
+                            <button id="notifPermBtn" onclick="requestNotificationPermission()" class="hidden w-full text-xs font-bold py-2 rounded-lg bg-blue-600 text-white active:scale-95 transition">알림 권한 허용하기</button>
+                        </div>
+                    </div>
+                    <!-- 자주 가는 요일 -->
+                    <div>
+                        <p class="text-sm font-bold text-gray-800 mb-2"><i class="fa-solid fa-calendar-days text-indigo-500 mr-1"></i> 자주 가는 요일</p>
+                        <p class="text-[10px] text-gray-400 mb-2">선택한 요일 아침에 "오늘 행사 확인하세요!" 알림을 드립니다.</p>
+                        <div class="flex gap-1.5" id="visitDayBtns">
+                            <button onclick="toggleVisitDay(1)" data-day="1" class="visit-day-btn flex-1 text-xs font-bold py-2 rounded-lg border border-gray-200 text-gray-500 transition">월</button>
+                            <button onclick="toggleVisitDay(2)" data-day="2" class="visit-day-btn flex-1 text-xs font-bold py-2 rounded-lg border border-gray-200 text-gray-500 transition">화</button>
+                            <button onclick="toggleVisitDay(3)" data-day="3" class="visit-day-btn flex-1 text-xs font-bold py-2 rounded-lg border border-gray-200 text-gray-500 transition">수</button>
+                            <button onclick="toggleVisitDay(4)" data-day="4" class="visit-day-btn flex-1 text-xs font-bold py-2 rounded-lg border border-gray-200 text-gray-500 transition">목</button>
+                            <button onclick="toggleVisitDay(5)" data-day="5" class="visit-day-btn flex-1 text-xs font-bold py-2 rounded-lg border border-gray-200 text-gray-500 transition">금</button>
+                            <button onclick="toggleVisitDay(6)" data-day="6" class="visit-day-btn flex-1 text-xs font-bold py-2 rounded-lg border border-gray-200 text-gray-500 transition">토</button>
+                            <button onclick="toggleVisitDay(0)" data-day="0" class="visit-day-btn flex-1 text-xs font-bold py-2 rounded-lg border border-gray-200 text-gray-500 transition">일</button>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold text-gray-800 mb-2">앱 정보</p>
+                        <div class="bg-gray-50 rounded-xl p-3.5 space-y-1.5">
+                            <div class="flex items-center justify-between text-xs"><span class="text-gray-500">버전</span><span class="font-bold text-gray-800">1.0.0</span></div>
+                            <div class="flex items-center justify-between text-xs"><span class="text-gray-500">행사·매장 데이터</span><span class="font-bold text-gray-800">매일 새벽 3시 자동 갱신</span></div>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold text-gray-800 mb-2">내 데이터</p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="resetWishlist()" class="text-xs font-bold py-2.5 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 active:scale-95 transition">찜 목록 초기화</button>
+                            <button onclick="clearSavings()" class="text-xs font-bold py-2.5 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 active:scale-95 transition">절약 포인트 내역 초기화</button>
+                        </div>
+                    </div>
+                    <div>
+                        <button onclick="replayOnboarding()" class="w-full text-xs font-bold py-2.5 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 active:scale-95 transition">시작 안내 다시 보기</button>
+                    </div>
+                </div>
+                <div class="p-5 pt-0">
+                    <button onclick="closeSettings()" class="w-full py-3.5 bg-gray-900 text-white font-bold rounded-xl shadow-md hover:bg-gray-800 active:scale-95 transition">확인</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 월간 절약 리포트 모달 -->
+        <div id="monthlyReportModal" class="absolute inset-0 bg-black/70 hidden flex-col items-center justify-center p-5 z-[7500]">
+            <div class="bg-white rounded-[2rem] w-full max-w-sm overflow-hidden shadow-2xl">
+                <div class="bg-gradient-to-br from-indigo-600 to-blue-600 p-6 text-center relative">
+                    <div class="text-4xl mb-2">📊</div>
+                    <h3 class="text-white text-lg font-black" id="reportTitle">지난달 절약 리포트</h3>
+                    <p class="text-indigo-200 text-sm mt-1" id="reportMonth"></p>
+                </div>
+                <div class="p-6 space-y-4">
+                    <div class="bg-indigo-50 rounded-2xl p-4 text-center">
+                        <p class="text-xs text-indigo-400 font-bold">총 절약 금액</p>
+                        <p class="text-3xl font-black text-indigo-700 mt-1"><span id="reportTotalSavings">0</span><span class="text-lg font-bold text-indigo-400 ml-1">원</span></p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="bg-gray-50 rounded-xl p-3 text-center">
+                            <p class="text-[10px] text-gray-400 font-bold">담은 상품 수</p>
+                            <p class="text-xl font-black text-gray-800 mt-1"><span id="reportItemCount">0</span><span class="text-sm text-gray-400 ml-0.5">개</span></p>
+                        </div>
+                        <div class="bg-gray-50 rounded-xl p-3 text-center">
+                            <p class="text-[10px] text-gray-400 font-bold">찜 목록</p>
+                            <p class="text-xl font-black text-gray-800 mt-1"><span id="reportLikedCount">0</span><span class="text-sm text-gray-400 ml-0.5">개</span></p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-500 text-center" id="reportMsg"></p>
+                </div>
+                <div class="px-6 pb-6">
+                    <button onclick="closeMonthlyReport()" class="w-full py-3.5 bg-gray-900 text-white font-bold rounded-xl shadow-md hover:bg-gray-800 active:scale-95 transition">확인 완료</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 찜 한도 초과 리워드 팝업 -->
+        <div id="wishLimitModal" class="absolute inset-0 bg-black/70 hidden flex-col items-center justify-center p-5 z-[7500]">
+            <div class="bg-white rounded-[2rem] w-full max-w-sm overflow-hidden shadow-2xl">
+                <div class="bg-gradient-to-br from-rose-500 to-pink-600 p-6 text-center">
+                    <div class="text-4xl mb-2">💝</div>
+                    <h3 class="text-white text-lg font-black">찜 목록이 가득 찼어요!</h3>
+                    <p class="text-rose-100 text-sm mt-1">무료 한도 <span class="font-black">10개</span>를 모두 채웠습니다</p>
+                </div>
+                <div class="p-6 space-y-3">
+                    <button id="wishUnlockAdBtn" onclick="watchRewardAdForWish()" class="w-full py-3 bg-amber-400 text-amber-900 font-black rounded-xl shadow-sm hover:bg-amber-300 active:scale-95 transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-play"></i> 광고 보고 오늘 하루 무제한 찜하기
+                    </button>
+                    <button onclick="closeWishLimitModal()" class="w-full py-3 bg-gray-100 text-gray-600 font-bold rounded-xl hover:bg-gray-200 active:scale-95 transition text-sm">취소</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 찜한 카페에 새 행사 시작 시 개인화 배너 -->
+        <div id="likeChangeBanner" class="absolute top-[56px] left-0 w-full z-[301] px-3 hidden">
+            <button onclick="openLikeChangeList()" class="w-full text-left bg-rose-50 border border-rose-200 rounded-2xl px-4 py-2.5 flex items-center gap-2 shadow-sm active:scale-[0.99] transition">
+                <span class="text-lg">💝</span>
+                <p class="text-xs font-bold text-rose-700 flex-1" id="likeChangeBannerText"></p>
+                <span onclick="event.stopPropagation(); closeLikeChangeBanner()" class="text-rose-300 hover:text-rose-500 shrink-0"><i class="fa-solid fa-xmark text-sm"></i></span>
+            </button>
+        </div>
+
+        <!-- 인앱 D-day 배너 -->
+        <div id="ddayBanner" class="absolute top-[56px] left-0 w-full z-[300] px-3 hidden transition-all duration-500">
+            <div class="bg-amber-50 border border-amber-200 rounded-2xl px-4 py-2.5 flex items-center gap-2 shadow-sm">
+                <span class="text-lg">⏰</span>
+                <p class="text-xs font-bold text-amber-800 flex-1" id="ddayBannerText"></p>
+                <button onclick="closeDdayBanner()" class="text-amber-400 hover:text-amber-600 shrink-0"><i class="fa-solid fa-xmark text-sm"></i></button>
+            </div>
+        </div>
+
+        <!-- 주변 카페 행사 미리보기 시트 (첫 위치 확정 후 1회 슬라이드업) -->
+        <div id="nearbyPreviewSheet" class="absolute left-0 w-full z-[300] transition-transform duration-500 ease-out hidden"
+             style="bottom:116px; transform:translateY(120%); pointer-events:none;">
+            <div class="mx-3 bg-white rounded-2xl shadow-[0_-4px_20px_rgba(0,0,0,0.12)] border border-gray-100 overflow-hidden">
+                <div class="flex items-center justify-between px-4 pt-3 pb-2">
+                    <p id="nearbyPreviewTitle" class="text-[12px] font-black text-gray-900 leading-snug flex-1 pr-2">내 주변 행사</p>
+                    <button onclick="closeNearbyPreview()" style="pointer-events:auto;" class="text-gray-400 hover:text-gray-600 p-1 shrink-0"><i class="fa-solid fa-xmark text-sm"></i></button>
+                </div>
+                <div id="nearbyPreviewList" class="px-4 pb-3 flex flex-col gap-2" style="pointer-events:auto;"></div>
+            </div>
+        </div>
+
+        <!-- 브랜드 전체 선택 모달 -->
+        <div id="brandPickerModal" class="absolute inset-0 bg-black/60 hidden flex-col items-center justify-end z-[5000]" onclick="closeBrandPicker()">
+            <div class="bg-white w-full rounded-t-[24px] p-5 pb-8" onclick="event.stopPropagation()">
+                <div class="flex items-center justify-between mb-1">
+                    <p class="font-black text-base text-gray-900">☕ 브랜드 선택</p>
+                    <button onclick="closeBrandPicker()" class="text-gray-400 p-1"><i class="fa-solid fa-xmark text-lg"></i></button>
+                </div>
+                <p class="text-[11px] text-gray-400 font-medium mb-3">원하는 브랜드를 선택해 지도를 필터링하세요.</p>
+                <div id="brandPickerGrid" class="grid grid-cols-4 gap-2"></div>
+            </div>
+        </div>
+
+        <!-- 지역/주소 검색 -->
+        <div id="locationSearchModal" class="absolute inset-0 bg-black/70 hidden flex-col items-start justify-start p-0 z-[7000]">
+            <div class="bg-white w-full overflow-hidden shadow-2xl flex flex-col" style="height: 100%;">
+                <div class="p-4 border-b border-gray-100 flex items-center gap-2 shrink-0">
+                    <button onclick="closeLocationSearch()" class="text-gray-500 hover:text-gray-800 p-1 shrink-0"><i class="fa-solid fa-arrow-left text-lg"></i></button>
+                    <div class="relative flex-1">
+                        <input id="locationSearchInput" type="text" placeholder="지역명, 건물명, 주소 검색 (예: 강남역, 해운대구)"
+                            class="w-full bg-gray-100 rounded-full pl-4 pr-9 py-2.5 text-sm outline-none focus:ring-2 focus:ring-blue-200"
+                            oninput="handleLocationSearchInput()" onkeydown="if(event.key==='Enter') runLocationSearch();">
+                        <button onclick="runLocationSearch()" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-blue-600"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                </div>
+                <div id="locationSearchResults" class="flex-1 overflow-y-auto"></div>
+            </div>
+        </div>
+
+        <!-- 리스트 뷰 오버레이 (지도 탭에서 지도 없이 딜 목록만 보기) -->
+        <div id="listViewOverlay" class="absolute inset-0 bg-white z-[350] hidden flex-col" style="top:0;bottom:60px;">
+            <div class="px-4 pt-4 pb-2 border-b border-gray-100 shrink-0">
+                <div class="flex items-center justify-between mb-2">
+                    <div>
+                        <h3 class="font-black text-base text-gray-900"><i class="fa-solid fa-map-location-dot text-blue-500 mr-1"></i> 주변 딜 목록</h3>
+                        <p id="listViewSubtitle" class="text-[10px] text-gray-500 font-bold leading-tight">반경 내 매장 행사 상품</p>
+                    </div>
+                    <button onclick="toggleListView()" class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 active:scale-95 transition"><i class="fa-solid fa-map text-sm"></i></button>
+                </div>
+                <!-- 브랜드 필터 칩 (JS로 채움) -->
+                <div id="listViewBrandChips" class="flex gap-1.5 overflow-x-auto pb-1 no-scrollbar"></div>
+            </div>
+            <div id="listViewBody" class="flex-1 overflow-y-auto px-3 py-2 space-y-2"></div>
+        </div>
+
+        <!-- 전체 딜 목록 모달 -->
+        <div id="allDealsModal" class="tab-modal">
+            <div class="tab-modal-bg" onclick="goHome()"></div>
+            <div class="tab-modal-content">
+                <div class="p-4 border-b border-gray-100 flex items-center gap-3 bg-white sticky top-0 z-20 shrink-0 rounded-t-[24px]">
+                    <button onclick="goHome()" class="text-gray-500 hover:text-gray-800 p-2"><i class="fa-solid fa-arrow-left text-xl"></i></button>
+                    <div class="flex-1">
+                        <h3 class="font-black text-lg text-gray-900"><i class="fa-solid fa-list text-blue-500 mr-1"></i> 전체 행사 목록</h3>
+                        <p class="text-[10px] text-gray-500 font-bold leading-tight">카페 행사를 브랜드/유형별로 필터</p>
+                    </div>
+                </div>
+                <div id="allDealsFilterBar" class="flex gap-2 px-3 py-2 border-b border-gray-100 overflow-x-auto hide-scrollbar shrink-0 bg-white items-center"></div>
+                <div class="flex-1 overflow-y-auto p-2 pb-4 space-y-2" id="allDealsList"></div>
+            </div>
+        </div>
+
+    </div> <!-- app-container -->
+
+    <script>
+        // 카페 브랜드 정의(brands.json과 동일, 실데이터 19개 브랜드). color=지도 마커 배경, dark=밝은 배경이라 글자를 어둡게
+        // 런타임에 brands.json을 받으면 그걸로 덮어씀(applyBrands). 아래는 fetch 실패 시 폴백.
+        let CAFE_BRANDS = [
+            { name:'스타벅스',     short:'벅스',   color:'#00704A', dark:false },
+            { name:'투썸플레이스', short:'투썸',   color:'#C8102E', dark:false },
+            { name:'이디야커피',   short:'이디야', color:'#1B3A8B', dark:false },
+            { name:'메가MGC커피',  short:'메가',   color:'#F5B700', dark:true  },
+            { name:'컴포즈커피',   short:'컴포즈', color:'#FFCB05', dark:true  },
+            { name:'빽다방',       short:'빽',     color:'#F7D417', dark:true  },
+            { name:'할리스',       short:'할리스', color:'#B01E28', dark:false },
+            { name:'커피빈',       short:'빈',     color:'#5A2D28', dark:false },
+            { name:'더벤티',       short:'벤티',   color:'#0033A0', dark:false },
+            { name:'매머드커피',   short:'매머드', color:'#6E4A2E', dark:false },
+            { name:'엔제리너스',   short:'엔제리', color:'#D71920', dark:false },
+            { name:'폴 바셋',      short:'폴바셋', color:'#1A1A1A', dark:false },
+            { name:'탐앤탐스',     short:'탐탐',   color:'#7B1E2B', dark:false },
+            { name:'감성커피',     short:'감성',   color:'#E7A100', dark:true  },
+            { name:'더리터',       short:'리터',   color:'#2AA84A', dark:false },
+            { name:'하삼동커피',   short:'하삼동', color:'#1E7A3D', dark:false },
+            { name:'봄봄',         short:'봄봄',   color:'#EC6F9C', dark:false },
+            { name:'텐퍼센트커피', short:'10%',    color:'#111827', dark:false },
+            { name:'커피에반하다', short:'반하다', color:'#7C3AED', dark:false },
+            { name:'카페베네',    short:'베네',   color:'#2B6CB0', dark:false },
+            { name:'달콤커피',    short:'달콤',   color:'#F97316', dark:false },
+            { name:'드롭탑',      short:'드롭탑', color:'#0EA5E9', dark:false },
+            { name:'커피나무',    short:'커피나무', color:'#65A30D', dark:false },
+            { name:'토프레소',    short:'토프레소', color:'#DC2626', dark:false },
+            { name:'공차',        short:'공차',   color:'#92400E', dark:false },
+            { name:'빈스앤베리즈',short:'빈스',   color:'#7E22CE', dark:false },
+            { name:'커피스미스',  short:'스미스', color:'#374151', dark:false },
+        ];
+        let BRAND_INFO = Object.fromEntries(CAFE_BRANDS.map(b => [b.name, { text:b.short, color:b.color, dark:b.dark }]));
+        // 지도 필터에 노출할 대표 브랜드(인지도+매장수 상위)
+        const CORE_BRANDS = ['메가MGC커피','컴포즈커피','이디야커피','빽다방','투썸플레이스','스타벅스','할리스','더벤티'];
+
+        // brands.json을 받았을 때 브랜드 팔레트를 갱신
+        function applyBrands(list) {
+            if (!Array.isArray(list) || list.length === 0) return;
+            CAFE_BRANDS = list;
+            BRAND_INFO = Object.fromEntries(list.map(b => [b.name, { text:b.short, color:b.color, dark:b.dark }]));
+        }
+
+        // 브랜드 색상을 인라인 스타일로 반환(로고 원형·마커·핀). 편의점 4색 고정 클래스 대체
+        function brandChipStyle(brand){ const b = BRAND_INFO[brand] || { color:'#6b7280', dark:false }; return `background-color:${b.color};color:${b.dark?'#1f2937':'#ffffff'}`; }
+        function brandLabel(brand){ return (BRAND_INFO[brand] || { text:brand }).text; }
+
+        // 데이터 fetch 실패(file:// 등) 시 쓰는 데모 행사 DB
+        let MASTER_DB = [
+            { id:'demo1', name:'아메리카노', category:'커피', price:4500, saving:2000, discountPrice:2500, discountRate:44, eventTitle:'아메리카노 44% 할인', conditionText:'매장별 적용 여부가 다를 수 있어요.', officialUrl:'', isCoupon:false, isNewMenu:false, isSeasonMenu:false, events:{ '스타벅스':{ type:'할인', isNew:true, daysLeft:3, image:'' } } },
+            { id:'demo2', name:'딸기 라떼', category:'음료', price:5000, saving:0, discountPrice:5000, discountRate:0, eventTitle:'[시즌] 딸기 라떼', conditionText:'시즌 한정 메뉴입니다.', officialUrl:'', isCoupon:false, isNewMenu:false, isSeasonMenu:true, events:{ '메가MGC커피':{ type:'시즌', isNew:true, daysLeft:12, image:'' } } },
+            { id:'demo3', name:'카페라떼', category:'커피', price:3200, saving:960, discountPrice:2240, discountRate:30, eventTitle:'앱 쿠폰 카페라떼 30% 할인', conditionText:'브랜드 공식 앱 쿠폰 적용 시.', officialUrl:'', isCoupon:true, isNewMenu:false, isSeasonMenu:false, events:{ '투썸플레이스':{ type:'쿠폰', isNew:false, daysLeft:0, image:'' } } },
+            { id:'demo4', name:'크루아상', category:'베이커리', price:3800, saving:0, discountPrice:3800, discountRate:0, eventTitle:'크루아상 무료 사이즈업', conditionText:'일부 매장 제외.', officialUrl:'', isCoupon:false, isNewMenu:false, isSeasonMenu:false, events:{ '빽다방':{ type:'사이즈업', isNew:false, daysLeft:6, image:'' } } },
+        ];
+
+        const CATEGORIES = ['전체', '커피', '음료', '디저트', '베이커리'];
+        const EMOJI_MAP = { '커피':'☕', '음료':'🥤', '디저트':'🍰', '베이커리':'🥐', 'MD·기타':'🛍️' };
+        const EVENT_TYPES = ['할인', '쿠폰', '신메뉴', '시즌', '사이즈업', '이벤트'];
+
+        let map, activeStore = null, activeCategory = '전체';
+        let totalSavings = 0, likedItems = new Set(), purchasedHistory = [];
+        window.purchasedHistory = purchasedHistory; // ads.js(보상형 광고)에서 최근 적립 내역을 참조하기 위해 노출 
+        let storeMarkersData = [], mapMarkers = [];
+        let isUserPanning = false, currentRadius = 500, searchCircle = null, dealTypeFilter = null;
+        let searchBrandFilter = null, recentlyViewed = [], mapBrandFilter = null;
+        let nearbyPreviewShown = false, nearbyPreviewTimer = null;
+        let likeChangeItems = [];
+        let allVirtualStoresDB = [], REAL_STORES = [];
+        let STORE_INDEX = [], loadedProvinceFile = null;
+
+        // 토스인앱 등 외부 빌드 환경(WebView 패키지)에 넣어도 데이터는 항상 GitHub Pages의 최신본을
+        // 실시간으로 받아오도록 절대경로를 쓴다. GitHub Pages 자체에서 열 때도 동일 출처라 그대로 동작함.
+        // 상대경로: 같은 폴더의 deals.json/stores를 로드. file://로 열면 fetch 실패 → 임베드 데모 DB 사용
+        const DATA_BASE_URL = '';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadSavedData();
+
+            // deals.json: 카페 행사 데이터(현재는 샘플, 실제 프로모션 API 없음).
+            // stores/index.json: 전국 시/도별로 쪼갠 매장 좌표 색인(소상공인시장진흥공단 상가정보 API 실데이터).
+            // brands.json: 데이터에 존재하는 브랜드 + 색상/링크(마커·라벨용).
+            // 실제 매장 데이터는 사용자 위치에서 가장 가까운 시/도 파일만 불러온다(전국 통합 파일은 너무 큼).
+            Promise.all([
+                fetch(DATA_BASE_URL + 'deals.json?v=' + (new Date().toISOString().slice(0,10).replace(/-/g,'')) + '_4', {cache:'no-store'}).then(res => res.ok ? res.json() : null).catch(() => null),
+                fetch(DATA_BASE_URL + 'stores/index.json').then(res => res.ok ? res.json() : null).catch(() => null),
+                fetch(DATA_BASE_URL + 'brands.json').then(res => res.ok ? res.json() : null).catch(() => null),
+            ]).then(async ([deals, index, brands]) => {
+                if (brands && brands.length > 0) applyBrands(brands);
+                if (deals && deals.length > 0) MASTER_DB = deals;
+                else console.log("deals.json 없음 - 내부 데모 DB 사용");
+                computeIsNew();
+
+                if (index && index.length > 0) {
+                    STORE_INDEX = index;
+                    await loadStoresForLocation(37.498095, 127.027610).catch(e => console.warn('매장 로드 실패:', e));
+                } else {
+                    console.log("stores/index.json 없음 - 가상 매장 사용");
+                }
+
+                startApp();
+            }).catch(e => { console.error('초기화 실패, 앱 재시도:', e); startApp(); });
+        });
+
+        function startApp() {
+            applyDaysLeft();
+            updateDashboardCounts();
+            if (REAL_STORES.length === 0) generateVirtualStoresDB();
+            // 날씨: 서울 기본 좌표로 즉시 표시, 실제 위치 확정 후 덮어씀
+            fetchWeather(37.5665, 126.978);
+            // requestAnimationFrame으로 DOM 페인트 완료 후 지도 초기화
+            requestAnimationFrame(() => initMap());
+            applyStartupSettings();
+            renderCategories();
+            renderMapFilterBar();
+            renderStaticBrandFilters();
+            document.getElementById('map').addEventListener('mousedown', closeSheet);
+            document.getElementById('map').addEventListener('touchstart', closeSheet);
+            window.addEventListener('resize', () => { if(map) map.invalidateSize(); });
+            maybeShowOnboarding();
+            initRetentionFeatures();
+        }
+
+        function maybeShowOnboarding() {
+            if (localStorage.getItem('cvs_onboarded')) return;
+            const modal = document.getElementById('onboardingModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeOnboarding() {
+            localStorage.setItem('cvs_onboarded', '1');
+            const modal = document.getElementById('onboardingModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // 위경도 기준으로 가장 가까운 시/도의 매장 파일을 골라 불러온다. 이미 로드된 지역이면 아무것도 안 함.
+        // 반환값: 새로 로드해서 매장 목록이 바뀌었는지 여부
+        // 좌표 -> 실제 행정구역(시/도) 이름을 브이월드 역지오코딩으로 조회.
+        // 경기도처럼 서울을 감싸는 모양의 도(道)는 단순 중심점 거리 비교로는
+        // 잘못된 지역(예: 고양시 일산인데 서울/인천으로 오인)이 뽑히는 문제가 있어서
+        // 실제 행정구역 조회로 대체. 실패 시에만 중심점 거리 비교로 폴백.
+        // 브이월드 API는 CORS 헤더가 없어 fetch가 막히므로 JSONP(script 태그)로 호출하는 공용 헬퍼.
+        function vworldJsonp(url) {
+            return new Promise(resolve => {
+                const cbName = `vworldCb${Date.now()}${Math.floor(Math.random() * 1e6)}`;
+                const cleanup = () => { delete window[cbName]; script.remove(); };
+                const timer = setTimeout(() => { cleanup(); resolve(null); }, 5000);
+                window[cbName] = (json) => { clearTimeout(timer); cleanup(); resolve(json); };
+                const script = document.createElement('script');
+                script.src = `${url}&callback=${cbName}`;
+                script.onerror = () => { clearTimeout(timer); cleanup(); resolve(null); };
+                document.body.appendChild(script);
+            });
+        }
+
+        async function getProvinceNameByCoords(lat, lng) {
+            const json = await vworldJsonp(`https://api.vworld.kr/req/address?service=address&request=getAddress&version=2.0&crs=epsg:4326&point=${lng},${lat}&type=parcel&key=${VWORLD_KEY}&format=json`);
+            return json?.response?.result?.[0]?.structure?.level1 || null;
+        }
+
+        function nearestProvinceByDistance(lat, lng) {
+            let nearest = null, bestDist = Infinity;
+            STORE_INDEX.forEach(p => {
+                const d = (p.centerLat - lat) ** 2 + (p.centerLng - lng) ** 2;
+                if (d < bestDist) { bestDist = d; nearest = p; }
+            });
+            return nearest;
+        }
+
+        async function loadStoresForLocation(lat, lng) {
+            if (STORE_INDEX.length === 0) return false;
+
+            const provinceName = await getProvinceNameByCoords(lat, lng);
+            let nearest = provinceName ? STORE_INDEX.find(p => p.province === provinceName) : null;
+            if (!nearest) nearest = nearestProvinceByDistance(lat, lng);
+            if (!nearest || nearest.file === loadedProvinceFile) return false;
+
+            try {
+                const res = await fetch(DATA_BASE_URL + 'stores/' + nearest.file);
+                if (!res.ok) throw new Error('store shard fetch failed');
+                REAL_STORES = await res.json();
+                loadedProvinceFile = nearest.file;
+                buildStoresFromRealData();
+                return true;
+            } catch (e) {
+                console.log(`${nearest.file} 로드 실패 - 매장 데이터 갱신 안 됨`);
+                return false;
+            }
+        }
+
+        // 매장 좌표(REAL_STORES) + 행사 데이터(MASTER_DB)를 결합해 지도에 쓸 매장 목록을 만든다.
+        function buildStoresFromRealData() {
+            allVirtualStoresDB = REAL_STORES.map(store => {
+                const storeDeals = MASTER_DB.filter(p => p.events[store.brand]);
+                return { ...store, deals: storeDeals, itemCount: storeDeals.length };
+            });
+        }
+
+        function loadSavedData() {
+            try {
+                const savedSavings = localStorage.getItem('cvs_totalSavings');
+                if(savedSavings) totalSavings = parseInt(savedSavings);
+                const savedHistory = localStorage.getItem('cvs_history');
+                if(savedHistory) purchasedHistory = JSON.parse(savedHistory);
+                const savedLikes = localStorage.getItem('cvs_likes');
+                if(savedLikes) likedItems = new Set(JSON.parse(savedLikes));
+                const savedRecently = localStorage.getItem('cvs_recentlyViewed');
+                if(savedRecently) recentlyViewed = JSON.parse(savedRecently);
+
+                document.getElementById('totalSaved').textContent = totalSavings.toLocaleString();
+                updateBadgeUI();
+            } catch(e) {}
+        }
+
+        function saveLocalData() {
+            try {
+                localStorage.setItem('cvs_totalSavings', totalSavings);
+                localStorage.setItem('cvs_history', JSON.stringify(purchasedHistory));
+                localStorage.setItem('cvs_likes', JSON.stringify([...likedItems]));
+            } catch(e) {}
+        }
+
+        function updateDashboardCounts() {
+            let newCount = 0, endingCount = 0;
+            MASTER_DB.forEach(p => {
+                let hasNew = false, hasEnding = false;
+                Object.values(p.events).forEach(e => {
+                    if (e.isNew) hasNew = true;
+                    if (e.daysLeft === 0) hasEnding = true;
+                });
+                if (hasNew) newCount++;
+                if (hasEnding) endingCount++;
+            });
+            document.getElementById('newDealCount').innerText = `${newCount}개`;
+            document.getElementById('endingDealCount').innerText = `${endingCount}개`;
+        }
+
+        // stores 데이터 로드 실패 시 폴백. MASTER_DB에 행사가 있는 브랜드로만 가상 매장 생성 + 편의정보 임의 부여
+        function generateVirtualStoresDB(baseLat = 37.498095, baseLng = 127.027610) {
+            allVirtualStoresDB = [];
+            const brands = [...new Set(MASTER_DB.flatMap(p => Object.keys(p.events)))];
+            if (brands.length === 0) return;
+            const petPolicies = ['불가', '테라스만 가능', '소형견만 가능', '정보 없음'];
+            const rnd = (p) => Math.random() < p;
+            for (let i = 0; i < 200; i++) {
+                const brand = brands[Math.floor(Math.random() * brands.length)];
+                const lat = baseLat + (Math.random() - 0.5) * 0.06;
+                const lng = baseLng + (Math.random() - 0.5) * 0.06;
+                const store = {
+                    id: `vstore_${i}`, brand, name: `${brand} ${i + 1}호점`, lat, lng,
+                    address: '위치 정보 준비 중', phone: '', openingHours: '08:00 - 22:00',
+                    services: { parking: rnd(0.3), wifi: rnd(0.9), outlet: rnd(0.6), driveThrough: rnd(0.1), terrace: rnd(0.25), pet: rnd(0.15) },
+                    petPolicyType: petPolicies[Math.floor(Math.random() * petPolicies.length)], lastCheckedAt: '',
+                };
+                const storeDeals = MASTER_DB.filter(p => p.events[store.brand]);
+                store.deals = storeDeals;
+                store.itemCount = storeDeals.length;
+                if (store.itemCount > 0) allVirtualStoresDB.push(store);
+            }
+        }
+
+        let streetLayer, satelliteLayer, satelliteLabelLayer, isSatelliteView = false;
+        const VWORLD_KEY = '6888EEC4-8F4B-3D0D-87AE-7AE4C071E4CA';
+
+        function initMap() {
+            const defaultCenter = [37.498095, 127.027610];
+            map = L.map('map', { zoomControl: false }).setView(defaultCenter, 16);
+
+            streetLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png');
+            // 브이월드(국토지리정보원) 위성영상 - 국내 정사보정이 잘 되어 있어 Esri보다 건물이 덜 기울어져 보임
+            satelliteLayer = L.tileLayer(`https://api.vworld.kr/req/wmts/1.0.0/${VWORLD_KEY}/Satellite/{z}/{y}/{x}.jpeg`, {
+                attribution: '&copy; VWorld',
+                maxZoom: 19,
+            });
+            // 위성 사진만 보면 도로명/지명이 안 보여서, 라벨 전용 타일을 위에 겹쳐 하이브리드 형태로 보여준다.
+            // 위성 레이어보다 나중에 add해야 위에 그려짐.
+            satelliteLabelLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png');
+            streetLayer.addTo(map);
+
+            searchCircle = L.circle(defaultCenter, {
+                radius: currentRadius, color: '#3b82f6', fillColor: '#3b82f6',
+                fillOpacity: 0.05, weight: 2, dashArray: '5, 5'
+            }).addTo(map);
+
+            map.on('move', () => { searchCircle.setLatLng(map.getCenter()); });
+            map.on('dragstart', () => { isUserPanning = true; });
+            map.on('zoomstart', () => { isUserPanning = true; });
+            map.on('moveend', () => {
+                if (isUserPanning) {
+                    const btn = document.getElementById('reSearchBtn');
+                    btn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-[10px]');
+                    btn.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+                    isUserPanning = false;
+                }
+            });
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    async position => {
+                        const lat = position.coords.latitude;
+                        const lng = position.coords.longitude;
+                        map.setView([lat, lng], 16);
+                        searchCircle.setLatLng([lat, lng]);
+                        const switched = await loadStoresForLocation(lat, lng);
+                        if (!switched && REAL_STORES.length === 0) generateVirtualStoresDB(lat, lng);
+                        loadStoresInRadius();
+                        fetchWeather(lat, lng);
+                        setTimeout(showNearbyPreview, 1200);
+                    },
+                    error => { loadStoresInRadius(); setTimeout(showNearbyPreview, 800); },
+                    { timeout: 5000 }
+                );
+            } else {
+                loadStoresInRadius();
+            }
+            setTimeout(() => { map.invalidateSize(); }, 300);
+        }
+
+        async function goToLocation(lat, lng) {
+            map.setView([lat, lng], 16);
+            await loadStoresForLocation(lat, lng);
+            searchInCurrentArea();
+        }
+
+        function findMyLocation() {
+            showToast("위치 탐색 중...", 1000);
+
+            // 토스 앱 안에서는 navigator.geolocation이 막혀있을 수 있어 SDK 전용 함수를 우선 사용
+            if (document.body.classList.contains('in-toss-app') && typeof tossGetCurrentLocation === 'function') {
+                tossGetCurrentLocation()
+                    .then(loc => goToLocation(loc.coords.latitude, loc.coords.longitude))
+                    .catch(() => showToast('위치 권한이 필요합니다. 설정에서 위치 권한을 허용해주세요.'));
+                return;
+            }
+
+            if (!navigator.geolocation) {
+                showToast('이 브라우저에서는 위치 찾기를 지원하지 않습니다.');
+                return;
+            }
+            navigator.geolocation.getCurrentPosition(
+                position => goToLocation(position.coords.latitude, position.coords.longitude),
+                () => showToast('위치 권한이 필요합니다. 브라우저 설정에서 위치 권한을 허용해주세요.')
+            );
+        }
+
+        function applySatelliteView(on) {
+            isSatelliteView = on;
+            const btn = document.getElementById('satelliteToggleBtn');
+            if (on) {
+                map.removeLayer(streetLayer);
+                satelliteLayer.addTo(map);
+                satelliteLabelLayer.addTo(map); // 위성 위에 도로명/지명 라벨 겹치기
+                btn.classList.add('text-blue-600', 'bg-blue-50');
+                btn.classList.remove('text-gray-600');
+            } else {
+                map.removeLayer(satelliteLayer);
+                map.removeLayer(satelliteLabelLayer);
+                streetLayer.addTo(map);
+                btn.classList.remove('text-blue-600', 'bg-blue-50');
+                btn.classList.add('text-gray-600');
+            }
+        }
+
+        function toggleSatelliteView() {
+            applySatelliteView(!isSatelliteView);
+        }
+
+        function loadStoresInRadius() {
+            mapMarkers.forEach(m => map.removeLayer(m));
+            mapMarkers = [];
+            storeMarkersData = [];
+            const center = map.getCenter();
+            
+            allVirtualStoresDB.forEach(store => {
+                if (mapBrandFilter && store.brand !== mapBrandFilter) return;
+                if (!storePassesAmenityFilter(store)) return;
+                const dist = map.distance(center, [store.lat, store.lng]);
+                if (dist <= currentRadius) {
+                    storeMarkersData.push(store);
+                    const iconHtml = `
+                        <div class="custom-marker" style="width: 40px; height: 40px; font-size: 11px; z-index: 20; ${brandChipStyle(store.brand)}">
+                            ${brandLabel(store.brand)}
+                        </div>
+                    `;
+                    const icon = L.divIcon({ className: 'bg-transparent', html: iconHtml, iconSize: [40, 40], iconAnchor: [20, 20] });
+                    const marker = L.marker([store.lat, store.lng], {icon: icon}).addTo(map);
+                    marker.on('click', () => openStore(store));
+                    mapMarkers.push(marker);
+                }
+            });
+        }
+
+        async function searchInCurrentArea() {
+            const btn = document.getElementById('reSearchBtn');
+            btn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-[10px]');
+            btn.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+
+            // 지도를 다른 지역으로 옮긴 뒤 재검색하면, 그 위치에서 가장 가까운 시/도 데이터를 다시 불러온다.
+            const center = map.getCenter();
+            await loadStoresForLocation(center.lat, center.lng);
+
+            setTimeout(() => {
+                loadStoresInRadius();
+                showToast(`반경 ${currentRadius}m 내에서 ${storeMarkersData.length}개의 매장을 찾았습니다.`);
+            }, 300);
+        }
+
+        function highlightRadiusButton(r) {
+            [300, 500, 1000, 2000, 5000].forEach(val => {
+                const btn = document.getElementById(`rad${val}`);
+                if (!btn) return;
+                if(val === r) {
+                    btn.classList.add('text-blue-600', 'bg-blue-50');
+                    btn.classList.remove('text-gray-500', 'text-amber-600');
+                } else {
+                    btn.classList.remove('text-blue-600', 'bg-blue-50');
+                    btn.classList.add('text-gray-500');
+                }
+            });
+        }
+
+        function setRadius(r) {
+            currentRadius = r;
+            highlightRadiusButton(r);
+            searchCircle.setRadius(r);
+            map.flyToBounds(searchCircle.getBounds(), {padding: [20, 20], duration: 0.5});
+            const label = r >= 1000 ? `${r/1000}km` : `${r}m`;
+            setTimeout(() => { loadStoresInRadius(); showToast(`검색 반경이 ${label}로 변경되었습니다.`); }, 600);
+        }
+
+        // 5km 반경 — 리워드 광고 시청 후 1회 허용
+        function requestRadius5km() {
+            if (typeof window.watchRewardAdForRadius === 'function') {
+                window.watchRewardAdForRadius();
+            } else {
+                // 광고 SDK 없는 환경(웹 미리보기 등)은 바로 허용
+                setRadius(5000);
+            }
+        }
+
+        function applyStartupSettings() {
+            highlightRadiusButton(currentRadius);
+        }
+
+        function closeSettings() {
+            document.getElementById('settingsModal').classList.add('hidden');
+            document.getElementById('settingsModal').classList.remove('flex');
+            goHome();
+        }
+
+        function resetWishlist() {
+            // alert(), confirm() 금지 정책에 따라 즉시 삭제 및 토스트 알림으로 대체
+            likedItems.clear();
+            saveLocalData();
+            renderWishlist();
+            showToast('찜 목록을 초기화했습니다.');
+        }
+
+        function replayOnboarding() {
+            localStorage.removeItem('cvs_onboarded');
+            closeSettings();
+            maybeShowOnboarding();
+        }
+
+        let locationSearchTimer = null;
+
+        function openLocationSearch() {
+            const modal = document.getElementById('locationSearchModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.getElementById('locationSearchResults').innerHTML = '';
+            setTimeout(() => document.getElementById('locationSearchInput').focus(), 100);
+        }
+
+        function closeLocationSearch() {
+            const modal = document.getElementById('locationSearchModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.getElementById('locationSearchInput').value = '';
+        }
+
+        function handleLocationSearchInput() {
+            clearTimeout(locationSearchTimer);
+            locationSearchTimer = setTimeout(runLocationSearch, 400);
+        }
+
+        function renderLocationSearchResults(items) {
+            const container = document.getElementById('locationSearchResults');
+            if (items.length === 0) {
+                container.innerHTML = `<p class="text-center text-sm text-gray-400 py-10">검색 결과가 없습니다.</p>`;
+                return;
+            }
+            container.innerHTML = items.map((item, i) => `
+                <button onclick="selectSearchResult(${i})" class="w-full text-left px-5 py-3.5 border-b border-gray-50 hover:bg-gray-50 active:bg-gray-100 transition flex items-start gap-3">
+                    <i class="fa-solid ${item.icon} text-gray-400 mt-0.5"></i>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-bold text-gray-900 truncate">${item.title}</p>
+                        <p class="text-xs text-gray-500 truncate mt-0.5">${item.subtitle}</p>
+                    </div>
+                </button>
+            `).join('');
+            window._locationSearchResultsData = items;
+        }
+
+        async function runLocationSearch() {
+            const query = document.getElementById('locationSearchInput').value.trim();
+            const container = document.getElementById('locationSearchResults');
+            if (!query) { container.innerHTML = ''; return; }
+            container.innerHTML = `<p class="text-center text-sm text-gray-400 py-10">검색 중...</p>`;
+
+            const placeJson = await vworldJsonp(`https://api.vworld.kr/req/search?service=search&request=search&version=2.0&query=${encodeURIComponent(query)}&type=place&format=json&key=${VWORLD_KEY}`);
+            const placeItems = (placeJson?.response?.status === 'OK' ? placeJson.response.result.items : []).map(p => ({
+                title: p.title.replace(/<[^>]+>/g, ''),
+                subtitle: p.address.road || p.address.parcel || p.category,
+                lat: parseFloat(p.point.y), lng: parseFloat(p.point.x),
+                icon: 'fa-location-dot',
+            }));
+
+            const addrJson = await vworldJsonp(`https://api.vworld.kr/req/search?service=search&request=search&version=2.0&query=${encodeURIComponent(query)}&type=address&category=road&format=json&key=${VWORLD_KEY}`);
+            const addrItems = (addrJson?.response?.status === 'OK' ? addrJson.response.result.items : []).slice(0, 5).map(a => ({
+                title: a.address.road || a.address.parcel,
+                subtitle: a.address.bldnm || '주소',
+                lat: parseFloat(a.point.y), lng: parseFloat(a.point.x),
+                icon: 'fa-map',
+            }));
+
+            renderLocationSearchResults([...placeItems, ...addrItems]);
+        }
+
+        async function selectSearchResult(index) {
+            const item = window._locationSearchResultsData[index];
+            if (!item) return;
+            closeLocationSearch();
+            showToast(`'${item.title}' 위치로 이동합니다.`);
+            map.setView([item.lat, item.lng], 16);
+            await loadStoresForLocation(item.lat, item.lng);
+            searchCircle.setLatLng([item.lat, item.lng]);
+            loadStoresInRadius();
+        }
+
+        function setActiveNav(tabId) {
+            const btns = document.querySelectorAll('.nav-btn');
+            btns.forEach(btn => {
+                btn.classList.remove('text-blue-600', 'text-indigo-600');
+                btn.classList.add('text-gray-400');
+                btn.querySelector('span').classList.remove('font-black', 'text-indigo-600');
+                btn.querySelector('span').classList.add('font-bold');
+                
+                const icon = btn.querySelector('i');
+                if(icon.classList.contains('text-indigo-500')) icon.classList.remove('text-indigo-500');
+            });
+            
+            const activeBtn = document.getElementById(`nav-${tabId}`);
+            if(activeBtn) {
+                activeBtn.classList.remove('text-gray-400');
+                if(tabId === 'search') {
+                    activeBtn.classList.add('text-indigo-600');
+                    activeBtn.querySelector('i').classList.add('text-indigo-500');
+                    activeBtn.querySelector('span').classList.add('text-indigo-600');
+                } else {
+                    activeBtn.classList.add('text-blue-600');
+                }
+                activeBtn.querySelector('span').classList.remove('font-bold');
+                activeBtn.querySelector('span').classList.add('font-black');
+            }
+        }
+
+        function hideAllTabModals() {
+            ['searchModal', 'wishlistModal', 'nearbyRankingModal', 'top10Modal', 'allDealsModal'].forEach(id => {
+                document.getElementById(id).classList.remove('active');
+            });
+        }
+
+        function openTabModal(id, navId) {
+            closeSheet();
+            hideAllTabModals();
+            document.getElementById(id).classList.add('active');
+            setActiveNav(navId);
+
+            if(id === 'searchModal') setTimeout(() => document.getElementById('searchInput').focus(), 100);
+            else if(id === 'wishlistModal') renderWishlist();
+            else if(id === 'nearbyRankingModal') renderNearbyRanking();
+            else if(id === 'top10Modal') renderTop10();
+            else if(id === 'allDealsModal') renderAllDeals();
+        }
+
+        function goHome() {
+            hideAllTabModals();
+            closeSheet();
+            setActiveNav('home');
+        }
+
+        // 매장 편의정보 메타(칩·필터 공용). key는 store.services의 키. (대형약국 앱의 3-state 패턴 이식)
+        const AMENITY_META = [
+            { key:'parking',      icon:'fa-square-parking',  label:'주차' },
+            { key:'wifi',         icon:'fa-wifi',            label:'와이파이' },
+            { key:'outlet',       icon:'fa-plug',            label:'콘센트' },
+            { key:'driveThrough', icon:'fa-car',             label:'드라이브스루' },
+            { key:'terrace',      icon:'fa-umbrella-beach',  label:'테라스' },
+            { key:'pet',          icon:'fa-paw',             label:'반려동물' },
+        ];
+        // 편의정보 값 조회: true=있음 / false=없음 / null·미상=정보없음
+        function svc(store, key) { return store.services ? store.services[key] : null; }
+
+        // 매장 편의정보를 칩 HTML로. 값이 true인 것만 배지로, 반려동물은 정책 문구까지 표기.
+        function amenityChipsHTML(store) {
+            let chips = '';
+            if (store.address) chips += `<span class="bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded inline-flex items-center gap-1 max-w-full truncate"><i class="fa-solid fa-location-dot"></i>${store.address}</span>`;
+            if (store.openingHours) chips += `<span class="bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded inline-flex items-center gap-1"><i class="fa-regular fa-clock"></i>${store.openingHours}</span>`;
+            AMENITY_META.filter(a => a.key !== 'pet' && svc(store, a.key) === true).forEach(a => {
+                chips += `<span class="bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded inline-flex items-center gap-1"><i class="fa-solid ${a.icon}"></i>${a.label}</span>`;
+            });
+            const petVal = svc(store, 'pet');
+            if (petVal === true) {
+                chips += `<span class="bg-amber-50 text-amber-700 px-1.5 py-0.5 rounded inline-flex items-center gap-1"><i class="fa-solid fa-paw"></i>반려동물 가능</span>`;
+            } else if (petVal === false) {
+                chips += `<span class="bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded inline-flex items-center gap-1"><i class="fa-solid fa-paw"></i>반려동물 불가</span>`;
+            }
+            return chips;
+        }
+
+        // [개선 1 적용] 지도 오프셋 적용하여 마커와 바텀시트 공존
+        function openStore(store) {
+            activeStore = store;
+            // 바텀시트가 55vh 이므로 중심축을 약간 남쪽(위도 마이너스)으로 보정
+            map.flyTo([store.lat - 0.0015, store.lng], 17, { duration: 0.5 });
+
+            const logoEl = document.getElementById('bsStoreLogo');
+            logoEl.className = `w-10 h-10 rounded-full flex items-center justify-center font-black text-sm shadow-inner`;
+            logoEl.style = brandChipStyle(store.brand);
+            logoEl.innerText = brandLabel(store.brand);
+            document.getElementById('bsStoreName').innerText = store.name;
+            document.getElementById('bsAmenities').innerHTML = amenityChipsHTML(store);
+            const callBtn = document.getElementById('bsCallBtn');
+            if (store.phone) { callBtn.classList.remove('hidden'); callBtn.classList.add('flex'); }
+            else { callBtn.classList.add('hidden'); callBtn.classList.remove('flex'); }
+
+            activeCategory = '전체';
+            renderCategories();
+            document.getElementById('sortSelect').value = 'recommend';
+            renderDeals();
+            document.getElementById('bottomSheet').classList.add('active');
+        }
+
+        function closeSheet() { document.getElementById('bottomSheet').classList.remove('active'); }
+
+        function callStore() {
+            if (!activeStore || !activeStore.phone) return;
+            location.href = 'tel:' + activeStore.phone.replace(/[^0-9]/g, '');
+        }
+
+        function openDirections() {
+            if(!activeStore) return;
+            const url = `https://map.kakao.com/link/map/${activeStore.name},${activeStore.lat},${activeStore.lng}`;
+            if (typeof onNavigateToMap === 'function') { onNavigateToMap(url); return; }
+            window.open(url, '_blank');
+        }
+
+        function toggleDealTypeFilter(type) {
+            dealTypeFilter = (dealTypeFilter === type) ? null : type;
+            [['할인', 'filterDiscountBtn'], ['쿠폰', 'filterCouponBtn']].forEach(([t, id]) => {
+                const btn = document.getElementById(id);
+                if(dealTypeFilter === t) {
+                    btn.classList.add('bg-red-50', 'text-red-600', 'border-red-200');
+                    btn.classList.remove('bg-white', 'text-gray-500', 'border-gray-200');
+                } else {
+                    btn.classList.remove('bg-red-50', 'text-red-600', 'border-red-200');
+                    btn.classList.add('bg-white', 'text-gray-500', 'border-gray-200');
+                }
+            });
+            renderDeals();
+        }
+
+        function renderCategories() {
+            const container = document.getElementById('categoryContainer');
+            container.innerHTML = CATEGORIES.map(cat => {
+                const activeCls = cat === activeCategory ? 'active' : 'bg-white text-gray-600 border-gray-200';
+                return `<button onclick="activeCategory='${cat}'; renderDeals(); renderCategories();" class="category-btn ${activeCls} px-3 py-1 rounded-full border text-[13px] font-bold whitespace-nowrap shadow-sm">${cat}</button>`;
+            }).join('');
+        }
+
+        // 행사 유형별 배지 스타일
+        const TYPE_STYLE = {
+            '할인':     { cls:'bg-rose-500',    emoji:'🔻' },
+            '쿠폰':     { cls:'bg-indigo-500',  emoji:'🎟️' },
+            '신메뉴':   { cls:'bg-emerald-500', emoji:'✨' },
+            '시즌':     { cls:'bg-pink-500',    emoji:'🌸' },
+            '사이즈업': { cls:'bg-amber-500',   emoji:'⬆️' },
+            '이벤트':   { cls:'bg-blue-500',    emoji:'🎉' },
+        };
+
+        function openOfficial(url) {
+            if (!url) { showToast('공식 이벤트 링크가 없습니다.'); return; }
+            if (typeof onNavigateToMap === 'function') { onNavigateToMap(url); return; } // 광고 후 외부 링크 이동
+            window.open(url, '_blank');
+        }
+
+        function createProductHTML(product, viewType = 'store', specificBrand = null) {
+            const isLiked = likedItems.has(product.id);
+            const heartCls = isLiked ? 'fa-solid text-rose-500' : 'fa-regular text-gray-300';
+            const fallbackEmoji = EMOJI_MAP[product.category] || '☕';
+
+            const brand = specificBrand || Object.keys(product.events)[0];
+            const evnt = product.events[brand] || Object.values(product.events)[0] || {};
+            const imgUrl = evnt.image || '';
+            const type = evnt.type || '행사';
+            const ts = TYPE_STYLE[type] || { cls:'bg-gray-500', emoji:'🏷️' };
+            const hasSaving = product.saving > 0;
+
+            let statusBadge = '';
+            if (evnt.isNew) {
+                statusBadge = `<span class="bg-emerald-100 text-emerald-600 border border-emerald-200 text-[11px] font-black px-2 py-0.5 rounded shadow-sm whitespace-nowrap">✨ 새행사</span>`;
+            } else if (evnt.daysLeft === 0) {
+                statusBadge = `<span class="bg-rose-100 text-rose-600 border border-rose-200 text-[11px] font-black px-2 py-0.5 rounded shadow-sm whitespace-nowrap animate-pulse">🚨 오늘마감</span>`;
+            } else if (typeof evnt.daysLeft === 'number' && evnt.daysLeft <= 2) {
+                statusBadge = `<span class="bg-orange-100 text-orange-600 border border-orange-200 text-[11px] font-black px-2 py-0.5 rounded shadow-sm whitespace-nowrap">⏰ D-${evnt.daysLeft}</span>`;
+            }
+
+            // 가격 영역: 할인/쿠폰은 정상가(취소선)+할인가+절약, 가격 없는 이벤트는 라벨만
+            const priceHTML = hasSaving
+                ? `<span class="text-[11px] text-gray-400 line-through">${product.price.toLocaleString()}원</span>
+                   <span class="font-black text-gray-900">${(product.discountPrice ?? (product.price - product.saving)).toLocaleString()}원</span>
+                   <span class="text-[10px] font-bold text-rose-600 bg-rose-50 px-1.5 py-0.5 rounded">${product.discountRate ? product.discountRate + '% · ' : ''}${product.saving.toLocaleString()}원↓</span>`
+                : product.price > 0
+                    ? `<span class="font-black text-gray-900">${product.price.toLocaleString()}원</span>`
+                    : `<span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">이벤트 · 공식 확인</span>`;
+
+            // 우측 액션: 할인/쿠폰은 지갑 담기(+), 정보성 행사는 공식 링크
+            const actionBtn = hasSaving
+                ? `<button onclick="addSavings(${product.saving}, '${(product.name||'').replace(/'/g, '')}', '${product.id}')" class="w-8 h-8 rounded-full bg-gray-900 text-white flex items-center justify-center shadow-md hover:bg-gray-800 active:scale-95 transition mt-auto" title="받은 할인 담기"><i class="fa-solid fa-plus text-xs"></i></button>`
+                : `<button onclick="openOfficial('${product.officialUrl || ''}')" class="w-8 h-8 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center shadow-sm hover:bg-gray-200 active:scale-95 transition mt-auto" title="공식 링크"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></button>`;
+
+            const footerHTML = `
+                <div class="flex items-center gap-2 bg-gray-50 rounded-xl p-1.5 mt-2 border border-gray-100">
+                    <div class="w-6 h-6 rounded-full text-[9px] font-black flex items-center justify-center shadow-sm shrink-0" style="${brandChipStyle(brand)}">${brandLabel(brand)}</div>
+                    <span class="text-[11px] font-black text-gray-700 truncate">${brand}</span>
+                    <span class="ml-auto ${ts.cls} text-white text-[10px] font-black px-2 py-0.5 rounded shadow-sm whitespace-nowrap shrink-0">${ts.emoji} ${type}</span>
+                </div>`;
+
+            return `
+            <div class="bg-white rounded-2xl p-3 flex flex-col shadow-sm border border-gray-100 relative mb-2" onclick="addToRecentlyViewed('${product.id}')">
+                <div class="flex items-stretch">
+                    <div class="w-16 h-16 rounded-xl bg-gray-50 overflow-hidden shrink-0 border border-gray-100 flex items-center justify-center text-3xl shadow-inner relative">
+                        ${imgUrl
+                            ? `<img src="${imgUrl}" alt="" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">\
+<span style="display:none" class="w-full h-full flex items-center justify-center text-3xl">${fallbackEmoji}</span>`
+                            : fallbackEmoji}
+                    </div>
+
+                    <div class="flex-1 ml-3 flex flex-col justify-center overflow-hidden">
+                        <div><span class="text-[10px] text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded-sm font-medium">${product.category}</span></div>
+                        <h4 class="font-black text-sm text-gray-900 mt-1 truncate">${product.name}</h4>
+                        <div class="flex items-center gap-1.5 mt-0.5 flex-wrap">${priceHTML}</div>
+                    </div>
+
+                    <div class="flex flex-col justify-between items-end ml-2 shrink-0 w-8" onclick="event.stopPropagation()">
+                        <button onclick="toggleLike('${product.id}')" class="p-1 -mr-1 mb-1"><i class="${heartCls} text-xl transition-colors"></i></button>
+                        ${statusBadge}
+                        ${actionBtn}
+                    </div>
+                </div>
+                ${footerHTML}
+            </div>
+            `;
+        }
+
+        function shareDeal(name, saving) {
+            const shareText = `☕ 카페 행사 발견!\n[${name}] 지금 이용하면 ${saving.toLocaleString()}원 절약할 수 있어요! (카페행사맵)`;
+            if (document.body.classList.contains('in-toss-app') && typeof tossShare === 'function') {
+                tossShare(shareText).catch(() => {});
+            } else if (navigator.share) {
+                navigator.share({ title: '카페행사맵', text: shareText }).catch(err => {});
+            } else {
+                const ta = document.createElement('textarea'); ta.value = shareText; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+                showToast('행사 내용이 복사되었습니다!');
+            }
+        }
+
+        function renderDeals() {
+            if(!activeStore) return;
+            const list = document.getElementById('dealsList');
+            const sortVal = document.getElementById('sortSelect').value;
+            
+            let filtered = activeStore.deals.filter(p => activeCategory === '전체' || p.category === activeCategory);
+            if(dealTypeFilter) filtered = filtered.filter(p => p.events[activeStore.brand] && p.events[activeStore.brand].type === dealTypeFilter);
+
+            if(sortVal === 'priceLow') filtered.sort((a,b) => a.price - b.price);
+            else filtered.sort((a,b) => b.saving - a.saving);
+
+            document.getElementById('bsItemCount').innerText = `총 ${filtered.length}개`;
+
+            if(filtered.length === 0) {
+                list.innerHTML = `<div class="p-8 text-center text-gray-400 font-medium">해당 조건의 상품이 없습니다.</div>`;
+                return;
+            }
+            list.innerHTML = filtered.map(p => createProductHTML(p, 'store', activeStore.brand)).join('');
+        }
+
+        function quickSearch(kw) { document.getElementById('searchInput').value = kw; performSearch(); }
+        
+        // 초성 변환 테이블
+        const CHOSUNG = ['ㄱ','ㄲ','ㄴ','ㄷ','ㄸ','ㄹ','ㅁ','ㅂ','ㅃ','ㅅ','ㅆ','ㅇ','ㅈ','ㅉ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
+        function toChosung(str) {
+            return [...str].map(ch => {
+                const code = ch.charCodeAt(0) - 0xAC00;
+                if (code < 0 || code > 11171) return ch;
+                return CHOSUNG[Math.floor(code / 588)];
+            }).join('');
+        }
+        function matchSearch(name, query) {
+            const n = name.toLowerCase();
+            if (n.includes(query)) return true;
+            // 초성 검색
+            if (/^[ㄱ-ㅎ]+$/.test(query)) return toChosung(name).includes(query);
+            return false;
+        }
+
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.trim().toLowerCase();
+            const empty = document.getElementById('searchEmptyState');
+            const list = document.getElementById('searchResultsList');
+
+            if (!query) { empty.classList.remove('hidden'); list.classList.add('hidden'); return; }
+            empty.classList.add('hidden'); list.classList.remove('hidden');
+
+            let matches = MASTER_DB.filter(p =>
+                matchSearch(p.name, query) ||
+                matchSearch(Object.keys(p.events)[0] || '', query) ||
+                matchSearch(p.eventTitle || '', query) ||
+                matchSearch(p.category || '', query)
+            );
+            if (searchBrandFilter) matches = matches.filter(p => p.events[searchBrandFilter]);
+            if (matches.length === 0) {
+                list.innerHTML = `<div class="p-8 text-center text-gray-500 font-bold mt-10">결과가 없습니다.</div>`;
+            } else {
+                list.innerHTML = `<div class="px-2 py-1 flex justify-between items-center"><span class="text-xs font-bold text-gray-500">검색 결과 ${matches.length}건</span></div>` + matches.map(p => createProductHTML(p, 'search', searchBrandFilter)).join('');
+            }
+        }
+
+        function renderWishlist() {
+            const list = document.getElementById('wishlistList');
+            if(likedItems.size === 0) {
+                list.innerHTML = `<div class="p-10 text-center text-gray-400 font-medium flex flex-col items-center mt-10"><i class="fa-regular fa-heart text-5xl mb-3 text-gray-200"></i>찜한 상품이 없습니다.</div>`;
+            } else {
+                const likedProducts = MASTER_DB.filter(p => likedItems.has(p.id));
+                const ending = likedProducts.filter(p => Object.values(p.events).some(e => typeof e.daysLeft === 'number' && e.daysLeft <= 2));
+                const normal = likedProducts.filter(p => !ending.includes(p));
+                let html = '';
+                if (ending.length > 0) {
+                    html += `<div class="px-1 pt-1 pb-0.5"><span class="text-[11px] font-black text-orange-600 flex items-center gap-1"><i class="fa-solid fa-fire"></i> 마감 임박 (D-2 이하)</span></div>`;
+                    html += ending.map(p => createProductHTML(p, 'wishlist')).join('');
+                    if (normal.length > 0) html += `<div class="px-1 pt-2 pb-0.5"><span class="text-[11px] font-black text-gray-500">나머지 찜 목록</span></div>`;
+                }
+                html += normal.map(p => createProductHTML(p, 'wishlist')).join('');
+                list.innerHTML = html;
+            }
+            renderRecentlyViewed();
+        }
+
+        function renderTop10() {
+            let sorted = [...MASTER_DB].sort((a,b) => b.saving - a.saving).slice(0, 10);
+            document.getElementById('top10List').innerHTML = sorted.map((p, i) => `
+                <div class="flex items-center">
+                    <div class="w-8 flex items-center justify-center font-black text-xl italic ${i<3?'text-rose-500':'text-gray-400'}">${i+1}</div>
+                    <div class="flex-1">${createProductHTML(p, 'top10')}</div>
+                </div>
+            `).join('');
+        }
+
+        function renderNearbyRanking() {
+            const sorted = [...storeMarkersData].sort((a,b) => b.itemCount - a.itemCount);
+            if(sorted.length === 0) {
+                document.getElementById('nearbyRankingList').innerHTML = `<div class="text-center text-gray-400 py-10 font-medium flex flex-col items-center"><i class="fa-solid fa-store-slash text-4xl mb-3 text-gray-300"></i>현재 반경에 매장이 없습니다.<br>지도를 이동하거나 반경을 넓혀보세요.</div>`;
+                return;
+            }
+            document.getElementById('nearbyRankingList').innerHTML = sorted.map((store, i) => {
+                return `
+                <div class="bg-white rounded-xl p-4 border border-gray-100 shadow-sm flex items-center justify-between cursor-pointer hover:bg-gray-50 active:scale-95 transition" onclick="openStore(storeMarkersData.find(s=>s.id==='${store.id}'))">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 font-black text-lg ${i<3?'text-yellow-500':'text-gray-400'} italic text-center">${i+1}</div>
+                        <div class="w-10 h-10 rounded-full font-black text-sm flex items-center justify-center shrink-0" style="${brandChipStyle(store.brand)}">${brandLabel(store.brand)}</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 line-clamp-1">${store.name}</h4>
+                            <p class="text-[10px] text-gray-500 mt-0.5">선택 시 매장으로 이동 (약 ${Math.round(map.distance(map.getCenter(), [store.lat, store.lng]))}m)</p>
+                        </div>
+                    </div>
+                    <div class="bg-emerald-50 border border-emerald-100 px-3 py-1.5 rounded-lg flex flex-col items-center shrink-0">
+                        <span class="text-[10px] text-emerald-600 font-bold">진행행사</span>
+                        <span class="text-sm font-black text-emerald-700">${store.itemCount}개</span>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function openSavings() {
+            hideAllTabModals();
+            document.getElementById('savingsModal').classList.remove('hidden');
+            document.getElementById('savingsModal').classList.add('flex');
+            setActiveNav('savings');
+            renderSavingsHistory();
+            renderDailySavingsChart();
+            renderWeekCalendar();
+        }
+        function closeSavings() { 
+            document.getElementById('savingsModal').classList.add('hidden'); 
+            document.getElementById('savingsModal').classList.remove('flex'); 
+            goHome();
+        }
+
+        function addSavings(amount, name, id) {
+            totalSavings += amount;
+            document.getElementById('totalSaved').textContent = totalSavings.toLocaleString();
+            purchasedHistory.unshift({name, amount});
+            if (id) addToRecentlyViewed(id);
+            recordDailySavings(amount);
+            saveLocalData();
+            showToast(`${amount.toLocaleString()}원을 절약했습니다!`);
+            renderSavingsHistory();
+        }
+
+        function clearSavings() {
+            // alert(), confirm() 금지 정책에 따라 즉시 삭제 및 토스트 알림으로 대체
+            totalSavings = 0; purchasedHistory = [];
+            document.getElementById('totalSaved').textContent = "0";
+            saveLocalData();
+            renderSavingsHistory();
+            showToast("지갑 내역이 모두 초기화되었습니다.");
+        }
+
+        function renderSavingsHistory() {
+            const ul = document.getElementById('savingsHistory');
+            if(purchasedHistory.length === 0) {
+                ul.innerHTML = '<li class="text-center text-xs text-gray-400 py-4">상품의 [+] 버튼을 눌러 담아보세요.</li>';
+                return;
+            }
+            ul.innerHTML = purchasedHistory.map(item => `<li class="flex justify-between items-center text-sm border-b border-gray-50 pb-2"><span class="text-gray-700 font-bold truncate pr-2">${item.name}</span><span class="text-blue-600 font-black shrink-0">+${item.amount.toLocaleString()}원</span></li>`).join('');
+        }
+
+        const WISH_FREE_LIMIT = 10;
+
+        function toggleLike(id) {
+            const product = MASTER_DB.find(p => p.id === id);
+            addToRecentlyViewed(id);
+            if (likedItems.has(id)) {
+                likedItems.delete(id);
+                showToast(`[${product.name}] 찜 해제`);
+            } else {
+                const unlocked = localStorage.getItem('cvs_wishUnlocked') === new Date().toISOString().slice(0,10);
+                if (!unlocked && likedItems.size >= WISH_FREE_LIMIT) {
+                    showWishLimitPrompt(id);
+                    return;
+                }
+                likedItems.add(id);
+                showToast(`[${product.name}] 찜 완료!`);
+            }
+            saveLocalData();
+            updateBadgeUI();
+
+            if(activeStore) renderDeals();
+            if(document.getElementById('searchModal').classList.contains('active')) performSearch();
+            if(document.getElementById('top10Modal').classList.contains('active')) renderTop10();
+            if(document.getElementById('wishlistModal').classList.contains('active')) renderWishlist();
+        }
+
+        window._pendingLikeId = null;
+
+        function showWishLimitPrompt(id) {
+            window._pendingLikeId = id;
+            const modal = document.getElementById('wishLimitModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeWishLimitModal() {
+            _pendingLikeId = null;
+            const modal = document.getElementById('wishLimitModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function updateBadgeUI() {
+            const badge = document.getElementById('wishBadge');
+            if(likedItems.size > 0) { badge.innerText = likedItems.size; badge.classList.remove('hidden'); }
+            else { badge.classList.add('hidden'); }
+        }
+
+        function renderWeekCalendar() {
+            const cal = document.getElementById('weekCalendar');
+            if (!cal) return;
+            const today = new Date();
+            const dow = today.getDay(); // 0=일
+            // 이번 주 월요일부터 일요일까지
+            const monday = new Date(today);
+            monday.setDate(today.getDate() - (dow === 0 ? 6 : dow - 1));
+            const DAY_LABELS = ['월','화','수','목','금','토','일'];
+            const newCount = MASTER_DB.filter(p => Object.values(p.events).some(e => e.isNew)).length;
+            const endingCount = MASTER_DB.filter(p => Object.values(p.events).some(e => typeof e.daysLeft === 'number' && e.daysLeft === 0)).length;
+            cal.innerHTML = DAY_LABELS.map((label, i) => {
+                const d = new Date(monday);
+                d.setDate(monday.getDate() + i);
+                const isToday = d.toDateString() === today.toDateString();
+                const isMonday = i === 0;
+                const isSunday = i === 6;
+                let badge = '';
+                if (isMonday) badge = `<span class="text-[8px] text-blue-600 font-black leading-none mt-0.5 block">새행사<br>${newCount}개</span>`;
+                if (isSunday) badge = `<span class="text-[8px] text-rose-500 font-black leading-none mt-0.5 block">마감<br>${endingCount || MASTER_DB.length}개</span>`;
+                return `
+                <div class="flex-1 flex flex-col items-center py-1.5 rounded-xl ${isToday ? 'bg-blue-600 text-white' : 'bg-gray-50 text-gray-600'} min-w-0">
+                    <span class="text-[9px] font-bold">${label}</span>
+                    <span class="text-xs font-black mt-0.5">${d.getDate()}</span>
+                    ${badge}
+                </div>`;
+            }).join('');
+        }
+
+        function applyDaysLeft() {
+            // 편의점 행사는 통상 월~일 주기. 실제 종료일 데이터가 없는 경우 이번 주 일요일까지 남은 일수로 추정.
+            const dow = new Date().getDay(); // 0=일, 1=월, ..., 6=토
+            const daysToSunday = dow === 0 ? 0 : 7 - dow;
+            MASTER_DB.forEach(p => {
+                Object.values(p.events).forEach(e => {
+                    if (e.daysLeft === null || e.daysLeft === undefined) e.daysLeft = daysToSunday;
+                });
+            });
+        }
+
+        // ── 신규 기능 함수들 ──────────────────────────────────────────────
+
+        // isNew 자동 계산: 이전에 없던 상품 ID를 localStorage에서 비교해 isNew 마킹
+        function computeIsNew() {
+            try {
+                const knownKey = 'cvs_knownProductIds';
+                const known = new Set(JSON.parse(localStorage.getItem(knownKey) || '[]'));
+                if (known.size > 0) {
+                    MASTER_DB.forEach(p => {
+                        if (!known.has(p.id)) Object.values(p.events).forEach(e => { e.isNew = true; });
+                    });
+                }
+                localStorage.setItem(knownKey, JSON.stringify(MASTER_DB.map(p => p.id)));
+            } catch(e) {}
+        }
+
+        // 최근 본 상품 추적
+        function addToRecentlyViewed(id) {
+            recentlyViewed = [id, ...recentlyViewed.filter(x => x !== id)].slice(0, 20);
+            try { localStorage.setItem('cvs_recentlyViewed', JSON.stringify(recentlyViewed)); } catch(e) {}
+        }
+
+        // 최근 본 상품 렌더링 (찜목록 하단)
+        function renderRecentlyViewed() {
+            const section = document.getElementById('recentlyViewedSection');
+            const list = document.getElementById('recentlyViewedList');
+            const items = recentlyViewed.map(id => MASTER_DB.find(p => p.id === id)).filter(Boolean).slice(0, 5);
+            if (items.length === 0) { section.classList.add('hidden'); return; }
+            section.classList.remove('hidden');
+            list.innerHTML = items.map(p => createProductHTML(p, 'wishlist')).join('');
+        }
+
+        // 찜 목록 공유
+        function shareWishlist() {
+            const liked = MASTER_DB.filter(p => likedItems.has(p.id));
+            if (liked.length === 0) { showToast('찜한 상품이 없습니다.'); return; }
+            const totalSaving = liked.reduce((s, p) => s + (p.saving || 0), 0);
+            const lines = liked.slice(0, 10).map(p => {
+                const brands = Object.keys(p.events || {}).join('/');
+                const types = [...new Set(Object.values(p.events || {}).map(e => e.type))].join('·');
+                const dday = Object.values(p.events || {}).map(e => e.daysLeft).find(d => d !== null && d !== undefined);
+                const ddayStr = typeof dday === 'number' ? ` ⏰D-${dday}` : '';
+                return `• [${brands}] ${p.name} (${types})${ddayStr} — 절약 ${p.saving.toLocaleString()}원`;
+            });
+            const text = `☕ 카페행사맵 찜 목록 (${liked.length}개 / 최대 절약 ${totalSaving.toLocaleString()}원)\n` +
+                lines.join('\n') +
+                (liked.length > 10 ? `\n외 ${liked.length - 10}개` : '') +
+                '\n\n📱 카페행사맵 앱에서 확인하세요!';
+            if (document.body.classList.contains('in-toss-app') && typeof tossShare === 'function') {
+                tossShare(text).catch(() => {});
+            } else if (navigator.share) {
+                navigator.share({ title: '내 찜 목록', text }).catch(() => {});
+            } else {
+                const ta = document.createElement('textarea'); ta.value = text;
+                document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+                showToast('찜 목록이 클립보드에 복사되었습니다!');
+            }
+        }
+
+        // 일별 절약 기록
+        function recordDailySavings(amount) {
+            try {
+                const today = new Date().toISOString().slice(0, 10);
+                const stats = JSON.parse(localStorage.getItem('cvs_dailySavings') || '{}');
+                stats[today] = (stats[today] || 0) + amount;
+                const trimmed = {};
+                Object.keys(stats).sort().slice(-7).forEach(k => trimmed[k] = stats[k]);
+                localStorage.setItem('cvs_dailySavings', JSON.stringify(trimmed));
+            } catch(e) {}
+        }
+
+        // 절약 차트 렌더링
+        function renderDailySavingsChart() {
+            const box = document.getElementById('dailyChartBox');
+            const chartEl = document.getElementById('dailyChart');
+            try {
+                const stats = JSON.parse(localStorage.getItem('cvs_dailySavings') || '{}');
+                const entries = Object.entries(stats).sort((a, b) => a[0].localeCompare(b[0])).slice(-7);
+                if (entries.length === 0) { box.classList.add('hidden'); return; }
+                box.classList.remove('hidden');
+                const max = Math.max(...entries.map(([, v]) => v), 1);
+                chartEl.innerHTML = entries.map(([date, val]) => {
+                    const h = Math.max(4, Math.round((val / max) * 56));
+                    const label = date.slice(5); // MM-DD
+                    return `<div class="flex flex-col items-center flex-1 gap-1">
+                        <span class="text-[8px] font-bold text-blue-600">${val >= 1000 ? (val/1000).toFixed(1)+'k' : val}</span>
+                        <div class="w-full rounded-t-sm bg-blue-400" style="height:${h}px"></div>
+                        <span class="text-[8px] text-gray-400 font-medium">${label}</span>
+                    </div>`;
+                }).join('');
+            } catch(e) { box.classList.add('hidden'); }
+        }
+
+        // 브랜드 검색 필터 토글
+        let isListView = false, listViewBrand = null;
+
+        // 상단 필터 바(브랜드 칩 + 편의정보 칩)를 그린다
+        let amenityFilter = new Set();
+        // 필터 바에 노출할 대표 브랜드 수 (더보기 버튼 포함해 한 줄에 맞는 수)
+        const FILTER_BAR_BRANDS = CORE_BRANDS.slice(0, 5);
+
+        function renderMapFilterBar() {
+            const bar = document.getElementById('mapFilterBar');
+            if (!bar) return;
+            const allActive = mapBrandFilter === null;
+            // 선택된 브랜드가 필터 바 밖에 있으면 앞에 표시
+            const barBrands = (mapBrandFilter && !FILTER_BAR_BRANDS.includes(mapBrandFilter))
+                ? [mapBrandFilter, ...FILTER_BAR_BRANDS.slice(0, 4)]
+                : FILTER_BAR_BRANDS;
+            let html = `<button onclick="setMapBrandFilter(null)" class="px-2.5 py-1 rounded-full text-[11px] font-black shrink-0 border ${allActive ? 'bg-gray-900 text-white border-gray-900' : 'bg-white text-gray-600 border-gray-200'}">전체</button>`;
+            barBrands.forEach(b => {
+                const active = mapBrandFilter === b;
+                const label = brandLabel(b);
+                html += `<button onclick="setMapBrandFilter('${b}')" class="px-2.5 py-1 rounded-full text-[11px] font-black shrink-0 border shadow-sm" style="${active ? brandChipStyle(b) + ';border-color:transparent' : 'background:#fff;color:' + (BRAND_INFO[b] ? BRAND_INFO[b].color : '#374151') + ';border-color:#e5e7eb'}">${label}</button>`;
+            });
+            // 더보기 버튼 — 전체 브랜드 모달 열기
+            const pickerActive = mapBrandFilter && !FILTER_BAR_BRANDS.includes(mapBrandFilter);
+            html += `<button onclick="openBrandPicker()" class="px-2.5 py-1 rounded-full text-[11px] font-black shrink-0 border inline-flex items-center gap-1 ${pickerActive ? 'bg-gray-900 text-white border-gray-900' : 'bg-white text-gray-500 border-gray-200'}"><i class="fa-solid fa-sliders text-[10px]"></i>브랜드</button>`;
+            // 편의정보(주차/와이파이 등)는 매장 데이터에 값(true)이 있을 때만 필터 노출
+            const hasAmenityData = allVirtualStoresDB.some(s => AMENITY_META.some(a => svc(s, a.key) === true));
+            if (hasAmenityData) {
+                html += `<span class="w-px h-4 bg-gray-200 shrink-0 mx-0.5"></span>`;
+                AMENITY_META.forEach(a => {
+                    const active = amenityFilter.has(a.key);
+                    html += `<button onclick="toggleAmenityFilter('${a.key}')" class="px-2.5 py-1 rounded-full text-[11px] font-bold shrink-0 border inline-flex items-center gap-1 ${active ? 'bg-amber-500 text-white border-amber-500' : 'bg-white text-gray-600 border-gray-200'}"><i class="fa-solid ${a.icon}"></i>${a.label}</button>`;
+                });
+            }
+            bar.innerHTML = html;
+        }
+
+        function setMapBrandFilter(brand) {
+            mapBrandFilter = brand;
+            renderMapFilterBar();
+            if (typeof loadStoresInRadius === 'function') loadStoresInRadius();
+        }
+
+        function openBrandPicker() {
+            const modal = document.getElementById('brandPickerModal');
+            const grid = document.getElementById('brandPickerGrid');
+            // 전체 브랜드를 격자로 렌더
+            let html = `<button onclick="setMapBrandFilter(null); closeBrandPicker()"
+                class="col-span-4 py-2 rounded-xl text-[12px] font-black border ${mapBrandFilter === null ? 'bg-gray-900 text-white border-gray-900' : 'bg-gray-100 text-gray-600 border-gray-200'}">
+                전체 브랜드
+            </button>`;
+            CAFE_BRANDS.forEach(b => {
+                const active = mapBrandFilter === b.name;
+                html += `<button onclick="setMapBrandFilter('${b.name}'); closeBrandPicker()"
+                    class="py-2 rounded-xl text-[11px] font-black border transition active:scale-95"
+                    style="${active ? `background-color:${b.color};color:${b.dark?'#1f2937':'#fff'};border-color:transparent` : `background:#f9fafb;color:${b.color};border-color:#e5e7eb`}">
+                    ${b.short}
+                </button>`;
+            });
+            grid.innerHTML = html;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeBrandPicker() {
+            const modal = document.getElementById('brandPickerModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function toggleAmenityFilter(key) {
+            if (amenityFilter.has(key)) amenityFilter.delete(key); else amenityFilter.add(key);
+            renderMapFilterBar();
+            if (typeof loadStoresInRadius === 'function') loadStoresInRadius();
+        }
+
+        // 매장이 현재 편의정보 필터를 모두 만족하는지(값이 true인 것만 통과, null/false는 제외)
+        function storePassesAmenityFilter(store) {
+            for (const key of amenityFilter) { if (svc(store, key) !== true) return false; }
+            return true;
+        }
+
+        function toggleListView() {
+            isListView = !isListView;
+            const overlay = document.getElementById('listViewOverlay');
+            const btn = document.getElementById('listViewToggleBtn');
+            const panel = document.getElementById('mapControlPanel');
+            if (isListView) {
+                overlay.classList.remove('hidden');
+                overlay.classList.add('flex');
+                btn.classList.add('text-blue-600', 'bg-blue-50');
+                btn.classList.remove('text-gray-600');
+                // 리스트 뷰 토글 버튼만 남기고 나머지 컨트롤 숨기기
+                Array.from(panel.children).slice(1).forEach(el => el.classList.add('invisible'));
+                renderListView();
+            } else {
+                overlay.classList.add('hidden');
+                overlay.classList.remove('flex');
+                btn.classList.remove('text-blue-600', 'bg-blue-50');
+                btn.classList.add('text-gray-600');
+                Array.from(panel.children).forEach(el => el.classList.remove('invisible'));
+            }
+        }
+
+        // 브랜드 필터 칩 공용 렌더러(검색·리스트뷰·전체목록에서 재사용)
+        function brandFilterChipsHTML(activeBrand, fnName) {
+            let html = `<button onclick="${fnName}(null)" class="px-3 py-1 rounded-full text-[11px] font-black shrink-0 border ${!activeBrand ? 'bg-gray-900 text-white border-gray-900' : 'bg-white text-gray-600 border-gray-200'}">전체</button>`;
+            CORE_BRANDS.forEach(b => {
+                const active = activeBrand === b;
+                const inactiveColor = (BRAND_INFO[b] && BRAND_INFO[b].color) || '#374151';
+                html += `<button onclick="${fnName}('${b}')" class="px-3 py-1 rounded-full text-[11px] font-black shrink-0 border shadow-sm" style="${active ? brandChipStyle(b) + ';border-color:transparent' : 'background:#fff;color:' + inactiveColor + ';border-color:#e5e7eb'}">${b}</button>`;
+            });
+            return html;
+        }
+
+        // 시작 시 정적 브랜드 필터 바 초기화
+        function renderStaticBrandFilters() {
+            const s = document.getElementById('searchBrandChips');
+            if (s) s.innerHTML = `<span class="text-[10px] font-bold text-gray-400 self-center shrink-0">브랜드</span>` + brandFilterChipsHTML(searchBrandFilter, 'toggleBrandSearchFilter');
+            const l = document.getElementById('listViewBrandChips');
+            if (l) l.innerHTML = brandFilterChipsHTML(listViewBrand, 'setListViewBrand');
+            renderAllDealsFilterBar();
+        }
+
+        function setListViewBrand(brand) {
+            listViewBrand = brand;
+            const l = document.getElementById('listViewBrandChips');
+            if (l) l.innerHTML = brandFilterChipsHTML(listViewBrand, 'setListViewBrand');
+            renderListView();
+        }
+
+        function renderListView() {
+            const body = document.getElementById('listViewBody');
+            const subtitle = document.getElementById('listViewSubtitle');
+
+            // 반경 내 매장이 있으면 해당 브랜드 딜만, 없으면 전체 MASTER_DB
+            const nearbyBrands = new Set(storeMarkersData.map(s => s.brand));
+            const useNearby = storeMarkersData.length > 0;
+
+            let products = MASTER_DB.filter(p => {
+                const brands = Object.keys(p.events);
+                if (listViewBrand) return brands.includes(listViewBrand);
+                if (useNearby) return brands.some(b => nearbyBrands.has(b));
+                return true;
+            });
+
+            subtitle.textContent = useNearby
+                ? `반경 ${currentRadius >= 1000 ? currentRadius/1000+'km' : currentRadius+'m'} 내 ${nearbyBrands.size}개 매장 · ${products.length}개 상품`
+                : `전체 ${products.length}개 상품`;
+
+            if (products.length === 0) {
+                body.innerHTML = `<div class="text-center text-gray-400 py-16 flex flex-col items-center gap-2"><i class="fa-solid fa-store-slash text-4xl text-gray-300"></i><p class="text-sm font-bold">주변에 매장이 없습니다</p><p class="text-xs">지도를 이동하거나 반경을 넓혀보세요</p></div>`;
+                return;
+            }
+
+            body.innerHTML = products.map(p => createProductHTML(p, 'search', listViewBrand)).join('');
+        }
+
+        function toggleBrandSearchFilter(brand) {
+            searchBrandFilter = (searchBrandFilter === brand) ? null : brand;
+            const s = document.getElementById('searchBrandChips');
+            if (s) s.innerHTML = `<span class="text-[10px] font-bold text-gray-400 self-center shrink-0">브랜드</span>` + brandFilterChipsHTML(searchBrandFilter, 'toggleBrandSearchFilter');
+            performSearch();
+        }
+
+        // 전체 딜 목록 필터 상태
+        let allDealsFilterBrand = null, allDealsFilterType = null;
+
+        // 전체 목록 필터 바(브랜드 칩 + 유형 칩)
+        function renderAllDealsFilterBar() {
+            const bar = document.getElementById('allDealsFilterBar');
+            if (!bar) return;
+            let html = brandFilterChipsHTML(allDealsFilterBrand, "setAllDealsFilterBrand");
+            html += `<span class="w-px bg-gray-200 shrink-0 mx-1 self-stretch"></span>`;
+            const typeAllActive = !allDealsFilterType;
+            html += `<button onclick="setAllDealsFilterType(null)" class="text-[11px] font-black px-3 py-1.5 rounded-full border shrink-0 ${typeAllActive ? 'bg-gray-900 text-white border-gray-900' : 'bg-white text-gray-600 border-gray-200'}">전체</button>`;
+            EVENT_TYPES.forEach(t => {
+                const active = allDealsFilterType === t;
+                const ts = TYPE_STYLE[t] || { cls:'bg-gray-500' };
+                html += `<button onclick="setAllDealsFilterType('${t}')" class="text-[11px] font-black px-3 py-1.5 rounded-full border shrink-0 ${active ? ts.cls + ' text-white border-transparent' : 'bg-white text-gray-600 border-gray-200'}">${t}</button>`;
+            });
+            bar.innerHTML = html;
+        }
+
+        function setAllDealsFilterBrand(value) {
+            if (value !== null && value !== allDealsFilterBrand && typeof onBrandChanged === 'function') onBrandChanged();
+            allDealsFilterBrand = value;
+            renderAllDealsFilterBar();
+            renderAllDeals();
+        }
+        function setAllDealsFilterType(value) {
+            allDealsFilterType = value;
+            renderAllDealsFilterBar();
+            renderAllDeals();
+        }
+
+        // 전체 딜 목록 렌더링
+        function renderAllDeals() {
+            const list = document.getElementById('allDealsList');
+            let items = [...MASTER_DB].sort((a, b) => b.saving - a.saving);
+            if (allDealsFilterBrand) items = items.filter(p => p.events[allDealsFilterBrand]);
+            if (allDealsFilterType) items = items.filter(p => Object.values(p.events).some(e => e.type === allDealsFilterType));
+            if (items.length === 0) {
+                list.innerHTML = `<div class="p-8 text-center text-gray-400 font-medium">해당 조건의 상품이 없습니다.</div>`;
+                return;
+            }
+            list.innerHTML = items.map(p => createProductHTML(p, 'search', allDealsFilterBrand)).join('');
+        }
+
+        // ──────────────────────────────────────────────────────────────────
+
+        let toastTimeout;
+        function showToast(msg, duration=2000) {
+            const t = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = msg;
+            t.classList.remove('opacity-0'); t.classList.add('opacity-100');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => { t.classList.remove('opacity-100'); t.classList.add('opacity-0'); }, duration);
+        }
+
+        // ── 인기 행사 칩 동적화 ────────────────────────────────────────────
+        function updateTopDealChip() {
+            if (!MASTER_DB || MASTER_DB.length === 0) return;
+            const top = [...MASTER_DB].sort((a, b) => b.saving - a.saving)[0];
+            if (!top) return;
+            const chipName = document.querySelector('#app-container .flex.overflow-x-auto button:first-child .text-\\[10px\\].font-black');
+            const chipSaving = document.querySelector('#app-container .flex.overflow-x-auto button:first-child .text-\\[8px\\].text-blue-600');
+            if (chipName) chipName.textContent = top.name.length > 10 ? top.name.slice(0, 10) + '…' : top.name;
+            if (chipSaving) chipSaving.textContent = `${top.saving.toLocaleString()}원 절약`;
+        }
+
+        // ── 주변 카페 행사 미리보기 ────────────────────────────────────────
+        function showNearbyPreview() {
+            if (nearbyPreviewShown || storeMarkersData.length === 0) return;
+            nearbyPreviewShown = true;
+
+            const allDeals = [];
+            storeMarkersData.forEach(store => {
+                store.deals.forEach(deal => { allDeals.push({ deal, store }); });
+            });
+            if (allDeals.length === 0) return;
+            const seen = new Set();
+            const picks = allDeals
+                .sort((a, b) => (weatherScore(b.deal) - weatherScore(a.deal)) || (Math.random() - 0.5))
+                .filter(({ deal, store }) => {
+                    const key = `${store.brand}:${deal.name}`;
+                    if (seen.has(key)) return false;
+                    seen.add(key);
+                    return true;
+                })
+                .slice(0, 3);
+
+            const NUMS = ['①','②','③'];
+
+            document.getElementById('nearbyPreviewTitle').textContent =
+                weatherPreviewTitle(storeMarkersData.length);
+
+            document.getElementById('nearbyPreviewList').innerHTML = picks.map(({ deal, store }, i) => {
+                const evnt = deal.events[store.brand];
+                const type = evnt?.type || '행사';
+                const storeJson = JSON.stringify(store).replace(/"/g,'&quot;');
+                return `
+                    <div onclick="closeNearbyPreview(); openStore(${storeJson})"
+                         class="flex items-center gap-2.5 active:bg-gray-50 rounded-xl py-1 cursor-pointer transition">
+                        <span class="text-[15px] font-black text-blue-500 shrink-0 w-5 text-center">${NUMS[i]}</span>
+                        <span class="text-[11px] font-black px-2 py-0.5 rounded-full shrink-0" style="${brandChipStyle(store.brand)}">${brandLabel(store.brand)}</span>
+                        <span class="text-[12px] font-bold text-gray-800 truncate flex-1">${deal.name}</span>
+                        <span class="text-[10px] font-bold text-gray-400 shrink-0">${type}</span>
+                    </div>`;
+            }).join('');
+
+            const sheet = document.getElementById('nearbyPreviewSheet');
+            sheet.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                sheet.style.transform = 'translateY(0)';
+                sheet.style.pointerEvents = 'auto';
+            });
+            nearbyPreviewTimer = setTimeout(closeNearbyPreview, 5000);
+        }
+
+        function closeNearbyPreview() {
+            clearTimeout(nearbyPreviewTimer);
+            const sheet = document.getElementById('nearbyPreviewSheet');
+            sheet.style.transform = 'translateY(120%)';
+            sheet.style.pointerEvents = 'none';
+            setTimeout(() => sheet.classList.add('hidden'), 520);
+        }
+
+        // ── 찜한 카페 행사 변동 감지 ──────────────────────────────────────
+        function likeSignature(p) {
+            return Object.entries(p.events || {})
+                .map(([brand, e]) => `${brand}:${e.type}`)
+                .sort().join('|');
+        }
+
+        function checkLikedChanges() {
+            try {
+                const snapKey = 'cvs_likeSnapshot';
+                const snap = JSON.parse(localStorage.getItem(snapKey) || '{}');
+                const nextSnap = {};
+                likeChangeItems = [];
+                MASTER_DB.forEach(p => {
+                    if (!likedItems.has(p.id)) return;
+                    const sig = likeSignature(p);
+                    nextSnap[p.id] = sig;
+                    const prev = snap[p.id];
+                    if (prev !== undefined && sig !== prev) {
+                        const prevSet = new Set(prev.split('|').filter(Boolean));
+                        const added = sig.split('|').filter(x => x && !prevSet.has(x));
+                        if (added.length > 0) likeChangeItems.push({ product: p, added });
+                    }
+                });
+                localStorage.setItem(snapKey, JSON.stringify(nextSnap));
+
+                if (likeChangeItems.length > 0) {
+                    const first = likeChangeItems[0].product.name;
+                    const shortName = first.length > 12 ? first.slice(0, 12) + '…' : first;
+                    const banner = document.getElementById('likeChangeBanner');
+                    const text = document.getElementById('likeChangeBannerText');
+                    text.textContent = likeChangeItems.length === 1
+                        ? `찜한 '${shortName}'에 새 행사가 시작됐어요. 확인하기`
+                        : `찜한 '${shortName}' 외 ${likeChangeItems.length - 1}개에 새 행사가 시작됐어요.`;
+                    banner.classList.remove('hidden');
+                    document.getElementById('ddayBanner').classList.add('mt-[52px]');
+                    clearTimeout(window._likeBannerTimer);
+                    window._likeBannerTimer = setTimeout(closeLikeChangeBanner, 5000);
+                    if ('Notification' in window && Notification.permission === 'granted') {
+                        try {
+                            new Notification('찜한 카페에 새 행사가 시작됐어요! 💝', {
+                                body: likeChangeItems.length === 1 ? `${first} — 지금 확인해보세요` : `${shortName} 외 ${likeChangeItems.length - 1}개`,
+                                icon: 'icon-192.png',
+                            });
+                        } catch(e) {}
+                    }
+                }
+            } catch(e) {}
+        }
+
+        function openLikeChangeList() {
+            document.getElementById('likeChangeBanner').classList.add('hidden');
+            openTabModal('wishlistModal', 'wishlist');
+        }
+
+        // ── D-day 인앱 배너 ────────────────────────────────────────────────
+        // 편의점 행사는 월~일 주기. 금/토/일에 마감 임박 배너 표시.
+        function maybeShowDdayBanner() {
+            const dow = new Date().getDay(); // 0=일,5=금,6=토
+            const daysToSunday = dow === 0 ? 0 : 7 - dow;
+            if (daysToSunday > 2) return; // 월~목은 배너 없음
+            const banner = document.getElementById('ddayBanner');
+            const text = document.getElementById('ddayBannerText');
+            const likedCount = likedItems.size;
+            let msg = '';
+            if (daysToSunday === 0) msg = likedCount > 0 ? `오늘 이번 주 행사 마감! 찜한 ${likedCount}개 상품 오늘 안에 확인하세요 🛒` : '오늘 이번 주 행사 마감입니다! 놓친 상품 없는지 확인하세요 🛒';
+            else if (daysToSunday === 1) msg = likedCount > 0 ? `내일 행사 종료! 찜한 ${likedCount}개 상품 내일까지예요` : '내일이면 이번 주 행사가 끝납니다. 미리 확인하세요!';
+            else msg = likedCount > 0 ? `이번 주 행사 ${daysToSunday}일 남았어요. 찜한 ${likedCount}개 상품 확인해보세요` : `이번 주 행사 ${daysToSunday}일 후 종료됩니다`;
+            text.textContent = msg;
+            banner.classList.remove('hidden');
+            clearTimeout(window._ddayBannerTimer);
+            window._ddayBannerTimer = setTimeout(closeDdayBanner, 5000);
+        }
+
+        // ── 날씨 엔진 (편의점행사 앱과 동일 방식: 기상청 실측 우선, Open-Meteo fallback) ──
+        const KMA_KEY = '41d44570cca7921b6fce48322f6a6c3fe85a8eb13d5fb17e3d214ea0a59dfe54';
+
+        // WMO 코드 → { icon, cls, label }
+        function wmoInfo(code) {
+            if (code === 0)   return { icon:'☀️', cls:'weather-sun',   label:'맑음' };
+            if (code <= 2)    return { icon:'🌤', cls:'weather-sun',   label:'구름 조금' };
+            if (code === 3)   return { icon:'☁️', cls:'weather-cloud', label:'흐림' };
+            if (code <= 49)   return { icon:'🌫', cls:'weather-cloud', label:'안개' };
+            if (code <= 67)   return { icon:'🌧', cls:'weather-rain',  label:'비' };
+            if (code <= 77)   return { icon:'❄️', cls:'weather-snow',  label:'눈' };
+            if (code <= 82)   return { icon:'🌦', cls:'weather-rain',  label:'소나기' };
+            if (code <= 86)   return { icon:'🌨', cls:'weather-snow',  label:'눈 소나기' };
+            return                   { icon:'⛈', cls:'weather-rain',  label:'뇌우' };
+        }
+
+        // 위경도 → 기상청 격자(nx, ny)
+        function toKmaGrid(lat, lon) {
+            const RE = 6371.00877, GRID = 5.0, SLAT1 = 30.0, SLAT2 = 60.0, OLON = 126.0, OLAT = 38.0, XO = 43, YO = 136;
+            const DEGRAD = Math.PI / 180.0;
+            const re = RE / GRID;
+            const slat1 = SLAT1 * DEGRAD, slat2 = SLAT2 * DEGRAD, olon = OLON * DEGRAD, olat = OLAT * DEGRAD;
+            let sn = Math.tan(Math.PI * 0.25 + slat2 * 0.5) / Math.tan(Math.PI * 0.25 + slat1 * 0.5);
+            sn = Math.log(Math.cos(slat1) / Math.cos(slat2)) / Math.log(sn);
+            let sf = Math.tan(Math.PI * 0.25 + slat1 * 0.5);
+            sf = Math.pow(sf, sn) * Math.cos(slat1) / sn;
+            let ro = Math.tan(Math.PI * 0.25 + olat * 0.5);
+            ro = re * sf / Math.pow(ro, sn);
+            let ra = Math.tan(Math.PI * 0.25 + lat * DEGRAD * 0.5);
+            ra = re * sf / Math.pow(ra, sn);
+            let theta = lon * DEGRAD - olon;
+            if (theta > Math.PI) theta -= 2.0 * Math.PI;
+            if (theta < -Math.PI) theta += 2.0 * Math.PI;
+            theta *= sn;
+            return { nx: Math.floor(ra * Math.sin(theta) + XO + 0.5), ny: Math.floor(ro - ra * Math.cos(theta) + YO + 0.5) };
+        }
+
+        // 초단기실황 기준시각 (매시 40분 이후에 해당 정시 데이터 생성)
+        function kmaBaseDateTime() {
+            const kst = new Date(Date.now() + 9 * 3600 * 1000);
+            if (kst.getUTCMinutes() < 40) kst.setUTCHours(kst.getUTCHours() - 1);
+            const p = n => String(n).padStart(2, '0');
+            return {
+                base_date: `${kst.getUTCFullYear()}${p(kst.getUTCMonth() + 1)}${p(kst.getUTCDate())}`,
+                base_time: `${p(kst.getUTCHours())}00`,
+            };
+        }
+
+        // PTY(강수형태) → WMO 유사 코드
+        function ptyToCode(pty) {
+            if (pty === 3 || pty === 7) return 73;
+            if (pty === 2 || pty === 6) return 73;
+            if (pty === 1 || pty === 5) return 61;
+            return null;
+        }
+
+        // 기상청 초단기실황 (공공데이터포털 — CORS 허용)
+        async function fetchKmaNowcast(lat, lng) {
+            const { nx, ny } = toKmaGrid(lat, lng);
+            const { base_date, base_time } = kmaBaseDateTime();
+            const url = `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst?serviceKey=${KMA_KEY}&pageNo=1&numOfRows=100&dataType=JSON&base_date=${base_date}&base_time=${base_time}&nx=${nx}&ny=${ny}`;
+            const res = await fetch(url);
+            if (!res.ok) return null;
+            const j = await res.json();
+            const items = j?.response?.body?.items?.item;
+            if (!Array.isArray(items)) return null;
+            const get = cat => items.find(it => it.category === cat)?.obsrValue;
+            const t1h = parseFloat(get('T1H'));
+            if (Number.isNaN(t1h)) return null;
+            const rn1 = parseFloat(get('RN1'));
+            return { temp: t1h, pty: parseInt(get('PTY'), 10), rn1: Number.isNaN(rn1) ? 0 : rn1 };
+        }
+
+        async function fetchWeather(lat, lng) {
+            try {
+                // 1) Open-Meteo — 하늘상태 코드 확보 및 기본 fallback
+                let base = null;
+                try {
+                    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current=temperature_2m,weather_code,precipitation`;
+                    const res = await fetch(url);
+                    if (res.ok) {
+                        const j = await res.json();
+                        if (j.current) base = { temp: Math.round(j.current.temperature_2m), code: j.current.weather_code, rain: j.current.precipitation > 0 };
+                    }
+                } catch(_) {}
+
+                // 2) 기상청 실측으로 기온·강수 덮어쓰기
+                const kma = await fetchKmaNowcast(lat, lng).catch(() => null);
+                let weatherData;
+                if (kma) {
+                    const ptyCode = ptyToCode(kma.pty);
+                    weatherData = {
+                        temp: Math.round(kma.temp),
+                        code: ptyCode !== null ? ptyCode : (base ? base.code : 0),
+                        rain: kma.pty > 0 || kma.rn1 > 0,
+                    };
+                } else if (base) {
+                    weatherData = base;
+                } else {
+                    return;
+                }
+
+                window._weatherData = weatherData;
+                renderWeatherChip();
+                // 날씨 데이터 도착 전 미리보기가 이미 떴으면 제목만 갱신
+                const titleEl = document.getElementById('nearbyPreviewTitle');
+                const sheet = document.getElementById('nearbyPreviewSheet');
+                if (titleEl && sheet && !sheet.classList.contains('hidden')) {
+                    titleEl.textContent = weatherPreviewTitle(storeMarkersData.length);
+                }
+                // 아직 미리보기가 안 뜬 경우 즉시 트리거
+                if (!nearbyPreviewShown && storeMarkersData.length > 0) {
+                    showNearbyPreview();
+                }
+            } catch(e) { /* 날씨 API 실패 시 무시 */ }
+        }
+
+        function renderWeatherChip() {
+            const w = window._weatherData;
+            if (!w) return;
+            const info = wmoInfo(w.code);
+            document.getElementById('weatherIcon').className = `text-sm ${info.cls}`;
+            document.getElementById('weatherIcon').textContent = info.icon;
+            document.getElementById('weatherTemp').textContent = `${w.temp}°C`;
+            document.getElementById('weatherDesc').textContent = info.label;
+            document.getElementById('weatherBar').classList.remove('hidden');
+        }
+
+        function weatherScore(deal) {
+            const w = window._weatherData;
+            if (!w) return 0;
+            const text = ((deal.name || '') + ' ' + (deal.eventTitle || '') + ' ' + (deal.category || '')).toLowerCase();
+            let score = 0;
+            if (w.temp >= 28) {
+                if (/아이스|콜드|냉|스무디|에이드|프라페|슬러시|빙수/.test(text)) score += 3;
+                if (/핫|따뜻|hot/.test(text)) score -= 1;
+            } else if (w.temp <= 10) {
+                if (/핫|따뜻|hot|초코|라떼|밀크티/.test(text)) score += 3;
+                if (/아이스|콜드/.test(text)) score -= 1;
+            }
+            if (w.rain) {
+                if (/핫|따뜻|디저트|케이크|허브/.test(text)) score += 2;
+            }
+            const month = new Date().getMonth() + 1;
+            if ([3,4,5].includes(month)  && /딸기|벚꽃|봄/.test(text))            score += 2;
+            if ([6,7,8].includes(month)  && /망고|수박|복숭아|여름/.test(text))    score += 2;
+            if ([9,10,11].includes(month) && /밤|고구마|단호박|가을/.test(text))   score += 2;
+            if ([12,1,2].includes(month) && /크리스마스|홀리데이|겨울/.test(text)) score += 2;
+            return score;
+        }
+
+        function weatherPreviewTitle(storeCount) {
+            const w = window._weatherData;
+            if (!w) return `내 주변 ${storeCount}개 카페 행사`;
+            const info = wmoInfo(w.code);
+            if (w.temp >= 28)  return `${info.icon} ${w.temp}°C · 더운 날엔 이런 행사 어때요?`;
+            if (w.temp <= 10)  return `${info.icon} ${w.temp}°C · 따뜻한 메뉴 행사`;
+            if (w.rain)        return `${info.icon} ${w.temp}°C · 비 오는 날 추천 행사`;
+            return                    `${info.icon} ${w.temp}°C · 오늘의 추천 행사`;
+        }
+        // ─────────────────────────────────────────────────────────────────────
+
+        function closeDdayBanner() {
+            clearTimeout(window._ddayBannerTimer);
+            document.getElementById('ddayBanner').classList.add('hidden');
+        }
+
+        function closeLikeChangeBanner() {
+            clearTimeout(window._likeBannerTimer);
+            document.getElementById('likeChangeBanner').classList.add('hidden');
+            document.getElementById('ddayBanner').classList.remove('mt-[52px]');
+        }
+
+        // ── 월간 절약 리포트 ───────────────────────────────────────────────
+        function maybeShowMonthlyReport() {
+            const now = new Date();
+            const thisMonth = `${now.getFullYear()}-${now.getMonth() + 1}`;
+            const lastShown = localStorage.getItem('cvs_reportShown');
+            if (lastShown === thisMonth) return;
+            // 전달 데이터가 있어야 리포트 의미 있음
+            if (totalSavings === 0 && purchasedHistory.length === 0) return;
+            localStorage.setItem('cvs_reportShown', thisMonth);
+
+            const prevMonth = now.getMonth() === 0 ? 12 : now.getMonth();
+            const prevYear = now.getMonth() === 0 ? now.getFullYear() - 1 : now.getFullYear();
+            document.getElementById('reportMonth').textContent = `${prevYear}년 ${prevMonth}월 활동 요약`;
+            document.getElementById('reportTotalSavings').textContent = totalSavings.toLocaleString();
+            document.getElementById('reportItemCount').textContent = purchasedHistory.length;
+            document.getElementById('reportLikedCount').textContent = likedItems.size;
+            const msgs = [
+                '이번 달도 알뜰하게 카페 즐기셨네요! 🎉',
+                '절약 습관이 쌓이고 있어요. 이번 달도 화이팅! 💪',
+                '꾸준한 행사 확인이 절약의 비결이에요 🏆',
+            ];
+            document.getElementById('reportMsg').textContent = msgs[prevMonth % msgs.length];
+            const modal = document.getElementById('monthlyReportModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeMonthlyReport() {
+            const modal = document.getElementById('monthlyReportModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // ── 알림(Service Worker Push) ──────────────────────────────────────
+        let notifSettings = { newDeal: false, ending: false };
+        let visitDays = new Set();
+
+        function loadNotifSettings() {
+            try {
+                const s = localStorage.getItem('cvs_notifSettings');
+                if (s) notifSettings = JSON.parse(s);
+                const v = localStorage.getItem('cvs_visitDays');
+                if (v) visitDays = new Set(JSON.parse(v));
+            } catch(e) {}
+            renderNotifToggles();
+            renderVisitDayBtns();
+        }
+
+        function saveNotifSettings() {
+            localStorage.setItem('cvs_notifSettings', JSON.stringify(notifSettings));
+            localStorage.setItem('cvs_visitDays', JSON.stringify([...visitDays]));
+        }
+
+        function renderNotifToggles() {
+            ['newDeal', 'ending'].forEach(key => {
+                const toggle = document.getElementById(`notif${key.charAt(0).toUpperCase() + key.slice(1)}Toggle`);
+                const knob = document.getElementById(`notif${key.charAt(0).toUpperCase() + key.slice(1)}Knob`);
+                if (!toggle || !knob) return;
+                const on = notifSettings[key];
+                toggle.classList.toggle('bg-blue-500', on);
+                toggle.classList.toggle('bg-gray-200', !on);
+                knob.style.transform = on ? 'translateX(16px)' : 'translateX(0)';
+            });
+        }
+
+        function renderVisitDayBtns() {
+            document.querySelectorAll('.visit-day-btn').forEach(btn => {
+                const day = parseInt(btn.dataset.day);
+                const on = visitDays.has(day);
+                btn.classList.toggle('bg-indigo-600', on);
+                btn.classList.toggle('text-white', on);
+                btn.classList.toggle('border-indigo-600', on);
+                btn.classList.toggle('text-gray-500', !on);
+                btn.classList.toggle('border-gray-200', !on);
+            });
+        }
+
+        async function toggleNotification(key) {
+            if (!('Notification' in window)) { showToast('이 환경에서는 알림을 지원하지 않습니다.'); return; }
+            if (Notification.permission === 'denied') { showToast('알림이 차단되었습니다. 브라우저 설정에서 허용해주세요.'); return; }
+            if (Notification.permission !== 'granted') {
+                const granted = await requestNotificationPermission();
+                if (!granted) return;
+            }
+            notifSettings[key] = !notifSettings[key];
+            saveNotifSettings();
+            renderNotifToggles();
+            scheduleAllNotifications();
+            showToast(notifSettings[key] ? '알림이 설정되었습니다' : '알림이 해제되었습니다');
+        }
+
+        async function toggleVisitDay(day) {
+            if (!('Notification' in window)) { showToast('이 환경에서는 알림을 지원하지 않습니다.'); return; }
+            if (Notification.permission === 'granted') {
+                if (visitDays.has(day)) visitDays.delete(day); else visitDays.add(day);
+            } else {
+                const granted = await requestNotificationPermission();
+                if (!granted) return;
+                if (visitDays.has(day)) visitDays.delete(day); else visitDays.add(day);
+            }
+            saveNotifSettings();
+            renderVisitDayBtns();
+            scheduleAllNotifications();
+            showToast(visitDays.has(day) ? '알림 요일이 추가되었습니다' : '알림 요일이 해제되었습니다');
+        }
+
+        async function requestNotificationPermission() {
+            if (!('Notification' in window)) return false;
+            const result = await Notification.requestPermission();
+            const btn = document.getElementById('notifPermBtn');
+            const msg = document.getElementById('notifStatusMsg');
+            if (result === 'granted') {
+                btn?.classList.add('hidden');
+                msg?.classList.add('hidden');
+                return true;
+            } else {
+                btn?.classList.remove('hidden');
+                msg?.classList.remove('hidden');
+                return false;
+            }
+        }
+
+        function openSettings() {
+            hideAllTabModals();
+            document.getElementById('settingsModal').classList.remove('hidden');
+            document.getElementById('settingsModal').classList.add('flex');
+            // 알림 권한 버튼 상태 동기화
+            if ('Notification' in window && Notification.permission !== 'granted') {
+                document.getElementById('notifPermBtn')?.classList.remove('hidden');
+                document.getElementById('notifStatusMsg')?.classList.remove('hidden');
+            }
+        }
+
+        // SW에 알림 스케줄 전달
+        function scheduleAllNotifications() {
+            if (!navigator.serviceWorker?.controller) return;
+            const schedules = [];
+            if (notifSettings.newDeal) schedules.push({ type: 'newDeal', dayOfWeek: 1, hour: 9, minute: 0, title: '새 카페 행사 🎉', body: '새로 시작된 카페 할인·쿠폰·신메뉴를 확인해보세요!' });
+            if (notifSettings.ending) schedules.push({ type: 'ending', dayOfWeek: 0, hour: 10, minute: 0, title: '행사 마감 임박 ⏰', body: '오늘 종료되는 카페 행사가 있어요. 놓친 행사 없는지 확인하세요!' });
+            visitDays.forEach(day => {
+                schedules.push({ type: `visit_${day}`, dayOfWeek: day, hour: 9, minute: 0, title: '오늘 카페 행사 확인하세요! ☕', body: '찜한 메뉴가 행사 중인지 지금 바로 확인해보세요.' });
+            });
+            navigator.serviceWorker.controller.postMessage({ type: 'SCHEDULE_NOTIFICATIONS', schedules });
+        }
+
+        // ── startApp에 재방문 기능 연결 ────────────────────────────────────
+        const _origStartApp = startApp;
+        // startApp 이후 훅 (DOMContentLoaded 이후 정의되므로 override 방식 사용)
+        function initRetentionFeatures() {
+            loadNotifSettings();
+            updateTopDealChip();
+            checkLikedChanges();
+            maybeShowDdayBanner();
+            // 월간 리포트는 첫 실행 다음날 이후 월 변경 시 표시 (온보딩 직후 방해 안 함)
+            if (localStorage.getItem('cvs_onboarded')) {
+                setTimeout(maybeShowMonthlyReport, 1500);
+            }
+            scheduleAllNotifications();
+        }
+    </script>
+    <script type="module" src="ads.js"></script>
+</body>
+</html>
