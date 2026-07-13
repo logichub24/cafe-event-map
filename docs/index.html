@@ -759,19 +759,20 @@
             // 실제 매장 데이터는 사용자 위치에서 가장 가까운 시/도 파일만 불러온다(전국 통합 파일은 너무 큼).
             Promise.all([
                 fetch(DATA_BASE_URL + 'deals.json?v=' + (new Date().toISOString().slice(0,10).replace(/-/g,'')) + '_4', {cache:'no-store'}).then(res => res.ok ? res.json() : null).catch(() => null),
-                fetch(DATA_BASE_URL + 'stores/index.json').then(res => res.ok ? res.json() : null).catch(() => null),
+                fetch(DATA_BASE_URL + 'stores/전국.json').then(res => res.ok ? res.json() : null).catch(() => null),
                 fetch(DATA_BASE_URL + 'brands.json').then(res => res.ok ? res.json() : null).catch(() => null),
-            ]).then(async ([deals, index, brands]) => {
+            ]).then(async ([deals, stores, brands]) => {
                 if (brands && brands.length > 0) applyBrands(brands);
                 if (deals && deals.length > 0) MASTER_DB = deals;
                 else console.log("deals.json 없음 - 내부 데모 DB 사용");
                 computeIsNew();
 
-                if (index && index.length > 0) {
-                    STORE_INDEX = index;
-                    await loadStoresForLocation(37.498095, 127.027610).catch(e => console.warn('매장 로드 실패:', e));
+                if (stores && stores.length > 0) {
+                    REAL_STORES = stores;
+                    buildStoresFromRealData();
+                    console.log(`전국 매장 ${stores.length}개 로드 완료`);
                 } else {
-                    console.log("stores/index.json 없음 - 가상 매장 사용");
+                    console.log("stores/전국.json 없음 - 가상 매장 사용");
                 }
 
                 startApp();
@@ -974,20 +975,11 @@
 
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
-                    async position => {
+                    position => {
                         const lat = position.coords.latitude;
                         const lng = position.coords.longitude;
                         map.setView([lat, lng], 16);
                         searchCircle.setLatLng([lat, lng]);
-                        // 카카오 실매장 데이터 우선 로드
-                        const kakaoStores = await fetchKakaoStores(lat, lng);
-                        if (kakaoStores.length > 0) {
-                            kakaoStoresCache = kakaoStores;
-                            kakaoFetchLat = lat; kakaoFetchLng = lng;
-                        } else {
-                            const switched = await loadStoresForLocation(lat, lng);
-                            if (!switched && REAL_STORES.length === 0) generateVirtualStoresDB(lat, lng);
-                        }
                         loadStoresInRadius();
                         fetchWeather(lat, lng);
                         setTimeout(showNearbyPreview, 1200);
@@ -1074,22 +1066,13 @@
             });
         }
 
-        async function searchInCurrentArea() {
+        function searchInCurrentArea() {
             const btn = document.getElementById('reSearchBtn');
             btn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-[10px]');
             btn.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
 
-            const center = map.getCenter();
-            showToast('카페 검색 중...', 1200);
-            const kakaoStores = await fetchKakaoStores(center.lat, center.lng);
-            if (kakaoStores.length > 0) {
-                kakaoStoresCache = kakaoStores;
-                kakaoFetchLat = center.lat; kakaoFetchLng = center.lng;
-            } else {
-                await loadStoresForLocation(center.lat, center.lng);
-            }
             loadStoresInRadius();
-            showToast(`이 지역 카페 ${storeMarkersData.length}개 표시 중`);
+            showToast(`반경 ${currentRadius >= 1000 ? currentRadius/1000+'km' : currentRadius+'m'} 내 카페 ${storeMarkersData.length}개`);
         }
 
         function highlightRadiusButton(r) {
