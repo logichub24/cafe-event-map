@@ -99,15 +99,6 @@
         <!-- 상단 미니 헤더 -->
         <div class="absolute top-0 left-0 w-full z-[100] pointer-events-none flex flex-col pt-3">
             <div class="px-3 pb-2 flex items-center justify-between">
-                <!-- 토스 앱 안에서는 토스 자체 헤더가 이미 앱 이름을 보여주므로 중복되는 이 캡슐은 숨김(ads.js의 in-toss-app 클래스) -->
-                <div id="titlePill" class="bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-full shadow-sm border border-gray-100 pointer-events-auto inline-flex items-center gap-2">
-                    <h1 class="text-sm font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-green-700 tracking-tight leading-none m-0">카페행사맵</h1>
-                    <div class="w-px h-3 bg-gray-200"></div>
-                    <p class="text-[10px] text-gray-500 font-bold leading-none m-0 pt-0.5">오늘 기준 행사</p>
-                </div>
-                <button onclick="openSettings()" class="w-9 h-9 bg-white/95 backdrop-blur-md rounded-full shadow-sm border border-gray-100 flex items-center justify-center text-gray-500 pointer-events-auto hover:bg-gray-50 active:scale-95 transition shrink-0 ml-auto">
-                    <i class="fa-solid fa-gear text-sm"></i>
-                </button>
             </div>
 
             <!-- Scrollable Info Chips -->
@@ -150,6 +141,10 @@
 
         <!-- 우측 맵 컨트롤 패널 정렬 -->
         <div id="mapControlPanel" class="absolute right-3 bottom-[120px] z-[400] flex flex-col gap-2 pointer-events-none items-end">
+            <!-- 설정 -->
+            <button onclick="openSettings()" class="w-[38px] h-[38px] bg-white/95 backdrop-blur-md rounded-full shadow-md border border-gray-100 flex items-center justify-center text-gray-500 pointer-events-auto hover:bg-gray-50 active:scale-95 transition">
+                <i class="fa-solid fa-gear text-lg"></i>
+            </button>
             <!-- 리스트/지도 뷰 토글 -->
             <button id="listViewToggleBtn" onclick="toggleListView()" class="w-[38px] h-[38px] bg-white/95 backdrop-blur-md rounded-full shadow-md border border-gray-100 flex items-center justify-center text-gray-600 pointer-events-auto hover:bg-gray-50 active:scale-95 transition" title="리스트 뷰">
                 <i class="fa-solid fa-list text-lg"></i>
