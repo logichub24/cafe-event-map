@@ -745,6 +745,35 @@
             });
         }
 
+        function approxDist(lat1, lng1, lat2, lng2) {
+            const dlat = (lat1 - lat2) * 111320;
+            const dlng = (lng1 - lng2) * 111320 * Math.cos(lat1 * Math.PI / 180);
+            return Math.sqrt(dlat * dlat + dlng * dlng);
+        }
+
+        async function refreshKakaoAndLoad(lat, lng) {
+            // 마지막 fetch 위치에서 300m 이내면 재호출 생략
+            if (kakaoFetchLat !== null && approxDist(lat, lng, kakaoFetchLat, kakaoFetchLng) < 300 && kakaoStoresCache.length > 0) {
+                loadStoresInRadius();
+                return;
+            }
+            try {
+                const live = await fetchKakaoStores(lat, lng);
+                kakaoFetchLat = lat;
+                kakaoFetchLng = lng;
+                // 전국.json에 없는 신규 매장만 추가 (50m 기준 중복 제거)
+                const novel = live.filter(l =>
+                    !allVirtualStoresDB.some(s => approxDist(s.lat, s.lng, l.lat, l.lng) < 50)
+                );
+                kakaoStoresCache = [...allVirtualStoresDB, ...novel];
+                console.log(`카카오 실시간 ${live.length}개 → 신규 ${novel.length}개 병합 (총 ${kakaoStoresCache.length}개)`);
+            } catch(e) {
+                console.warn('카카오 실시간 fetch 실패, 전국.json 사용:', e);
+                kakaoStoresCache = [...allVirtualStoresDB];
+            }
+            loadStoresInRadius();
+        }
+
         // 토스인앱 등 외부 빌드 환경(WebView 패키지)에 넣어도 데이터는 항상 GitHub Pages의 최신본을
         // 실시간으로 받아오도록 절대경로를 쓴다. GitHub Pages 자체에서 열 때도 동일 출처라 그대로 동작함.
         // 상대경로: 같은 폴더의 deals.json/stores를 로드. file://로 열면 fetch 실패 → 임베드 데모 DB 사용
@@ -956,7 +985,7 @@
                         const lng = position.coords.longitude;
                         map.setView([lat, lng], 16);
                         searchCircle.setLatLng([lat, lng]);
-                        loadStoresInRadius();
+                        refreshKakaoAndLoad(lat, lng);
                         fetchWeather(lat, lng);
                         setTimeout(showNearbyPreview, 1200);
                     },
@@ -1042,12 +1071,13 @@
             });
         }
 
-        function searchInCurrentArea() {
+        async function searchInCurrentArea() {
             const btn = document.getElementById('reSearchBtn');
             btn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-[10px]');
             btn.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
 
-            loadStoresInRadius();
+            const center = map.getCenter();
+            await refreshKakaoAndLoad(center.lat, center.lng);
             showToast(`반경 ${currentRadius >= 1000 ? currentRadius/1000+'km' : currentRadius+'m'} 내 카페 ${storeMarkersData.length}개`);
         }
 
