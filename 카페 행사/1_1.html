@@ -782,7 +782,6 @@
         function startApp() {
             applyDaysLeft();
             updateDashboardCounts();
-            if (REAL_STORES.length === 0) generateVirtualStoresDB();
             // 날씨: 서울 기본 좌표로 즉시 표시, 실제 위치 확정 후 덮어씀
             fetchWeather(37.5665, 126.978);
             // requestAnimationFrame으로 DOM 페인트 완료 후 지도 초기화
@@ -914,29 +913,6 @@
             document.getElementById('endingDealCount').innerText = `${endingCount}개`;
         }
 
-        // stores 데이터 로드 실패 시 폴백. MASTER_DB에 행사가 있는 브랜드로만 가상 매장 생성 + 편의정보 임의 부여
-        function generateVirtualStoresDB(baseLat = 37.498095, baseLng = 127.027610) {
-            allVirtualStoresDB = [];
-            const brands = [...new Set(MASTER_DB.flatMap(p => Object.keys(p.events)))];
-            if (brands.length === 0) return;
-            const petPolicies = ['불가', '테라스만 가능', '소형견만 가능', '정보 없음'];
-            const rnd = (p) => Math.random() < p;
-            for (let i = 0; i < 200; i++) {
-                const brand = brands[Math.floor(Math.random() * brands.length)];
-                const lat = baseLat + (Math.random() - 0.5) * 0.06;
-                const lng = baseLng + (Math.random() - 0.5) * 0.06;
-                const store = {
-                    id: `vstore_${i}`, brand, name: `${brand} ${i + 1}호점`, lat, lng,
-                    address: '위치 정보 준비 중', phone: '', openingHours: '08:00 - 22:00',
-                    services: { parking: rnd(0.3), wifi: rnd(0.9), outlet: rnd(0.6), driveThrough: rnd(0.1), terrace: rnd(0.25), pet: rnd(0.15) },
-                    petPolicyType: petPolicies[Math.floor(Math.random() * petPolicies.length)], lastCheckedAt: '',
-                };
-                const storeDeals = MASTER_DB.filter(p => p.events[store.brand]);
-                store.deals = storeDeals;
-                store.itemCount = storeDeals.length;
-                if (store.itemCount > 0) allVirtualStoresDB.push(store);
-            }
-        }
 
         let streetLayer, satelliteLayer, satelliteLabelLayer, isSatelliteView = false;
         const VWORLD_KEY = '6888EEC4-8F4B-3D0D-87AE-7AE4C071E4CA';

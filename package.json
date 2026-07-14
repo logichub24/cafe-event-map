@@ -11,5 +11,8 @@
   },
   "devDependencies": {
     "@apps-in-toss/web-framework": "^2.9.2"
+  },
+  "dependencies": {
+    "is-plain-obj": "^4.1.0"
   }
 }
