@@ -2531,20 +2531,30 @@
     </script>
     <script type="module" src="ads.js"></script>
 
-    <!-- ══ 스플래시 (최초 1회 랜덤 10종) ══════════════════════════════ -->
+    <!-- ══ 스플래시 (최초 1회 랜덤 11종) ══════════════════════════════ -->
     <script>
     (function(){
         const SPLASH_KEY = 'splashV1';
+        const HIST_KEY   = 'splashHist';
         if (localStorage.getItem(SPLASH_KEY)) return;
 
         const overlay = document.getElementById('splash-overlay');
         const cv      = document.getElementById('splash-canvas');
 
+        // 최근 3회 재생한 시안 제외 스마트 랜덤
+        function pickVariant(total) {
+            const hist = JSON.parse(localStorage.getItem(HIST_KEY) || '[]');
+            const pool = Array.from({length: total}, (_, i) => i).filter(i => !hist.includes(i));
+            const idx  = pool[Math.floor(Math.random() * pool.length)];
+            localStorage.setItem(HIST_KEY, JSON.stringify([...hist, idx].slice(-3)));
+            return idx;
+        }
+
         function init() {
             const container = document.getElementById('app-container');
             cv.width  = container.offsetWidth  || window.innerWidth;
             cv.height = container.offsetHeight || window.innerHeight;
-            const idx = Math.floor(Math.random() * SPLASH_VARIANTS.length);
+            const idx  = pickVariant(SPLASH_VARIANTS.length);
             const stop = SPLASH_VARIANTS[idx](cv);
             setTimeout(() => {
                 overlay.classList.add('fade-out');
@@ -2554,6 +2564,7 @@
         }
 
         // ── 공통 헬퍼 ──────────────────────────────────────────────────
+        const RATE = 1.15; // 애니메이션 속도 배율 (+15%)
         function lerp(a,b,t){return a+(b-a)*t;}
         function sparkles(ctx,list){
             list.forEach(s=>{
@@ -2575,16 +2586,25 @@
                 vy:Math.random()*0.4+0.1, color:color||'rgba(255,230,150,0.9)', maxY:maxY||H
             }));
         }
-        function drawLabel(ctx,W,H,dark){
+        function drawLabel(ctx,W,H,dark,t){
             const fc=dark?'rgba(20,10,5,0.85)':'rgba(240,225,195,0.92)';
+            // t≈75 시점 0.2초 빛 플래시
+            const flashA = t ? Math.max(0, 1 - Math.abs(t - 75) / 12) : 0;
+            if(flashA > 0.05){
+                const fG=ctx.createRadialGradient(W/2,H-H*0.1,4,W/2,H-H*0.1,W*0.28);
+                fG.addColorStop(0,`rgba(255,240,200,${flashA*0.45})`);
+                fG.addColorStop(1,'transparent');
+                ctx.fillStyle=fG; ctx.fillRect(0,0,W,H);
+            }
             ctx.save();
-            ctx.shadowColor='rgba(0,0,0,0.35)'; ctx.shadowBlur=10;
+            ctx.shadowColor=flashA>0.05?`rgba(255,240,180,${flashA*0.8})`:'rgba(0,0,0,0.35)';
+            ctx.shadowBlur=flashA>0.05?18:10;
             ctx.fillStyle=fc; ctx.font='bold '+Math.round(W*0.055)+'px -apple-system,system-ui,sans-serif';
             ctx.textAlign='center'; ctx.textBaseline='middle';
             ctx.fillText('카페행사맵',W/2,H-H*0.1);
             ctx.font='600 '+Math.round(W*0.032)+'px -apple-system,system-ui,sans-serif';
             ctx.fillStyle=dark?'rgba(20,10,5,0.45)':'rgba(240,225,195,0.45)';
-            ctx.fillText('오늘의 카페 행사',W/2,H-H*0.07);
+            ctx.fillText('오늘의 행사 찾기',W/2,H-H*0.07);
             ctx.restore();
         }
         function cup(ctx,W,H,cy,cw,ch,bw,fill,stroke){
@@ -2612,11 +2632,11 @@
         // ① 커피드롭
         function(cv){
             const ctx=cv.getContext('2d'),W=cv.width,H=cv.height;
-            const sp=mkSparks(18,W,H,'rgba(220,160,60,0.8)');
+            const sp=mkSparks(14,W,H,'rgba(220,160,60,0.8)');
             let t=0,raf;
             const CW=W*0.15,CH=H*0.16,BW=W*0.12,CY=H*0.52;
             function frame(){
-                raf=requestAnimationFrame(frame); t++;
+                raf=requestAnimationFrame(frame); t+=RATE;
                 const bg=ctx.createLinearGradient(0,0,0,H);
                 bg.addColorStop(0,'#1A0E06');bg.addColorStop(1,'#0A0502');
                 ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
@@ -2642,7 +2662,7 @@
                     ctx.strokeStyle='rgba(230,210,180,0.7)';ctx.lineWidth=1.5;ctx.lineCap='round';
                     ctx.beginPath();ctx.moveTo(x+Math.sin(ph*6+i)*4,sy+20);ctx.lineTo(x,sy);ctx.stroke();ctx.restore();
                 });}
-                sparkles(ctx,sp); drawLabel(ctx,W,H);
+                sparkles(ctx,sp); drawLabel(ctx,W,H,false,t);
             }
             frame(); return ()=>cancelAnimationFrame(raf);
         },
@@ -2650,11 +2670,11 @@
         // ② 에스프레소 스트림
         function(cv){
             const ctx=cv.getContext('2d'),W=cv.width,H=cv.height;
-            const sp=mkSparks(14,W,H,'rgba(200,140,40,0.7)');
+            const sp=mkSparks(11,W,H,'rgba(200,140,40,0.7)');
             let t=0,raf;
             const CW=W*0.15,CH=H*0.16,BW=W*0.12,CY=H*0.52;
             function frame(){
-                raf=requestAnimationFrame(frame); t++;
+                raf=requestAnimationFrame(frame); t+=RATE;
                 const bg=ctx.createLinearGradient(0,0,0,H);
                 bg.addColorStop(0,'#180C04');bg.addColorStop(1,'#080402');
                 ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
@@ -2675,7 +2695,7 @@
                     sG.addColorStop(0,'transparent');sG.addColorStop(0.3,'rgba(180,100,20,0.9)');sG.addColorStop(1,'rgba(100,50,8,0.95)');
                     ctx.fillStyle=sG;ctx.fillRect(W/2-3,H*0.1,6,fl-H*0.1);ctx.restore();
                 }
-                sparkles(ctx,sp); drawLabel(ctx,W,H);
+                sparkles(ctx,sp); drawLabel(ctx,W,H,false,t);
             }
             frame(); return ()=>cancelAnimationFrame(raf);
         },
@@ -2683,7 +2703,7 @@
         // ③ 라테아트 하트
         function(cv){
             const ctx=cv.getContext('2d'),W=cv.width,H=cv.height;
-            const sp=mkSparks(12,W,H,'rgba(220,190,130,0.6)');
+            const sp=mkSparks(9,W,H,'rgba(220,190,130,0.6)');
             let t=0,raf;
             const CW=W*0.155,CH=H*0.16,BW=W*0.12,CY=H*0.5;
             function heartPt(a){
@@ -2691,7 +2711,7 @@
                 return[W/2+s*Math.pow(Math.sin(a),3),hy-(s*0.9*(Math.cos(a)-0.8*Math.cos(2*a)-0.3*Math.cos(3*a)-0.1*Math.cos(4*a)))];
             }
             function frame(){
-                raf=requestAnimationFrame(frame); t++;
+                raf=requestAnimationFrame(frame); t+=RATE;
                 const bg=ctx.createLinearGradient(0,0,0,H);
                 bg.addColorStop(0,'#1C0E06');bg.addColorStop(1,'#0A0502');
                 ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
@@ -2711,7 +2731,7 @@
                         ctx.restore();
                     }
                 }
-                sparkles(ctx,sp); drawLabel(ctx,W,H);
+                sparkles(ctx,sp); drawLabel(ctx,W,H,false,t);
             }
             frame(); return ()=>cancelAnimationFrame(raf);
         },
@@ -2719,11 +2739,11 @@
         // ④ 원두 블룸
         function(cv){
             const ctx=cv.getContext('2d'),W=cv.width,H=cv.height;
-            const sp=mkSparks(22,W,H,'rgba(180,220,140,0.7)',H*0.6);
+            const sp=mkSparks(17,W,H,'rgba(180,220,140,0.7)',H*0.6);
             let t=0,raf;
             const CX=W/2,CY=H*0.45;
             function frame(){
-                raf=requestAnimationFrame(frame); t++;
+                raf=requestAnimationFrame(frame); t+=RATE;
                 const bg=ctx.createLinearGradient(0,0,0,H);
                 bg.addColorStop(0,'#0A1208');bg.addColorStop(1,'#060E04');
                 ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
@@ -2753,7 +2773,7 @@
                 ctx.beginPath();ctx.ellipse(CX,CY,br,br*0.75,0,0,Math.PI*2);ctx.fillStyle=bG;ctx.fill();
                 ctx.beginPath();ctx.moveTo(CX,CY-br*0.6);ctx.lineTo(CX,CY+br*0.6);
                 ctx.strokeStyle='rgba(40,15,5,0.5)';ctx.lineWidth=1.5;ctx.stroke();ctx.restore();
-                sparkles(ctx,sp); drawLabel(ctx,W,H);
+                sparkles(ctx,sp); drawLabel(ctx,W,H,false,t);
             }
             frame(); return ()=>cancelAnimationFrame(raf);
         },
@@ -2761,12 +2781,12 @@
         // ⑤ 스팀 타이포 (보라빛 신비)
         function(cv){
             const ctx=cv.getContext('2d'),W=cv.width,H=cv.height;
-            const sp=mkSparks(16,W,H,'rgba(200,190,230,0.6)');
+            const sp=mkSparks(12,W,H,'rgba(200,190,230,0.6)');
             const trails=Array.from({length:8},(_,i)=>({x:W*0.2+i*(W*0.6/7),phase:Math.random()*Math.PI*2,spd:0.018+Math.random()*0.01}));
             let t=0,raf;
             const CW=W*0.145,CH=H*0.145,BW=W*0.115,CY=H*0.62;
             function frame(){
-                raf=requestAnimationFrame(frame); t++;
+                raf=requestAnimationFrame(frame); t+=RATE;
                 const bg=ctx.createLinearGradient(0,0,0,H);
                 bg.addColorStop(0,'#080610');bg.addColorStop(1,'#04040C');
                 ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
@@ -2788,12 +2808,14 @@
                     }
                 });
                 sparkles(ctx,sp);
-                ctx.save();ctx.shadowColor='rgba(160,140,220,0.6)';ctx.shadowBlur=14;
+                const fa5=Math.max(0,1-Math.abs(t-75)/12);
+                if(fa5>0.05){const fg5=ctx.createRadialGradient(W/2,H-H*0.1,4,W/2,H-H*0.1,W*0.28);fg5.addColorStop(0,`rgba(200,190,255,${fa5*0.45})`);fg5.addColorStop(1,'transparent');ctx.fillStyle=fg5;ctx.fillRect(0,0,W,H);}
+                ctx.save();ctx.shadowColor=fa5>0.05?`rgba(200,190,255,${fa5*0.8})`:'rgba(160,140,220,0.6)';ctx.shadowBlur=fa5>0.05?18:14;
                 ctx.fillStyle='rgba(200,190,230,0.88)';
                 ctx.font='bold '+Math.round(W*0.055)+'px -apple-system,system-ui,sans-serif';
                 ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('카페행사맵',W/2,H-H*0.1);
                 ctx.font='600 '+Math.round(W*0.032)+'px -apple-system,system-ui,sans-serif';
-                ctx.fillStyle='rgba(160,150,200,0.45)';ctx.fillText('오늘의 카페 행사',W/2,H-H*0.07);ctx.restore();
+                ctx.fillStyle='rgba(160,150,200,0.45)';ctx.fillText('오늘의 행사 찾기',W/2,H-H*0.07);ctx.restore();
             }
             frame(); return ()=>cancelAnimationFrame(raf);
         },
@@ -2801,12 +2823,12 @@
         // ⑥ 아이스 아메리카노 (여름)
         function(cv){
             const ctx=cv.getContext('2d'),W=cv.width,H=cv.height;
-            const sp=mkSparks(20,W,H,'rgba(160,220,255,0.7)');
+            const sp=mkSparks(16,W,H,'rgba(160,220,255,0.7)');
             const ice=Array.from({length:4},(_,i)=>({y:H*0.05+i*H*0.06,spd:2.2+Math.random(),done:false}));
             let t=0,raf;
             const CW=W*0.14,CH=H*0.22,BW=W*0.12,CY=H*0.46;
             function frame(){
-                raf=requestAnimationFrame(frame); t++;
+                raf=requestAnimationFrame(frame); t+=RATE;
                 const bg=ctx.createLinearGradient(0,0,0,H);
                 bg.addColorStop(0,'#04121E');bg.addColorStop(1,'#020E18');
                 ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
@@ -2836,9 +2858,11 @@
                 });
                 if(ice.every(d=>d.done))ice.forEach((d,i)=>{d.y=H*0.05+i*H*0.06;d.done=false;});
                 sparkles(ctx,sp);
-                ctx.save();ctx.fillStyle='rgba(160,220,255,0.85)';ctx.shadowColor='rgba(80,180,240,0.5)';ctx.shadowBlur=10;
+                const fa6=Math.max(0,1-Math.abs(t-75)/12);
+                if(fa6>0.05){const fg6=ctx.createRadialGradient(W/2,H-H*0.1,4,W/2,H-H*0.1,W*0.28);fg6.addColorStop(0,`rgba(160,230,255,${fa6*0.45})`);fg6.addColorStop(1,'transparent');ctx.fillStyle=fg6;ctx.fillRect(0,0,W,H);}
+                ctx.save();ctx.fillStyle='rgba(160,220,255,0.85)';ctx.shadowColor=fa6>0.05?`rgba(160,230,255,${fa6*0.8})`:'rgba(80,180,240,0.5)';ctx.shadowBlur=fa6>0.05?18:10;
                 ctx.font='bold '+Math.round(W*0.055)+'px -apple-system,system-ui,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('카페행사맵',W/2,H-H*0.1);
-                ctx.font='600 '+Math.round(W*0.032)+'px -apple-system,system-ui,sans-serif';ctx.fillStyle='rgba(120,190,230,0.42)';ctx.fillText('오늘의 카페 행사',W/2,H-H*0.07);ctx.restore();
+                ctx.font='600 '+Math.round(W*0.032)+'px -apple-system,system-ui,sans-serif';ctx.fillStyle='rgba(120,190,230,0.42)';ctx.fillText('오늘의 행사 찾기',W/2,H-H*0.07);ctx.restore();
             }
             frame(); return ()=>cancelAnimationFrame(raf);
         },
@@ -2846,12 +2870,12 @@
         // ⑦ 콜드브루 달빛
         function(cv){
             const ctx=cv.getContext('2d'),W=cv.width,H=cv.height;
-            const sp=mkSparks(14,W,H,'rgba(180,220,255,0.6)',H*0.7);
+            const sp=mkSparks(11,W,H,'rgba(180,220,255,0.6)',H*0.7);
             const drops=Array.from({length:5},()=>({y:-10,delay:Math.random()*120}));
             let t=0,raf;
             const CW=W*0.14,CH=H*0.185,BW=W*0.12,CY=H*0.5;
             function frame(){
-                raf=requestAnimationFrame(frame); t++;
+                raf=requestAnimationFrame(frame); t+=RATE;
                 const bg=ctx.createLinearGradient(0,0,0,H);
                 bg.addColorStop(0,'#04080E');bg.addColorStop(1,'#020408');
                 ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
@@ -2874,9 +2898,11 @@
                 ctx.save();ctx.globalAlpha=refA;ctx.strokeStyle='rgba(200,220,255,0.7)';ctx.lineWidth=1;
                 ctx.beginPath();ctx.moveTo(W/2-8,CY-2);ctx.lineTo(W/2+8,CY-2);ctx.stroke();ctx.restore();
                 sparkles(ctx,sp);
-                ctx.save();ctx.fillStyle='rgba(180,210,250,0.85)';ctx.shadowColor='rgba(100,160,240,0.4)';ctx.shadowBlur=10;
+                const fa7=Math.max(0,1-Math.abs(t-75)/12);
+                if(fa7>0.05){const fg7=ctx.createRadialGradient(W/2,H-H*0.1,4,W/2,H-H*0.1,W*0.28);fg7.addColorStop(0,`rgba(180,215,255,${fa7*0.45})`);fg7.addColorStop(1,'transparent');ctx.fillStyle=fg7;ctx.fillRect(0,0,W,H);}
+                ctx.save();ctx.fillStyle='rgba(180,210,250,0.85)';ctx.shadowColor=fa7>0.05?`rgba(180,215,255,${fa7*0.8})`:'rgba(100,160,240,0.4)';ctx.shadowBlur=fa7>0.05?18:10;
                 ctx.font='bold '+Math.round(W*0.055)+'px -apple-system,system-ui,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('카페행사맵',W/2,H-H*0.1);
-                ctx.font='600 '+Math.round(W*0.032)+'px -apple-system,system-ui,sans-serif';ctx.fillStyle='rgba(140,180,230,0.38)';ctx.fillText('오늘의 카페 행사',W/2,H-H*0.07);ctx.restore();
+                ctx.font='600 '+Math.round(W*0.032)+'px -apple-system,system-ui,sans-serif';ctx.fillStyle='rgba(140,180,230,0.38)';ctx.fillText('오늘의 행사 찾기',W/2,H-H*0.07);ctx.restore();
             }
             frame(); return ()=>cancelAnimationFrame(raf);
         },
@@ -2892,7 +2918,7 @@
             let t=0,raf;
             const CW=W*0.145,CH=H*0.165,BW=W*0.12,CY=H*0.5;
             function frame(){
-                raf=requestAnimationFrame(frame); t++;
+                raf=requestAnimationFrame(frame); t+=RATE;
                 const bg=ctx.createLinearGradient(0,0,0,H);
                 bg.addColorStop(0,'#0C0A14');bg.addColorStop(1,'#060410');
                 ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
@@ -2914,9 +2940,11 @@
                     ctx.fillStyle='rgba(255,255,255,0.4)';ctx.beginPath();ctx.ellipse(b.x+wob-b.r*0.25,b.y-b.r*0.25,b.r*0.3,b.r*0.2,0.5,0,Math.PI*2);ctx.fill();
                     ctx.restore();
                 });
-                ctx.save();ctx.fillStyle='rgba(220,200,240,0.85)';ctx.shadowColor='rgba(180,140,240,0.5)';ctx.shadowBlur=10;
+                const fa8=Math.max(0,1-Math.abs(t-75)/12);
+                if(fa8>0.05){const fg8=ctx.createRadialGradient(W/2,H-H*0.1,4,W/2,H-H*0.1,W*0.28);fg8.addColorStop(0,`rgba(220,200,255,${fa8*0.45})`);fg8.addColorStop(1,'transparent');ctx.fillStyle=fg8;ctx.fillRect(0,0,W,H);}
+                ctx.save();ctx.fillStyle='rgba(220,200,240,0.85)';ctx.shadowColor=fa8>0.05?`rgba(220,200,255,${fa8*0.8})`:'rgba(180,140,240,0.5)';ctx.shadowBlur=fa8>0.05?18:10;
                 ctx.font='bold '+Math.round(W*0.055)+'px -apple-system,system-ui,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('카페행사맵',W/2,H-H*0.1);
-                ctx.font='600 '+Math.round(W*0.032)+'px -apple-system,system-ui,sans-serif';ctx.fillStyle='rgba(180,160,220,0.38)';ctx.fillText('오늘의 카페 행사',W/2,H-H*0.07);ctx.restore();
+                ctx.font='600 '+Math.round(W*0.032)+'px -apple-system,system-ui,sans-serif';ctx.fillStyle='rgba(180,160,220,0.38)';ctx.fillText('오늘의 행사 찾기',W/2,H-H*0.07);ctx.restore();
             }
             frame(); return ()=>cancelAnimationFrame(raf);
         },
@@ -2924,11 +2952,11 @@
         // ⑨ 프라푸치노 스월
         function(cv){
             const ctx=cv.getContext('2d'),W=cv.width,H=cv.height;
-            const sp=mkSparks(18,W,H,'rgba(255,180,120,0.7)');
+            const sp=mkSparks(14,W,H,'rgba(255,180,120,0.7)');
             let t=0,raf;
             const CW=W*0.14,CH=H*0.175,BW=W*0.12,CY=H*0.48,CX=W/2;
             function frame(){
-                raf=requestAnimationFrame(frame); t++;
+                raf=requestAnimationFrame(frame); t+=RATE;
                 const bg=ctx.createLinearGradient(0,0,0,H);
                 bg.addColorStop(0,'#1A0808');bg.addColorStop(1,'#0E0610');
                 ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
@@ -2959,9 +2987,11 @@
                     ctx.restore();
                 }
                 sparkles(ctx,sp);
-                ctx.save();ctx.fillStyle='rgba(255,180,140,0.88)';ctx.shadowColor='rgba(220,100,60,0.5)';ctx.shadowBlur=12;
+                const fa9=Math.max(0,1-Math.abs(t-75)/12);
+                if(fa9>0.05){const fg9=ctx.createRadialGradient(W/2,H-H*0.1,4,W/2,H-H*0.1,W*0.28);fg9.addColorStop(0,`rgba(255,200,160,${fa9*0.45})`);fg9.addColorStop(1,'transparent');ctx.fillStyle=fg9;ctx.fillRect(0,0,W,H);}
+                ctx.save();ctx.fillStyle='rgba(255,180,140,0.88)';ctx.shadowColor=fa9>0.05?`rgba(255,200,160,${fa9*0.8})`:'rgba(220,100,60,0.5)';ctx.shadowBlur=fa9>0.05?18:12;
                 ctx.font='bold '+Math.round(W*0.055)+'px -apple-system,system-ui,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('카페행사맵',W/2,H-H*0.1);
-                ctx.font='600 '+Math.round(W*0.032)+'px -apple-system,system-ui,sans-serif';ctx.fillStyle='rgba(220,150,110,0.38)';ctx.fillText('오늘의 카페 행사',W/2,H-H*0.07);ctx.restore();
+                ctx.font='600 '+Math.round(W*0.032)+'px -apple-system,system-ui,sans-serif';ctx.fillStyle='rgba(220,150,110,0.38)';ctx.fillText('오늘의 행사 찾기',W/2,H-H*0.07);ctx.restore();
             }
             frame(); return ()=>cancelAnimationFrame(raf);
         },
@@ -2969,10 +2999,10 @@
         // ⑩ 선셋 카페 실루엣
         function(cv){
             const ctx=cv.getContext('2d'),W=cv.width,H=cv.height;
-            const sp=mkSparks(16,W,H,'rgba(255,200,120,0.6)',H*0.6);
+            const sp=mkSparks(12,W,H,'rgba(255,200,120,0.6)',H*0.6);
             let t=0,raf;
             function frame(){
-                raf=requestAnimationFrame(frame); t++;
+                raf=requestAnimationFrame(frame); t+=RATE;
                 const bg=ctx.createLinearGradient(0,0,0,H);
                 bg.addColorStop(0,'#0E0408');bg.addColorStop(0.4,'#2C0E0A');bg.addColorStop(0.7,'#3A1408');bg.addColorStop(1,'#0E0404');
                 ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
@@ -3005,9 +3035,78 @@
                 lampG.addColorStop(0,'rgba(255,210,120,0.6)');lampG.addColorStop(1,'transparent');
                 ctx.fillStyle=lampG;ctx.fillRect(0,0,W,H);ctx.restore();
                 sparkles(ctx,sp);
-                ctx.save();ctx.fillStyle='rgba(255,190,130,0.88)';ctx.shadowColor='rgba(200,100,40,0.5)';ctx.shadowBlur=12;
+                const faA=Math.max(0,1-Math.abs(t-75)/12);
+                if(faA>0.05){const fgA=ctx.createRadialGradient(W/2,H-H*0.1,4,W/2,H-H*0.1,W*0.28);fgA.addColorStop(0,`rgba(255,210,160,${faA*0.45})`);fgA.addColorStop(1,'transparent');ctx.fillStyle=fgA;ctx.fillRect(0,0,W,H);}
+                ctx.save();ctx.fillStyle='rgba(255,190,130,0.88)';ctx.shadowColor=faA>0.05?`rgba(255,210,160,${faA*0.8})`:'rgba(200,100,40,0.5)';ctx.shadowBlur=faA>0.05?18:12;
                 ctx.font='bold '+Math.round(W*0.055)+'px -apple-system,system-ui,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('카페행사맵',W/2,H-H*0.1);
-                ctx.font='600 '+Math.round(W*0.032)+'px -apple-system,system-ui,sans-serif';ctx.fillStyle='rgba(220,160,100,0.38)';ctx.fillText('오늘의 카페 행사',W/2,H-H*0.07);ctx.restore();
+                ctx.font='600 '+Math.round(W*0.032)+'px -apple-system,system-ui,sans-serif';ctx.fillStyle='rgba(220,160,100,0.38)';ctx.fillText('오늘의 행사 찾기',W/2,H-H*0.07);ctx.restore();
+            }
+            frame(); return ()=>cancelAnimationFrame(raf);
+        }
+
+        ,
+
+        // ⑪ 오늘의 행사 (실시간 카운트)
+        function(cv){
+            const ctx=cv.getContext('2d'),W=cv.width,H=cv.height;
+            const sp=mkSparks(10,W,H,'rgba(255,220,140,0.6)');
+            const total=(typeof MASTER_DB!=='undefined'&&MASTER_DB.length>0)?MASTER_DB.length:127;
+            let t=0,raf;
+            const CW=W*0.13,CH=H*0.155,BW=W*0.105,CY=H*0.48;
+            function frame(){
+                raf=requestAnimationFrame(frame); t+=RATE;
+                const bg=ctx.createLinearGradient(0,0,0,H);
+                bg.addColorStop(0,'#120A02');bg.addColorStop(1,'#080402');
+                ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+                const gl=ctx.createRadialGradient(W/2,H*0.5,8,W/2,H*0.5,H*0.26);
+                gl.addColorStop(0,'rgba(200,130,30,0.18)');gl.addColorStop(1,'transparent');
+                ctx.fillStyle=gl;ctx.fillRect(0,0,W,H);
+                // 컵
+                cup(ctx,W,H,CY,CW,CH,BW,'#0E0702','#7A4C10');
+                // 커피 채우기 (0~90프레임)
+                const fillProg=Math.min(1,Math.max(0,(t-10)/80));
+                if(fillProg>0){
+                    ctx.save();
+                    ctx.beginPath();ctx.moveTo(W/2-CW,CY);ctx.lineTo(W/2-BW,CY+CH);ctx.lineTo(W/2+BW,CY+CH);ctx.lineTo(W/2+CW,CY);ctx.closePath();ctx.clip();
+                    const fillTop=CY+CH-(fillProg*(CH-4));
+                    const coffeeG=ctx.createLinearGradient(0,fillTop,0,CY+CH);
+                    coffeeG.addColorStop(0,'rgba(160,80,15,0.9)');coffeeG.addColorStop(1,'rgba(60,25,5,0.95)');
+                    ctx.fillStyle=coffeeG;ctx.fillRect(W/2-CW,fillTop,CW*2,CY+CH-fillTop);
+                    // 크레마
+                    if(fillProg>0.6){
+                        const cA=Math.min(1,(fillProg-0.6)/0.4);
+                        const cG=ctx.createRadialGradient(W/2-W*0.02,fillTop,2,W/2,fillTop,CW);
+                        cG.addColorStop(0,`rgba(210,140,30,${cA})`);cG.addColorStop(1,`rgba(140,70,10,${cA*0.7})`);
+                        ctx.fillStyle=cG;ctx.fillRect(W/2-CW,fillTop,CW*2,8);
+                    }
+                    ctx.restore();
+                }
+                cupRim(ctx,W,CY,CW,'#140A02','#7A4C10');
+                // 스팀 (채운 후)
+                if(t>60){[W/2-W*0.035,W/2,W/2+W*0.035].forEach((x,i)=>{
+                    const ph=((t*0.025)+i*0.5)%1,sy=CY-8-ph*H*0.1;
+                    ctx.save();ctx.globalAlpha=Math.sin(ph*Math.PI)*0.4;
+                    ctx.strokeStyle='rgba(240,215,185,0.7)';ctx.lineWidth=1.5;ctx.lineCap='round';
+                    ctx.beginPath();ctx.moveTo(x+Math.sin(ph*5+i)*5,sy+16);ctx.lineTo(x,sy);ctx.stroke();ctx.restore();
+                });}
+                // 카운트 숫자
+                const countProg=Math.min(1,Math.max(0,(t-50)/60));
+                if(countProg>0){
+                    const displayed=Math.round(countProg*total);
+                    const numA=Math.min(1,countProg*3);
+                    ctx.save();
+                    ctx.shadowColor='rgba(220,160,40,0.6)';ctx.shadowBlur=16;
+                    ctx.fillStyle=`rgba(240,210,140,${numA})`;
+                    ctx.font='bold '+Math.round(W*0.12)+'px -apple-system,system-ui,sans-serif';
+                    ctx.textAlign='center';ctx.textBaseline='middle';
+                    ctx.fillText(displayed.toLocaleString(),W/2,H*0.26);
+                    ctx.font='500 '+Math.round(W*0.028)+'px -apple-system,system-ui,sans-serif';
+                    ctx.fillStyle=`rgba(220,180,100,${numA*0.75})`;
+                    ctx.fillText('개의 행사가 준비됐어요',W/2,H*0.33);
+                    ctx.restore();
+                }
+                sparkles(ctx,sp);
+                drawLabel(ctx,W,H,false,t);
             }
             frame(); return ()=>cancelAnimationFrame(raf);
         }
