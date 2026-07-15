@@ -10,9 +10,21 @@ const AD_CONFIG = {
 };
 
 // ── 전면광고 전략 ───────────────────────────────────────────────────
-// 1. 길찾기 실행 전  → 100%
-// 2. 브랜드 변경 시  → 25%, 횟수 제한 없음
+// 1. 길찾기 실행 전  → 100% (빈도 제한 예외)
+// 2. 브랜드 변경 시  → 25%
 // 3. 매장 클릭 4회 / 지도 브랜드 필터 3회마다 → 100% (1_1.html에서 호출)
+//
+// 위 트리거가 겹치면 매장 몇 개 보는 사이에 광고가 연달아 떠서 이탈로 이어진다.
+// 그래서 실제 노출은 아래 두 조건을 모두 만족할 때만 한다.
+//   - 세션(앱 실행)당 최대 AD_SESSION_LIMIT회
+//   - 직전 노출이 닫힌 뒤 AD_MIN_INTERVAL_MS 이상 경과
+// 길찾기는 사용자가 앱을 떠나는 시점이라 예외로 항상 노출하지만,
+// 노출되면 카운트/타이머는 똑같이 갱신해서 뒤따르는 다른 트리거를 눌러준다.
+const AD_SESSION_LIMIT = 3;
+const AD_MIN_INTERVAL_MS = 60 * 1000;
+
+let adShownCount = 0;
+let lastAdAt = 0;
 
 let interstitialReady = false;
 let rewardAdReady = false;
@@ -98,11 +110,30 @@ function runFullScreenAd({ adGroupId, onEvent, onDone }) {
   return true;
 }
 
-function showInterstitial(onAfter) {
-  if (!interstitialReady) { if (onAfter) onAfter(); return; }
+// 세션 상한과 최소 간격을 모두 통과해야 노출한다.
+function canShowInterstitial() {
+  if (adShownCount >= AD_SESSION_LIMIT) return false;
+  if (Date.now() - lastAdAt < AD_MIN_INTERVAL_MS) return false;
+  return true;
+}
+
+// options.force = true면 빈도 제한을 건너뛴다(길찾기 전용).
+// 광고를 띄우지 않기로 했더라도 onAfter는 반드시 실행한다 — 안 그러면 화면이 멈춘다.
+function showInterstitial(onAfter, options) {
+  const force = !!(options && options.force);
+  if (!interstitialReady || (!force && !canShowInterstitial())) {
+    if (onAfter) onAfter();
+    return;
+  }
+  // 실제로 화면에 뜬 광고만 카운트한다(로드 실패·타임아웃은 제외).
+  let shown = false;
   runFullScreenAd({
     adGroupId: AD_CONFIG.interstitial,
+    onEvent: (event) => {
+      if (event.type === 'show' || event.type === 'impression') shown = true;
+    },
     onDone: () => {
+      if (shown) { adShownCount++; lastAdAt = Date.now(); }
       interstitialReady = false;
       loadInterstitial();
       if (onAfter) onAfter();
@@ -114,12 +145,17 @@ function showInterstitial(onAfter) {
 function requestRewardAd(onEarned, onDismiss) {
   if (!rewardAdReady) return false;
   let earned = false;
+  let shown = false;
   return runFullScreenAd({
     adGroupId: AD_CONFIG.rewarded,
     onEvent: (event) => {
+      if (event.type === 'show' || event.type === 'impression') shown = true;
       if (event.type === 'userEarnedReward') { earned = true; onEarned(); }
     },
     onDone: () => {
+      // 리워드는 사용자가 자청한 광고라 세션 상한에는 넣지 않는다.
+      // 다만 리워드 직후 전면광고가 바로 뜨면 최악이라 최소 간격은 공유한다.
+      if (shown) lastAdAt = Date.now();
       rewardAdReady = false;
       loadRewardAd();
       // 보상을 받았으면 onDismiss(실패 안내)를 부르지 않는다
@@ -132,8 +168,9 @@ function requestRewardAd(onEarned, onDismiss) {
 window.showInterstitial = showInterstitial;
 
 // ── 전면광고 트리거 1: 길찾기 ──────────────────────────────────────
+// 앱을 떠나는 시점이라 광고 가치가 가장 높아 빈도 제한 예외로 둔다.
 window.onNavigateToMap = function onNavigateToMap(url) {
-  showInterstitial(() => { location.href = url; });
+  showInterstitial(() => { location.href = url; }, { force: true });
 };
 
 // ── 전면광고 트리거 2: 브랜드 변경 ────────────────────────────────
