@@ -21,7 +21,7 @@ const AD_CONFIG = {
 // 길찾기는 사용자가 앱을 떠나는 시점이라 예외로 항상 노출하지만,
 // 노출되면 카운트/타이머는 똑같이 갱신해서 뒤따르는 다른 트리거를 눌러준다.
 const AD_SESSION_LIMIT = 3;
-const AD_MIN_INTERVAL_MS = 60 * 1000;
+const AD_MIN_INTERVAL_MS = 30 * 1000;
 
 let adShownCount = 0;
 let lastAdAt = 0;
