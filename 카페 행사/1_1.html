@@ -465,6 +465,21 @@
                             <button id="notifPermBtn" onclick="requestNotificationPermission()" class="hidden w-full text-xs font-bold py-2 rounded-lg bg-blue-600 text-white active:scale-95 transition">알림 권한 허용하기</button>
                         </div>
                     </div>
+                    <!-- 지도 표시 -->
+                    <div>
+                        <p class="text-sm font-bold text-gray-800 mb-2"><i class="fa-solid fa-map-pin text-rose-500 mr-1"></i> 지도 표시</p>
+                        <div class="bg-gray-50 rounded-xl p-3.5">
+                            <div class="flex items-center justify-between">
+                                <div class="pr-3">
+                                    <p class="text-xs font-bold text-gray-700">개인 카페도 표시</p>
+                                    <p class="text-[10px] text-gray-400">브랜드가 아닌 동네 카페까지 지도에 보여줍니다. 진행 중인 행사 정보는 없어요.</p>
+                                </div>
+                                <button id="nonBrandToggle" onclick="toggleNonBrandCafes()" class="w-10 h-6 rounded-full bg-gray-200 relative transition-colors shrink-0">
+                                    <span class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform" id="nonBrandKnob"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                     <!-- 자주 가는 요일 -->
                     <div>
                         <p class="text-sm font-bold text-gray-800 mb-2"><i class="fa-solid fa-calendar-days text-indigo-500 mr-1"></i> 자주 가는 요일</p>
@@ -714,6 +729,10 @@
         let STORE_INDEX = [], loadedProvinceFile = null;
         const KAKAO_KEY = '9a1ce67fe335c12624936af6615f2a79';
         let kakaoStoresCache = [], kakaoFetchLat = null, kakaoFetchLng = null;
+        // 카카오에서 받아온 카페 중 27개 브랜드로 인식되지 않은 개인 카페(회색 "카페" 마커).
+        // MASTER_DB에 브랜드 이벤트가 없어 행사가 항상 0건이라, 이 앱의 목적상 기본은 숨김.
+        // 주변 카페 위치 자체를 보고 싶은 사용자를 위해 설정에서 켤 수 있게 한다.
+        let showNonBrandCafes = false;
 
         function detectBrandFromName(name) {
             const checks = [
@@ -923,6 +942,7 @@
                 if(savedLikes) likedItems = new Set(JSON.parse(savedLikes));
                 const savedRecently = localStorage.getItem('cvs_recentlyViewed');
                 if(savedRecently) recentlyViewed = JSON.parse(savedRecently);
+                showNonBrandCafes = localStorage.getItem('cvs_showNonBrandCafes') === '1';
 
                 document.getElementById('totalSaved').textContent = totalSavings.toLocaleString();
                 updateBadgeUI();
@@ -1067,10 +1087,12 @@
             sourceDB.forEach(store => {
                 if (mapBrandFilter && store.brand !== mapBrandFilter) return;
                 if (!storePassesAmenityFilter(store)) return;
+                const hasBrand = !!BRAND_INFO[store.brand];
+                // 행사가 없는 개인 카페는 기본 숨김(설정에서 켤 수 있음)
+                if (!hasBrand && !showNonBrandCafes) return;
                 const dist = map.distance(center, [store.lat, store.lng]);
                 if (dist > currentRadius) return;
                 storeMarkersData.push(store);
-                const hasBrand = !!BRAND_INFO[store.brand];
                 const iconHtml = hasBrand
                     ? `<div class="custom-marker" style="width:40px;height:40px;font-size:11px;z-index:20;${brandChipStyle(store.brand)}">${brandLabel(store.brand)}</div>`
                     : `<div class="custom-marker" style="width:36px;height:36px;font-size:10px;z-index:10;background:#6b7280;color:#fff;border:2px solid #fff;box-shadow:0 2px 5px rgba(0,0,0,0.3)">카페</div>`;
@@ -1126,6 +1148,25 @@
 
         function applyStartupSettings() {
             highlightRadiusButton(currentRadius);
+            renderNonBrandToggle();
+        }
+
+        // 개인 카페 표시 토글(설정)
+        function renderNonBrandToggle() {
+            const toggle = document.getElementById('nonBrandToggle');
+            const knob = document.getElementById('nonBrandKnob');
+            if (!toggle || !knob) return;
+            toggle.classList.toggle('bg-blue-500', showNonBrandCafes);
+            toggle.classList.toggle('bg-gray-200', !showNonBrandCafes);
+            knob.style.transform = showNonBrandCafes ? 'translateX(16px)' : 'translateX(0)';
+        }
+
+        function toggleNonBrandCafes() {
+            showNonBrandCafes = !showNonBrandCafes;
+            localStorage.setItem('cvs_showNonBrandCafes', showNonBrandCafes ? '1' : '0');
+            renderNonBrandToggle();
+            if (map) loadStoresInRadius();
+            showToast(showNonBrandCafes ? '개인 카페를 지도에 표시합니다' : '행사가 있는 브랜드 매장만 표시합니다');
         }
 
         function closeSettings() {
