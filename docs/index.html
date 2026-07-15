@@ -91,8 +91,12 @@
         }
         .tab-modal.active .tab-modal-content { transform: translateY(0); }
 
-        /* 스플래시 오버레이 */
+        /* 스플래시 오버레이.
+           기본은 숨김이 반드시 맞다. 앱 전체를 덮는 요소라서, 스크립트가 못 돌면
+           (재실행이라 스플래시를 건너뛰거나 JS가 죽는 경우) 투명한 벽이 남아
+           모든 터치를 삼켜 화면이 먹통이 된다. 최초 실행에서만 스크립트가 켠다. */
         #splash-overlay {
+            display: none;
             position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             z-index: 99999; pointer-events: all;
             transition: opacity 0.85s ease;
@@ -2546,16 +2550,37 @@
             return idx;
         }
 
+        // 오버레이를 반드시 걷어내고 온보딩으로 넘긴다. 어떤 경로로든 한 번만 실행된다.
+        // 여기가 안 불리면 투명한 벽이 남아 화면이 먹통이 되므로 실패해도 무조건 통과시킨다.
+        let finished = false;
+        function finish(stop) {
+            if (finished) return;
+            finished = true;
+            overlay.style.display = 'none';
+            localStorage.setItem(SPLASH_KEY, '1');
+            try { if (stop) stop(); } catch (e) { /* noop */ }
+            if (typeof maybeShowOnboarding === 'function') maybeShowOnboarding();
+        }
+
         function init() {
             const container = document.getElementById('app-container');
             cv.width  = container.offsetWidth  || window.innerWidth;
             cv.height = container.offsetHeight || window.innerHeight;
-            const idx  = pickVariant(SPLASH_VARIANTS.length);
-            const stop = SPLASH_VARIANTS[idx](cv);
+
+            let stop = null;
+            try {
+                overlay.style.display = 'block';
+                const idx = pickVariant(SPLASH_VARIANTS.length);
+                stop = SPLASH_VARIANTS[idx](cv);
+            } catch (e) {
+                // 애니메이션이 깨져도 앱은 살아 있어야 한다
+                finish(null);
+                return;
+            }
+
             setTimeout(() => {
                 overlay.classList.add('fade-out');
-                setTimeout(() => { overlay.style.display='none'; stop && stop(); if(typeof maybeShowOnboarding==='function') maybeShowOnboarding(); }, 900);
-                localStorage.setItem(SPLASH_KEY, '1');
+                setTimeout(() => finish(stop), 900);
             }, 3000);
         }
 
