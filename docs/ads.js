@@ -1886,6 +1886,7 @@ var require_ads = __commonJS({
     };
     var interstitialReady = false;
     var rewardAdReady = false;
+    var adShowing = false;
     var AD_BRAND_PROBABILITY = 0.25;
     function todayStr() {
       return (/* @__PURE__ */ new Date()).toISOString().slice(0, 10);
@@ -1918,54 +1919,88 @@ var require_ads = __commonJS({
         }
       });
     }
+    function runFullScreenAd({ adGroupId, onEvent, onDone }) {
+      if (adShowing) {
+        onDone();
+        return false;
+      }
+      adShowing = true;
+      let settled = false;
+      let appeared = false;
+      let unsubscribe = null;
+      let appearTimer = null;
+      const onVisible = () => {
+        if (appeared && document.visibilityState === "visible") settle();
+      };
+      function settle() {
+        if (settled) return;
+        settled = true;
+        adShowing = false;
+        clearTimeout(appearTimer);
+        document.removeEventListener("visibilitychange", onVisible);
+        try {
+          if (unsubscribe) unsubscribe();
+        } catch (e) {
+        }
+        onDone();
+      }
+      document.addEventListener("visibilitychange", onVisible);
+      appearTimer = setTimeout(() => {
+        if (!appeared) settle();
+      }, 4e3);
+      try {
+        unsubscribe = showFullScreenAd({
+          options: { adGroupId },
+          onEvent: (event) => {
+            if (event.type === "show" || event.type === "impression") appeared = true;
+            if (onEvent) onEvent(event);
+            if (event.type === "dismissed" || event.type === "failedToShow") settle();
+          },
+          onError: () => settle()
+        });
+      } catch (e) {
+        settle();
+      }
+      return true;
+    }
     function showInterstitial(onAfter) {
       if (!interstitialReady) {
         if (onAfter) onAfter();
         return;
       }
-      showFullScreenAd({
-        options: { adGroupId: AD_CONFIG.interstitial },
-        onEvent: (event) => {
-          if (event.type === "dismissed" || event.type === "failedToShow") {
-            interstitialReady = false;
-            loadInterstitial();
-            if (onAfter) onAfter();
-          }
-        },
-        onError: () => {
+      runFullScreenAd({
+        adGroupId: AD_CONFIG.interstitial,
+        onDone: () => {
+          interstitialReady = false;
+          loadInterstitial();
           if (onAfter) onAfter();
         }
       });
     }
     function requestRewardAd(onEarned, onDismiss) {
       if (!rewardAdReady) return false;
-      showFullScreenAd({
-        options: { adGroupId: AD_CONFIG.rewarded },
+      let earned = false;
+      return runFullScreenAd({
+        adGroupId: AD_CONFIG.rewarded,
         onEvent: (event) => {
-          if (event.type === "userEarnedReward") onEarned();
-          if (event.type === "dismissed" || event.type === "failedToShow") {
-            rewardAdReady = false;
-            loadRewardAd();
-            if (onDismiss) onDismiss();
+          if (event.type === "userEarnedReward") {
+            earned = true;
+            onEarned();
           }
         },
-        onError: () => {
-          if (onDismiss) onDismiss();
+        onDone: () => {
+          rewardAdReady = false;
+          loadRewardAd();
+          if (!earned && onDismiss) onDismiss();
         }
       });
-      return true;
     }
+    window.showInterstitial = showInterstitial;
     window.onNavigateToMap = function onNavigateToMap(url) {
       showInterstitial(() => {
         location.href = url;
       });
     };
-    var exitAdShown = false;
-    window.addEventListener("pagehide", () => {
-      if (exitAdShown) return;
-      exitAdShown = true;
-      showInterstitial(null);
-    });
     window.onBrandChanged = function onBrandChanged() {
       if (Math.random() >= AD_BRAND_PROBABILITY) return;
       showInterstitial(null);
