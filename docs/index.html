@@ -787,10 +787,12 @@
         document.addEventListener('DOMContentLoaded', () => {
             loadSavedData();
 
+            // 지도 초기화·위치 획득·타일 로딩을 fetch와 병렬로 즉시 시작
+            requestAnimationFrame(() => initMap());
+
             // deals.json: 카페 행사 데이터(현재는 샘플, 실제 프로모션 API 없음).
             // stores/index.json: 전국 시/도별로 쪼갠 매장 좌표 색인(소상공인시장진흥공단 상가정보 API 실데이터).
             // brands.json: 데이터에 존재하는 브랜드 + 색상/링크(마커·라벨용).
-            // 실제 매장 데이터는 사용자 위치에서 가장 가까운 시/도 파일만 불러온다(전국 통합 파일은 너무 큼).
             Promise.all([
                 fetch(DATA_BASE_URL + 'deals.json?v=' + (new Date().toISOString().slice(0,10).replace(/-/g,'')) + '_4', {cache:'no-store'}).then(res => res.ok ? res.json() : null).catch(() => null),
                 fetch(DATA_BASE_URL + 'stores/전국.json').then(res => res.ok ? res.json() : null).catch(() => null),
@@ -805,6 +807,8 @@
                     REAL_STORES = stores;
                     buildStoresFromRealData();
                     console.log(`전국 매장 ${stores.length}개 로드 완료`);
+                    // initMap이 먼저 완료돼 geolocation이 이미 응답했을 수 있으므로 마커 재갱신
+                    if (map) loadStoresInRadius();
                 } else {
                     console.log("stores/전국.json 없음 - 가상 매장 사용");
                 }
@@ -818,8 +822,7 @@
             updateDashboardCounts();
             // 날씨: 서울 기본 좌표로 즉시 표시, 실제 위치 확정 후 덮어씀
             fetchWeather(37.5665, 126.978);
-            // requestAnimationFrame으로 DOM 페인트 완료 후 지도 초기화
-            requestAnimationFrame(() => initMap());
+            // initMap은 DOMContentLoaded에서 fetch와 병렬로 이미 호출됨
             applyStartupSettings();
             renderCategories();
             renderMapFilterBar();
@@ -2547,7 +2550,7 @@
                 overlay.classList.add('fade-out');
                 setTimeout(() => { overlay.style.display='none'; stop && stop(); if(typeof maybeShowOnboarding==='function') maybeShowOnboarding(); }, 900);
                 localStorage.setItem(SPLASH_KEY, '1');
-            }, 3600);
+            }, 3000);
         }
 
         // ── 공통 헬퍼 ──────────────────────────────────────────────────
