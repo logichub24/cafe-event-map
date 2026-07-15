@@ -1885,7 +1885,7 @@ var require_ads = __commonJS({
       rewarded: "ait.v2.live.a1d0d9ff00454a96"
     };
     var AD_SESSION_LIMIT = 3;
-    var AD_MIN_INTERVAL_MS = 60 * 1e3;
+    var AD_MIN_INTERVAL_MS = 30 * 1e3;
     var adShownCount = 0;
     var lastAdAt = 0;
     var interstitialReady = false;
