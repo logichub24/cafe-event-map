@@ -838,16 +838,12 @@
 
         function maybeShowOnboarding() {
             if (localStorage.getItem('cvs_onboarded')) return;
-            const modal = document.getElementById('onboardingModal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
+            document.getElementById('onboardingModal').style.display = 'flex';
         }
 
         function closeOnboarding() {
             localStorage.setItem('cvs_onboarded', '1');
-            const modal = document.getElementById('onboardingModal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
+            document.getElementById('onboardingModal').style.display = 'none';
         }
 
         // 위경도 기준으로 가장 가까운 시/도의 매장 파일을 골라 불러온다. 이미 로드된 지역이면 아무것도 안 함.
