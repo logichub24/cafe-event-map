@@ -827,7 +827,9 @@
             document.getElementById('map').addEventListener('mousedown', closeSheet);
             document.getElementById('map').addEventListener('touchstart', closeSheet);
             window.addEventListener('resize', () => { if(map) map.invalidateSize(); });
-            maybeShowOnboarding();
+            // 최초 실행이면 스플래시 종료 후 온보딩을 표시 (스플래시 IIFE가 처리)
+            // 재방문이면 여기서 즉시 표시
+            if (localStorage.getItem('splashV1')) maybeShowOnboarding();
             initRetentionFeatures();
         }
 
@@ -2543,7 +2545,7 @@
             const stop = SPLASH_VARIANTS[idx](cv);
             setTimeout(() => {
                 overlay.classList.add('fade-out');
-                setTimeout(() => { overlay.style.display='none'; stop && stop(); }, 900);
+                setTimeout(() => { overlay.style.display='none'; stop && stop(); if(typeof maybeShowOnboarding==='function') maybeShowOnboarding(); }, 900);
                 localStorage.setItem(SPLASH_KEY, '1');
             }, 3600);
         }
