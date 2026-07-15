@@ -11,11 +11,14 @@ const AD_CONFIG = {
 
 // ── 전면광고 전략 ───────────────────────────────────────────────────
 // 1. 길찾기 실행 전  → 100%
-// 2. 앱 종료(pagehide) → 100% (WebView 구조상 실제 발동 불확실)
-// 3. 브랜드 변경 시  → 25%, 횟수 제한 없음
+// 2. 브랜드 변경 시  → 25%, 횟수 제한 없음
+// 3. 매장 클릭 4회 / 지도 브랜드 필터 3회마다 → 100% (1_1.html에서 호출)
 
 let interstitialReady = false;
 let rewardAdReady = false;
+// 전면·리워드 광고가 동시에 요청되면 native 쪽 이벤트가 꼬여 dismissed가 유실된다.
+// 유실되면 onAfter가 영영 안 불려서 광고만 닫히고 화면이 멈춘 것처럼 보인다.
+let adShowing = false;
 
 const AD_BRAND_PROBABILITY = 0.25;
 
@@ -47,53 +50,93 @@ function loadRewardAd() {
   });
 }
 
+// 전면·리워드 광고 공통 표시기.
+// onDone은 어떤 경로로 끝나든 반드시 정확히 한 번만 호출된다. 이게 깨지면 화면이 멈춘다.
+// - dismissed/failedToShow: 정상 종료
+// - onError/예외: 즉시 종료
+// - 광고가 뜨지 않음: 4초 후 종료
+// - 광고는 떴는데 dismissed가 유실됨: WebView가 다시 보이면 닫힌 것으로 간주
+function runFullScreenAd({ adGroupId, onEvent, onDone }) {
+  if (adShowing) { onDone(); return false; }
+  adShowing = true;
+
+  let settled = false;
+  let appeared = false;
+  let unsubscribe = null;
+  let appearTimer = null;
+
+  const onVisible = () => {
+    if (appeared && document.visibilityState === 'visible') settle();
+  };
+
+  function settle() {
+    if (settled) return;
+    settled = true;
+    adShowing = false;
+    clearTimeout(appearTimer);
+    document.removeEventListener('visibilitychange', onVisible);
+    try { if (unsubscribe) unsubscribe(); } catch (e) { /* noop */ }
+    onDone();
+  }
+
+  document.addEventListener('visibilitychange', onVisible);
+  appearTimer = setTimeout(() => { if (!appeared) settle(); }, 4000);
+
+  try {
+    unsubscribe = showFullScreenAd({
+      options: { adGroupId },
+      onEvent: (event) => {
+        if (event.type === 'show' || event.type === 'impression') appeared = true;
+        if (onEvent) onEvent(event);
+        if (event.type === 'dismissed' || event.type === 'failedToShow') settle();
+      },
+      onError: () => settle(),
+    });
+  } catch (e) {
+    settle();
+  }
+  return true;
+}
+
 function showInterstitial(onAfter) {
   if (!interstitialReady) { if (onAfter) onAfter(); return; }
-  showFullScreenAd({
-    options: { adGroupId: AD_CONFIG.interstitial },
-    onEvent: (event) => {
-      if (event.type === 'dismissed' || event.type === 'failedToShow') {
-        interstitialReady = false;
-        loadInterstitial();
-        if (onAfter) onAfter();
-      }
+  runFullScreenAd({
+    adGroupId: AD_CONFIG.interstitial,
+    onDone: () => {
+      interstitialReady = false;
+      loadInterstitial();
+      if (onAfter) onAfter();
     },
-    onError: () => { if (onAfter) onAfter(); },
   });
 }
 
 // 리워드 광고 공통. onEarned = 끝까지 시청 시 콜백. 광고 없으면 false 반환.
 function requestRewardAd(onEarned, onDismiss) {
   if (!rewardAdReady) return false;
-  showFullScreenAd({
-    options: { adGroupId: AD_CONFIG.rewarded },
+  let earned = false;
+  return runFullScreenAd({
+    adGroupId: AD_CONFIG.rewarded,
     onEvent: (event) => {
-      if (event.type === 'userEarnedReward') onEarned();
-      if (event.type === 'dismissed' || event.type === 'failedToShow') {
-        rewardAdReady = false;
-        loadRewardAd();
-        if (onDismiss) onDismiss();
-      }
+      if (event.type === 'userEarnedReward') { earned = true; onEarned(); }
     },
-    onError: () => { if (onDismiss) onDismiss(); },
+    onDone: () => {
+      rewardAdReady = false;
+      loadRewardAd();
+      // 보상을 받았으면 onDismiss(실패 안내)를 부르지 않는다
+      if (!earned && onDismiss) onDismiss();
+    },
   });
-  return true;
 }
+
+// 인라인 스크립트(매장 클릭 4회, 지도 브랜드 필터 3회)에서 호출할 수 있게 전역 노출
+window.showInterstitial = showInterstitial;
 
 // ── 전면광고 트리거 1: 길찾기 ──────────────────────────────────────
 window.onNavigateToMap = function onNavigateToMap(url) {
   showInterstitial(() => { location.href = url; });
 };
 
-// ── 전면광고 트리거 2: 앱 종료 ─────────────────────────────────────
-let exitAdShown = false;
-window.addEventListener('pagehide', () => {
-  if (exitAdShown) return;
-  exitAdShown = true;
-  showInterstitial(null);
-});
-
-// ── 전면광고 트리거 3: 브랜드 변경 ────────────────────────────────
+// ── 전면광고 트리거 2: 브랜드 변경 ────────────────────────────────
 window.onBrandChanged = function onBrandChanged() {
   if (Math.random() >= AD_BRAND_PROBABILITY) return;
   showInterstitial(null);
