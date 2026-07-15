@@ -1884,6 +1884,10 @@ var require_ads = __commonJS({
       interstitial: "ait.v2.live.de853f34f3674829",
       rewarded: "ait.v2.live.a1d0d9ff00454a96"
     };
+    var AD_SESSION_LIMIT = 3;
+    var AD_MIN_INTERVAL_MS = 60 * 1e3;
+    var adShownCount = 0;
+    var lastAdAt = 0;
     var interstitialReady = false;
     var rewardAdReady = false;
     var adShowing = false;
@@ -1963,14 +1967,28 @@ var require_ads = __commonJS({
       }
       return true;
     }
-    function showInterstitial(onAfter) {
-      if (!interstitialReady) {
+    function canShowInterstitial() {
+      if (adShownCount >= AD_SESSION_LIMIT) return false;
+      if (Date.now() - lastAdAt < AD_MIN_INTERVAL_MS) return false;
+      return true;
+    }
+    function showInterstitial(onAfter, options) {
+      const force = !!(options && options.force);
+      if (!interstitialReady || !force && !canShowInterstitial()) {
         if (onAfter) onAfter();
         return;
       }
+      let shown = false;
       runFullScreenAd({
         adGroupId: AD_CONFIG.interstitial,
+        onEvent: (event) => {
+          if (event.type === "show" || event.type === "impression") shown = true;
+        },
         onDone: () => {
+          if (shown) {
+            adShownCount++;
+            lastAdAt = Date.now();
+          }
           interstitialReady = false;
           loadInterstitial();
           if (onAfter) onAfter();
@@ -1980,15 +1998,18 @@ var require_ads = __commonJS({
     function requestRewardAd(onEarned, onDismiss) {
       if (!rewardAdReady) return false;
       let earned = false;
+      let shown = false;
       return runFullScreenAd({
         adGroupId: AD_CONFIG.rewarded,
         onEvent: (event) => {
+          if (event.type === "show" || event.type === "impression") shown = true;
           if (event.type === "userEarnedReward") {
             earned = true;
             onEarned();
           }
         },
         onDone: () => {
+          if (shown) lastAdAt = Date.now();
           rewardAdReady = false;
           loadRewardAd();
           if (!earned && onDismiss) onDismiss();
@@ -1999,7 +2020,7 @@ var require_ads = __commonJS({
     window.onNavigateToMap = function onNavigateToMap(url) {
       showInterstitial(() => {
         location.href = url;
-      });
+      }, { force: true });
     };
     window.onBrandChanged = function onBrandChanged() {
       if (Math.random() >= AD_BRAND_PROBABILITY) return;
