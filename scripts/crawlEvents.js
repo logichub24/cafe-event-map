@@ -340,20 +340,32 @@ async function run() {
     await sleep(400);
   }
 
-  // 기존 deals.json의 샘플 행사 중 크롤링 안 된 브랜드 것은 유지
-  const crawledBrands = new Set(crawlers.map(c => c.brand));
   let existing = [];
   try { existing = JSON.parse(fs.readFileSync(DEALS_FILE, 'utf-8')); } catch (e) {}
+
+  // 안전장치 1: 모든 크롤러가 0건이면(전체 사이트 다운/네트워크 장애) 덮어쓰지 않는다.
+  // 무인 일일 작업이 기존 데이터를 통째로 날리는 최악의 경우를 막는다.
+  if (allDeals.length === 0) {
+    console.error('\n[중단] 크롤 결과가 0건입니다. 기존 deals.json을 유지하고 종료합니다.');
+    process.exit(1);
+  }
+
+  // 안전장치 2: 이번 실행에서 실제로 데이터를 받아온 브랜드만 교체한다.
+  // 크롤러가 0건을 반환한 브랜드(사이트 개편 등으로 파싱 실패)는 기존 데이터를 유지해서,
+  // 특정 브랜드 크롤러 하나가 깨져도 그 브랜드가 앱에서 사라지지 않게 한다.
+  const brandsWithFreshData = new Set(allDeals.map(d => Object.keys(d.events || {})[0]));
   const kept = existing.filter(d => {
     const brand = Object.keys(d.events || {})[0];
-    return !crawledBrands.has(brand);
+    return !brandsWithFreshData.has(brand);
   });
 
   const final = [...allDeals, ...kept];
   fs.writeFileSync(DEALS_FILE, JSON.stringify(final, null, 2), 'utf-8');
 
-  console.log(`\n크롤링 브랜드 ${crawledBrands.size}개: ${allDeals.length}건`);
-  console.log(`기존 샘플(미크롤링 브랜드) 유지: ${kept.length}건`);
+  const staleCrawled = crawlers.map(c => c.brand).filter(b => !brandsWithFreshData.has(b));
+  console.log(`\n신규 수집 브랜드 ${brandsWithFreshData.size}개: ${allDeals.length}건`);
+  if (staleCrawled.length) console.log(`크롤 실패로 기존 데이터 유지: ${staleCrawled.join(', ')}`);
+  console.log(`기존 유지(미크롤링+실패): ${kept.length}건`);
   console.log(`deals.json 총 ${final.length}건 저장 완료.`);
 
   // 브랜드별 집계

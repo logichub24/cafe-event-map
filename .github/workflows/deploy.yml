@@ -3,10 +3,18 @@ name: Build & Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  schedule:
+    # 매일 KST 03:00 (UTC 18:00) 행사 데이터 자동 동기화
+    - cron: '0 18 * * *'
   workflow_dispatch:
 
 permissions:
   contents: write
+
+# 스케줄과 푸시가 겹쳐 실행돼도 마지막 하나만 반영되도록 직렬화
+concurrency:
+  group: deploy-pages
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -21,6 +29,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Refresh event data (crawl)
+        # 크롤이 전부 실패(exit 1)해도 기존 deals.json으로 빌드·배포는 계속한다.
+        # crawlEvents.js 자체 안전장치: 0건 브랜드는 기존 데이터를 유지한다.
+        continue-on-error: true
+        run: node scripts/crawlEvents.js
+
       - name: Build
         run: node scripts/build-toss.js
 
@@ -30,10 +44,15 @@ jobs:
           cp -r dist docs
           touch docs/.nojekyll
 
-      - name: Commit & push docs/
+      - name: Commit & push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/
-          git diff --cached --quiet || git commit -m "deploy: $(date +'%Y-%m-%d %H:%M KST')"
-          git push
+          git add docs/ "카페 행사/deals.json"
+          if git diff --cached --quiet; then
+            echo "변경 없음 - 커밋 건너뜀"
+          else
+            git commit -m "deploy: $(TZ='Asia/Seoul' date +'%Y-%m-%d %H:%M KST')"
+            git pull --rebase origin main
+            git push
+          fi
