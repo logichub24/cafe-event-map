@@ -1617,7 +1617,7 @@
       "할리스": {
         "type": "이벤트",
         "isNew": false,
-        "daysLeft": 3,
+        "daysLeft": 2,
         "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202607161027412570.png",
         "startDate": "2026-07-20",
         "endDate": "2026-07-22"
@@ -1642,7 +1642,7 @@
       "할리스": {
         "type": "신메뉴",
         "isNew": true,
-        "daysLeft": 72,
+        "daysLeft": 71,
         "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202607090530173650.png",
         "startDate": "2026-07-15",
         "endDate": "2026-09-29"
@@ -1667,7 +1667,7 @@
       "할리스": {
         "type": "신메뉴",
         "isNew": true,
-        "daysLeft": 9,
+        "daysLeft": 8,
         "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202607060503472140.png",
         "startDate": "2026-07-15",
         "endDate": "2026-07-28"
@@ -1692,7 +1692,7 @@
       "할리스": {
         "type": "이벤트",
         "isNew": false,
-        "daysLeft": 12,
+        "daysLeft": 11,
         "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606301026168710.png",
         "startDate": "2026-07-01",
         "endDate": "2026-07-31"
@@ -1717,7 +1717,7 @@
       "할리스": {
         "type": "신메뉴",
         "isNew": true,
-        "daysLeft": 37,
+        "daysLeft": 36,
         "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606190416379430.jpg",
         "startDate": "2026-06-24",
         "endDate": "2026-08-25"
@@ -1742,7 +1742,7 @@
       "할리스": {
         "type": "신메뉴",
         "isNew": true,
-        "daysLeft": 37,
+        "daysLeft": 36,
         "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606160927103690.jpg",
         "startDate": "2026-06-24",
         "endDate": "2026-08-25"
@@ -1767,7 +1767,7 @@
       "할리스": {
         "type": "이벤트",
         "isNew": false,
-        "daysLeft": 2,
+        "daysLeft": 1,
         "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606151157470250.jpg",
         "startDate": "2026-06-22",
         "endDate": "2026-07-21"
@@ -1792,7 +1792,7 @@
       "할리스": {
         "type": "신메뉴",
         "isNew": true,
-        "daysLeft": 37,
+        "daysLeft": 36,
         "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606011143425970.jpg",
         "startDate": "2026-06-02",
         "endDate": "2026-08-25"
@@ -1817,7 +1817,7 @@
       "할리스": {
         "type": "이벤트",
         "isNew": false,
-        "daysLeft": 43,
+        "daysLeft": 42,
         "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202605080225251600.jpg",
         "startDate": "2026-05-13",
         "endDate": "2026-08-31"
@@ -1842,7 +1842,7 @@
       "할리스": {
         "type": "신메뉴",
         "isNew": true,
-        "daysLeft": 43,
+        "daysLeft": 42,
         "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202605080222128020.jpg",
         "startDate": "2026-05-13",
         "endDate": "2026-08-31"
@@ -1867,7 +1867,7 @@
       "할리스": {
         "type": "할인",
         "isNew": false,
-        "daysLeft": 165,
+        "daysLeft": 164,
         "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202604161111057800.png",
         "startDate": "2026-04-27",
         "endDate": "2026-12-31"
@@ -1892,7 +1892,7 @@
       "할리스": {
         "type": "신메뉴",
         "isNew": true,
-        "daysLeft": -12,
+        "daysLeft": -13,
         "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606160930275340.png",
         "startDate": "2026-06-24",
         "endDate": "2026-07-07"
@@ -1917,7 +1917,7 @@
       "할리스": {
         "type": "할인",
         "isNew": false,
-        "daysLeft": -19,
+        "daysLeft": -20,
         "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606160914113420.png",
         "startDate": "2026-06-24",
         "endDate": "2026-06-30"
@@ -1942,7 +1942,7 @@
       "할리스": {
         "type": "이벤트",
         "isNew": false,
-        "daysLeft": -19,
+        "daysLeft": -20,
         "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202605290536486710.png",
         "startDate": "2026-06-02",
         "endDate": "2026-06-30"
