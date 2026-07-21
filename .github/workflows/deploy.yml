@@ -31,9 +31,9 @@ jobs:
 
       - name: Refresh event data (crawl)
         # 크롤이 전부 실패(exit 1)해도 기존 deals.json으로 빌드·배포는 계속한다.
-        # crawlEvents.js 자체 안전장치: 0건 브랜드는 기존 데이터를 유지한다.
+        # runAll.js 자체 안전장치: 0건 브랜드는 기존 데이터를 유지한다.
         continue-on-error: true
-        run: node scripts/crawlEvents.js
+        run: node scripts/runAll.js
 
       - name: Build
         run: node scripts/build-toss.js
