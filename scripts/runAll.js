@@ -22,6 +22,8 @@ const { crawlTenPercent } = require('./crawlers/tenpercent');
 const { crawlTheVenti } = require('./crawlers/theventi');
 const { crawlGamsung } = require('./crawlers/gamsung');
 const { crawlGongcha } = require('./crawlers/gongcha');
+const { crawlTheLiter } = require('./crawlers/theliter');
+const { crawlHasamdong } = require('./crawlers/hasamdong');
 
 const DEALS_FILE = path.join(__dirname, '..', '카페 행사', 'deals.json');
 
@@ -39,6 +41,8 @@ const CRAWLERS = [
   { brand: '더벤티', fn: crawlTheVenti },
   { brand: '공차', fn: crawlGongcha },
   { brand: '텐퍼센트커피', fn: crawlTenPercent },
+  { brand: '더리터', fn: crawlTheLiter },
+  { brand: '하삼동커피', fn: crawlHasamdong },
   { brand: '감성커피', fn: crawlGamsung },
   { brand: '커피빈', fn: crawlCoffeeBean },
 ];

@@ -12,7 +12,7 @@ function request(url, opts = {}, redirectCount = 0) {
   return new Promise(resolve => {
     if (redirectCount > 5) return resolve({ status: 'loop', body: '' });
     const mod = url.startsWith('https') ? https : http;
-    const req = mod.get(url, {
+    const reqOpts = {
       headers: {
         'User-Agent': UA,
         'Accept': 'text/html,application/json,*/*',
@@ -21,7 +21,10 @@ function request(url, opts = {}, redirectCount = 0) {
       },
       rejectUnauthorized: false,
       timeout: opts.timeout || 15000,
-    }, res => {
+    };
+    // 일부 서버(하삼동 등)는 구식 DH 키를 써서 기본 보안 수준으로는 핸드셰이크가 실패한다.
+    if (opts.legacy) reqOpts.ciphers = 'DEFAULT:@SECLEVEL=0';
+    const req = mod.get(url, reqOpts, res => {
       if ([301, 302, 303, 307, 308].includes(res.statusCode) && res.headers.location) {
         const loc = res.headers.location.startsWith('http')
           ? res.headers.location
