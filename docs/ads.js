@@ -1780,7 +1780,7 @@ var init_dist3 = __esm({
     package_default = {
       name: "@apps-in-toss/web-bridge",
       type: "module",
-      version: "2.10.6",
+      version: "2.10.7",
       description: "Web Bridge for Apps In Toss",
       scripts: {
         typecheck: "tsc --noEmit",

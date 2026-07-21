@@ -1600,6 +1600,356 @@
     }
   },
   {
+    "id": "할리스_real_548",
+    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>♥해피썸머♥ 베스트 메뉴 4종 1+1</span>",
+    "category": "이벤트",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>♥해피썸머♥ 베스트 메뉴 4종 1+1</span>",
+    "conditionText": "",
+    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=548",
+    "isCoupon": false,
+    "isNewMenu": false,
+    "isSeasonMenu": false,
+    "events": {
+      "할리스": {
+        "type": "이벤트",
+        "isNew": false,
+        "daysLeft": 1,
+        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202607161027412570.png",
+        "startDate": "2026-07-20",
+        "endDate": "2026-07-22"
+      }
+    }
+  },
+  {
+    "id": "할리스_real_545",
+    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>★시원하게 빠져드는, 블랙 음료 2종 출시! </span>",
+    "category": "신메뉴",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>★시원하게 빠져드는, 블랙 음료 2종 출시! </span>",
+    "conditionText": "",
+    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=545",
+    "isCoupon": false,
+    "isNewMenu": true,
+    "isSeasonMenu": false,
+    "events": {
+      "할리스": {
+        "type": "신메뉴",
+        "isNew": true,
+        "daysLeft": 70,
+        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202607090530173650.png",
+        "startDate": "2026-07-15",
+        "endDate": "2026-09-29"
+      }
+    }
+  },
+  {
+    "id": "할리스_real_544",
+    "name": "<span style=\"\"><span class=\"sort\">멤버십 이벤트</span>7월 신메뉴 구매 시, 크라운 더블 적립 ★★</span>",
+    "category": "신메뉴",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "<span style=\"\"><span class=\"sort\">멤버십 이벤트</span>7월 신메뉴 구매 시, 크라운 더블 적립 ★★</span>",
+    "conditionText": "",
+    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=544",
+    "isCoupon": false,
+    "isNewMenu": true,
+    "isSeasonMenu": false,
+    "events": {
+      "할리스": {
+        "type": "신메뉴",
+        "isNew": true,
+        "daysLeft": 7,
+        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202607060503472140.png",
+        "startDate": "2026-07-15",
+        "endDate": "2026-07-28"
+      }
+    }
+  },
+  {
+    "id": "할리스_real_543",
+    "name": "<span style=\"\"><span class=\"sort\">멤버십 이벤트</span>★할리스 멤버십 회원을 위한 7월의 선물★</span>",
+    "category": "이벤트",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "<span style=\"\"><span class=\"sort\">멤버십 이벤트</span>★할리스 멤버십 회원을 위한 7월의 선물★</span>",
+    "conditionText": "",
+    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=543",
+    "isCoupon": false,
+    "isNewMenu": false,
+    "isSeasonMenu": false,
+    "events": {
+      "할리스": {
+        "type": "이벤트",
+        "isNew": false,
+        "daysLeft": 10,
+        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606301026168710.png",
+        "startDate": "2026-07-01",
+        "endDate": "2026-07-31"
+      }
+    }
+  },
+  {
+    "id": "할리스_real_542",
+    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>Move your flavor, 할리스X반스 콜라보 MD 출시! </span>",
+    "category": "신메뉴",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>Move your flavor, 할리스X반스 콜라보 MD 출시! </span>",
+    "conditionText": "",
+    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=542",
+    "isCoupon": false,
+    "isNewMenu": true,
+    "isSeasonMenu": false,
+    "events": {
+      "할리스": {
+        "type": "신메뉴",
+        "isNew": true,
+        "daysLeft": 35,
+        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606190416379430.jpg",
+        "startDate": "2026-06-24",
+        "endDate": "2026-08-25"
+      }
+    }
+  },
+  {
+    "id": "할리스_real_540",
+    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>Check your flavor, 할리스X반스 콜라보 시즌 한정 메뉴 출시! </span>",
+    "category": "신메뉴",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>Check your flavor, 할리스X반스 콜라보 시즌 한정 메뉴 출시! </span>",
+    "conditionText": "",
+    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=540",
+    "isCoupon": false,
+    "isNewMenu": true,
+    "isSeasonMenu": false,
+    "events": {
+      "할리스": {
+        "type": "신메뉴",
+        "isNew": true,
+        "daysLeft": 35,
+        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606160927103690.jpg",
+        "startDate": "2026-06-24",
+        "endDate": "2026-08-25"
+      }
+    }
+  },
+  {
+    "id": "할리스_real_537",
+    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>★할리스 스마트 매장 런칭 기념 프로모션★</span>",
+    "category": "이벤트",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>★할리스 스마트 매장 런칭 기념 프로모션★</span>",
+    "conditionText": "",
+    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=537",
+    "isCoupon": false,
+    "isNewMenu": false,
+    "isSeasonMenu": false,
+    "events": {
+      "할리스": {
+        "type": "이벤트",
+        "isNew": false,
+        "daysLeft": 0,
+        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606151157470250.jpg",
+        "startDate": "2026-06-22",
+        "endDate": "2026-07-21"
+      }
+    }
+  },
+  {
+    "id": "할리스_real_534",
+    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>여름을 즐기는 수박 한 잔, 수박 음료 3종 출시! </span>",
+    "category": "신메뉴",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>여름을 즐기는 수박 한 잔, 수박 음료 3종 출시! </span>",
+    "conditionText": "",
+    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=534",
+    "isCoupon": false,
+    "isNewMenu": true,
+    "isSeasonMenu": false,
+    "events": {
+      "할리스": {
+        "type": "신메뉴",
+        "isNew": true,
+        "daysLeft": 35,
+        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606011143425970.jpg",
+        "startDate": "2026-06-02",
+        "endDate": "2026-08-25"
+      }
+    }
+  },
+  {
+    "id": "할리스_real_526",
+    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>할리스 빙수 5종과 함께, ICE & NICE SUMMER !</span>",
+    "category": "이벤트",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>할리스 빙수 5종과 함께, ICE & NICE SUMMER !</span>",
+    "conditionText": "",
+    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=526",
+    "isCoupon": false,
+    "isNewMenu": false,
+    "isSeasonMenu": false,
+    "events": {
+      "할리스": {
+        "type": "이벤트",
+        "isNew": false,
+        "daysLeft": 41,
+        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202605080225251600.jpg",
+        "startDate": "2026-05-13",
+        "endDate": "2026-08-31"
+      }
+    }
+  },
+  {
+    "id": "할리스_real_525",
+    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>Back to the ★할리치노★, 할리치노 3종 출시!</span>",
+    "category": "신메뉴",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>Back to the ★할리치노★, 할리치노 3종 출시!</span>",
+    "conditionText": "",
+    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=525",
+    "isCoupon": false,
+    "isNewMenu": true,
+    "isSeasonMenu": false,
+    "events": {
+      "할리스": {
+        "type": "신메뉴",
+        "isNew": true,
+        "daysLeft": 41,
+        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202605080222128020.jpg",
+        "startDate": "2026-05-13",
+        "endDate": "2026-08-31"
+      }
+    }
+  },
+  {
+    "id": "할리스_real_518",
+    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>★모빌카드 10% 즉시 할인 프로모션 안내★</span>",
+    "category": "할인",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>★모빌카드 10% 즉시 할인 프로모션 안내★</span>",
+    "conditionText": "",
+    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=518",
+    "isCoupon": true,
+    "isNewMenu": false,
+    "isSeasonMenu": false,
+    "events": {
+      "할리스": {
+        "type": "할인",
+        "isNew": false,
+        "daysLeft": 163,
+        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202604161111057800.png",
+        "startDate": "2026-04-27",
+        "endDate": "2026-12-31"
+      }
+    }
+  },
+  {
+    "id": "할리스_real_541",
+    "name": "<span style=\"\"><span class=\"sort\">멤버십 이벤트</span>반스 콜라보 신메뉴 구매 시, 크라운 더블 적립 ★★</span>",
+    "category": "신메뉴",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "<span style=\"\"><span class=\"sort\">멤버십 이벤트</span>반스 콜라보 신메뉴 구매 시, 크라운 더블 적립 ★★</span>",
+    "conditionText": "",
+    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=541",
+    "isCoupon": false,
+    "isNewMenu": true,
+    "isSeasonMenu": false,
+    "events": {
+      "할리스": {
+        "type": "신메뉴",
+        "isNew": true,
+        "daysLeft": -14,
+        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606160930275340.png",
+        "startDate": "2026-06-24",
+        "endDate": "2026-07-07"
+      }
+    }
+  },
+  {
+    "id": "할리스_real_539",
+    "name": "<span style=\"\"><span class=\"sort\">멤버십 이벤트</span>6월이 가기 전에, 멤버십 쿠폰팩 라스트위크★</span>",
+    "category": "할인",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "<span style=\"\"><span class=\"sort\">멤버십 이벤트</span>6월이 가기 전에, 멤버십 쿠폰팩 라스트위크★</span>",
+    "conditionText": "",
+    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=539",
+    "isCoupon": true,
+    "isNewMenu": false,
+    "isSeasonMenu": false,
+    "events": {
+      "할리스": {
+        "type": "할인",
+        "isNew": false,
+        "daysLeft": -21,
+        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606160914113420.png",
+        "startDate": "2026-06-24",
+        "endDate": "2026-06-30"
+      }
+    }
+  },
+  {
+    "id": "할리스_real_533",
+    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>쉿, 지금 우리 매장은 이벤트중♡</span>",
+    "category": "이벤트",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>쉿, 지금 우리 매장은 이벤트중♡</span>",
+    "conditionText": "",
+    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=533",
+    "isCoupon": false,
+    "isNewMenu": false,
+    "isSeasonMenu": false,
+    "events": {
+      "할리스": {
+        "type": "이벤트",
+        "isNew": false,
+        "daysLeft": -21,
+        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202605290536486710.png",
+        "startDate": "2026-06-02",
+        "endDate": "2026-06-30"
+      }
+    }
+  },
+  {
     "id": "컴포즈커피_real_315349",
     "name": "토이스토리 X 미키와 친구들 콜라보 프로모션",
     "category": "이벤트",
@@ -2721,356 +3071,6 @@
         "image": "https://composecoffee.com/files/thumbnails/344/022/600x600.crop.jpg?t=1761752503",
         "startDate": "2022-04-04",
         "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "할리스_real_548",
-    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>♥해피썸머♥ 베스트 메뉴 4종 1+1</span>",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>♥해피썸머♥ 베스트 메뉴 4종 1+1</span>",
-    "conditionText": "",
-    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=548",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "할리스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 1,
-        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202607161027412570.png",
-        "startDate": "2026-07-20",
-        "endDate": "2026-07-22"
-      }
-    }
-  },
-  {
-    "id": "할리스_real_545",
-    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>★시원하게 빠져드는, 블랙 음료 2종 출시! </span>",
-    "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>★시원하게 빠져드는, 블랙 음료 2종 출시! </span>",
-    "conditionText": "",
-    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=545",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "할리스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 70,
-        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202607090530173650.png",
-        "startDate": "2026-07-15",
-        "endDate": "2026-09-29"
-      }
-    }
-  },
-  {
-    "id": "할리스_real_544",
-    "name": "<span style=\"\"><span class=\"sort\">멤버십 이벤트</span>7월 신메뉴 구매 시, 크라운 더블 적립 ★★</span>",
-    "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "<span style=\"\"><span class=\"sort\">멤버십 이벤트</span>7월 신메뉴 구매 시, 크라운 더블 적립 ★★</span>",
-    "conditionText": "",
-    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=544",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "할리스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 7,
-        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202607060503472140.png",
-        "startDate": "2026-07-15",
-        "endDate": "2026-07-28"
-      }
-    }
-  },
-  {
-    "id": "할리스_real_543",
-    "name": "<span style=\"\"><span class=\"sort\">멤버십 이벤트</span>★할리스 멤버십 회원을 위한 7월의 선물★</span>",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "<span style=\"\"><span class=\"sort\">멤버십 이벤트</span>★할리스 멤버십 회원을 위한 7월의 선물★</span>",
-    "conditionText": "",
-    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=543",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "할리스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 10,
-        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606301026168710.png",
-        "startDate": "2026-07-01",
-        "endDate": "2026-07-31"
-      }
-    }
-  },
-  {
-    "id": "할리스_real_542",
-    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>Move your flavor, 할리스X반스 콜라보 MD 출시! </span>",
-    "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>Move your flavor, 할리스X반스 콜라보 MD 출시! </span>",
-    "conditionText": "",
-    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=542",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "할리스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 35,
-        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606190416379430.jpg",
-        "startDate": "2026-06-24",
-        "endDate": "2026-08-25"
-      }
-    }
-  },
-  {
-    "id": "할리스_real_540",
-    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>Check your flavor, 할리스X반스 콜라보 시즌 한정 메뉴 출시! </span>",
-    "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>Check your flavor, 할리스X반스 콜라보 시즌 한정 메뉴 출시! </span>",
-    "conditionText": "",
-    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=540",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "할리스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 35,
-        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606160927103690.jpg",
-        "startDate": "2026-06-24",
-        "endDate": "2026-08-25"
-      }
-    }
-  },
-  {
-    "id": "할리스_real_537",
-    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>★할리스 스마트 매장 런칭 기념 프로모션★</span>",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>★할리스 스마트 매장 런칭 기념 프로모션★</span>",
-    "conditionText": "",
-    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=537",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "할리스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 0,
-        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606151157470250.jpg",
-        "startDate": "2026-06-22",
-        "endDate": "2026-07-21"
-      }
-    }
-  },
-  {
-    "id": "할리스_real_534",
-    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>여름을 즐기는 수박 한 잔, 수박 음료 3종 출시! </span>",
-    "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>여름을 즐기는 수박 한 잔, 수박 음료 3종 출시! </span>",
-    "conditionText": "",
-    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=534",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "할리스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 35,
-        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606011143425970.jpg",
-        "startDate": "2026-06-02",
-        "endDate": "2026-08-25"
-      }
-    }
-  },
-  {
-    "id": "할리스_real_526",
-    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>할리스 빙수 5종과 함께, ICE & NICE SUMMER !</span>",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>할리스 빙수 5종과 함께, ICE & NICE SUMMER !</span>",
-    "conditionText": "",
-    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=526",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "할리스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 41,
-        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202605080225251600.jpg",
-        "startDate": "2026-05-13",
-        "endDate": "2026-08-31"
-      }
-    }
-  },
-  {
-    "id": "할리스_real_525",
-    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>Back to the ★할리치노★, 할리치노 3종 출시!</span>",
-    "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>Back to the ★할리치노★, 할리치노 3종 출시!</span>",
-    "conditionText": "",
-    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=525",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "할리스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 41,
-        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202605080222128020.jpg",
-        "startDate": "2026-05-13",
-        "endDate": "2026-08-31"
-      }
-    }
-  },
-  {
-    "id": "할리스_real_518",
-    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>★모빌카드 10% 즉시 할인 프로모션 안내★</span>",
-    "category": "할인",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>★모빌카드 10% 즉시 할인 프로모션 안내★</span>",
-    "conditionText": "",
-    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=518",
-    "isCoupon": true,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "할리스": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": 163,
-        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202604161111057800.png",
-        "startDate": "2026-04-27",
-        "endDate": "2026-12-31"
-      }
-    }
-  },
-  {
-    "id": "할리스_real_541",
-    "name": "<span style=\"\"><span class=\"sort\">멤버십 이벤트</span>반스 콜라보 신메뉴 구매 시, 크라운 더블 적립 ★★</span>",
-    "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "<span style=\"\"><span class=\"sort\">멤버십 이벤트</span>반스 콜라보 신메뉴 구매 시, 크라운 더블 적립 ★★</span>",
-    "conditionText": "",
-    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=541",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "할리스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": -14,
-        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606160930275340.png",
-        "startDate": "2026-06-24",
-        "endDate": "2026-07-07"
-      }
-    }
-  },
-  {
-    "id": "할리스_real_539",
-    "name": "<span style=\"\"><span class=\"sort\">멤버십 이벤트</span>6월이 가기 전에, 멤버십 쿠폰팩 라스트위크★</span>",
-    "category": "할인",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "<span style=\"\"><span class=\"sort\">멤버십 이벤트</span>6월이 가기 전에, 멤버십 쿠폰팩 라스트위크★</span>",
-    "conditionText": "",
-    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=539",
-    "isCoupon": true,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "할리스": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": -21,
-        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606160914113420.png",
-        "startDate": "2026-06-24",
-        "endDate": "2026-06-30"
-      }
-    }
-  },
-  {
-    "id": "할리스_real_533",
-    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>쉿, 지금 우리 매장은 이벤트중♡</span>",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>쉿, 지금 우리 매장은 이벤트중♡</span>",
-    "conditionText": "",
-    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=533",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "할리스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": -21,
-        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202605290536486710.png",
-        "startDate": "2026-06-02",
-        "endDate": "2026-06-30"
       }
     }
   }

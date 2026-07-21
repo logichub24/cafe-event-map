@@ -705,13 +705,10 @@
         function brandChipStyle(brand){ const b = BRAND_INFO[brand] || { color:'#6b7280', dark:false }; return `background-color:${b.color};color:${b.dark?'#1f2937':'#ffffff'}`; }
         function brandLabel(brand){ return (BRAND_INFO[brand] || { text:brand }).text; }
 
-        // 데이터 fetch 실패(file:// 등) 시 쓰는 데모 행사 DB
-        let MASTER_DB = [
-            { id:'demo1', name:'아메리카노', category:'커피', price:4500, saving:2000, discountPrice:2500, discountRate:44, eventTitle:'아메리카노 44% 할인', conditionText:'매장별 적용 여부가 다를 수 있어요.', officialUrl:'', isCoupon:false, isNewMenu:false, isSeasonMenu:false, events:{ '스타벅스':{ type:'할인', isNew:true, daysLeft:3, image:'' } } },
-            { id:'demo2', name:'딸기 라떼', category:'음료', price:5000, saving:0, discountPrice:5000, discountRate:0, eventTitle:'[시즌] 딸기 라떼', conditionText:'시즌 한정 메뉴입니다.', officialUrl:'', isCoupon:false, isNewMenu:false, isSeasonMenu:true, events:{ '메가MGC커피':{ type:'시즌', isNew:true, daysLeft:12, image:'' } } },
-            { id:'demo3', name:'카페라떼', category:'커피', price:3200, saving:960, discountPrice:2240, discountRate:30, eventTitle:'앱 쿠폰 카페라떼 30% 할인', conditionText:'브랜드 공식 앱 쿠폰 적용 시.', officialUrl:'', isCoupon:true, isNewMenu:false, isSeasonMenu:false, events:{ '투썸플레이스':{ type:'쿠폰', isNew:false, daysLeft:0, image:'' } } },
-            { id:'demo4', name:'크루아상', category:'베이커리', price:3800, saving:0, discountPrice:3800, discountRate:0, eventTitle:'크루아상 무료 사이즈업', conditionText:'일부 매장 제외.', officialUrl:'', isCoupon:false, isNewMenu:false, isSeasonMenu:false, events:{ '빽다방':{ type:'사이즈업', isNew:false, daysLeft:6, image:'' } } },
-        ];
+        // 행사 데이터는 deals.json(브랜드 공식 페이지 크롤링 실데이터)에서만 받는다.
+        // 과거엔 fetch 실패 시 보여줄 데모 행사를 하드코딩해 뒀으나, 실제로 하지 않는 행사를
+        // 사용자에게 노출하는 문제가 있어 제거했다. 데이터를 못 받으면 빈 상태로 둔다.
+        let MASTER_DB = [];
 
         const CATEGORIES = ['전체', '커피', '음료', '디저트', '베이커리'];
         const EMOJI_MAP = { '커피':'☕', '음료':'🥤', '디저트':'🍰', '베이커리':'🥐', 'MD·기타':'🛍️' };

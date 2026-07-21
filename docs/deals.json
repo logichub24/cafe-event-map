@@ -1,5 +1,55 @@
 [
   {
+    "id": "스타벅스_real_6557",
+    "name": "별마당 특화 MD 출시",
+    "category": "신메뉴",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "별마당 특화 MD 출시",
+    "conditionText": "",
+    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6557",
+    "isCoupon": false,
+    "isNewMenu": true,
+    "isSeasonMenu": false,
+    "events": {
+      "스타벅스": {
+        "type": "신메뉴",
+        "isNew": true,
+        "daysLeft": 999,
+        "image": "https://image.istarbucks.co.kr/upload/news/bZaab4_WEB_THUM_20260721083028470.jpg",
+        "startDate": "",
+        "endDate": ""
+      }
+    }
+  },
+  {
+    "id": "스타벅스_real_6552",
+    "name": "골프 특화 MD 출시",
+    "category": "신메뉴",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "골프 특화 MD 출시",
+    "conditionText": "",
+    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6552",
+    "isCoupon": false,
+    "isNewMenu": true,
+    "isSeasonMenu": false,
+    "events": {
+      "스타벅스": {
+        "type": "신메뉴",
+        "isNew": true,
+        "daysLeft": 999,
+        "image": "https://image.istarbucks.co.kr/upload/news/RdAxrc_WEB_THUM_20260721082914471.jpg",
+        "startDate": "",
+        "endDate": ""
+      }
+    }
+  },
+  {
     "id": "스타벅스_real_6556",
     "name": "펫 프렌들리 특화 MD 신규 출시",
     "category": "신메뉴",
@@ -1200,56 +1250,6 @@
     }
   },
   {
-    "id": "스타벅스_real_6451",
-    "name": "4월 23일, 딸기 생크림 초코 케이크 출시",
-    "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "4월 23일, 딸기 생크림 초코 케이크 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6451",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/0bSnui_WEB_THUM_20260422080403043.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "스타벅스_real_6461",
-    "name": "4월 22일은 지구의날, 텀블러 자랑대회",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "4월 22일은 지구의날, 텀블러 자랑대회",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6461",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/r1jaDv_WEB_THUM_20260421133118217.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
-  },
-  {
     "id": "이디야커피_real_458",
     "name": "패션콜라보 이벤트 당첨자 발표",
     "category": "이벤트",
@@ -1617,7 +1617,7 @@
       "할리스": {
         "type": "이벤트",
         "isNew": false,
-        "daysLeft": 2,
+        "daysLeft": 1,
         "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202607161027412570.png",
         "startDate": "2026-07-20",
         "endDate": "2026-07-22"
@@ -1642,7 +1642,7 @@
       "할리스": {
         "type": "신메뉴",
         "isNew": true,
-        "daysLeft": 71,
+        "daysLeft": 70,
         "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202607090530173650.png",
         "startDate": "2026-07-15",
         "endDate": "2026-09-29"
@@ -1667,7 +1667,7 @@
       "할리스": {
         "type": "신메뉴",
         "isNew": true,
-        "daysLeft": 8,
+        "daysLeft": 7,
         "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202607060503472140.png",
         "startDate": "2026-07-15",
         "endDate": "2026-07-28"
@@ -1692,7 +1692,7 @@
       "할리스": {
         "type": "이벤트",
         "isNew": false,
-        "daysLeft": 11,
+        "daysLeft": 10,
         "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606301026168710.png",
         "startDate": "2026-07-01",
         "endDate": "2026-07-31"
@@ -1717,7 +1717,7 @@
       "할리스": {
         "type": "신메뉴",
         "isNew": true,
-        "daysLeft": 36,
+        "daysLeft": 35,
         "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606190416379430.jpg",
         "startDate": "2026-06-24",
         "endDate": "2026-08-25"
@@ -1742,7 +1742,7 @@
       "할리스": {
         "type": "신메뉴",
         "isNew": true,
-        "daysLeft": 36,
+        "daysLeft": 35,
         "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606160927103690.jpg",
         "startDate": "2026-06-24",
         "endDate": "2026-08-25"
@@ -1767,7 +1767,7 @@
       "할리스": {
         "type": "이벤트",
         "isNew": false,
-        "daysLeft": 1,
+        "daysLeft": 0,
         "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606151157470250.jpg",
         "startDate": "2026-06-22",
         "endDate": "2026-07-21"
@@ -1792,7 +1792,7 @@
       "할리스": {
         "type": "신메뉴",
         "isNew": true,
-        "daysLeft": 36,
+        "daysLeft": 35,
         "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606011143425970.jpg",
         "startDate": "2026-06-02",
         "endDate": "2026-08-25"
@@ -1817,7 +1817,7 @@
       "할리스": {
         "type": "이벤트",
         "isNew": false,
-        "daysLeft": 42,
+        "daysLeft": 41,
         "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202605080225251600.jpg",
         "startDate": "2026-05-13",
         "endDate": "2026-08-31"
@@ -1842,7 +1842,7 @@
       "할리스": {
         "type": "신메뉴",
         "isNew": true,
-        "daysLeft": 42,
+        "daysLeft": 41,
         "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202605080222128020.jpg",
         "startDate": "2026-05-13",
         "endDate": "2026-08-31"
@@ -1867,7 +1867,7 @@
       "할리스": {
         "type": "할인",
         "isNew": false,
-        "daysLeft": 164,
+        "daysLeft": 163,
         "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202604161111057800.png",
         "startDate": "2026-04-27",
         "endDate": "2026-12-31"
@@ -1892,7 +1892,7 @@
       "할리스": {
         "type": "신메뉴",
         "isNew": true,
-        "daysLeft": -13,
+        "daysLeft": -14,
         "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606160930275340.png",
         "startDate": "2026-06-24",
         "endDate": "2026-07-07"
@@ -1917,7 +1917,7 @@
       "할리스": {
         "type": "할인",
         "isNew": false,
-        "daysLeft": -20,
+        "daysLeft": -21,
         "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606160914113420.png",
         "startDate": "2026-06-24",
         "endDate": "2026-06-30"
@@ -1942,7 +1942,7 @@
       "할리스": {
         "type": "이벤트",
         "isNew": false,
-        "daysLeft": -20,
+        "daysLeft": -21,
         "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202605290536486710.png",
         "startDate": "2026-06-02",
         "endDate": "2026-06-30"
@@ -1950,338 +1950,41 @@
     }
   },
   {
-    "id": "투썸플레이스_텀블러_6",
-    "name": "텀블러",
-    "category": "MD·기타",
-    "price": 38000,
-    "saving": 11400,
-    "discountPrice": 26600,
-    "discountRate": 30,
-    "eventTitle": "앱 쿠폰 텀블러 30% 할인",
-    "conditionText": "브랜드 공식 앱 쿠폰 적용 시. 일부 매장 제외.",
-    "officialUrl": "https://www.twosome.co.kr/promotion/eventList.do",
-    "isCoupon": true,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "투썸플레이스": {
-        "type": "쿠폰",
-        "isNew": true,
-        "daysLeft": 18,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "투썸플레이스_초콜릿라떼_7",
-    "name": "초콜릿 라떼",
-    "category": "음료",
-    "price": 5900,
+    "id": "컴포즈커피_real_315349",
+    "name": "토이스토리 X 미키와 친구들 콜라보 프로모션",
+    "category": "이벤트",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 5900,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "초콜릿 라떼 구매 이벤트",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.twosome.co.kr/promotion/eventList.do",
+    "eventTitle": "토이스토리 X 미키와 친구들 콜라보 프로모션",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/315349",
     "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "투썸플레이스": {
-        "type": "이벤트",
-        "isNew": true,
-        "daysLeft": 0,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "투썸플레이스_딸기라떼_8",
-    "name": "딸기 라떼",
-    "category": "음료",
-    "price": 6500,
-    "saving": 0,
-    "discountPrice": 6500,
-    "discountRate": 0,
-    "eventTitle": "딸기 라떼 구매 이벤트",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.twosome.co.kr/promotion/eventList.do",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "투썸플레이스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 0,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "투썸플레이스_보온병_9",
-    "name": "보온병",
-    "category": "MD·기타",
-    "price": 45000,
-    "saving": 0,
-    "discountPrice": 45000,
-    "discountRate": 0,
-    "eventTitle": "[시즌] 보온병",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.twosome.co.kr/promotion/eventList.do",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": true,
-    "events": {
-      "투썸플레이스": {
-        "type": "시즌",
-        "isNew": true,
-        "daysLeft": 20,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "투썸플레이스_콜드브루_10",
-    "name": "콜드브루",
-    "category": "커피",
-    "price": 5500,
-    "saving": 820,
-    "discountPrice": 4680,
-    "discountRate": 15,
-    "eventTitle": "콜드브루 15% 할인",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.twosome.co.kr/promotion/eventList.do",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "투썸플레이스": {
-        "type": "할인",
-        "isNew": true,
-        "daysLeft": 1,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "투썸플레이스_푸딩_11",
-    "name": "푸딩",
-    "category": "디저트",
-    "price": 5000,
-    "saving": 0,
-    "discountPrice": 5000,
-    "discountRate": 0,
-    "eventTitle": "푸딩 구매 이벤트",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.twosome.co.kr/promotion/eventList.do",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "투썸플레이스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 22,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "투썸플레이스_카푸치노_12",
-    "name": "카푸치노",
-    "category": "커피",
-    "price": 5500,
-    "saving": 550,
-    "discountPrice": 4950,
-    "discountRate": 10,
-    "eventTitle": "카푸치노 10% 할인",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.twosome.co.kr/promotion/eventList.do",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "투썸플레이스": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": 2,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "메가MGC커피_치아바타샌드위치_18",
-    "name": "치아바타 샌드위치",
-    "category": "베이커리",
-    "price": 6500,
-    "saving": 0,
-    "discountPrice": 6500,
-    "discountRate": 0,
-    "eventTitle": "치아바타 샌드위치 구매 이벤트",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.mega-mgccoffee.com/event/",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "메가MGC커피": {
-        "type": "이벤트",
-        "isNew": true,
-        "daysLeft": 1,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "메가MGC커피_생크림롤케이크_19",
-    "name": "생크림 롤케이크",
-    "category": "디저트",
-    "price": 5500,
-    "saving": 820,
-    "discountPrice": 4680,
-    "discountRate": 15,
-    "eventTitle": "앱 쿠폰 생크림 롤케이크 15% 할인",
-    "conditionText": "브랜드 공식 앱 쿠폰 적용 시. 일부 매장 제외.",
-    "officialUrl": "https://www.mega-mgccoffee.com/event/",
-    "isCoupon": true,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "메가MGC커피": {
-        "type": "쿠폰",
-        "isNew": false,
-        "daysLeft": 1,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "메가MGC커피_카푸치노_20",
-    "name": "카푸치노",
-    "category": "커피",
-    "price": 2000,
-    "saving": 0,
-    "discountPrice": 2000,
-    "discountRate": 0,
-    "eventTitle": "[신메뉴] 카푸치노 출시",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.mega-mgccoffee.com/event/",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "메가MGC커피": {
-        "type": "신메뉴",
-        "isNew": false,
-        "daysLeft": 21,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "메가MGC커피_바닐라라떼_21",
-    "name": "바닐라라떼",
-    "category": "커피",
-    "price": 2500,
-    "saving": 0,
-    "discountPrice": 2500,
-    "discountRate": 0,
-    "eventTitle": "바닐라라떼 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "https://www.mega-mgccoffee.com/event/",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "메가MGC커피": {
-        "type": "사이즈업",
-        "isNew": true,
-        "daysLeft": 1,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "메가MGC커피_베이글_22",
-    "name": "베이글",
-    "category": "베이커리",
-    "price": 3600,
-    "saving": 0,
-    "discountPrice": 3600,
-    "discountRate": 0,
-    "eventTitle": "[신메뉴] 베이글 출시",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.mega-mgccoffee.com/event/",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "메가MGC커피": {
-        "type": "신메뉴",
-        "isNew": false,
-        "daysLeft": 12,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_크루아상_23",
-    "name": "크루아상",
-    "category": "베이커리",
-    "price": 2000,
-    "saving": 400,
-    "discountPrice": 1600,
-    "discountRate": 20,
-    "eventTitle": "앱 쿠폰 크루아상 20% 할인",
-    "conditionText": "브랜드 공식 앱 쿠폰 적용 시. 일부 매장 제외.",
-    "officialUrl": "https://composecoffee.com/menu/event",
-    "isCoupon": true,
     "isNewMenu": false,
     "isSeasonMenu": false,
     "events": {
       "컴포즈커피": {
-        "type": "쿠폰",
-        "isNew": true,
-        "daysLeft": 1,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_생크림롤케이크_24",
-    "name": "생크림 롤케이크",
-    "category": "디저트",
-    "price": 5500,
-    "saving": 820,
-    "discountPrice": 4680,
-    "discountRate": 15,
-    "eventTitle": "앱 쿠폰 생크림 롤케이크 15% 할인",
-    "conditionText": "브랜드 공식 앱 쿠폰 적용 시. 일부 매장 제외.",
-    "officialUrl": "https://composecoffee.com/menu/event",
-    "isCoupon": true,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "쿠폰",
+        "type": "이벤트",
         "isNew": false,
-        "daysLeft": 18,
-        "image": ""
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/349/315/600x600.crop.jpg?t=1784073386",
+        "startDate": "2026-07-15",
+        "endDate": ""
       }
     }
   },
   {
-    "id": "컴포즈커피_청귤스무디_25",
-    "name": "청귤 스무디",
-    "category": "음료",
-    "price": 3000,
+    "id": "컴포즈커피_real_315056",
+    "name": "JUICY SUMMER 신메뉴 출시",
+    "category": "신메뉴",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 3000,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "[신메뉴] 청귤 스무디 출시",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://composecoffee.com/menu/event",
+    "eventTitle": "JUICY SUMMER 신메뉴 출시",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/315056",
     "isCoupon": false,
     "isNewMenu": true,
     "isSeasonMenu": false,
@@ -2289,2906 +1992,1085 @@
       "컴포즈커피": {
         "type": "신메뉴",
         "isNew": true,
-        "daysLeft": 6,
-        "image": ""
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/056/315/600x600.crop.jpg?t=1783923267",
+        "startDate": "2026-07-13",
+        "endDate": ""
       }
     }
   },
   {
-    "id": "컴포즈커피_티라미수_26",
-    "name": "티라미수",
-    "category": "디저트",
-    "price": 6200,
+    "id": "컴포즈커피_real_307023",
+    "name": "6월 18일엔 CHILL&FILL 출시",
+    "category": "신메뉴",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 6200,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "티라미수 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "https://composecoffee.com/menu/event",
+    "eventTitle": "6월 18일엔 CHILL&FILL 출시",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/307023",
+    "isCoupon": false,
+    "isNewMenu": true,
+    "isSeasonMenu": false,
+    "events": {
+      "컴포즈커피": {
+        "type": "신메뉴",
+        "isNew": true,
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/023/307/600x600.crop.jpg?t=1781683391",
+        "startDate": "2026-06-17",
+        "endDate": ""
+      }
+    }
+  },
+  {
+    "id": "컴포즈커피_real_306715",
+    "name": "로스트아크 APP 이벤트 당첨자 발표 안내",
+    "category": "이벤트",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "로스트아크 APP 이벤트 당첨자 발표 안내",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/306715",
     "isCoupon": false,
     "isNewMenu": false,
     "isSeasonMenu": false,
     "events": {
       "컴포즈커피": {
-        "type": "사이즈업",
+        "type": "이벤트",
         "isNew": false,
-        "daysLeft": 4,
-        "image": ""
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/715/306/600x600.crop.jpg?t=1781656175",
+        "startDate": "2026-06-17",
+        "endDate": ""
       }
     }
   },
   {
-    "id": "빽다방_드립백10입_27",
-    "name": "드립백 10입",
-    "category": "MD·기타",
-    "price": 8000,
+    "id": "컴포즈커피_real_302226",
+    "name": "컴포즈 컵빙 시즌 500원 할인 프로모션",
+    "category": "할인",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 8000,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "[신메뉴] 드립백 10입 출시",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.paikdabang.com/notice/",
+    "eventTitle": "컴포즈 컵빙 시즌 500원 할인 프로모션",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/302226",
+    "isCoupon": true,
+    "isNewMenu": false,
+    "isSeasonMenu": false,
+    "events": {
+      "컴포즈커피": {
+        "type": "할인",
+        "isNew": false,
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/226/302/600x600.crop.jpg?t=1780960426",
+        "startDate": "2026-06-09",
+        "endDate": ""
+      }
+    }
+  },
+  {
+    "id": "컴포즈커피_real_296506",
+    "name": "컴포즈커피 X 로스트아크 콜라보 프로모션",
+    "category": "이벤트",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "컴포즈커피 X 로스트아크 콜라보 프로모션",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/296506",
+    "isCoupon": false,
+    "isNewMenu": false,
+    "isSeasonMenu": false,
+    "events": {
+      "컴포즈커피": {
+        "type": "이벤트",
+        "isNew": false,
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/506/296/600x600.crop.jpg?t=1779237017",
+        "startDate": "2026-05-12",
+        "endDate": ""
+      }
+    }
+  },
+  {
+    "id": "컴포즈커피_real_296210",
+    "name": "컴포즈커피 X 김원훈 숏 시리즈 공개",
+    "category": "이벤트",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "컴포즈커피 X 김원훈 숏 시리즈 공개",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/296210",
+    "isCoupon": false,
+    "isNewMenu": false,
+    "isSeasonMenu": false,
+    "events": {
+      "컴포즈커피": {
+        "type": "이벤트",
+        "isNew": false,
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/210/296/600x600.crop.jpg?t=1779157217",
+        "startDate": "2026-05-11",
+        "endDate": ""
+      }
+    }
+  },
+  {
+    "id": "컴포즈커피_real_296158",
+    "name": "그 여름, 우리의 쿨포즈 4종 출시",
+    "category": "신메뉴",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "그 여름, 우리의 쿨포즈 4종 출시",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/296158",
     "isCoupon": false,
     "isNewMenu": true,
     "isSeasonMenu": false,
     "events": {
-      "빽다방": {
+      "컴포즈커피": {
         "type": "신메뉴",
         "isNew": true,
-        "daysLeft": 18,
-        "image": ""
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/158/296/600x600.crop.jpg?t=1779847195",
+        "startDate": "2026-05-11",
+        "endDate": ""
       }
     }
   },
   {
-    "id": "빽다방_베이글_28",
-    "name": "베이글",
-    "category": "베이커리",
-    "price": 3600,
+    "id": "컴포즈커피_real_295055",
+    "name": "엘포인트 제휴 기념 이벤트",
+    "category": "이벤트",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 3600,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "베이글 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "https://www.paikdabang.com/notice/",
+    "eventTitle": "엘포인트 제휴 기념 이벤트",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/295055",
     "isCoupon": false,
     "isNewMenu": false,
     "isSeasonMenu": false,
     "events": {
-      "빽다방": {
-        "type": "사이즈업",
-        "isNew": true,
-        "daysLeft": 21,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "빽다방_복숭아아이스티_29",
-    "name": "복숭아 아이스티",
-    "category": "음료",
-    "price": 2500,
-    "saving": 0,
-    "discountPrice": 2500,
-    "discountRate": 0,
-    "eventTitle": "[시즌] 복숭아 아이스티",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.paikdabang.com/notice/",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": true,
-    "events": {
-      "빽다방": {
-        "type": "시즌",
-        "isNew": false,
-        "daysLeft": 0,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "빽다방_생크림롤케이크_30",
-    "name": "생크림 롤케이크",
-    "category": "디저트",
-    "price": 5500,
-    "saving": 1370,
-    "discountPrice": 4130,
-    "discountRate": 25,
-    "eventTitle": "앱 쿠폰 생크림 롤케이크 25% 할인",
-    "conditionText": "브랜드 공식 앱 쿠폰 적용 시. 일부 매장 제외.",
-    "officialUrl": "https://www.paikdabang.com/notice/",
-    "isCoupon": true,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "빽다방": {
-        "type": "쿠폰",
-        "isNew": false,
-        "daysLeft": 0,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "커피빈_자몽에이드_37",
-    "name": "자몽 에이드",
-    "category": "음료",
-    "price": 6800,
-    "saving": 1700,
-    "discountPrice": 5100,
-    "discountRate": 25,
-    "eventTitle": "자몽 에이드 25% 할인",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.coffeebeankorea.com/event/list.asp",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "커피빈": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": 4,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "커피빈_카푸치노_38",
-    "name": "카푸치노",
-    "category": "커피",
-    "price": 6000,
-    "saving": 600,
-    "discountPrice": 5400,
-    "discountRate": 10,
-    "eventTitle": "앱 쿠폰 카푸치노 10% 할인",
-    "conditionText": "브랜드 공식 앱 쿠폰 적용 시. 일부 매장 제외.",
-    "officialUrl": "https://www.coffeebeankorea.com/event/list.asp",
-    "isCoupon": true,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "커피빈": {
-        "type": "쿠폰",
-        "isNew": false,
-        "daysLeft": 2,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "커피빈_청귤스무디_39",
-    "name": "청귤 스무디",
-    "category": "음료",
-    "price": 5200,
-    "saving": 1300,
-    "discountPrice": 3900,
-    "discountRate": 25,
-    "eventTitle": "청귤 스무디 25% 할인",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.coffeebeankorea.com/event/list.asp",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "커피빈": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": 9,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "커피빈_드립백10입_40",
-    "name": "드립백 10입",
-    "category": "MD·기타",
-    "price": 14000,
-    "saving": 0,
-    "discountPrice": 14000,
-    "discountRate": 0,
-    "eventTitle": "드립백 10입 구매 이벤트",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.coffeebeankorea.com/event/list.asp",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "커피빈": {
-        "type": "이벤트",
-        "isNew": true,
-        "daysLeft": 12,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "커피빈_원두250g_41",
-    "name": "원두 250g",
-    "category": "MD·기타",
-    "price": 16000,
-    "saving": 0,
-    "discountPrice": 16000,
-    "discountRate": 0,
-    "eventTitle": "원두 250g 구매 이벤트",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.coffeebeankorea.com/event/list.asp",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "커피빈": {
+      "컴포즈커피": {
         "type": "이벤트",
         "isNew": false,
-        "daysLeft": 2,
-        "image": ""
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/055/295/600x600.crop.jpg?t=1777851818",
+        "startDate": "2026-05-04",
+        "endDate": ""
       }
     }
   },
   {
-    "id": "더벤티_초콜릿라떼_42",
-    "name": "초콜릿 라떼",
-    "category": "음료",
-    "price": 2500,
+    "id": "컴포즈커피_real_293264",
+    "name": "절미절미 SNS 시식단 EVENT",
+    "category": "이벤트",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 2500,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "초콜릿 라떼 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "https://www.theventi.co.kr",
+    "eventTitle": "절미절미 SNS 시식단 EVENT",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/293264",
     "isCoupon": false,
     "isNewMenu": false,
     "isSeasonMenu": false,
     "events": {
-      "더벤티": {
-        "type": "사이즈업",
+      "컴포즈커피": {
+        "type": "이벤트",
         "isNew": false,
-        "daysLeft": 6,
-        "image": ""
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/264/293/600x600.crop.jpg?t=1776844487",
+        "startDate": "2026-04-22",
+        "endDate": ""
       }
     }
   },
   {
-    "id": "더벤티_마카롱세트_43",
-    "name": "마카롱 세트",
-    "category": "디저트",
-    "price": 7500,
+    "id": "컴포즈커피_real_291492",
+    "name": "컴포즈 2026 VIP 멤버십 프로모션 안내",
+    "category": "이벤트",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 7500,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "마카롱 세트 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "https://www.theventi.co.kr",
+    "eventTitle": "컴포즈 2026 VIP 멤버십 프로모션 안내",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/291492",
     "isCoupon": false,
     "isNewMenu": false,
     "isSeasonMenu": false,
     "events": {
-      "더벤티": {
-        "type": "사이즈업",
+      "컴포즈커피": {
+        "type": "이벤트",
         "isNew": false,
-        "daysLeft": 9,
-        "image": ""
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/492/291/600x600.crop.jpg?t=1776071038",
+        "startDate": "2026-04-13",
+        "endDate": ""
       }
     }
   },
   {
-    "id": "더벤티_티라미수_44",
-    "name": "티라미수",
-    "category": "디저트",
-    "price": 6200,
+    "id": "컴포즈커피_real_287922",
+    "name": "카카오페이 첫 결제 시 아메리카노 100원",
+    "category": "이벤트",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 6200,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "[시즌] 티라미수",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.theventi.co.kr",
+    "eventTitle": "카카오페이 첫 결제 시 아메리카노 100원",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/287922",
     "isCoupon": false,
     "isNewMenu": false,
-    "isSeasonMenu": true,
+    "isSeasonMenu": false,
     "events": {
-      "더벤티": {
-        "type": "시즌",
+      "컴포즈커피": {
+        "type": "이벤트",
         "isNew": false,
-        "daysLeft": 0,
-        "image": ""
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/922/287/600x600.crop.jpg?t=1774398485",
+        "startDate": "2026-03-23",
+        "endDate": ""
       }
     }
   },
   {
-    "id": "더벤티_에그타르트_45",
-    "name": "에그타르트",
-    "category": "베이커리",
-    "price": 1500,
+    "id": "컴포즈커피_real_287463",
+    "name": "에어리 아메리카노 출시",
+    "category": "신메뉴",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 1500,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "[시즌] 에그타르트",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.theventi.co.kr",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": true,
-    "events": {
-      "더벤티": {
-        "type": "시즌",
-        "isNew": false,
-        "daysLeft": 10,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "더벤티_원두250g_46",
-    "name": "원두 250g",
-    "category": "MD·기타",
-    "price": 7000,
-    "saving": 0,
-    "discountPrice": 7000,
-    "discountRate": 0,
-    "eventTitle": "[신메뉴] 원두 250g 출시",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.theventi.co.kr",
+    "eventTitle": "에어리 아메리카노 출시",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/287463",
     "isCoupon": false,
     "isNewMenu": true,
     "isSeasonMenu": false,
     "events": {
-      "더벤티": {
+      "컴포즈커피": {
         "type": "신메뉴",
-        "isNew": false,
-        "daysLeft": 17,
-        "image": ""
+        "isNew": true,
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/463/287/600x600.crop.jpg?t=1773971063",
+        "startDate": "2026-03-20",
+        "endDate": ""
       }
     }
   },
   {
-    "id": "더벤티_푸딩_47",
-    "name": "푸딩",
-    "category": "디저트",
-    "price": 3900,
+    "id": "컴포즈커피_real_287141",
+    "name": "매샷추 할인 프로모션",
+    "category": "할인",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 3900,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "[시즌] 푸딩",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.theventi.co.kr",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": true,
-    "events": {
-      "더벤티": {
-        "type": "시즌",
-        "isNew": false,
-        "daysLeft": 13,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "매머드커피_아메리카노_48",
-    "name": "아메리카노",
-    "category": "커피",
-    "price": 2000,
-    "saving": 0,
-    "discountPrice": 2000,
-    "discountRate": 0,
-    "eventTitle": "아메리카노 구매 이벤트",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://mammoth-coffee.com",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "매머드커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 22,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "매머드커피_보온병_49",
-    "name": "보온병",
-    "category": "MD·기타",
-    "price": 28000,
-    "saving": 8400,
-    "discountPrice": 19600,
-    "discountRate": 30,
-    "eventTitle": "앱 쿠폰 보온병 30% 할인",
-    "conditionText": "브랜드 공식 앱 쿠폰 적용 시. 일부 매장 제외.",
-    "officialUrl": "https://mammoth-coffee.com",
+    "eventTitle": "매샷추 할인 프로모션",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/287141",
     "isCoupon": true,
     "isNewMenu": false,
     "isSeasonMenu": false,
     "events": {
-      "매머드커피": {
-        "type": "쿠폰",
-        "isNew": true,
-        "daysLeft": 2,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "매머드커피_크루아상_50",
-    "name": "크루아상",
-    "category": "베이커리",
-    "price": 3800,
-    "saving": 0,
-    "discountPrice": 3800,
-    "discountRate": 0,
-    "eventTitle": "[시즌] 크루아상",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://mammoth-coffee.com",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": true,
-    "events": {
-      "매머드커피": {
-        "type": "시즌",
-        "isNew": false,
-        "daysLeft": 0,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "매머드커피_드립백10입_51",
-    "name": "드립백 10입",
-    "category": "MD·기타",
-    "price": 9000,
-    "saving": 0,
-    "discountPrice": 9000,
-    "discountRate": 0,
-    "eventTitle": "드립백 10입 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "https://mammoth-coffee.com",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "매머드커피": {
-        "type": "사이즈업",
-        "isNew": false,
-        "daysLeft": 2,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "매머드커피_텀블러_52",
-    "name": "텀블러",
-    "category": "MD·기타",
-    "price": 22000,
-    "saving": 2200,
-    "discountPrice": 19800,
-    "discountRate": 10,
-    "eventTitle": "텀블러 10% 할인",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://mammoth-coffee.com",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "매머드커피": {
+      "컴포즈커피": {
         "type": "할인",
         "isNew": false,
-        "daysLeft": 6,
-        "image": ""
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/141/287/600x600.crop.jpg?t=1779373353",
+        "startDate": "2026-03-18",
+        "endDate": ""
       }
     }
   },
   {
-    "id": "매머드커피_카라멜마키아토_53",
-    "name": "카라멜 마키아토",
-    "category": "커피",
-    "price": 4500,
-    "saving": 1350,
-    "discountPrice": 3150,
-    "discountRate": 30,
-    "eventTitle": "카라멜 마키아토 30% 할인",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://mammoth-coffee.com",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "매머드커피": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": 0,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "매머드커피_티라미수_54",
-    "name": "티라미수",
-    "category": "디저트",
-    "price": 6200,
+    "id": "컴포즈커피_real_285660",
+    "name": "데일리 말차 4종 출시",
+    "category": "신메뉴",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 6200,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "티라미수 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "https://mammoth-coffee.com",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "매머드커피": {
-        "type": "사이즈업",
-        "isNew": false,
-        "daysLeft": 15,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "엔제리너스_초코브라우니_55",
-    "name": "초코 브라우니",
-    "category": "디저트",
-    "price": 4800,
-    "saving": 0,
-    "discountPrice": 4800,
-    "discountRate": 0,
-    "eventTitle": "[시즌] 초코 브라우니",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.angelinus.com/event/",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": true,
-    "events": {
-      "엔제리너스": {
-        "type": "시즌",
-        "isNew": false,
-        "daysLeft": 9,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "엔제리너스_아메리카노_56",
-    "name": "아메리카노",
-    "category": "커피",
-    "price": 2000,
-    "saving": 400,
-    "discountPrice": 1600,
-    "discountRate": 20,
-    "eventTitle": "아메리카노 20% 할인",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.angelinus.com/event/",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "엔제리너스": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": 4,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "엔제리너스_카푸치노_57",
-    "name": "카푸치노",
-    "category": "커피",
-    "price": 3500,
-    "saving": 0,
-    "discountPrice": 3500,
-    "discountRate": 0,
-    "eventTitle": "카푸치노 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "https://www.angelinus.com/event/",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "엔제리너스": {
-        "type": "사이즈업",
-        "isNew": false,
-        "daysLeft": 21,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "엔제리너스_치즈케이크_58",
-    "name": "치즈케이크",
-    "category": "디저트",
-    "price": 5900,
-    "saving": 0,
-    "discountPrice": 5900,
-    "discountRate": 0,
-    "eventTitle": "[시즌] 치즈케이크",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.angelinus.com/event/",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": true,
-    "events": {
-      "엔제리너스": {
-        "type": "시즌",
-        "isNew": false,
-        "daysLeft": 15,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "엔제리너스_원두250g_59",
-    "name": "원두 250g",
-    "category": "MD·기타",
-    "price": 12000,
-    "saving": 0,
-    "discountPrice": 12000,
-    "discountRate": 0,
-    "eventTitle": "원두 250g 구매 이벤트",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.angelinus.com/event/",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "엔제리너스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 15,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "엔제리너스_플레인스콘_60",
-    "name": "플레인 스콘",
-    "category": "베이커리",
-    "price": 3400,
-    "saving": 0,
-    "discountPrice": 3400,
-    "discountRate": 0,
-    "eventTitle": "플레인 스콘 구매 이벤트",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.angelinus.com/event/",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "엔제리너스": {
-        "type": "이벤트",
-        "isNew": true,
-        "daysLeft": 2,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "폴바셋_드립백10입_61",
-    "name": "드립백 10입",
-    "category": "MD·기타",
-    "price": 9000,
-    "saving": 0,
-    "discountPrice": 9000,
-    "discountRate": 0,
-    "eventTitle": "드립백 10입 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "https://www.paulbassett.co.kr",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "폴 바셋": {
-        "type": "사이즈업",
-        "isNew": false,
-        "daysLeft": 20,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "폴바셋_초코브라우니_62",
-    "name": "초코 브라우니",
-    "category": "디저트",
-    "price": 4800,
-    "saving": 1440,
-    "discountPrice": 3360,
-    "discountRate": 30,
-    "eventTitle": "앱 쿠폰 초코 브라우니 30% 할인",
-    "conditionText": "브랜드 공식 앱 쿠폰 적용 시. 일부 매장 제외.",
-    "officialUrl": "https://www.paulbassett.co.kr",
-    "isCoupon": true,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "폴 바셋": {
-        "type": "쿠폰",
-        "isNew": false,
-        "daysLeft": 12,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "폴바셋_티라미수_63",
-    "name": "티라미수",
-    "category": "디저트",
-    "price": 6200,
-    "saving": 1550,
-    "discountPrice": 4650,
-    "discountRate": 25,
-    "eventTitle": "티라미수 25% 할인",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.paulbassett.co.kr",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "폴 바셋": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": 1,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "폴바셋_푸딩_64",
-    "name": "푸딩",
-    "category": "디저트",
-    "price": 3900,
-    "saving": 390,
-    "discountPrice": 3510,
-    "discountRate": 10,
-    "eventTitle": "푸딩 10% 할인",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.paulbassett.co.kr",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "폴 바셋": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": 16,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "폴바셋_카라멜마키아토_65",
-    "name": "카라멜 마키아토",
-    "category": "커피",
-    "price": 4500,
-    "saving": 0,
-    "discountPrice": 4500,
-    "discountRate": 0,
-    "eventTitle": "[시즌] 카라멜 마키아토",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.paulbassett.co.kr",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": true,
-    "events": {
-      "폴 바셋": {
-        "type": "시즌",
-        "isNew": false,
-        "daysLeft": 1,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "탐앤탐스_딸기라떼_66",
-    "name": "딸기 라떼",
-    "category": "음료",
-    "price": 5500,
-    "saving": 0,
-    "discountPrice": 5500,
-    "discountRate": 0,
-    "eventTitle": "[시즌] 딸기 라떼",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.tomntoms.com/event/",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": true,
-    "events": {
-      "탐앤탐스": {
-        "type": "시즌",
-        "isNew": true,
-        "daysLeft": 4,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "탐앤탐스_소금빵_67",
-    "name": "소금빵",
-    "category": "베이커리",
-    "price": 3800,
-    "saving": 0,
-    "discountPrice": 3800,
-    "discountRate": 0,
-    "eventTitle": "소금빵 구매 이벤트",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.tomntoms.com/event/",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "탐앤탐스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 2,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "탐앤탐스_바닐라라떼_68",
-    "name": "바닐라라떼",
-    "category": "커피",
-    "price": 5000,
-    "saving": 0,
-    "discountPrice": 5000,
-    "discountRate": 0,
-    "eventTitle": "바닐라라떼 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "https://www.tomntoms.com/event/",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "탐앤탐스": {
-        "type": "사이즈업",
-        "isNew": false,
-        "daysLeft": 11,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "탐앤탐스_카푸치노_69",
-    "name": "카푸치노",
-    "category": "커피",
-    "price": 4500,
-    "saving": 0,
-    "discountPrice": 4500,
-    "discountRate": 0,
-    "eventTitle": "[시즌] 카푸치노",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.tomntoms.com/event/",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": true,
-    "events": {
-      "탐앤탐스": {
-        "type": "시즌",
-        "isNew": true,
-        "daysLeft": 21,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "탐앤탐스_디카페인아메리카노_70",
-    "name": "디카페인 아메리카노",
-    "category": "커피",
-    "price": 4000,
-    "saving": 0,
-    "discountPrice": 4000,
-    "discountRate": 0,
-    "eventTitle": "[시즌] 디카페인 아메리카노",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.tomntoms.com/event/",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": true,
-    "events": {
-      "탐앤탐스": {
-        "type": "시즌",
-        "isNew": false,
-        "daysLeft": 0,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "탐앤탐스_치즈케이크_71",
-    "name": "치즈케이크",
-    "category": "디저트",
-    "price": 6500,
-    "saving": 0,
-    "discountPrice": 6500,
-    "discountRate": 0,
-    "eventTitle": "치즈케이크 구매 이벤트",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.tomntoms.com/event/",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "탐앤탐스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 1,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "감성커피_레몬아이스티_72",
-    "name": "레몬 아이스티",
-    "category": "음료",
-    "price": 3500,
-    "saving": 0,
-    "discountPrice": 3500,
-    "discountRate": 0,
-    "eventTitle": "레몬 아이스티 구매 이벤트",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "감성커피": {
-        "type": "이벤트",
-        "isNew": true,
-        "daysLeft": 1,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "감성커피_소금빵_73",
-    "name": "소금빵",
-    "category": "베이커리",
-    "price": 3200,
-    "saving": 0,
-    "discountPrice": 3200,
-    "discountRate": 0,
-    "eventTitle": "소금빵 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "감성커피": {
-        "type": "사이즈업",
-        "isNew": false,
-        "daysLeft": 18,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "감성커피_플레인스콘_74",
-    "name": "플레인 스콘",
-    "category": "베이커리",
-    "price": 3400,
-    "saving": 0,
-    "discountPrice": 3400,
-    "discountRate": 0,
-    "eventTitle": "[신메뉴] 플레인 스콘 출시",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
+    "eventTitle": "데일리 말차 4종 출시",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/285660",
     "isCoupon": false,
     "isNewMenu": true,
     "isSeasonMenu": false,
     "events": {
-      "감성커피": {
+      "컴포즈커피": {
         "type": "신메뉴",
-        "isNew": false,
-        "daysLeft": 0,
-        "image": ""
+        "isNew": true,
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/660/285/600x600.crop.jpg?t=1773970922",
+        "startDate": "2026-03-10",
+        "endDate": ""
       }
     }
   },
   {
-    "id": "감성커피_청귤스무디_75",
-    "name": "청귤 스무디",
-    "category": "음료",
-    "price": 5200,
+    "id": "컴포즈커피_real_284189",
+    "name": "NEW 달콤한 선택 500원 할인 프로모션",
+    "category": "할인",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 5200,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "청귤 스무디 구매 이벤트",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "감성커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 0,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "감성커피_초코브라우니_76",
-    "name": "초코 브라우니",
-    "category": "디저트",
-    "price": 4800,
-    "saving": 480,
-    "discountPrice": 4320,
-    "discountRate": 10,
-    "eventTitle": "앱 쿠폰 초코 브라우니 10% 할인",
-    "conditionText": "브랜드 공식 앱 쿠폰 적용 시. 일부 매장 제외.",
-    "officialUrl": "",
+    "eventTitle": "NEW 달콤한 선택 500원 할인 프로모션",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/284189",
     "isCoupon": true,
     "isNewMenu": false,
     "isSeasonMenu": false,
     "events": {
-      "감성커피": {
-        "type": "쿠폰",
-        "isNew": false,
-        "daysLeft": 11,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "감성커피_치아바타샌드위치_77",
-    "name": "치아바타 샌드위치",
-    "category": "베이커리",
-    "price": 6500,
-    "saving": 970,
-    "discountPrice": 5530,
-    "discountRate": 15,
-    "eventTitle": "치아바타 샌드위치 15% 할인",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "감성커피": {
+      "컴포즈커피": {
         "type": "할인",
         "isNew": false,
-        "daysLeft": 10,
-        "image": ""
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/189/284/600x600.crop.jpg?t=1772060600",
+        "startDate": "2026-02-26",
+        "endDate": ""
       }
     }
   },
   {
-    "id": "더리터_생크림롤케이크_78",
-    "name": "생크림 롤케이크",
-    "category": "디저트",
-    "price": 5500,
+    "id": "컴포즈커피_real_282765",
+    "name": "당근페이 어항꾸미기 프로모션2",
+    "category": "이벤트",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 5500,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "[신메뉴] 생크림 롤케이크 출시",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
+    "eventTitle": "당근페이 어항꾸미기 프로모션2",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/282765",
     "isCoupon": false,
-    "isNewMenu": true,
+    "isNewMenu": false,
     "isSeasonMenu": false,
     "events": {
-      "더리터": {
-        "type": "신메뉴",
+      "컴포즈커피": {
+        "type": "이벤트",
         "isNew": false,
-        "daysLeft": 21,
-        "image": ""
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/765/282/600x600.crop.jpg?t=1770950641",
+        "startDate": "2026-02-13",
+        "endDate": ""
       }
     }
   },
   {
-    "id": "더리터_마카롱세트_79",
-    "name": "마카롱 세트",
-    "category": "디저트",
-    "price": 7500,
+    "id": "컴포즈커피_real_281844",
+    "name": "명조 이벤트 1. 콜라보 랜덤 굿즈 세트",
+    "category": "이벤트",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 7500,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "[신메뉴] 마카롱 세트 출시",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
+    "eventTitle": "명조 이벤트 1. 콜라보 랜덤 굿즈 세트",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/281844",
     "isCoupon": false,
-    "isNewMenu": true,
+    "isNewMenu": false,
     "isSeasonMenu": false,
     "events": {
-      "더리터": {
-        "type": "신메뉴",
+      "컴포즈커피": {
+        "type": "이벤트",
         "isNew": false,
-        "daysLeft": 2,
-        "image": ""
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/844/281/600x600.crop.jpg?t=1770377319",
+        "startDate": "2026-02-06",
+        "endDate": ""
       }
     }
   },
   {
-    "id": "더리터_카푸치노_80",
-    "name": "카푸치노",
-    "category": "커피",
-    "price": 3500,
+    "id": "컴포즈커피_real_279432",
+    "name": "명조 이벤트 2. APP 스탬프 프로모션",
+    "category": "이벤트",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 3500,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "[시즌] 카푸치노",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": true,
-    "events": {
-      "더리터": {
-        "type": "시즌",
-        "isNew": false,
-        "daysLeft": 21,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "더리터_원두250g_81",
-    "name": "원두 250g",
-    "category": "MD·기타",
-    "price": 12000,
-    "saving": 2400,
-    "discountPrice": 9600,
-    "discountRate": 20,
-    "eventTitle": "원두 250g 20% 할인",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
+    "eventTitle": "명조 이벤트 2. APP 스탬프 프로모션",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/279432",
     "isCoupon": false,
     "isNewMenu": false,
     "isSeasonMenu": false,
     "events": {
-      "더리터": {
-        "type": "할인",
+      "컴포즈커피": {
+        "type": "이벤트",
         "isNew": false,
-        "daysLeft": 19,
-        "image": ""
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/432/279/600x600.crop.jpg?t=1770377372",
+        "startDate": "2026-01-19",
+        "endDate": ""
       }
     }
   },
   {
-    "id": "더리터_레몬아이스티_82",
-    "name": "레몬 아이스티",
-    "category": "음료",
-    "price": 3500,
-    "saving": 1050,
-    "discountPrice": 2450,
-    "discountRate": 30,
-    "eventTitle": "레몬 아이스티 30% 할인",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "더리터": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": 9,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "더리터_소금빵_83",
-    "name": "소금빵",
-    "category": "베이커리",
-    "price": 3200,
-    "saving": 640,
-    "discountPrice": 2560,
-    "discountRate": 20,
-    "eventTitle": "소금빵 20% 할인",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "더리터": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": 16,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "더리터_초코브라우니_84",
-    "name": "초코 브라우니",
-    "category": "디저트",
-    "price": 4800,
+    "id": "컴포즈커피_real_281804",
+    "name": "NEW 올데이 세트 2종 할인 프로모션",
+    "category": "할인",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 4800,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "초코 브라우니 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "더리터": {
-        "type": "사이즈업",
-        "isNew": true,
-        "daysLeft": 14,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "하삼동커피_베이글_85",
-    "name": "베이글",
-    "category": "베이커리",
-    "price": 3600,
-    "saving": 900,
-    "discountPrice": 2700,
-    "discountRate": 25,
-    "eventTitle": "앱 쿠폰 베이글 25% 할인",
-    "conditionText": "브랜드 공식 앱 쿠폰 적용 시. 일부 매장 제외.",
-    "officialUrl": "",
+    "eventTitle": "NEW 올데이 세트 2종 할인 프로모션",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/281804",
     "isCoupon": true,
     "isNewMenu": false,
     "isSeasonMenu": false,
     "events": {
-      "하삼동커피": {
-        "type": "쿠폰",
-        "isNew": false,
-        "daysLeft": 4,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "하삼동커피_복숭아아이스티_86",
-    "name": "복숭아 아이스티",
-    "category": "음료",
-    "price": 3800,
-    "saving": 0,
-    "discountPrice": 3800,
-    "discountRate": 0,
-    "eventTitle": "복숭아 아이스티 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "하삼동커피": {
-        "type": "사이즈업",
-        "isNew": false,
-        "daysLeft": 14,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "하삼동커피_카페라떼_87",
-    "name": "카페라떼",
-    "category": "커피",
-    "price": 3200,
-    "saving": 0,
-    "discountPrice": 3200,
-    "discountRate": 0,
-    "eventTitle": "카페라떼 구매 이벤트",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "하삼동커피": {
-        "type": "이벤트",
-        "isNew": true,
-        "daysLeft": 4,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "하삼동커피_딸기라떼_88",
-    "name": "딸기 라떼",
-    "category": "음료",
-    "price": 5000,
-    "saving": 0,
-    "discountPrice": 5000,
-    "discountRate": 0,
-    "eventTitle": "딸기 라떼 구매 이벤트",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "하삼동커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 14,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "하삼동커피_카푸치노_89",
-    "name": "카푸치노",
-    "category": "커피",
-    "price": 3500,
-    "saving": 0,
-    "discountPrice": 3500,
-    "discountRate": 0,
-    "eventTitle": "카푸치노 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "하삼동커피": {
-        "type": "사이즈업",
-        "isNew": true,
-        "daysLeft": 8,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "봄봄_그린티라떼_90",
-    "name": "그린티 라떼",
-    "category": "음료",
-    "price": 4500,
-    "saving": 1350,
-    "discountPrice": 3150,
-    "discountRate": 30,
-    "eventTitle": "그린티 라떼 30% 할인",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "봄봄": {
+      "컴포즈커피": {
         "type": "할인",
-        "isNew": true,
-        "daysLeft": 17,
-        "image": ""
+        "isNew": false,
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/804/281/600x600.crop.jpg?t=1770625586",
+        "startDate": "2026-02-06",
+        "endDate": ""
       }
     }
   },
   {
-    "id": "봄봄_마카롱세트_91",
-    "name": "마카롱 세트",
-    "category": "디저트",
-    "price": 7500,
+    "id": "컴포즈커피_real_280492",
+    "name": "고객 만족도 1위 기념 아메리카노 1천원",
+    "category": "이벤트",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 7500,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "마카롱 세트 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "",
+    "eventTitle": "고객 만족도 1위 기념 아메리카노 1천원",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/280492",
     "isCoupon": false,
     "isNewMenu": false,
     "isSeasonMenu": false,
     "events": {
-      "봄봄": {
-        "type": "사이즈업",
+      "컴포즈커피": {
+        "type": "이벤트",
         "isNew": false,
-        "daysLeft": 19,
-        "image": ""
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/492/280/600x600.crop.jpg?t=1769481704",
+        "startDate": "2026-01-27",
+        "endDate": ""
       }
     }
   },
   {
-    "id": "봄봄_크루아상_92",
-    "name": "크루아상",
-    "category": "베이커리",
-    "price": 3800,
+    "id": "컴포즈커피_real_280459",
+    "name": "OK캐쉬백, 엘포인트 제휴 포인트 사용 안내",
+    "category": "이벤트",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 3800,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "[신메뉴] 크루아상 출시",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
+    "eventTitle": "OK캐쉬백, 엘포인트 제휴 포인트 사용 안내",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/280459",
+    "isCoupon": false,
+    "isNewMenu": false,
+    "isSeasonMenu": false,
+    "events": {
+      "컴포즈커피": {
+        "type": "이벤트",
+        "isNew": false,
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/459/280/600x600.crop.jpg?t=1769477844",
+        "startDate": "2026-01-27",
+        "endDate": ""
+      }
+    }
+  },
+  {
+    "id": "컴포즈커피_real_278751",
+    "name": "당근페이 어항꾸미기 프로모션",
+    "category": "이벤트",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "당근페이 어항꾸미기 프로모션",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/278751",
+    "isCoupon": false,
+    "isNewMenu": false,
+    "isSeasonMenu": false,
+    "events": {
+      "컴포즈커피": {
+        "type": "이벤트",
+        "isNew": false,
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/751/278/600x600.crop.jpg?t=1769394282",
+        "startDate": "2025-10-31",
+        "endDate": ""
+      }
+    }
+  },
+  {
+    "id": "컴포즈커피_real_277244",
+    "name": "2026년 컴포즈커피 VIP 멤버십 안내",
+    "category": "이벤트",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "2026년 컴포즈커피 VIP 멤버십 안내",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/277244",
+    "isCoupon": false,
+    "isNewMenu": false,
+    "isSeasonMenu": false,
+    "events": {
+      "컴포즈커피": {
+        "type": "이벤트",
+        "isNew": false,
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/244/277/600x600.crop.jpg?t=1767309992",
+        "startDate": "2025-12-30",
+        "endDate": ""
+      }
+    }
+  },
+  {
+    "id": "컴포즈커피_real_275477",
+    "name": "징글베리 딸기 음료 4종 출시",
+    "category": "신메뉴",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "징글베리 딸기 음료 4종 출시",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/275477",
     "isCoupon": false,
     "isNewMenu": true,
     "isSeasonMenu": false,
     "events": {
-      "봄봄": {
+      "컴포즈커피": {
         "type": "신메뉴",
-        "isNew": false,
-        "daysLeft": 8,
-        "image": ""
+        "isNew": true,
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/477/275/600x600.crop.jpg?t=1778500151",
+        "startDate": "2025-12-15",
+        "endDate": ""
       }
     }
   },
   {
-    "id": "봄봄_초코브라우니_93",
-    "name": "초코 브라우니",
-    "category": "디저트",
-    "price": 4800,
+    "id": "컴포즈커피_real_273794",
+    "name": "컴포즈커피X부여군X위기브 고향사랑기부 이벤트",
+    "category": "이벤트",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 4800,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "초코 브라우니 구매 이벤트",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
+    "eventTitle": "컴포즈커피X부여군X위기브 고향사랑기부 이벤트",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/273794",
     "isCoupon": false,
     "isNewMenu": false,
     "isSeasonMenu": false,
     "events": {
-      "봄봄": {
+      "컴포즈커피": {
         "type": "이벤트",
         "isNew": false,
-        "daysLeft": 0,
-        "image": ""
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/794/273/600x600.crop.jpg?t=1766989139",
+        "startDate": "2025-12-02",
+        "endDate": ""
       }
     }
   },
   {
-    "id": "봄봄_카페라떼_94",
-    "name": "카페라떼",
-    "category": "커피",
-    "price": 3200,
+    "id": "컴포즈커피_real_263402",
+    "name": "당근과 컴포즈커피가 함께 깎았당!",
+    "category": "이벤트",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 3200,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "[신메뉴] 카페라떼 출시",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
+    "eventTitle": "당근과 컴포즈커피가 함께 깎았당!",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/263402",
+    "isCoupon": false,
+    "isNewMenu": false,
+    "isSeasonMenu": false,
+    "events": {
+      "컴포즈커피": {
+        "type": "이벤트",
+        "isNew": false,
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/402/263/600x600.crop.jpg?t=1768441016",
+        "startDate": "2025-10-31",
+        "endDate": ""
+      }
+    }
+  },
+  {
+    "id": "컴포즈커피_real_250407",
+    "name": "민생회복소비쿠폰에 특별한 혜택을 더하다.",
+    "category": "할인",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "민생회복소비쿠폰에 특별한 혜택을 더하다.",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/250407",
+    "isCoupon": true,
+    "isNewMenu": false,
+    "isSeasonMenu": false,
+    "events": {
+      "컴포즈커피": {
+        "type": "할인",
+        "isNew": false,
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/407/250/600x600.crop.jpg?t=1761749608",
+        "startDate": "2025-08-01",
+        "endDate": ""
+      }
+    }
+  },
+  {
+    "id": "컴포즈커피_real_249466",
+    "name": "컴포즈커피 X 산리오 굿즈 프로모션",
+    "category": "이벤트",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "컴포즈커피 X 산리오 굿즈 프로모션",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/249466",
+    "isCoupon": false,
+    "isNewMenu": false,
+    "isSeasonMenu": false,
+    "events": {
+      "컴포즈커피": {
+        "type": "이벤트",
+        "isNew": false,
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/466/249/600x600.crop.jpg?t=1763427225",
+        "startDate": "2025-07-28",
+        "endDate": ""
+      }
+    }
+  },
+  {
+    "id": "컴포즈커피_real_243884",
+    "name": "컴포즈커피 X 브레드이발소 우산 프로모션",
+    "category": "이벤트",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "컴포즈커피 X 브레드이발소 우산 프로모션",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/243884",
+    "isCoupon": false,
+    "isNewMenu": false,
+    "isSeasonMenu": false,
+    "events": {
+      "컴포즈커피": {
+        "type": "이벤트",
+        "isNew": false,
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/884/243/600x600.crop.jpg?t=1761749608",
+        "startDate": "2025-07-03",
+        "endDate": ""
+      }
+    }
+  },
+  {
+    "id": "컴포즈커피_real_238957",
+    "name": "컴포즈커피 X 명조 컴보 출시 굿즈 증정 이벤트",
+    "category": "신메뉴",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "컴포즈커피 X 명조 컴보 출시 굿즈 증정 이벤트",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/238957",
     "isCoupon": false,
     "isNewMenu": true,
     "isSeasonMenu": false,
     "events": {
-      "봄봄": {
+      "컴포즈커피": {
         "type": "신메뉴",
-        "isNew": false,
-        "daysLeft": 10,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "텐퍼센트커피_베이글_95",
-    "name": "베이글",
-    "category": "베이커리",
-    "price": 3600,
-    "saving": 0,
-    "discountPrice": 3600,
-    "discountRate": 0,
-    "eventTitle": "베이글 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "텐퍼센트커피": {
-        "type": "사이즈업",
         "isNew": true,
-        "daysLeft": 1,
-        "image": ""
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/957/238/600x600.crop.jpg?t=1761749608",
+        "startDate": "2025-06-05",
+        "endDate": ""
       }
     }
   },
   {
-    "id": "텐퍼센트커피_카페라떼_96",
-    "name": "카페라떼",
-    "category": "커피",
-    "price": 3200,
+    "id": "컴포즈커피_real_229303",
+    "name": "컴포즈커피 X 스티치 굿즈 프로모션",
+    "category": "이벤트",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 3200,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "[시즌] 카페라떼",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": true,
-    "events": {
-      "텐퍼센트커피": {
-        "type": "시즌",
-        "isNew": false,
-        "daysLeft": 22,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "텐퍼센트커피_아메리카노_97",
-    "name": "아메리카노",
-    "category": "커피",
-    "price": 2000,
-    "saving": 500,
-    "discountPrice": 1500,
-    "discountRate": 25,
-    "eventTitle": "앱 쿠폰 아메리카노 25% 할인",
-    "conditionText": "브랜드 공식 앱 쿠폰 적용 시. 일부 매장 제외.",
-    "officialUrl": "",
-    "isCoupon": true,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "텐퍼센트커피": {
-        "type": "쿠폰",
-        "isNew": true,
-        "daysLeft": 13,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "텐퍼센트커피_청귤스무디_98",
-    "name": "청귤 스무디",
-    "category": "음료",
-    "price": 5200,
-    "saving": 0,
-    "discountPrice": 5200,
-    "discountRate": 0,
-    "eventTitle": "청귤 스무디 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "",
+    "eventTitle": "컴포즈커피 X 스티치 굿즈 프로모션",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/229303",
     "isCoupon": false,
     "isNewMenu": false,
     "isSeasonMenu": false,
     "events": {
-      "텐퍼센트커피": {
-        "type": "사이즈업",
-        "isNew": false,
-        "daysLeft": 7,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "텐퍼센트커피_마카롱세트_99",
-    "name": "마카롱 세트",
-    "category": "디저트",
-    "price": 7500,
-    "saving": 0,
-    "discountPrice": 7500,
-    "discountRate": 0,
-    "eventTitle": "마카롱 세트 구매 이벤트",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "텐퍼센트커피": {
+      "컴포즈커피": {
         "type": "이벤트",
         "isNew": false,
-        "daysLeft": 11,
-        "image": ""
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/303/229/600x600.crop.jpg?t=1761749609",
+        "startDate": "2025-04-28",
+        "endDate": ""
       }
     }
   },
   {
-    "id": "텐퍼센트커피_레몬아이스티_100",
-    "name": "레몬 아이스티",
-    "category": "음료",
-    "price": 3500,
+    "id": "컴포즈커피_real_215351",
+    "name": "컴포즈커피 X 브레드이발소 굿즈 증정 이벤트",
+    "category": "이벤트",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 3500,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "레몬 아이스티 구매 이벤트",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
+    "eventTitle": "컴포즈커피 X 브레드이발소 굿즈 증정 이벤트",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/215351",
     "isCoupon": false,
     "isNewMenu": false,
     "isSeasonMenu": false,
     "events": {
-      "텐퍼센트커피": {
-        "type": "이벤트",
-        "isNew": true,
-        "daysLeft": 13,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "텐퍼센트커피_플랫화이트_101",
-    "name": "플랫화이트",
-    "category": "커피",
-    "price": 4700,
-    "saving": 1410,
-    "discountPrice": 3290,
-    "discountRate": 30,
-    "eventTitle": "플랫화이트 30% 할인",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "텐퍼센트커피": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": 16,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "텐퍼센트커피_소금빵_102",
-    "name": "소금빵",
-    "category": "베이커리",
-    "price": 3200,
-    "saving": 0,
-    "discountPrice": 3200,
-    "discountRate": 0,
-    "eventTitle": "[시즌] 소금빵",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": true,
-    "events": {
-      "텐퍼센트커피": {
-        "type": "시즌",
-        "isNew": false,
-        "daysLeft": 1,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "커피에반하다_복숭아아이스티_103",
-    "name": "복숭아 아이스티",
-    "category": "음료",
-    "price": 3800,
-    "saving": 0,
-    "discountPrice": 3800,
-    "discountRate": 0,
-    "eventTitle": "복숭아 아이스티 구매 이벤트",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "커피에반하다": {
+      "컴포즈커피": {
         "type": "이벤트",
         "isNew": false,
-        "daysLeft": 13,
-        "image": ""
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/351/215/600x600.crop.jpg?t=1761749610",
+        "startDate": "2025-03-21",
+        "endDate": ""
       }
     }
   },
   {
-    "id": "커피에반하다_에그타르트_104",
-    "name": "에그타르트",
-    "category": "베이커리",
-    "price": 3500,
+    "id": "컴포즈커피_real_214587",
+    "name": "컴포즈 VIP 멤버십 프로모션 안내",
+    "category": "이벤트",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 3500,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "에그타르트 구매 이벤트",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
+    "eventTitle": "컴포즈 VIP 멤버십 프로모션 안내",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/214587",
     "isCoupon": false,
     "isNewMenu": false,
     "isSeasonMenu": false,
     "events": {
-      "커피에반하다": {
+      "컴포즈커피": {
         "type": "이벤트",
         "isNew": false,
-        "daysLeft": 21,
-        "image": ""
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/587/214/600x600.crop.jpg?t=1776059435",
+        "startDate": "2025-03-18",
+        "endDate": ""
       }
     }
   },
   {
-    "id": "커피에반하다_카페라떼_105",
-    "name": "카페라떼",
-    "category": "커피",
-    "price": 3200,
+    "id": "컴포즈커피_real_194021",
+    "name": "[시즌메뉴 프로모션] 겨울을 부탁해!",
+    "category": "시즌",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 3200,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "[신메뉴] 카페라떼 출시",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "커피에반하다": {
-        "type": "신메뉴",
-        "isNew": false,
-        "daysLeft": 2,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "커피에반하다_티라미수_106",
-    "name": "티라미수",
-    "category": "디저트",
-    "price": 6200,
-    "saving": 0,
-    "discountPrice": 6200,
-    "discountRate": 0,
-    "eventTitle": "티라미수 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "커피에반하다": {
-        "type": "사이즈업",
-        "isNew": false,
-        "daysLeft": 0,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "커피에반하다_푸딩_107",
-    "name": "푸딩",
-    "category": "디저트",
-    "price": 3900,
-    "saving": 780,
-    "discountPrice": 3120,
-    "discountRate": 20,
-    "eventTitle": "푸딩 20% 할인",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "커피에반하다": {
-        "type": "할인",
-        "isNew": true,
-        "daysLeft": 5,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "카페베네_플레인스콘_108",
-    "name": "플레인 스콘",
-    "category": "베이커리",
-    "price": 3400,
-    "saving": 0,
-    "discountPrice": 3400,
-    "discountRate": 0,
-    "eventTitle": "[시즌] 플레인 스콘",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.caffebene.co.kr",
+    "eventTitle": "[시즌메뉴 프로모션] 겨울을 부탁해!",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/194021",
     "isCoupon": false,
     "isNewMenu": false,
     "isSeasonMenu": true,
     "events": {
-      "카페베네": {
+      "컴포즈커피": {
         "type": "시즌",
         "isNew": false,
-        "daysLeft": 21,
-        "image": ""
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/021/194/600x600.crop.jpg?t=1761749610",
+        "startDate": "2024-12-09",
+        "endDate": ""
       }
     }
   },
   {
-    "id": "카페베네_치아바타샌드위치_109",
-    "name": "치아바타 샌드위치",
-    "category": "베이커리",
-    "price": 6500,
-    "saving": 1620,
-    "discountPrice": 4880,
-    "discountRate": 25,
-    "eventTitle": "앱 쿠폰 치아바타 샌드위치 25% 할인",
-    "conditionText": "브랜드 공식 앱 쿠폰 적용 시. 일부 매장 제외.",
-    "officialUrl": "https://www.caffebene.co.kr",
-    "isCoupon": true,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "카페베네": {
-        "type": "쿠폰",
-        "isNew": false,
-        "daysLeft": 12,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "카페베네_생크림롤케이크_110",
-    "name": "생크림 롤케이크",
-    "category": "디저트",
-    "price": 5500,
+    "id": "컴포즈커피_real_189502",
+    "name": "2024 마마 어워즈 당첨자 안내",
+    "category": "이벤트",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 5500,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "[신메뉴] 생크림 롤케이크 출시",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.caffebene.co.kr",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "카페베네": {
-        "type": "신메뉴",
-        "isNew": false,
-        "daysLeft": 0,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "카페베네_텀블러_111",
-    "name": "텀블러",
-    "category": "MD·기타",
-    "price": 25000,
-    "saving": 6250,
-    "discountPrice": 18750,
-    "discountRate": 25,
-    "eventTitle": "텀블러 25% 할인",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.caffebene.co.kr",
+    "eventTitle": "2024 마마 어워즈 당첨자 안내",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/189502",
     "isCoupon": false,
     "isNewMenu": false,
     "isSeasonMenu": false,
     "events": {
-      "카페베네": {
-        "type": "할인",
-        "isNew": true,
-        "daysLeft": 1,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "카페베네_플랫화이트_112",
-    "name": "플랫화이트",
-    "category": "커피",
-    "price": 4700,
-    "saving": 470,
-    "discountPrice": 4230,
-    "discountRate": 10,
-    "eventTitle": "앱 쿠폰 플랫화이트 10% 할인",
-    "conditionText": "브랜드 공식 앱 쿠폰 적용 시. 일부 매장 제외.",
-    "officialUrl": "https://www.caffebene.co.kr",
-    "isCoupon": true,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "카페베네": {
-        "type": "쿠폰",
-        "isNew": true,
-        "daysLeft": 20,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "카페베네_마카롱세트_113",
-    "name": "마카롱 세트",
-    "category": "디저트",
-    "price": 7500,
-    "saving": 0,
-    "discountPrice": 7500,
-    "discountRate": 0,
-    "eventTitle": "[신메뉴] 마카롱 세트 출시",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.caffebene.co.kr",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "카페베네": {
-        "type": "신메뉴",
-        "isNew": false,
-        "daysLeft": 2,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "카페베네_콜드브루_114",
-    "name": "콜드브루",
-    "category": "커피",
-    "price": 5000,
-    "saving": 0,
-    "discountPrice": 5000,
-    "discountRate": 0,
-    "eventTitle": "콜드브루 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "https://www.caffebene.co.kr",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "카페베네": {
-        "type": "사이즈업",
-        "isNew": false,
-        "daysLeft": 2,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "달콤커피_보온병_115",
-    "name": "보온병",
-    "category": "MD·기타",
-    "price": 28000,
-    "saving": 0,
-    "discountPrice": 28000,
-    "discountRate": 0,
-    "eventTitle": "보온병 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "https://dalkomm.com",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "달콤커피": {
-        "type": "사이즈업",
-        "isNew": false,
-        "daysLeft": 1,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "달콤커피_청귤스무디_116",
-    "name": "청귤 스무디",
-    "category": "음료",
-    "price": 5200,
-    "saving": 0,
-    "discountPrice": 5200,
-    "discountRate": 0,
-    "eventTitle": "청귤 스무디 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "https://dalkomm.com",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "달콤커피": {
-        "type": "사이즈업",
-        "isNew": false,
-        "daysLeft": 8,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "달콤커피_그린티라떼_117",
-    "name": "그린티 라떼",
-    "category": "음료",
-    "price": 2500,
-    "saving": 500,
-    "discountPrice": 2000,
-    "discountRate": 20,
-    "eventTitle": "그린티 라떼 20% 할인",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://dalkomm.com",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "달콤커피": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": 5,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "달콤커피_레몬아이스티_118",
-    "name": "레몬 아이스티",
-    "category": "음료",
-    "price": 2000,
-    "saving": 0,
-    "discountPrice": 2000,
-    "discountRate": 0,
-    "eventTitle": "[시즌] 레몬 아이스티",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://dalkomm.com",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": true,
-    "events": {
-      "달콤커피": {
-        "type": "시즌",
-        "isNew": false,
-        "daysLeft": 16,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "달콤커피_딸기라떼_119",
-    "name": "딸기 라떼",
-    "category": "음료",
-    "price": 3000,
-    "saving": 0,
-    "discountPrice": 3000,
-    "discountRate": 0,
-    "eventTitle": "[시즌] 딸기 라떼",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://dalkomm.com",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": true,
-    "events": {
-      "달콤커피": {
-        "type": "시즌",
-        "isNew": false,
-        "daysLeft": 1,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "드롭탑_플레인스콘_120",
-    "name": "플레인 스콘",
-    "category": "베이커리",
-    "price": 3400,
-    "saving": 0,
-    "discountPrice": 3400,
-    "discountRate": 0,
-    "eventTitle": "플레인 스콘 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "https://www.droptop.co.kr",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "드롭탑": {
-        "type": "사이즈업",
-        "isNew": true,
-        "daysLeft": 4,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "드롭탑_초코브라우니_121",
-    "name": "초코 브라우니",
-    "category": "디저트",
-    "price": 4800,
-    "saving": 0,
-    "discountPrice": 4800,
-    "discountRate": 0,
-    "eventTitle": "[시즌] 초코 브라우니",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.droptop.co.kr",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": true,
-    "events": {
-      "드롭탑": {
-        "type": "시즌",
-        "isNew": false,
-        "daysLeft": 2,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "드롭탑_플랫화이트_122",
-    "name": "플랫화이트",
-    "category": "커피",
-    "price": 4700,
-    "saving": 940,
-    "discountPrice": 3760,
-    "discountRate": 20,
-    "eventTitle": "앱 쿠폰 플랫화이트 20% 할인",
-    "conditionText": "브랜드 공식 앱 쿠폰 적용 시. 일부 매장 제외.",
-    "officialUrl": "https://www.droptop.co.kr",
-    "isCoupon": true,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "드롭탑": {
-        "type": "쿠폰",
-        "isNew": false,
-        "daysLeft": 0,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "드롭탑_텀블러_123",
-    "name": "텀블러",
-    "category": "MD·기타",
-    "price": 22000,
-    "saving": 5500,
-    "discountPrice": 16500,
-    "discountRate": 25,
-    "eventTitle": "텀블러 25% 할인",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.droptop.co.kr",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "드롭탑": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": 0,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "드롭탑_베이글_124",
-    "name": "베이글",
-    "category": "베이커리",
-    "price": 3600,
-    "saving": 0,
-    "discountPrice": 3600,
-    "discountRate": 0,
-    "eventTitle": "베이글 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "https://www.droptop.co.kr",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "드롭탑": {
-        "type": "사이즈업",
-        "isNew": false,
-        "daysLeft": 18,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "드롭탑_크루아상_125",
-    "name": "크루아상",
-    "category": "베이커리",
-    "price": 4000,
-    "saving": 800,
-    "discountPrice": 3200,
-    "discountRate": 20,
-    "eventTitle": "앱 쿠폰 크루아상 20% 할인",
-    "conditionText": "브랜드 공식 앱 쿠폰 적용 시. 일부 매장 제외.",
-    "officialUrl": "https://www.droptop.co.kr",
-    "isCoupon": true,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "드롭탑": {
-        "type": "쿠폰",
-        "isNew": false,
-        "daysLeft": 3,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "커피나무_그린티라떼_126",
-    "name": "그린티 라떼",
-    "category": "음료",
-    "price": 2500,
-    "saving": 250,
-    "discountPrice": 2250,
-    "discountRate": 10,
-    "eventTitle": "앱 쿠폰 그린티 라떼 10% 할인",
-    "conditionText": "브랜드 공식 앱 쿠폰 적용 시. 일부 매장 제외.",
-    "officialUrl": "",
-    "isCoupon": true,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "커피나무": {
-        "type": "쿠폰",
-        "isNew": false,
-        "daysLeft": 2,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "커피나무_초코브라우니_127",
-    "name": "초코 브라우니",
-    "category": "디저트",
-    "price": 4800,
-    "saving": 0,
-    "discountPrice": 4800,
-    "discountRate": 0,
-    "eventTitle": "[시즌] 초코 브라우니",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": true,
-    "events": {
-      "커피나무": {
-        "type": "시즌",
-        "isNew": false,
-        "daysLeft": 15,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "커피나무_디카페인아메리카노_128",
-    "name": "디카페인 아메리카노",
-    "category": "커피",
-    "price": 2500,
-    "saving": 620,
-    "discountPrice": 1880,
-    "discountRate": 25,
-    "eventTitle": "디카페인 아메리카노 25% 할인",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "커피나무": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": 6,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "커피나무_카푸치노_129",
-    "name": "카푸치노",
-    "category": "커피",
-    "price": 2000,
-    "saving": 0,
-    "discountPrice": 2000,
-    "discountRate": 0,
-    "eventTitle": "카푸치노 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "커피나무": {
-        "type": "사이즈업",
-        "isNew": false,
-        "daysLeft": 5,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "커피나무_자몽에이드_130",
-    "name": "자몽 에이드",
-    "category": "음료",
-    "price": 4300,
-    "saving": 0,
-    "discountPrice": 4300,
-    "discountRate": 0,
-    "eventTitle": "자몽 에이드 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "커피나무": {
-        "type": "사이즈업",
-        "isNew": true,
-        "daysLeft": 16,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "토프레소_카라멜마키아토_131",
-    "name": "카라멜 마키아토",
-    "category": "커피",
-    "price": 2500,
-    "saving": 370,
-    "discountPrice": 2130,
-    "discountRate": 15,
-    "eventTitle": "카라멜 마키아토 15% 할인",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "토프레소": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": 1,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "토프레소_딸기라떼_132",
-    "name": "딸기 라떼",
-    "category": "음료",
-    "price": 3000,
-    "saving": 0,
-    "discountPrice": 3000,
-    "discountRate": 0,
-    "eventTitle": "[신메뉴] 딸기 라떼 출시",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "토프레소": {
-        "type": "신메뉴",
-        "isNew": false,
-        "daysLeft": 12,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "토프레소_바닐라라떼_133",
-    "name": "바닐라라떼",
-    "category": "커피",
-    "price": 2500,
-    "saving": 620,
-    "discountPrice": 1880,
-    "discountRate": 25,
-    "eventTitle": "바닐라라떼 25% 할인",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "토프레소": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": 8,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "토프레소_복숭아아이스티_134",
-    "name": "복숭아 아이스티",
-    "category": "음료",
-    "price": 3800,
-    "saving": 0,
-    "discountPrice": 3800,
-    "discountRate": 0,
-    "eventTitle": "[신메뉴] 복숭아 아이스티 출시",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "토프레소": {
-        "type": "신메뉴",
-        "isNew": false,
-        "daysLeft": 8,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "토프레소_플레인스콘_135",
-    "name": "플레인 스콘",
-    "category": "베이커리",
-    "price": 3400,
-    "saving": 0,
-    "discountPrice": 3400,
-    "discountRate": 0,
-    "eventTitle": "[시즌] 플레인 스콘",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": true,
-    "events": {
-      "토프레소": {
-        "type": "시즌",
-        "isNew": false,
-        "daysLeft": 2,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "토프레소_드립백10입_136",
-    "name": "드립백 10입",
-    "category": "MD·기타",
-    "price": 9000,
-    "saving": 0,
-    "discountPrice": 9000,
-    "discountRate": 0,
-    "eventTitle": "[시즌] 드립백 10입",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": true,
-    "events": {
-      "토프레소": {
-        "type": "시즌",
-        "isNew": true,
-        "daysLeft": 9,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "토프레소_카푸치노_137",
-    "name": "카푸치노",
-    "category": "커피",
-    "price": 2000,
-    "saving": 0,
-    "discountPrice": 2000,
-    "discountRate": 0,
-    "eventTitle": "카푸치노 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "토프레소": {
-        "type": "사이즈업",
-        "isNew": false,
-        "daysLeft": 2,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "공차_플레인스콘_138",
-    "name": "플레인 스콘",
-    "category": "베이커리",
-    "price": 3400,
-    "saving": 0,
-    "discountPrice": 3400,
-    "discountRate": 0,
-    "eventTitle": "[시즌] 플레인 스콘",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.gong-cha-kr.com",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": true,
-    "events": {
-      "공차": {
-        "type": "시즌",
-        "isNew": true,
-        "daysLeft": 15,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "공차_보온병_139",
-    "name": "보온병",
-    "category": "MD·기타",
-    "price": 28000,
-    "saving": 0,
-    "discountPrice": 28000,
-    "discountRate": 0,
-    "eventTitle": "보온병 구매 이벤트",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.gong-cha-kr.com",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "공차": {
+      "컴포즈커피": {
         "type": "이벤트",
         "isNew": false,
-        "daysLeft": 0,
-        "image": ""
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/502/189/600x600.crop.jpg?t=1763429414",
+        "startDate": "2024-11-19",
+        "endDate": ""
       }
     }
   },
   {
-    "id": "공차_딸기라떼_140",
-    "name": "딸기 라떼",
-    "category": "음료",
-    "price": 5500,
+    "id": "컴포즈커피_real_185732",
+    "name": "컴포즈커피, 창업비 지원 특별 프로모션",
+    "category": "이벤트",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 5500,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "[신메뉴] 딸기 라떼 출시",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.gong-cha-kr.com",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "공차": {
-        "type": "신메뉴",
-        "isNew": false,
-        "daysLeft": 4,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "공차_카페라떼_141",
-    "name": "카페라떼",
-    "category": "커피",
-    "price": 3200,
-    "saving": 800,
-    "discountPrice": 2400,
-    "discountRate": 25,
-    "eventTitle": "앱 쿠폰 카페라떼 25% 할인",
-    "conditionText": "브랜드 공식 앱 쿠폰 적용 시. 일부 매장 제외.",
-    "officialUrl": "https://www.gong-cha-kr.com",
-    "isCoupon": true,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "공차": {
-        "type": "쿠폰",
-        "isNew": false,
-        "daysLeft": 15,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "공차_드립백10입_142",
-    "name": "드립백 10입",
-    "category": "MD·기타",
-    "price": 9000,
-    "saving": 0,
-    "discountPrice": 9000,
-    "discountRate": 0,
-    "eventTitle": "드립백 10입 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "https://www.gong-cha-kr.com",
+    "eventTitle": "컴포즈커피, 창업비 지원 특별 프로모션",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/185732",
     "isCoupon": false,
     "isNewMenu": false,
     "isSeasonMenu": false,
     "events": {
-      "공차": {
-        "type": "사이즈업",
-        "isNew": false,
-        "daysLeft": 3,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "공차_자몽에이드_143",
-    "name": "자몽 에이드",
-    "category": "음료",
-    "price": 4800,
-    "saving": 0,
-    "discountPrice": 4800,
-    "discountRate": 0,
-    "eventTitle": "자몽 에이드 구매 이벤트",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.gong-cha-kr.com",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "공차": {
+      "컴포즈커피": {
         "type": "이벤트",
         "isNew": false,
-        "daysLeft": 7,
-        "image": ""
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/732/185/600x600.crop.jpg?t=1761749610",
+        "startDate": "2024-11-01",
+        "endDate": ""
       }
     }
   },
   {
-    "id": "공차_크루아상_144",
-    "name": "크루아상",
-    "category": "베이커리",
-    "price": 3800,
+    "id": "컴포즈커피_real_168363",
+    "name": "괌정부관광청 X 컴포즈 럭키박스 이벤트",
+    "category": "이벤트",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 3800,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "[시즌] 크루아상",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "https://www.gong-cha-kr.com",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": true,
-    "events": {
-      "공차": {
-        "type": "시즌",
-        "isNew": false,
-        "daysLeft": 22,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "커피스미스_그린티라떼_145",
-    "name": "그린티 라떼",
-    "category": "음료",
-    "price": 6500,
-    "saving": 0,
-    "discountPrice": 6500,
-    "discountRate": 0,
-    "eventTitle": "[시즌] 그린티 라떼",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": true,
-    "events": {
-      "커피스미스": {
-        "type": "시즌",
-        "isNew": false,
-        "daysLeft": 12,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "커피스미스_마카롱세트_146",
-    "name": "마카롱 세트",
-    "category": "디저트",
-    "price": 7500,
-    "saving": 0,
-    "discountPrice": 7500,
-    "discountRate": 0,
-    "eventTitle": "[시즌] 마카롱 세트",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": true,
-    "events": {
-      "커피스미스": {
-        "type": "시즌",
-        "isNew": false,
-        "daysLeft": 1,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "커피스미스_드립백10입_147",
-    "name": "드립백 10입",
-    "category": "MD·기타",
-    "price": 9000,
-    "saving": 900,
-    "discountPrice": 8100,
-    "discountRate": 10,
-    "eventTitle": "드립백 10입 10% 할인",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
+    "eventTitle": "괌정부관광청 X 컴포즈 럭키박스 이벤트",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/168363",
     "isCoupon": false,
     "isNewMenu": false,
     "isSeasonMenu": false,
     "events": {
-      "커피스미스": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": 20,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "커피스미스_콜드브루_148",
-    "name": "콜드브루",
-    "category": "커피",
-    "price": 6000,
-    "saving": 1800,
-    "discountPrice": 4200,
-    "discountRate": 30,
-    "eventTitle": "콜드브루 30% 할인",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "커피스미스": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": 5,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "커피스미스_텀블러_149",
-    "name": "텀블러",
-    "category": "MD·기타",
-    "price": 22000,
-    "saving": 2200,
-    "discountPrice": 19800,
-    "discountRate": 10,
-    "eventTitle": "텀블러 10% 할인",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "커피스미스": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": 1,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "커피스미스_보온병_150",
-    "name": "보온병",
-    "category": "MD·기타",
-    "price": 28000,
-    "saving": 0,
-    "discountPrice": 28000,
-    "discountRate": 0,
-    "eventTitle": "보온병 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "커피스미스": {
-        "type": "사이즈업",
-        "isNew": false,
-        "daysLeft": 21,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "빈스앤베리즈_보온병_151",
-    "name": "보온병",
-    "category": "MD·기타",
-    "price": 28000,
-    "saving": 0,
-    "discountPrice": 28000,
-    "discountRate": 0,
-    "eventTitle": "보온병 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "빈스앤베리즈": {
-        "type": "사이즈업",
-        "isNew": false,
-        "daysLeft": 10,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "빈스앤베리즈_티라미수_152",
-    "name": "티라미수",
-    "category": "디저트",
-    "price": 6200,
-    "saving": 0,
-    "discountPrice": 6200,
-    "discountRate": 0,
-    "eventTitle": "[시즌] 티라미수",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": true,
-    "events": {
-      "빈스앤베리즈": {
-        "type": "시즌",
-        "isNew": false,
-        "daysLeft": 5,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "빈스앤베리즈_레몬아이스티_153",
-    "name": "레몬 아이스티",
-    "category": "음료",
-    "price": 3500,
-    "saving": 0,
-    "discountPrice": 3500,
-    "discountRate": 0,
-    "eventTitle": "레몬 아이스티 구매 이벤트",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "빈스앤베리즈": {
+      "컴포즈커피": {
         "type": "이벤트",
         "isNew": false,
-        "daysLeft": 19,
-        "image": ""
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/363/168/600x600.crop.jpg?t=1761749610",
+        "startDate": "2024-08-21",
+        "endDate": ""
       }
     }
   },
   {
-    "id": "빈스앤베리즈_플레인스콘_154",
-    "name": "플레인 스콘",
-    "category": "베이커리",
-    "price": 3400,
-    "saving": 510,
-    "discountPrice": 2890,
-    "discountRate": 15,
-    "eventTitle": "앱 쿠폰 플레인 스콘 15% 할인",
-    "conditionText": "브랜드 공식 앱 쿠폰 적용 시. 일부 매장 제외.",
-    "officialUrl": "",
-    "isCoupon": true,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "빈스앤베리즈": {
-        "type": "쿠폰",
-        "isNew": false,
-        "daysLeft": 2,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "빈스앤베리즈_에그타르트_155",
-    "name": "에그타르트",
-    "category": "베이커리",
-    "price": 3500,
+    "id": "컴포즈커피_real_115606",
+    "name": "컴포즈 VIP 멤버십 프로모션 안내",
+    "category": "이벤트",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 3500,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "에그타르트 무료 사이즈업",
-    "conditionText": "동일 메뉴 사이즈 업그레이드 무료. 일부 매장 제외.",
-    "officialUrl": "",
+    "eventTitle": "컴포즈 VIP 멤버십 프로모션 안내",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/115606",
     "isCoupon": false,
     "isNewMenu": false,
     "isSeasonMenu": false,
     "events": {
-      "빈스앤베리즈": {
-        "type": "사이즈업",
+      "컴포즈커피": {
+        "type": "이벤트",
         "isNew": false,
-        "daysLeft": 0,
-        "image": ""
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/606/115/600x600.crop.jpg?t=1761749611",
+        "startDate": "2024-01-31",
+        "endDate": ""
       }
     }
   },
   {
-    "id": "빈스앤베리즈_초콜릿라떼_156",
-    "name": "초콜릿 라떼",
-    "category": "음료",
-    "price": 5800,
+    "id": "컴포즈커피_real_95665",
+    "name": "2023 에어부산 럭키박스 당첨자 안내",
+    "category": "이벤트",
+    "price": 0,
     "saving": 0,
-    "discountPrice": 5800,
+    "discountPrice": 0,
     "discountRate": 0,
-    "eventTitle": "[신메뉴] 초콜릿 라떼 출시",
-    "conditionText": "매장별 적용 여부가 다를 수 있어요. 방문 전 확인 권장.",
-    "officialUrl": "",
+    "eventTitle": "2023 에어부산 럭키박스 당첨자 안내",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/95665",
     "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "빈스앤베리즈": {
-        "type": "신메뉴",
-        "isNew": false,
-        "daysLeft": 0,
-        "image": ""
-      }
-    }
-  },
-  {
-    "id": "빈스앤베리즈_아메리카노_157",
-    "name": "아메리카노",
-    "category": "커피",
-    "price": 4500,
-    "saving": 1120,
-    "discountPrice": 3380,
-    "discountRate": 25,
-    "eventTitle": "앱 쿠폰 아메리카노 25% 할인",
-    "conditionText": "브랜드 공식 앱 쿠폰 적용 시. 일부 매장 제외.",
-    "officialUrl": "",
-    "isCoupon": true,
     "isNewMenu": false,
     "isSeasonMenu": false,
     "events": {
-      "빈스앤베리즈": {
-        "type": "쿠폰",
+      "컴포즈커피": {
+        "type": "이벤트",
         "isNew": false,
-        "daysLeft": 2,
-        "image": ""
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/665/095/600x600.crop.jpg?t=1761752503",
+        "startDate": "2023-11-13",
+        "endDate": ""
+      }
+    }
+  },
+  {
+    "id": "컴포즈커피_real_57076",
+    "name": "4월, 네이버페이 포인트·머니 결제 이벤트",
+    "category": "이벤트",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "4월, 네이버페이 포인트·머니 결제 이벤트",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/57076",
+    "isCoupon": false,
+    "isNewMenu": false,
+    "isSeasonMenu": false,
+    "events": {
+      "컴포즈커피": {
+        "type": "이벤트",
+        "isNew": false,
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/076/057/600x600.crop.jpg?t=1761750594",
+        "startDate": "2023-03-23",
+        "endDate": ""
+      }
+    }
+  },
+  {
+    "id": "컴포즈커피_real_55144",
+    "name": "컴포즈커피 2000호점 오픈 기념 럭키박스 이벤트",
+    "category": "이벤트",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "컴포즈커피 2000호점 오픈 기념 럭키박스 이벤트",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/55144",
+    "isCoupon": false,
+    "isNewMenu": false,
+    "isSeasonMenu": false,
+    "events": {
+      "컴포즈커피": {
+        "type": "이벤트",
+        "isNew": false,
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/144/055/600x600.crop.jpg?t=1761750594",
+        "startDate": "2023-03-06",
+        "endDate": ""
+      }
+    }
+  },
+  {
+    "id": "컴포즈커피_real_115591",
+    "name": "컴포즈 VIP 멤버십 프로모션 안내",
+    "category": "이벤트",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "컴포즈 VIP 멤버십 프로모션 안내",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/115591",
+    "isCoupon": false,
+    "isNewMenu": false,
+    "isSeasonMenu": false,
+    "events": {
+      "컴포즈커피": {
+        "type": "이벤트",
+        "isNew": false,
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/591/115/600x600.crop.jpg?t=1761750594",
+        "startDate": "2023-01-20",
+        "endDate": ""
+      }
+    }
+  },
+  {
+    "id": "컴포즈커피_real_30004",
+    "name": "6월, 시즌메뉴 구매 시 팝콘 증정!",
+    "category": "시즌",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "6월, 시즌메뉴 구매 시 팝콘 증정!",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/30004",
+    "isCoupon": false,
+    "isNewMenu": false,
+    "isSeasonMenu": true,
+    "events": {
+      "컴포즈커피": {
+        "type": "시즌",
+        "isNew": false,
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/004/030/600x600.crop.jpg?t=1761752502",
+        "startDate": "2022-06-16",
+        "endDate": ""
+      }
+    }
+  },
+  {
+    "id": "컴포즈커피_real_22344",
+    "name": "4월, 페이코 15% 무제한 적립 이벤트",
+    "category": "이벤트",
+    "price": 0,
+    "saving": 0,
+    "discountPrice": 0,
+    "discountRate": 0,
+    "eventTitle": "4월, 페이코 15% 무제한 적립 이벤트",
+    "conditionText": "",
+    "officialUrl": "https://composecoffee.com/event/22344",
+    "isCoupon": false,
+    "isNewMenu": false,
+    "isSeasonMenu": false,
+    "events": {
+      "컴포즈커피": {
+        "type": "이벤트",
+        "isNew": false,
+        "daysLeft": 999,
+        "image": "https://composecoffee.com/files/thumbnails/344/022/600x600.crop.jpg?t=1761752503",
+        "startDate": "2022-04-04",
+        "endDate": ""
       }
     }
   }
