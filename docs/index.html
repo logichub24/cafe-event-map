@@ -91,6 +91,122 @@
         }
         .tab-modal.active .tab-modal-content { transform: translateY(0); }
 
+        /* ── 행사 카드 배너 중앙 미니 씬 ──────────────────────────────
+           스플래시(캔버스 11종)의 콘셉트만 가져와 CSS로 재구현했다.
+           카드가 수십 장 동시에 보이므로 캔버스 rAF 루프 대신 CSS 애니메이션을 쓰고,
+           화면 밖 카드는 .in-view가 빠져 애니메이션이 멈춘다(스크롤 성능 보호). */
+        .mini-scene {
+            position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+            width: 80px; height: 80px;              /* 배너 높이(h-20)에 맞춘 정사각형 */
+            pointer-events: none; overflow: hidden;
+            opacity: 0.85;
+        }
+        .mini-scene * { position: absolute; }
+        /* 기본은 정지. 뷰포트에 들어온 카드에서만 재생 */
+        .mini-scene *[class*="ms-"] { animation-play-state: paused; }
+        .deal-card.in-view .mini-scene *[class*="ms-"] { animation-play-state: running; }
+
+        /* 공통 파츠 */
+        .ms-cup {
+            left: 50%; bottom: 14px; transform: translateX(-50%);
+            width: 26px; height: 20px; border: 2px solid rgba(255,255,255,0.75);
+            border-top: none; border-radius: 0 0 9px 9px; background: rgba(255,255,255,0.14);
+        }
+        .ms-cup::after {
+            content: ''; position: absolute; right: -8px; top: 3px;
+            width: 8px; height: 9px; border: 2px solid rgba(255,255,255,0.75);
+            border-left: none; border-radius: 0 8px 8px 0;
+        }
+        .ms-rim {
+            left: 50%; bottom: 33px; transform: translateX(-50%);
+            width: 30px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.5);
+        }
+
+        /* ① 커피드롭 — 물방울 낙하 + 파문 */
+        .ms-drop {
+            left: 50%; top: 12px; margin-left: -3px; width: 6px; height: 8px;
+            background: rgba(255,255,255,0.9); border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: ms-fall 2.2s ease-in infinite;
+        }
+        .ms-ripple {
+            left: 50%; bottom: 31px; margin-left: -15px; width: 30px; height: 8px;
+            border: 1.5px solid rgba(255,255,255,0.7); border-radius: 50%;
+            animation: ms-ripple 2.2s ease-out infinite;
+        }
+        @keyframes ms-fall { 0%{transform:translateY(0);opacity:0} 12%{opacity:1} 55%{transform:translateY(30px);opacity:1} 60%,100%{transform:translateY(32px);opacity:0} }
+        @keyframes ms-ripple { 0%,55%{transform:scale(0.3);opacity:0} 65%{opacity:0.9} 100%{transform:scale(1.15);opacity:0} }
+
+        /* ② 스팀 — 김 3줄 상승 */
+        .ms-steam {
+            bottom: 36px; width: 2.5px; height: 16px; border-radius: 2px;
+            background: linear-gradient(to top, rgba(255,255,255,0.75), transparent);
+            animation: ms-steam 2.6s ease-in-out infinite;
+        }
+        @keyframes ms-steam { 0%{transform:translateY(6px) scaleY(0.5);opacity:0} 35%{opacity:0.9} 100%{transform:translateY(-14px) scaleY(1.15);opacity:0} }
+
+        /* ③ 라테아트 하트 */
+        .ms-heart {
+            left: 50%; bottom: 30px; margin-left: -8px; width: 16px; height: 16px;
+            animation: ms-beat 2.4s ease-in-out infinite;
+        }
+        .ms-heart::before, .ms-heart::after {
+            content: ''; position: absolute; width: 8px; height: 13px;
+            background: rgba(255,255,255,0.9); border-radius: 8px 8px 0 0;
+        }
+        .ms-heart::before { left: 8px; transform: rotate(-45deg); transform-origin: 0 100%; }
+        .ms-heart::after  { left: 0;  transform: rotate(45deg);  transform-origin: 100% 100%; }
+        @keyframes ms-beat { 0%,100%{transform:scale(0.85);opacity:0.7} 50%{transform:scale(1.1);opacity:1} }
+
+        /* ④ 원두 — 회전 */
+        .ms-bean {
+            left: 50%; top: 50%; margin: -11px 0 0 -14px; width: 28px; height: 22px;
+            background: rgba(255,255,255,0.85); border-radius: 50%;
+            animation: ms-spin 5s linear infinite;
+        }
+        .ms-bean::after {
+            content: ''; position: absolute; left: 50%; top: 3px; width: 2px; height: 16px;
+            margin-left: -1px; border-radius: 2px; background: rgba(0,0,0,0.25);
+        }
+        @keyframes ms-spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+
+        /* ⑤ 반짝임 */
+        .ms-spark {
+            width: 8px; height: 8px; background: rgba(255,255,255,0.95);
+            clip-path: polygon(50% 0,58% 42%,100% 50%,58% 58%,50% 100%,42% 58%,0 50%,42% 42%);
+            animation: ms-spark 2.2s ease-in-out infinite;
+        }
+        @keyframes ms-spark { 0%,100%{transform:scale(0.3);opacity:0.2} 50%{transform:scale(1);opacity:1} }
+
+        /* ⑥ 얼음 — 낙하 */
+        .ms-ice {
+            width: 12px; height: 12px; background: rgba(255,255,255,0.55);
+            border: 1.5px solid rgba(255,255,255,0.9); border-radius: 3px;
+            animation: ms-icefall 3s ease-in infinite;
+        }
+        @keyframes ms-icefall { 0%{transform:translateY(-16px) rotate(0);opacity:0} 15%{opacity:1} 70%{transform:translateY(34px) rotate(160deg);opacity:1} 85%,100%{transform:translateY(38px) rotate(200deg);opacity:0} }
+
+        /* ⑦ 버블 — 상승 */
+        .ms-bubble {
+            bottom: 8px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.85);
+            background: rgba(255,255,255,0.2);
+            animation: ms-rise 3.4s ease-in-out infinite;
+        }
+        @keyframes ms-rise { 0%{transform:translateY(0) scale(0.7);opacity:0} 20%{opacity:0.95} 100%{transform:translateY(-58px) scale(1.1);opacity:0} }
+
+        /* ⑧ 컵 채우기 */
+        .ms-fill {
+            left: 50%; bottom: 14px; transform: translateX(-50%);
+            width: 22px; background: rgba(255,255,255,0.55); border-radius: 0 0 7px 7px;
+            animation: ms-fill 3s ease-in-out infinite;
+        }
+        @keyframes ms-fill { 0%,100%{height:2px;opacity:0.5} 50%{height:17px;opacity:0.95} }
+
+        /* 모션 최소화 설정을 쓰는 사용자에게는 애니메이션을 끈다 */
+        @media (prefers-reduced-motion: reduce) {
+            .mini-scene *[class*="ms-"],
+            .deal-card.in-view .mini-scene *[class*="ms-"] { animation: none !important; }
+        }
+
         /* 스플래시 오버레이.
            기본은 숨김이 반드시 맞다. 앱 전체를 덮는 요소라서, 스크립트가 못 돌면
            (재실행이라 스플래시를 건너뛰거나 JS가 죽는 경우) 투명한 벽이 남아
@@ -895,6 +1011,7 @@
             fetchWeather(37.5665, 126.978);
             // initMap은 DOMContentLoaded에서 fetch와 병렬로 이미 호출됨
             applyStartupSettings();
+            setupCardAnimationObserver();
             renderCategories();
             renderMapFilterBar();
             renderStaticBrandFilters();
@@ -1472,6 +1589,69 @@
             return `background-color:${c};background-image:linear-gradient(135deg,rgba(255,255,255,0.20),rgba(0,0,0,0.30))`;
         }
 
+        // 배너 중앙 미니 씬 8종. 스플래시 콘셉트를 CSS로 옮긴 것으로, 캔버스를 쓰지 않는다.
+        const MINI_SCENES = [
+            // ① 커피드롭
+            () => `<span class="ms-drop"></span><span class="ms-ripple"></span><span class="ms-rim"></span><span class="ms-cup"></span>`,
+            // ② 스팀
+            () => `<span class="ms-steam" style="left:31px;animation-delay:0s"></span>
+                   <span class="ms-steam" style="left:39px;animation-delay:.5s"></span>
+                   <span class="ms-steam" style="left:47px;animation-delay:1s"></span>
+                   <span class="ms-rim"></span><span class="ms-cup"></span>`,
+            // ③ 라테아트 하트
+            () => `<span class="ms-heart"></span><span class="ms-rim"></span><span class="ms-cup"></span>`,
+            // ④ 원두
+            () => `<span class="ms-bean"></span>`,
+            // ⑤ 반짝임
+            () => `<span class="ms-spark" style="left:22px;top:24px;animation-delay:0s"></span>
+                   <span class="ms-spark" style="left:46px;top:18px;animation-delay:.6s;width:11px;height:11px"></span>
+                   <span class="ms-spark" style="left:34px;top:46px;animation-delay:1.2s;width:7px;height:7px"></span>`,
+            // ⑥ 얼음
+            () => `<span class="ms-ice" style="left:26px;animation-delay:0s"></span>
+                   <span class="ms-ice" style="left:44px;animation-delay:1.1s;width:9px;height:9px"></span>
+                   <span class="ms-rim"></span><span class="ms-cup"></span>`,
+            // ⑦ 버블
+            () => `<span class="ms-bubble" style="left:24px;width:9px;height:9px;animation-delay:0s"></span>
+                   <span class="ms-bubble" style="left:38px;width:13px;height:13px;animation-delay:.9s"></span>
+                   <span class="ms-bubble" style="left:52px;width:7px;height:7px;animation-delay:1.8s"></span>`,
+            // ⑧ 컵 채우기
+            () => `<span class="ms-fill"></span><span class="ms-rim"></span><span class="ms-cup"></span>`,
+        ];
+
+        // 행사 id로 씬을 고정 배정한다. 매 렌더마다 바뀌면 스크롤할 때 어지럽다.
+        function miniSceneHTML(id) {
+            let h = 0;
+            const s = String(id || '');
+            for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
+            return `<span class="mini-scene">${MINI_SCENES[h % MINI_SCENES.length]()}</span>`;
+        }
+
+        // 뷰포트에 들어온 카드에만 .in-view를 붙여 애니메이션을 돌린다.
+        // 카드가 여러 화면에서 동적으로 생기므로 MutationObserver로 자동 등록한다.
+        let _cardObserver = null;
+        function setupCardAnimationObserver() {
+            if (_cardObserver) return;
+            _cardObserver = new IntersectionObserver(entries => {
+                for (const e of entries) e.target.classList.toggle('in-view', e.isIntersecting);
+            }, { rootMargin: '80px' });
+
+            const watch = el => {
+                if (el.hasAttribute('data-obs')) return;
+                el.setAttribute('data-obs', '1');
+                _cardObserver.observe(el);
+            };
+            // innerHTML로 넣으면 추가된 노드 자신이 .deal-card라서,
+            // 자손만 훑는 querySelectorAll로는 잡히지 않는다. 노드 자신도 함께 확인한다.
+            const scan = root => {
+                if (root.matches && root.matches('.deal-card')) watch(root);
+                if (root.querySelectorAll) root.querySelectorAll('.deal-card').forEach(watch);
+            };
+            new MutationObserver(muts => {
+                for (const m of muts) for (const n of m.addedNodes) if (n.nodeType === 1) scan(n);
+            }).observe(document.getElementById('app-container'), { childList: true, subtree: true });
+            scan(document);
+        }
+
         // 기간 표기. 종료일이 없는 행사가 많아 그때는 '상시 진행'으로 둔다.
         function dealPeriodText(d) {
             if (d.startDate && d.endDate) return `${d.startDate.slice(5).replace('-', '.')} ~ ${d.endDate.slice(5).replace('-', '.')}`;
@@ -1506,9 +1686,10 @@
             const emoji = EMOJI_MAP[cat] || '☕';
 
             return `
-            <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 relative mb-2" onclick="addToRecentlyViewed('${product.id}')">
+            <div class="deal-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 relative mb-2" onclick="addToRecentlyViewed('${product.id}')">
                 <div class="relative w-full h-20 overflow-hidden" style="${brandBanner(brand)}">
                     <span class="absolute -right-2 -bottom-4 text-[64px] opacity-20 -rotate-12 select-none pointer-events-none">${emoji}</span>
+                    ${miniSceneHTML(product.id)}
                     <div class="absolute top-2 left-3 flex items-center gap-1.5">
                         <span class="text-white font-black text-[13px] drop-shadow-sm">${brand}</span>
                         ${product.isNew ? '<span class="bg-white text-emerald-600 text-[9px] font-black px-1.5 py-0.5 rounded">NEW</span>' : ''}
