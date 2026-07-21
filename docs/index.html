@@ -653,7 +653,11 @@
                         <p class="text-[10px] text-gray-500 font-bold leading-tight">카페 행사를 브랜드/유형별로 필터</p>
                     </div>
                 </div>
-                <div id="allDealsFilterBar" class="flex gap-2 px-3 py-2 border-b border-gray-100 overflow-x-auto hide-scrollbar shrink-0 bg-white items-center"></div>
+                <!-- 브랜드 / 유형 필터를 각각 한 줄씩. 한 줄에 몰면 다음 그룹 버튼이 잘려 보인다. -->
+                <div class="border-b border-gray-100 shrink-0 bg-white">
+                    <div id="allDealsFilterBar" class="flex gap-2 px-3 pt-2 pb-1.5 overflow-x-auto hide-scrollbar items-center"></div>
+                    <div id="allDealsTypeBar" class="flex gap-2 px-3 pb-2 overflow-x-auto hide-scrollbar items-center"></div>
+                </div>
                 <div class="flex-1 overflow-y-auto p-2 pb-4 space-y-2" id="allDealsList"></div>
             </div>
         </div>
@@ -2068,20 +2072,21 @@
         // 전체 딜 목록 필터 상태
         let allDealsFilterBrand = null, allDealsFilterType = null;
 
-        // 전체 목록 필터 바(브랜드 칩 + 유형 칩)
+        // 전체 목록 필터 — 브랜드(윗줄) / 유형(아랫줄)을 각각 렌더한다.
         function renderAllDealsFilterBar() {
             const bar = document.getElementById('allDealsFilterBar');
-            if (!bar) return;
-            let html = brandFilterChipsHTML(allDealsFilterBrand, "setAllDealsFilterBrand");
-            html += `<span class="w-px bg-gray-200 shrink-0 mx-1 self-stretch"></span>`;
+            if (bar) bar.innerHTML = brandFilterChipsHTML(allDealsFilterBrand, "setAllDealsFilterBrand");
+
+            const typeBar = document.getElementById('allDealsTypeBar');
+            if (!typeBar) return;
             const typeAllActive = !allDealsFilterType;
-            html += `<button onclick="setAllDealsFilterType(null)" class="text-[11px] font-black px-3 py-1.5 rounded-full border shrink-0 ${typeAllActive ? 'bg-gray-900 text-white border-gray-900' : 'bg-white text-gray-600 border-gray-200'}">전체</button>`;
+            let html = `<button onclick="setAllDealsFilterType(null)" class="text-[11px] font-black px-2.5 py-1 rounded-full border shrink-0 ${typeAllActive ? 'bg-gray-900 text-white border-gray-900' : 'bg-white text-gray-600 border-gray-200'}">전체</button>`;
             EVENT_TYPES.forEach(t => {
                 const active = allDealsFilterType === t;
                 const ts = TYPE_STYLE[t] || { cls:'bg-gray-500' };
-                html += `<button onclick="setAllDealsFilterType('${t}')" class="text-[11px] font-black px-3 py-1.5 rounded-full border shrink-0 ${active ? ts.cls + ' text-white border-transparent' : 'bg-white text-gray-600 border-gray-200'}">${t}</button>`;
+                html += `<button onclick="setAllDealsFilterType('${t}')" class="text-[11px] font-black px-2.5 py-1 rounded-full border shrink-0 ${active ? ts.cls + ' text-white border-transparent' : 'bg-white text-gray-600 border-gray-200'}">${t}</button>`;
             });
-            bar.innerHTML = html;
+            typeBar.innerHTML = html;
         }
 
         function setAllDealsFilterBrand(value) {
