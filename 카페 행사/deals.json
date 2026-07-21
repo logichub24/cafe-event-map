@@ -1279,7 +1279,7 @@
     "startDate": "2026-07-20",
     "endDate": "2026-07-22",
     "category": "쿠폰·할인",
-    "daysLeft": 2,
+    "daysLeft": 1,
     "isNew": true,
     "ongoing": true
   },
@@ -1291,8 +1291,8 @@
     "startDate": "2026-07-15",
     "endDate": "2026-09-29",
     "category": "신메뉴",
-    "daysLeft": 71,
-    "isNew": true,
+    "daysLeft": 70,
+    "isNew": false,
     "ongoing": true
   },
   {
@@ -1303,8 +1303,8 @@
     "startDate": "2026-07-15",
     "endDate": "2026-07-28",
     "category": "신메뉴",
-    "daysLeft": 8,
-    "isNew": true,
+    "daysLeft": 7,
+    "isNew": false,
     "ongoing": true
   },
   {
@@ -1315,7 +1315,7 @@
     "startDate": "2026-07-01",
     "endDate": "2026-07-31",
     "category": "멤버십·앱",
-    "daysLeft": 11,
+    "daysLeft": 10,
     "isNew": false,
     "ongoing": true
   },
@@ -1327,7 +1327,7 @@
     "startDate": "2026-06-24",
     "endDate": "2026-08-25",
     "category": "신메뉴",
-    "daysLeft": 36,
+    "daysLeft": 35,
     "isNew": false,
     "ongoing": true
   },
@@ -1339,19 +1339,7 @@
     "startDate": "2026-06-24",
     "endDate": "2026-08-25",
     "category": "신메뉴",
-    "daysLeft": 36,
-    "isNew": false,
-    "ongoing": true
-  },
-  {
-    "brand": "할리스",
-    "id": "할리스_537",
-    "title": "★할리스 스마트 매장 런칭 기념 프로모션★",
-    "link": "https://www.hollys.co.kr/news/event/view.do?idx=537",
-    "startDate": "2026-06-22",
-    "endDate": "2026-07-21",
-    "category": "신메뉴",
-    "daysLeft": 1,
+    "daysLeft": 35,
     "isNew": false,
     "ongoing": true
   },
@@ -1363,7 +1351,7 @@
     "startDate": "2026-06-02",
     "endDate": "2026-08-25",
     "category": "신메뉴",
-    "daysLeft": 36,
+    "daysLeft": 35,
     "isNew": false,
     "ongoing": true
   },
@@ -1375,7 +1363,7 @@
     "startDate": "2026-05-13",
     "endDate": "2026-08-31",
     "category": "이벤트",
-    "daysLeft": 42,
+    "daysLeft": 41,
     "isNew": false,
     "ongoing": true
   },
@@ -1387,7 +1375,7 @@
     "startDate": "2026-05-13",
     "endDate": "2026-08-31",
     "category": "신메뉴",
-    "daysLeft": 42,
+    "daysLeft": 41,
     "isNew": false,
     "ongoing": true
   },
@@ -1399,7 +1387,19 @@
     "startDate": "2026-04-27",
     "endDate": "2026-12-31",
     "category": "쿠폰·할인",
-    "daysLeft": 164,
+    "daysLeft": 163,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "할리스",
+    "id": "할리스_537",
+    "title": "★할리스 스마트 매장 런칭 기념 프로모션★",
+    "link": "https://www.hollys.co.kr/news/event/view.do?idx=537",
+    "startDate": "2026-06-22",
+    "endDate": "2026-07-21",
+    "category": "신메뉴",
+    "daysLeft": 0,
     "isNew": false,
     "ongoing": true
   },
@@ -1411,7 +1411,7 @@
     "startDate": "2026-06-24",
     "endDate": "2026-07-07",
     "category": "신메뉴",
-    "daysLeft": -13,
+    "daysLeft": -14,
     "isNew": false,
     "ongoing": false
   },
@@ -1423,19 +1423,7 @@
     "startDate": "2026-06-24",
     "endDate": "2026-06-30",
     "category": "쿠폰·할인",
-    "daysLeft": -20,
-    "isNew": false,
-    "ongoing": false
-  },
-  {
-    "brand": "할리스",
-    "id": "할리스_533",
-    "title": "쉿, 지금 우리 매장은 이벤트중♡",
-    "link": "https://www.hollys.co.kr/news/event/view.do?idx=533",
-    "startDate": "2026-06-02",
-    "endDate": "2026-06-30",
-    "category": "이벤트",
-    "daysLeft": -20,
+    "daysLeft": -21,
     "isNew": false,
     "ongoing": false
   },
@@ -1567,7 +1555,7 @@
     "startDate": "2026-07-16",
     "endDate": "2026-09-30",
     "category": "이벤트",
-    "daysLeft": 72,
+    "daysLeft": 71,
     "isNew": true,
     "ongoing": true
   },
@@ -1579,7 +1567,7 @@
     "startDate": "2026-06-05",
     "endDate": "2026-08-31",
     "category": "이벤트",
-    "daysLeft": 42,
+    "daysLeft": 41,
     "isNew": false,
     "ongoing": true
   },
@@ -1591,7 +1579,7 @@
     "startDate": "2026-06-05",
     "endDate": "2026-08-31",
     "category": "이벤트",
-    "daysLeft": 42,
+    "daysLeft": 41,
     "isNew": false,
     "ongoing": true
   },
@@ -1603,7 +1591,7 @@
     "startDate": "2026-06-05",
     "endDate": "2026-09-15",
     "category": "이벤트",
-    "daysLeft": 57,
+    "daysLeft": 56,
     "isNew": false,
     "ongoing": true
   },
@@ -1615,7 +1603,7 @@
     "startDate": "2026-07-16",
     "endDate": "2026-07-23",
     "category": "신메뉴",
-    "daysLeft": 3,
+    "daysLeft": 2,
     "isNew": true,
     "ongoing": true
   },
@@ -1627,7 +1615,7 @@
     "startDate": "2026-07-16",
     "endDate": "2026-09-02",
     "category": "이벤트",
-    "daysLeft": 44,
+    "daysLeft": 43,
     "isNew": true,
     "ongoing": true
   },
@@ -1639,7 +1627,7 @@
     "startDate": "2026-07-13",
     "endDate": "2026-08-11",
     "category": "이벤트",
-    "daysLeft": 22,
+    "daysLeft": 21,
     "isNew": false,
     "ongoing": true
   },
@@ -1651,7 +1639,7 @@
     "startDate": "2026-07-01",
     "endDate": "2026-08-31",
     "category": "쿠폰·할인",
-    "daysLeft": 42,
+    "daysLeft": 41,
     "isNew": false,
     "ongoing": true
   },
@@ -1663,7 +1651,7 @@
     "startDate": "2026-06-16",
     "endDate": "2026-08-31",
     "category": "이벤트",
-    "daysLeft": 42,
+    "daysLeft": 41,
     "isNew": false,
     "ongoing": true
   },
@@ -1675,7 +1663,7 @@
     "startDate": "2026-05-28",
     "endDate": "2026-08-31",
     "category": "신메뉴",
-    "daysLeft": 42,
+    "daysLeft": 41,
     "isNew": false,
     "ongoing": true
   },
@@ -1687,7 +1675,7 @@
     "startDate": "2026-06-01",
     "endDate": "2026-08-31",
     "category": "쿠폰·할인",
-    "daysLeft": 42,
+    "daysLeft": 41,
     "isNew": false,
     "ongoing": true
   },
@@ -1699,7 +1687,7 @@
     "startDate": "2026-05-06",
     "endDate": "2036-12-31",
     "category": "신메뉴",
-    "daysLeft": 3817,
+    "daysLeft": 3816,
     "isNew": false,
     "ongoing": true
   },
@@ -1711,7 +1699,7 @@
     "startDate": "2026-01-01",
     "endDate": "2028-01-08",
     "category": "이벤트",
-    "daysLeft": 537,
+    "daysLeft": 536,
     "isNew": false,
     "ongoing": true
   },
@@ -1723,7 +1711,7 @@
     "startDate": "2026-07-20",
     "endDate": "2026-07-31",
     "category": "멤버십·앱",
-    "daysLeft": 11,
+    "daysLeft": 10,
     "isNew": true,
     "ongoing": true
   },
@@ -1735,7 +1723,7 @@
     "startDate": "2026-07-07",
     "endDate": "2026-07-31",
     "category": "쿠폰·할인",
-    "daysLeft": 11,
+    "daysLeft": 10,
     "isNew": false,
     "ongoing": true
   },
@@ -1747,7 +1735,7 @@
     "startDate": "2026-05-19",
     "endDate": "2026-12-31",
     "category": "이벤트",
-    "daysLeft": 164,
+    "daysLeft": 163,
     "isNew": false,
     "ongoing": true
   },
@@ -1759,7 +1747,7 @@
     "startDate": "2026-03-16",
     "endDate": "2026-12-31",
     "category": "쿠폰·할인",
-    "daysLeft": 164,
+    "daysLeft": 163,
     "isNew": false,
     "ongoing": true
   },
@@ -1771,7 +1759,7 @@
     "startDate": "2026-07-09",
     "endDate": "2026-07-09",
     "category": "쿠폰·할인",
-    "daysLeft": -11,
+    "daysLeft": -12,
     "isNew": false,
     "ongoing": false
   },
@@ -1783,7 +1771,7 @@
     "startDate": "2026-06-22",
     "endDate": "2026-06-30",
     "category": "쿠폰·할인",
-    "daysLeft": -20,
+    "daysLeft": -21,
     "isNew": false,
     "ongoing": false
   },
@@ -1795,7 +1783,7 @@
     "startDate": "2026-06-17",
     "endDate": "2026-06-30",
     "category": "쿠폰·할인",
-    "daysLeft": -20,
+    "daysLeft": -21,
     "isNew": false,
     "ongoing": false
   },
@@ -1807,7 +1795,7 @@
     "startDate": "2026-06-15",
     "endDate": "2026-06-15",
     "category": "쿠폰·할인",
-    "daysLeft": -35,
+    "daysLeft": -36,
     "isNew": false,
     "ongoing": false
   },
@@ -1819,7 +1807,7 @@
     "startDate": "2026-06-08",
     "endDate": "2026-06-10",
     "category": "쿠폰·할인",
-    "daysLeft": -40,
+    "daysLeft": -41,
     "isNew": false,
     "ongoing": false
   },
@@ -1831,7 +1819,7 @@
     "startDate": "2026-07-13",
     "endDate": "2026-07-17",
     "category": "쿠폰·할인",
-    "daysLeft": -3,
+    "daysLeft": -4,
     "isNew": false,
     "ongoing": false
   },

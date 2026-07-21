@@ -1995,26 +1995,32 @@ var require_ads = __commonJS({
         }
       });
     }
-    function requestRewardAd(onEarned, onDismiss) {
-      if (!rewardAdReady) return false;
-      let earned = false;
+    function requestRewardAd(onGranted) {
+      let granted = false;
+      const grant = () => {
+        if (granted) return;
+        granted = true;
+        onGranted();
+      };
+      if (!rewardAdReady) {
+        grant();
+        return false;
+      }
       let shown = false;
-      return runFullScreenAd({
+      runFullScreenAd({
         adGroupId: AD_CONFIG.rewarded,
         onEvent: (event) => {
           if (event.type === "show" || event.type === "impression") shown = true;
-          if (event.type === "userEarnedReward") {
-            earned = true;
-            onEarned();
-          }
+          if (event.type === "userEarnedReward") grant();
         },
         onDone: () => {
           if (shown) lastAdAt = Date.now();
           rewardAdReady = false;
           loadRewardAd();
-          if (!earned && onDismiss) onDismiss();
+          grant();
         }
       });
+      return true;
     }
     window.showInterstitial = showInterstitial;
     window.onNavigateToMap = function onNavigateToMap(url) {
@@ -2027,22 +2033,7 @@ var require_ads = __commonJS({
       showInterstitial(null);
     };
     window.watchRewardAdForWish = function watchRewardAdForWish() {
-      const succeeded = requestRewardAd(
-        () => {
-          localStorage.setItem("cvs_wishUnlocked", todayStr());
-          window.closeWishLimitModal?.();
-          if (window._pendingLikeId) {
-            const id = window._pendingLikeId;
-            window._pendingLikeId = null;
-            window.toggleLike?.(id);
-          }
-          window.showToast?.("\uAD11\uACE0 \uC2DC\uCCAD \uC644\uB8CC! \uC624\uB298 \uD558\uB8E8 \uCC1C \uBAA9\uB85D\uC744 \uBB34\uC81C\uD55C\uC73C\uB85C \uC0AC\uC6A9\uD560 \uC218 \uC788\uC5B4\uC694 \u{1F49D}");
-        },
-        () => {
-          window.closeWishLimitModal?.();
-        }
-      );
-      if (!succeeded) {
+      requestRewardAd(() => {
         localStorage.setItem("cvs_wishUnlocked", todayStr());
         window.closeWishLimitModal?.();
         if (window._pendingLikeId) {
@@ -2050,21 +2041,14 @@ var require_ads = __commonJS({
           window._pendingLikeId = null;
           window.toggleLike?.(id);
         }
-      }
+        window.showToast?.("\uC624\uB298 \uD558\uB8E8 \uCC1C \uBAA9\uB85D\uC744 \uBB34\uC81C\uD55C\uC73C\uB85C \uC0AC\uC6A9\uD560 \uC218 \uC788\uC5B4\uC694 \u{1F49D}");
+      });
     };
     window.watchRewardAdForRadius = function watchRewardAdForRadius() {
-      const succeeded = requestRewardAd(
-        () => {
-          window.setRadius?.(5e3);
-          window.showToast?.("\uAD11\uACE0 \uC2DC\uCCAD \uC644\uB8CC! \uBC18\uACBD 5km \uAC80\uC0C9\uC774 \uC5F4\uB838\uC2B5\uB2C8\uB2E4 \u{1F5FA}\uFE0F");
-        },
-        () => {
-          window.showToast?.("\uAD11\uACE0\uB97C \uB05D\uAE4C\uC9C0 \uC2DC\uCCAD\uD574\uC57C 5km \uAC80\uC0C9\uC774 \uC5F4\uB9BD\uB2C8\uB2E4.");
-        }
-      );
-      if (!succeeded) {
+      requestRewardAd(() => {
         window.setRadius?.(5e3);
-      }
+        window.showToast?.("\uBC18\uACBD 5km \uAC80\uC0C9\uC774 \uC5F4\uB838\uC2B5\uB2C8\uB2E4 \u{1F5FA}\uFE0F");
+      });
     };
     window.tossShare = function tossShare(message) {
       return share({ message });
