@@ -5,6 +5,18 @@
 const fs = require('fs');
 const path = require('path');
 
+// ⚠ 안전장치: 이 스크립트는 실제로 존재하지 않는 행사를 무작위로 지어낸다.
+// (메뉴·할인율·마감일 전부 랜덤. 브랜드가 팔지도 않는 메뉴가 붙기도 한다.)
+// 그대로 배포하면 하지 않는 행사를 광고하는 셈이라 실제로 문제가 됐고, 전량 삭제했다.
+// 실서비스 deals.json은 crawlEvents.js(브랜드 공식 페이지 크롤링)로만 채운다.
+// 개발용 더미가 꼭 필요할 때만 --i-know-this-is-fake 플래그로 명시 실행할 것.
+if (!process.argv.includes('--i-know-this-is-fake')) {
+  console.error('[중단] 이 스크립트는 가짜 행사를 생성해 deals.json을 덮어씁니다.');
+  console.error('       실서비스 데이터는 crawlEvents.js로만 갱신하세요.');
+  console.error('       개발용으로 정말 필요하면: node scripts/genSampleData.js --i-know-this-is-fake');
+  process.exit(1);
+}
+
 const OUT = path.join(__dirname, '..', '카페 행사');
 const brands = JSON.parse(fs.readFileSync(path.join(OUT, 'brands.json'), 'utf-8'));
 const MENU_PRICES = JSON.parse(fs.readFileSync(path.join(OUT, 'menu-prices.json'), 'utf-8'));
