@@ -43,8 +43,14 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 function decodeHtml(str) {
   return (str || '')
+    // 숫자 엔티티(&#038; &#8216; 등)를 먼저 문자로 되돌린다.
+    // 워드프레스 기반 사이트(빽다방 등)가 따옴표·앰퍼샌드를 이 형태로 내보낸다.
+    .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
     .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&nbsp;/g, ' ');
+    .replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&nbsp;/g, ' ')
+    .replace(/&ldquo;|&rdquo;/g, '"').replace(/&lsquo;|&rsquo;/g, "'")
+    .replace(/&hellip;/g, '…').replace(/&middot;/g, '·');
 }
 
 /** 다양한 한국어 날짜 표기를 YYYY-MM-DD로 정규화. 못 읽으면 '' */

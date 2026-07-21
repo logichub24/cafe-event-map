@@ -13,6 +13,8 @@ const { crawlCompose } = require('./crawlers/compose');
 const { crawlHollys } = require('./crawlers/hollys');
 const { crawlCoffeeBean } = require('./crawlers/coffeebean');
 const { crawlMega } = require('./crawlers/mega');
+const { crawlPaikdabang } = require('./crawlers/paikdabang');
+const { crawlMammoth } = require('./crawlers/mammoth');
 
 const DEALS_FILE = path.join(__dirname, '..', '카페 행사', 'deals.json');
 
@@ -21,9 +23,15 @@ const CRAWLERS = [
   { brand: '메가MGC커피', fn: crawlMega },
   { brand: '이디야커피', fn: crawlEdiya },
   { brand: '컴포즈커피', fn: crawlCompose },
+  { brand: '빽다방', fn: crawlPaikdabang },
   { brand: '할리스', fn: crawlHollys },
+  { brand: '매머드커피', fn: crawlMammoth },
   { brand: '커피빈', fn: crawlCoffeeBean },
 ];
+
+// 일부 브랜드는 이벤트 전용 게시판이 없어 공지 게시판에서 가져온다.
+// 행사와 무관한 공지(약관·개인정보·가격 인상 등)는 이벤트 앱에 노이즈라 제외한다.
+const NON_EVENT_RE = /약관|개인정보|처리방침|가격\s*인상|서비스\s*(종료|중단)|점검\s*안내|휴무|채용|공고|저작권|사칭|주의\s*안내/;
 
 // 제목 키워드로 카테고리 추정. 위에서부터 먼저 매칭되는 것으로 분류한다.
 const CATEGORY_RULES = [
@@ -84,7 +92,9 @@ async function run() {
     process.stdout.write(`  [${brand}] 수집 중...`);
     try {
       const items = await fn();
-      const valid = (items || []).filter(x => x && x.title && x.link); // 출처 없는 항목은 버린다
+      const valid = (items || [])
+        .filter(x => x && x.title && x.link)      // 출처 없는 항목은 버린다
+        .filter(x => !NON_EVENT_RE.test(x.title)); // 행사와 무관한 공지 제외
       if (valid.length === 0) { failed.push(brand); console.log(' 0건'); }
       else { collected.push(...valid.map(enrich)); console.log(` ${valid.length}건`); }
     } catch (e) {

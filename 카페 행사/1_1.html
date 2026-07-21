@@ -713,7 +713,7 @@
 
         // 공식 페이지에서 행사를 자동 수집하는 브랜드. scripts/runAll.js의 CRAWLERS와 맞춰야 한다.
         // 여기 없는 브랜드는 행사를 "없다"가 아니라 "아직 제공하지 못한다"고 안내해야 한다.
-        const SUPPORTED_BRANDS = ['스타벅스', '메가MGC커피', '이디야커피', '컴포즈커피', '할리스', '커피빈'];
+        const SUPPORTED_BRANDS = ['스타벅스', '메가MGC커피', '이디야커피', '컴포즈커피', '빽다방', '할리스', '매머드커피', '커피빈'];
 
         // 브랜드 공식 이벤트 페이지 주소(brands.json의 event/site)
         function brandEventUrl(brand) {
@@ -1790,14 +1790,18 @@
 
         // ── 신규 기능 함수들 ──────────────────────────────────────────────
 
-        // isNew 자동 계산: 이전에 없던 상품 ID를 localStorage에서 비교해 isNew 마킹
+        // isNew 보정.
+        // 크롤러가 실제 시작일로 계산한 isNew를 우선한다. 시작일이 없는 행사만
+        // "이전 방문 때 없던 항목"인지로 판단한다.
+        // (예전엔 무조건 덮어써서, 한 달 전 시작한 행사도 브랜드가 새로 추가되면 NEW가 됐다)
         function computeIsNew() {
             try {
                 const knownKey = 'cvs_knownProductIds';
                 const known = new Set(JSON.parse(localStorage.getItem(knownKey) || '[]'));
                 if (known.size > 0) {
                     MASTER_DB.forEach(p => {
-                        if (!known.has(p.id)) p.isNew = true;
+                        if (p.startDate) return;              // 시작일이 있으면 크롤러 판정을 신뢰
+                        if (!known.has(p.id)) p.isNew = true;  // 시작일 미상일 때만 신규로 표시
                     });
                 }
                 localStorage.setItem(knownKey, JSON.stringify(MASTER_DB.map(p => p.id)));
