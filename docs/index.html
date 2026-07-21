@@ -219,9 +219,11 @@
                 <span class="text-[9px] font-bold tracking-tight">찜목록</span>
                 <span id="wishBadge" class="absolute top-1.5 right-[15px] bg-rose-500 text-white text-[8px] font-bold w-3.5 h-3.5 flex items-center justify-center rounded-full hidden shadow-sm ring-1 ring-white">0</span>
             </button>
-            <button id="nav-savings" onclick="openSavings()" class="nav-btn flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-gray-900 transition relative">
-                <i class="fa-solid fa-wallet text-[18px] mb-1"></i>
-                <span class="text-[9px] font-bold tracking-tight">내지갑</span>
+            <!-- 예전 '내지갑'(누적 절약액) 자리. 실제 행사 데이터에는 할인 금액이 없어
+                 항상 0원이 되므로, 전체 행사 목록으로 대체했다. -->
+            <button id="nav-alldeals" onclick="openTabModal('allDealsModal', 'alldeals')" class="nav-btn flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-gray-900 transition relative">
+                <i class="fa-solid fa-tags text-[18px] mb-1"></i>
+                <span class="text-[9px] font-bold tracking-tight">전체행사</span>
             </button>
         </nav>
 
@@ -350,20 +352,20 @@
                 <div class="flex justify-between items-center">
                     <span id="bsItemCount" class="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded-md">총 0개</span>
                     <div class="flex items-center gap-2 text-xs text-gray-500">
-                        <button id="filterDiscountBtn" onclick="toggleDealTypeFilter('할인')" class="text-[10px] font-bold px-2 py-1.5 rounded-md border border-gray-200 text-gray-500 bg-white transition shadow-sm active:scale-95">할인만</button>
-                        <button id="filterCouponBtn" onclick="toggleDealTypeFilter('쿠폰')" class="text-[10px] font-bold px-2 py-1.5 rounded-md border border-gray-200 text-gray-500 bg-white transition shadow-sm active:scale-95">쿠폰만</button>
+                        <button id="filterDiscountBtn" onclick="toggleDealTypeFilter('쿠폰·할인')" class="text-[10px] font-bold px-2 py-1.5 rounded-md border border-gray-200 text-gray-500 bg-white transition shadow-sm active:scale-95">쿠폰·할인</button>
+                        <button id="filterCouponBtn" onclick="toggleDealTypeFilter('신메뉴')" class="text-[10px] font-bold px-2 py-1.5 rounded-md border border-gray-200 text-gray-500 bg-white transition shadow-sm active:scale-95">신메뉴</button>
                         <div class="bg-gray-50 rounded-lg px-2 py-1 border border-gray-100 flex items-center gap-1 shadow-sm">
                             <i class="fa-solid fa-sort"></i>
                             <select id="sortSelect" onchange="renderDeals()" class="bg-transparent border-none outline-none font-bold text-gray-700 cursor-pointer appearance-none pl-1">
-                                <option value="recommend">절약 큰 순</option>
-                                <option value="priceLow">가격 낮은 순</option>
+                                <option value="recommend">마감 임박순</option>
+                                <option value="latest">최신순</option>
                             </select>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="px-4 py-1.5 bg-amber-50 border-b border-amber-100 shrink-0">
-                <p class="text-[10px] text-amber-700 font-medium">⚠️ 표시 가격은 브랜드 공식 메뉴판 기준 참고 가격입니다. 매장·지역별로 다를 수 있으니 주문 전 확인하세요.</p>
+                <p class="text-[10px] text-amber-700 font-medium">⚠️ 행사 정보는 브랜드 공식 페이지 기준입니다. 매장별로 적용이 다를 수 있으니 방문 전 공식 채널에서 확인하세요.</p>
             </div>
             <div class="flex-1 overflow-y-auto bg-gray-50 p-2 pb-6 space-y-2" id="dealsList"></div>
         </div>
@@ -710,9 +712,10 @@
         // 사용자에게 노출하는 문제가 있어 제거했다. 데이터를 못 받으면 빈 상태로 둔다.
         let MASTER_DB = [];
 
-        const CATEGORIES = ['전체', '커피', '음료', '디저트', '베이커리'];
-        const EMOJI_MAP = { '커피':'☕', '음료':'🥤', '디저트':'🍰', '베이커리':'🥐', 'MD·기타':'🛍️' };
-        const EVENT_TYPES = ['할인', '쿠폰', '신메뉴', '시즌', '사이즈업', '이벤트'];
+        // 카테고리는 행사 제목에서 자동 분류된 값(scripts/runAll.js의 CATEGORY_RULES와 일치시킬 것)
+        const CATEGORIES = ['전체', '신메뉴', '쿠폰·할인', '시즌', '콜라보·굿즈', '멤버십·앱', '이벤트'];
+        const EMOJI_MAP = { '신메뉴':'✨', '쿠폰·할인':'🎟️', '시즌':'🌤️', '콜라보·굿즈':'🎁', '멤버십·앱':'📱', '이벤트':'🎉' };
+        const EVENT_TYPES = ['신메뉴', '쿠폰·할인', '시즌', '콜라보·굿즈', '멤버십·앱', '이벤트'];
 
         let map, activeStore = null, activeCategory = '전체';
         let totalSavings = 0, likedItems = new Set(), purchasedHistory = [];
@@ -765,7 +768,7 @@
             }
             return all.map(d => {
                 const brand = detectBrandFromName(d.place_name) || d.place_name;
-                const deals = MASTER_DB.filter(p => p.events[brand]);
+                const deals = MASTER_DB.filter(p => p.brand === brand);
                 return { brand, name: d.place_name, lat: parseFloat(d.y), lng: parseFloat(d.x), address: d.road_address_name || d.address_name, phone: d.phone, deals, itemCount: deals.length };
             });
         }
@@ -924,7 +927,7 @@
         // 매장 좌표(REAL_STORES) + 행사 데이터(MASTER_DB)를 결합해 지도에 쓸 매장 목록을 만든다.
         function buildStoresFromRealData() {
             allVirtualStoresDB = REAL_STORES.map(store => {
-                const storeDeals = MASTER_DB.filter(p => p.events[store.brand]);
+                const storeDeals = MASTER_DB.filter(p => p.brand === store.brand);
                 return { ...store, deals: storeDeals, itemCount: storeDeals.length };
             });
         }
@@ -955,16 +958,8 @@
         }
 
         function updateDashboardCounts() {
-            let newCount = 0, endingCount = 0;
-            MASTER_DB.forEach(p => {
-                let hasNew = false, hasEnding = false;
-                Object.values(p.events).forEach(e => {
-                    if (e.isNew) hasNew = true;
-                    if (e.daysLeft === 0) hasEnding = true;
-                });
-                if (hasNew) newCount++;
-                if (hasEnding) endingCount++;
-            });
+            const newCount = MASTER_DB.filter(p => p.isNew).length;
+            const endingCount = MASTER_DB.filter(p => p.daysLeft === 0).length;
             document.getElementById('newDealCount').innerText = `${newCount}개`;
             document.getElementById('endingDealCount').innerText = `${endingCount}개`;
         }
@@ -1409,12 +1404,12 @@
 
         // 행사 유형별 배지 스타일
         const TYPE_STYLE = {
-            '할인':     { cls:'bg-rose-500',    emoji:'🔻' },
-            '쿠폰':     { cls:'bg-indigo-500',  emoji:'🎟️' },
-            '신메뉴':   { cls:'bg-emerald-500', emoji:'✨' },
-            '시즌':     { cls:'bg-pink-500',    emoji:'🌸' },
-            '사이즈업': { cls:'bg-amber-500',   emoji:'⬆️' },
-            '이벤트':   { cls:'bg-blue-500',    emoji:'🎉' },
+            '신메뉴':      { cls:'bg-emerald-500', emoji:'✨' },
+            '쿠폰·할인':   { cls:'bg-rose-500',    emoji:'🎟️' },
+            '시즌':        { cls:'bg-sky-500',     emoji:'🌤️' },
+            '콜라보·굿즈': { cls:'bg-violet-500',  emoji:'🎁' },
+            '멤버십·앱':   { cls:'bg-amber-500',   emoji:'📱' },
+            '이벤트':      { cls:'bg-blue-500',    emoji:'🎉' },
         };
 
         function openOfficial(url) {
@@ -1423,71 +1418,57 @@
             window.open(url, '_blank');
         }
 
+        // 브랜드 색으로 배너 그라데이션을 만든다. 브랜드 홍보 이미지는 저작권 문제로 쓰지 않는다.
+        function brandBanner(brand) {
+            const c = (BRAND_INFO[brand] && BRAND_INFO[brand].color) || '#6b7280';
+            return `background-color:${c};background-image:linear-gradient(135deg,rgba(255,255,255,0.20),rgba(0,0,0,0.30))`;
+        }
+
+        // 기간 표기. 종료일이 없는 행사가 많아 그때는 '상시 진행'으로 둔다.
+        function dealPeriodText(d) {
+            if (d.startDate && d.endDate) return `${d.startDate.slice(5).replace('-', '.')} ~ ${d.endDate.slice(5).replace('-', '.')}`;
+            if (d.startDate) return `${d.startDate.slice(5).replace('-', '.')} 시작`;
+            return '상시 진행';
+        }
+
+        function ddayBadge(d) {
+            if (typeof d.daysLeft !== 'number') return '';
+            if (d.daysLeft < 0) return `<span class="bg-gray-200 text-gray-500 text-[9px] font-bold px-1.5 py-0.5 rounded">종료</span>`;
+            if (d.daysLeft === 0) return `<span class="bg-rose-500 text-white text-[9px] font-black px-1.5 py-0.5 rounded animate-pulse">오늘마감</span>`;
+            if (d.daysLeft <= 3) return `<span class="bg-orange-500 text-white text-[9px] font-black px-1.5 py-0.5 rounded">D-${d.daysLeft}</span>`;
+            return `<span class="bg-white/25 text-white text-[9px] font-bold px-1.5 py-0.5 rounded">D-${d.daysLeft}</span>`;
+        }
+
+        // 행사 카드. 실데이터(제목·기간·출처)만 보여주고 홍보 이미지는 쓰지 않는다.
         function createProductHTML(product, viewType = 'store', specificBrand = null) {
             const isLiked = likedItems.has(product.id);
             const heartCls = isLiked ? 'fa-solid text-rose-500' : 'fa-regular text-gray-300';
-            const fallbackEmoji = EMOJI_MAP[product.category] || '☕';
-
-            const brand = specificBrand || Object.keys(product.events)[0];
-            const evnt = product.events[brand] || Object.values(product.events)[0] || {};
-            const imgUrl = evnt.image || '';
-            const type = evnt.type || '행사';
-            const ts = TYPE_STYLE[type] || { cls:'bg-gray-500', emoji:'🏷️' };
-            const hasSaving = product.saving > 0;
-
-            let statusBadge = '';
-            if (evnt.isNew) {
-                statusBadge = `<span class="bg-emerald-100 text-emerald-600 border border-emerald-200 text-[11px] font-black px-2 py-0.5 rounded shadow-sm whitespace-nowrap">✨ 새행사</span>`;
-            } else if (evnt.daysLeft === 0) {
-                statusBadge = `<span class="bg-rose-100 text-rose-600 border border-rose-200 text-[11px] font-black px-2 py-0.5 rounded shadow-sm whitespace-nowrap animate-pulse">🚨 오늘마감</span>`;
-            } else if (typeof evnt.daysLeft === 'number' && evnt.daysLeft <= 2) {
-                statusBadge = `<span class="bg-orange-100 text-orange-600 border border-orange-200 text-[11px] font-black px-2 py-0.5 rounded shadow-sm whitespace-nowrap">⏰ D-${evnt.daysLeft}</span>`;
-            }
-
-            // 가격 영역: 할인/쿠폰은 정상가(취소선)+할인가+절약, 가격 없는 이벤트는 라벨만
-            const priceHTML = hasSaving
-                ? `<span class="text-[11px] text-gray-400 line-through">${product.price.toLocaleString()}원</span>
-                   <span class="font-black text-gray-900">${(product.discountPrice ?? (product.price - product.saving)).toLocaleString()}원</span>
-                   <span class="text-[10px] font-bold text-rose-600 bg-rose-50 px-1.5 py-0.5 rounded">${product.discountRate ? product.discountRate + '% · ' : ''}${product.saving.toLocaleString()}원↓</span>`
-                : product.price > 0
-                    ? `<span class="font-black text-gray-900">${product.price.toLocaleString()}원</span>`
-                    : `<span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">이벤트 · 공식 확인</span>`;
-
-            // 우측 액션: 할인/쿠폰은 지갑 담기(+), 정보성 행사는 공식 링크
-            const actionBtn = hasSaving
-                ? `<button onclick="addSavings(${product.saving}, '${(product.name||'').replace(/'/g, '')}', '${product.id}')" class="w-8 h-8 rounded-full bg-gray-900 text-white flex items-center justify-center shadow-md hover:bg-gray-800 active:scale-95 transition mt-auto" title="받은 할인 담기"><i class="fa-solid fa-plus text-xs"></i></button>`
-                : `<button onclick="openOfficial('${product.officialUrl || ''}')" class="w-8 h-8 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center shadow-sm hover:bg-gray-200 active:scale-95 transition mt-auto" title="공식 링크"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></button>`;
-
-            const footerHTML = `
-                <div class="flex items-center gap-2 bg-gray-50 rounded-xl p-1.5 mt-2 border border-gray-100">
-                    <div class="w-6 h-6 rounded-full text-[9px] font-black flex items-center justify-center shadow-sm shrink-0" style="${brandChipStyle(brand)}">${brandLabel(brand)}</div>
-                    <span class="text-[11px] font-black text-gray-700 truncate">${brand}</span>
-                    <span class="ml-auto ${ts.cls} text-white text-[10px] font-black px-2 py-0.5 rounded shadow-sm whitespace-nowrap shrink-0">${ts.emoji} ${type}</span>
-                </div>`;
+            const brand = product.brand || specificBrand || '';
+            const cat = product.category || '이벤트';
+            const ts = TYPE_STYLE[cat] || { cls: 'bg-gray-500', emoji: '🏷️' };
+            const emoji = EMOJI_MAP[cat] || '☕';
 
             return `
-            <div class="bg-white rounded-2xl p-3 flex flex-col shadow-sm border border-gray-100 relative mb-2" onclick="addToRecentlyViewed('${product.id}')">
-                <div class="flex items-stretch">
-                    <div class="w-16 h-16 rounded-xl bg-gray-50 overflow-hidden shrink-0 border border-gray-100 flex items-center justify-center text-3xl shadow-inner relative">
-                        ${imgUrl
-                            ? `<img src="${imgUrl}" alt="" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">\
-<span style="display:none" class="w-full h-full flex items-center justify-center text-3xl">${fallbackEmoji}</span>`
-                            : fallbackEmoji}
+            <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 relative mb-2" onclick="addToRecentlyViewed('${product.id}')">
+                <div class="relative w-full h-20 overflow-hidden" style="${brandBanner(brand)}">
+                    <span class="absolute -right-2 -bottom-4 text-[64px] opacity-20 -rotate-12 select-none pointer-events-none">${emoji}</span>
+                    <div class="absolute top-2 left-3 flex items-center gap-1.5">
+                        <span class="text-white font-black text-[13px] drop-shadow-sm">${brand}</span>
+                        ${product.isNew ? '<span class="bg-white text-emerald-600 text-[9px] font-black px-1.5 py-0.5 rounded">NEW</span>' : ''}
                     </div>
-
-                    <div class="flex-1 ml-3 flex flex-col justify-center overflow-hidden">
-                        <div><span class="text-[10px] text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded-sm font-medium">${product.category}</span></div>
-                        <h4 class="font-black text-sm text-gray-900 mt-1 truncate">${product.name}</h4>
-                        <div class="flex items-center gap-1.5 mt-0.5 flex-wrap">${priceHTML}</div>
+                    <div class="absolute bottom-2 left-3">
+                        <span class="${ts.cls} text-white text-[10px] font-black px-2 py-0.5 rounded shadow-sm">${ts.emoji} ${cat}</span>
                     </div>
-
-                    <div class="flex flex-col justify-between items-end ml-2 shrink-0 w-8" onclick="event.stopPropagation()">
-                        <button onclick="toggleLike('${product.id}')" class="p-1 -mr-1 mb-1"><i class="${heartCls} text-xl transition-colors"></i></button>
-                        ${statusBadge}
-                        ${actionBtn}
+                    <span class="absolute top-2 right-2">${ddayBadge(product)}</span>
+                    <button onclick="event.stopPropagation(); toggleLike('${product.id}')" class="absolute bottom-2 right-2 w-7 h-7 bg-white/90 rounded-full flex items-center justify-center shadow"><i class="${heartCls} text-xs"></i></button>
+                </div>
+                <div class="px-3 pt-2.5 pb-2.5">
+                    <h4 class="font-black text-[14px] text-gray-900 leading-snug line-clamp-2">${product.title || ''}</h4>
+                    <div class="flex items-center justify-between mt-2">
+                        <span class="text-[10px] text-gray-400 font-medium"><i class="fa-regular fa-clock mr-1"></i>${dealPeriodText(product)}</span>
+                        <button onclick="event.stopPropagation(); openOfficial('${product.link || ''}')" class="text-[10px] font-bold text-blue-600 hover:text-blue-700">공식 보기 <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i></button>
                     </div>
                 </div>
-                ${footerHTML}
             </div>
             `;
         }
@@ -1510,10 +1491,11 @@
             const sortVal = document.getElementById('sortSelect').value;
             
             let filtered = activeStore.deals.filter(p => activeCategory === '전체' || p.category === activeCategory);
-            if(dealTypeFilter) filtered = filtered.filter(p => p.events[activeStore.brand] && p.events[activeStore.brand].type === dealTypeFilter);
+            if(dealTypeFilter) filtered = filtered.filter(p => p.category === dealTypeFilter);
 
-            if(sortVal === 'priceLow') filtered.sort((a,b) => a.price - b.price);
-            else filtered.sort((a,b) => b.saving - a.saving);
+            // 정렬: 최신순(시작일 내림차순) 또는 마감임박순
+            if(sortVal === 'latest') filtered.sort((a,b) => (b.startDate || '').localeCompare(a.startDate || ''));
+            else filtered.sort((a,b) => (a.daysLeft ?? 999) - (b.daysLeft ?? 999));
 
             document.getElementById('bsItemCount').innerText = `총 ${filtered.length}개`;
 
@@ -1552,12 +1534,11 @@
             empty.classList.add('hidden'); list.classList.remove('hidden');
 
             let matches = MASTER_DB.filter(p =>
-                matchSearch(p.name, query) ||
-                matchSearch(Object.keys(p.events)[0] || '', query) ||
-                matchSearch(p.eventTitle || '', query) ||
+                matchSearch(p.title || '', query) ||
+                matchSearch(p.brand || '', query) ||
                 matchSearch(p.category || '', query)
             );
-            if (searchBrandFilter) matches = matches.filter(p => p.events[searchBrandFilter]);
+            if (searchBrandFilter) matches = matches.filter(p => p.brand === searchBrandFilter);
             if (matches.length === 0) {
                 list.innerHTML = `<div class="p-8 text-center text-gray-500 font-bold mt-10">결과가 없습니다.</div>`;
             } else {
@@ -1571,7 +1552,7 @@
                 list.innerHTML = `<div class="p-10 text-center text-gray-400 font-medium flex flex-col items-center mt-10"><i class="fa-regular fa-heart text-5xl mb-3 text-gray-200"></i>찜한 상품이 없습니다.</div>`;
             } else {
                 const likedProducts = MASTER_DB.filter(p => likedItems.has(p.id));
-                const ending = likedProducts.filter(p => Object.values(p.events).some(e => typeof e.daysLeft === 'number' && e.daysLeft <= 2));
+                const ending = likedProducts.filter(p => typeof p.daysLeft === 'number' && p.daysLeft >= 0 && p.daysLeft <= 2);
                 const normal = likedProducts.filter(p => !ending.includes(p));
                 let html = '';
                 if (ending.length > 0) {
@@ -1586,7 +1567,7 @@
         }
 
         function renderTop10() {
-            let sorted = [...MASTER_DB].sort((a,b) => b.saving - a.saving).slice(0, 10);
+            let sorted = [...MASTER_DB].sort((a,b) => (a.daysLeft ?? 999) - (b.daysLeft ?? 999)).slice(0, 10);
             document.getElementById('top10List').innerHTML = sorted.map((p, i) => `
                 <div class="flex items-center">
                     <div class="w-8 flex items-center justify-center font-black text-xl italic ${i<3?'text-rose-500':'text-gray-400'}">${i+1}</div>
@@ -1672,7 +1653,7 @@
             addToRecentlyViewed(id);
             if (likedItems.has(id)) {
                 likedItems.delete(id);
-                showToast(`[${product.name}] 찜 해제`);
+                showToast(`[${product.title}] 찜 해제`);
             } else {
                 const unlocked = localStorage.getItem('cvs_wishUnlocked') === new Date().toISOString().slice(0,10);
                 if (!unlocked && likedItems.size >= WISH_FREE_LIMIT) {
@@ -1680,7 +1661,7 @@
                     return;
                 }
                 likedItems.add(id);
-                showToast(`[${product.name}] 찜 완료!`);
+                showToast(`[${product.title}] 찜 완료!`);
             }
             saveLocalData();
             updateBadgeUI();
@@ -1722,8 +1703,8 @@
             const monday = new Date(today);
             monday.setDate(today.getDate() - (dow === 0 ? 6 : dow - 1));
             const DAY_LABELS = ['월','화','수','목','금','토','일'];
-            const newCount = MASTER_DB.filter(p => Object.values(p.events).some(e => e.isNew)).length;
-            const endingCount = MASTER_DB.filter(p => Object.values(p.events).some(e => typeof e.daysLeft === 'number' && e.daysLeft === 0)).length;
+            const newCount = MASTER_DB.filter(p => p.isNew).length;
+            const endingCount = MASTER_DB.filter(p => p.daysLeft === 0).length;
             cal.innerHTML = DAY_LABELS.map((label, i) => {
                 const d = new Date(monday);
                 d.setDate(monday.getDate() + i);
@@ -1743,14 +1724,9 @@
         }
 
         function applyDaysLeft() {
-            // 편의점 행사는 통상 월~일 주기. 실제 종료일 데이터가 없는 경우 이번 주 일요일까지 남은 일수로 추정.
-            const dow = new Date().getDay(); // 0=일, 1=월, ..., 6=토
-            const daysToSunday = dow === 0 ? 0 : 7 - dow;
-            MASTER_DB.forEach(p => {
-                Object.values(p.events).forEach(e => {
-                    if (e.daysLeft === null || e.daysLeft === undefined) e.daysLeft = daysToSunday;
-                });
-            });
+            // 예전엔 종료일이 없는 행사에 "이번 주 일요일까지"라는 마감일을 임의로 붙였다.
+            // 브랜드가 공지하지 않은 마감일을 지어내는 것이라 제거했다.
+            // daysLeft는 크롤러가 실제 종료일에서 계산한 값만 쓰고, 없으면 null(상시 진행)로 둔다.
         }
 
         // ── 신규 기능 함수들 ──────────────────────────────────────────────
@@ -1762,7 +1738,7 @@
                 const known = new Set(JSON.parse(localStorage.getItem(knownKey) || '[]'));
                 if (known.size > 0) {
                     MASTER_DB.forEach(p => {
-                        if (!known.has(p.id)) Object.values(p.events).forEach(e => { e.isNew = true; });
+                        if (!known.has(p.id)) p.isNew = true;
                     });
                 }
                 localStorage.setItem(knownKey, JSON.stringify(MASTER_DB.map(p => p.id)));
@@ -1789,15 +1765,11 @@
         function shareWishlist() {
             const liked = MASTER_DB.filter(p => likedItems.has(p.id));
             if (liked.length === 0) { showToast('찜한 상품이 없습니다.'); return; }
-            const totalSaving = liked.reduce((s, p) => s + (p.saving || 0), 0);
             const lines = liked.slice(0, 10).map(p => {
-                const brands = Object.keys(p.events || {}).join('/');
-                const types = [...new Set(Object.values(p.events || {}).map(e => e.type))].join('·');
-                const dday = Object.values(p.events || {}).map(e => e.daysLeft).find(d => d !== null && d !== undefined);
-                const ddayStr = typeof dday === 'number' ? ` ⏰D-${dday}` : '';
-                return `• [${brands}] ${p.name} (${types})${ddayStr} — 절약 ${p.saving.toLocaleString()}원`;
+                const ddayStr = typeof p.daysLeft === 'number' && p.daysLeft >= 0 ? ` ⏰D-${p.daysLeft}` : '';
+                return `• [${p.brand}] ${p.title} (${p.category})${ddayStr}`;
             });
-            const text = `☕ 카페행사맵 찜 목록 (${liked.length}개 / 최대 절약 ${totalSaving.toLocaleString()}원)\n` +
+            const text = `☕ 카페행사맵 찜 목록 (${liked.length}개)\n` +
                 lines.join('\n') +
                 (liked.length > 10 ? `\n외 ${liked.length - 10}개` : '') +
                 '\n\n📱 카페행사맵 앱에서 확인하세요!';
@@ -2012,15 +1984,14 @@
             const useNearby = storeMarkersData.length > 0;
 
             let products = MASTER_DB.filter(p => {
-                const brands = Object.keys(p.events);
-                if (listViewBrand) return brands.includes(listViewBrand);
-                if (useNearby) return brands.some(b => nearbyBrands.has(b));
+                if (listViewBrand) return p.brand === listViewBrand;
+                if (useNearby) return nearbyBrands.has(p.brand);
                 return true;
             });
 
             subtitle.textContent = useNearby
-                ? `반경 ${currentRadius >= 1000 ? currentRadius/1000+'km' : currentRadius+'m'} 내 ${nearbyBrands.size}개 매장 · ${products.length}개 상품`
-                : `전체 ${products.length}개 상품`;
+                ? `반경 ${currentRadius >= 1000 ? currentRadius/1000+'km' : currentRadius+'m'} 내 ${nearbyBrands.size}개 매장 · ${products.length}개 행사`
+                : `전체 ${products.length}개 행사`;
 
             if (products.length === 0) {
                 body.innerHTML = `<div class="text-center text-gray-400 py-16 flex flex-col items-center gap-2"><i class="fa-solid fa-store-slash text-4xl text-gray-300"></i><p class="text-sm font-bold">주변에 매장이 없습니다</p><p class="text-xs">지도를 이동하거나 반경을 넓혀보세요</p></div>`;
@@ -2071,9 +2042,9 @@
         // 전체 딜 목록 렌더링
         function renderAllDeals() {
             const list = document.getElementById('allDealsList');
-            let items = [...MASTER_DB].sort((a, b) => b.saving - a.saving);
-            if (allDealsFilterBrand) items = items.filter(p => p.events[allDealsFilterBrand]);
-            if (allDealsFilterType) items = items.filter(p => Object.values(p.events).some(e => e.type === allDealsFilterType));
+            let items = [...MASTER_DB].sort((a, b) => (a.daysLeft ?? 999) - (b.daysLeft ?? 999));
+            if (allDealsFilterBrand) items = items.filter(p => p.brand === allDealsFilterBrand);
+            if (allDealsFilterType) items = items.filter(p => p.category === allDealsFilterType);
             if (items.length === 0) {
                 list.innerHTML = `<div class="p-8 text-center text-gray-400 font-medium">해당 조건의 상품이 없습니다.</div>`;
                 return;
@@ -2095,12 +2066,13 @@
         // ── 인기 행사 칩 동적화 ────────────────────────────────────────────
         function updateTopDealChip() {
             if (!MASTER_DB || MASTER_DB.length === 0) return;
-            const top = [...MASTER_DB].sort((a, b) => b.saving - a.saving)[0];
+            const top = [...MASTER_DB].sort((a, b) => (a.daysLeft ?? 999) - (b.daysLeft ?? 999))[0];
             if (!top) return;
             const chipName = document.querySelector('#app-container .flex.overflow-x-auto button:first-child .text-\\[10px\\].font-black');
             const chipSaving = document.querySelector('#app-container .flex.overflow-x-auto button:first-child .text-\\[8px\\].text-blue-600');
-            if (chipName) chipName.textContent = top.name.length > 10 ? top.name.slice(0, 10) + '…' : top.name;
-            if (chipSaving) chipSaving.textContent = `${top.saving.toLocaleString()}원 절약`;
+            const t = top.title || '';
+            if (chipName) chipName.textContent = t.length > 10 ? t.slice(0, 10) + '…' : t;
+            if (chipSaving) chipSaving.textContent = typeof top.daysLeft === 'number' && top.daysLeft >= 0 ? `D-${top.daysLeft} 마감` : top.brand;
         }
 
         // ── 주변 카페 행사 미리보기 ────────────────────────────────────────
@@ -2117,7 +2089,7 @@
             const picks = allDeals
                 .sort((a, b) => (weatherScore(b.deal) - weatherScore(a.deal)) || (Math.random() - 0.5))
                 .filter(({ deal, store }) => {
-                    const key = `${store.brand}:${deal.name}`;
+                    const key = `${store.brand}:${deal.title}`;
                     if (seen.has(key)) return false;
                     seen.add(key);
                     return true;
@@ -2130,15 +2102,14 @@
                 weatherPreviewTitle(storeMarkersData.length);
 
             document.getElementById('nearbyPreviewList').innerHTML = picks.map(({ deal, store }, i) => {
-                const evnt = deal.events[store.brand];
-                const type = evnt?.type || '행사';
+                const type = deal.category || '행사';
                 const storeJson = JSON.stringify(store).replace(/"/g,'&quot;');
                 return `
                     <div onclick="closeNearbyPreview(); openStore(${storeJson})"
                          class="flex items-center gap-2.5 active:bg-gray-50 rounded-xl py-1 cursor-pointer transition">
                         <span class="text-[15px] font-black text-blue-500 shrink-0 w-5 text-center">${NUMS[i]}</span>
                         <span class="text-[11px] font-black px-2 py-0.5 rounded-full shrink-0" style="${brandChipStyle(store.brand)}">${brandLabel(store.brand)}</span>
-                        <span class="text-[12px] font-bold text-gray-800 truncate flex-1">${deal.name}</span>
+                        <span class="text-[12px] font-bold text-gray-800 truncate flex-1">${deal.title}</span>
                         <span class="text-[10px] font-bold text-gray-400 shrink-0">${type}</span>
                     </div>`;
             }).join('');
@@ -2162,9 +2133,7 @@
 
         // ── 찜한 카페 행사 변동 감지 ──────────────────────────────────────
         function likeSignature(p) {
-            return Object.entries(p.events || {})
-                .map(([brand, e]) => `${brand}:${e.type}`)
-                .sort().join('|');
+            return `${p.brand}:${p.category}:${p.endDate || ''}`;
         }
 
         function checkLikedChanges() {
@@ -2216,18 +2185,19 @@
         }
 
         // ── D-day 인앱 배너 ────────────────────────────────────────────────
-        // 편의점 행사는 월~일 주기. 금/토/일에 마감 임박 배너 표시.
+        // 예전엔 요일만 보고 "이번 주 일요일 마감"이라고 알렸다(편의점 앱의 월~일 주기 잔재).
+        // 카페 행사는 그런 주기가 없어서, 실제 종료일이 임박한 행사가 있을 때만 띄운다.
         function maybeShowDdayBanner() {
-            const dow = new Date().getDay(); // 0=일,5=금,6=토
-            const daysToSunday = dow === 0 ? 0 : 7 - dow;
-            if (daysToSunday > 2) return; // 월~목은 배너 없음
+            const soon = MASTER_DB.filter(p => typeof p.daysLeft === 'number' && p.daysLeft >= 0 && p.daysLeft <= 2);
+            if (soon.length === 0) return; // 마감 임박 행사가 실제로 없으면 배너 없음
+            const likedSoon = soon.filter(p => likedItems.has(p.id));
             const banner = document.getElementById('ddayBanner');
             const text = document.getElementById('ddayBannerText');
-            const likedCount = likedItems.size;
-            let msg = '';
-            if (daysToSunday === 0) msg = likedCount > 0 ? `오늘 이번 주 행사 마감! 찜한 ${likedCount}개 상품 오늘 안에 확인하세요 🛒` : '오늘 이번 주 행사 마감입니다! 놓친 상품 없는지 확인하세요 🛒';
-            else if (daysToSunday === 1) msg = likedCount > 0 ? `내일 행사 종료! 찜한 ${likedCount}개 상품 내일까지예요` : '내일이면 이번 주 행사가 끝납니다. 미리 확인하세요!';
-            else msg = likedCount > 0 ? `이번 주 행사 ${daysToSunday}일 남았어요. 찜한 ${likedCount}개 상품 확인해보세요` : `이번 주 행사 ${daysToSunday}일 후 종료됩니다`;
+            const today = soon.filter(p => p.daysLeft === 0).length;
+            let msg;
+            if (likedSoon.length > 0) msg = `찜한 행사 ${likedSoon.length}개가 곧 종료됩니다. 확인해보세요 ☕`;
+            else if (today > 0) msg = `오늘 마감되는 행사 ${today}개가 있어요 🚨`;
+            else msg = `마감 임박 행사 ${soon.length}개가 있어요. 놓치지 마세요 ⏰`;
             text.textContent = msg;
             banner.classList.remove('hidden');
             clearTimeout(window._ddayBannerTimer);
@@ -2365,7 +2335,7 @@
         function weatherScore(deal) {
             const w = window._weatherData;
             if (!w) return 0;
-            const text = ((deal.name || '') + ' ' + (deal.eventTitle || '') + ' ' + (deal.category || '')).toLowerCase();
+            const text = ((deal.title || '') + ' ' + (deal.category || '')).toLowerCase();
             let score = 0;
             if (w.temp >= 28) {
                 if (/아이스|콜드|냉|스무디|에이드|프라페|슬러시|빙수/.test(text)) score += 3;

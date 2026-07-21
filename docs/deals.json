@@ -1,3077 +1,1874 @@
 [
   {
-    "id": "스타벅스_real_6557",
-    "name": "별마당 특화 MD 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6557",
+    "title": "별마당 특화 MD 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6557",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "별마당 특화 MD 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6557",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/bZaab4_WEB_THUM_20260721083028470.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6552",
-    "name": "골프 특화 MD 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6552",
+    "title": "골프 특화 MD 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6552",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "골프 특화 MD 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6552",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/RdAxrc_WEB_THUM_20260721082914471.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6556",
-    "name": "펫 프렌들리 특화 MD 신규 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6556",
+    "title": "펫 프렌들리 특화 MD 신규 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6556",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "펫 프렌들리 특화 MD 신규 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6556",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/38qEjM_WEB_THUM_20260715082637450.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6555",
-    "name": "THE 리뉴얼 특화 MD 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6555",
+    "title": "THE 리뉴얼 특화 MD 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6555",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "THE 리뉴얼 특화 MD 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6555",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/38qEjM_WEB_THUM_20260715081903116.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6547",
-    "name": "NEW 별별꾸러미 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6547",
+    "title": "NEW 별별꾸러미 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6547",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "NEW 별별꾸러미 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6547",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/HormhP_WEB_THUM_20260714160439458.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6538",
-    "name": "새로워진 스타벅스 코어 우산을 만나보세요.",
+    "brand": "스타벅스",
+    "id": "스타벅스_6538",
+    "title": "새로워진 스타벅스 코어 우산을 만나보세요.",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6538",
+    "startDate": "",
+    "endDate": "",
     "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "새로워진 스타벅스 코어 우산을 만나보세요.",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6538",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/5GvbLi_WEB_THUM_20260715082947476.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6553",
-    "name": "NEW 단테 텀블러 & 워터보틀 3종 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6553",
+    "title": "NEW 단테 텀블러 & 워터보틀 3종 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6553",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "NEW 단테 텀블러 & 워터보틀 3종 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6553",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/B9EDPh_WEB_THUM_20260713124758246.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6550",
-    "name": "세화요일 캠페인",
+    "brand": "스타벅스",
+    "id": "스타벅스_6550",
+    "title": "세화요일 캠페인",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6550",
+    "startDate": "",
+    "endDate": "",
     "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "세화요일 캠페인",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6550",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/CXVyyd_WEB_THUM_20260713092822199.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6551",
-    "name": "매월 10일은 일회용컵 없는날",
+    "brand": "스타벅스",
+    "id": "스타벅스_6551",
+    "title": "매월 10일은 일회용컵 없는날",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6551",
+    "startDate": "",
+    "endDate": "",
     "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "매월 10일은 일회용컵 없는날",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6551",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/rwez2Y_WEB_THUM_20260709103609050.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6546",
-    "name": "7월9일, 스타벅스 자몽 허니 에어로카노 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6546",
+    "title": "7월9일, 스타벅스 자몽 허니 에어로카노 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6546",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "7월9일, 스타벅스 자몽 허니 에어로카노 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6546",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/O37gFh_WEB_THUM_20260708140828242.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6549",
-    "name": "2026 별빛 라이브 7월 공연 일정",
+    "brand": "스타벅스",
+    "id": "스타벅스_6549",
+    "title": "2026 별빛 라이브 7월 공연 일정",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6549",
+    "startDate": "",
+    "endDate": "",
     "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "2026 별빛 라이브 7월 공연 일정",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6549",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/Y1lpw7_WEB_THUM_20260707082722372.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6537",
-    "name": "데일리 양우산 5종 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6537",
+    "title": "데일리 양우산 5종 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6537",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "데일리 양우산 5종 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6537",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/HuJzoT_WEB_THUM_20260701100413627.png",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6527",
-    "name": "제주 특화 음료 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6527",
+    "title": "제주 특화 음료 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6527",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "제주 특화 음료 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6527",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/OtCSne_WEB_THUM_20260622131140396.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6522",
-    "name": "리저브 우베 음료 2종 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6522",
+    "title": "리저브 우베 음료 2종 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6522",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "리저브 우베 음료 2종 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6522",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/OtCSne_WEB_THUM_20260622124931775.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6536",
-    "name": "스타벅스 SUMMER 1 MD를 만나보세요.",
+    "brand": "스타벅스",
+    "id": "스타벅스_6536",
+    "title": "스타벅스 SUMMER 1 MD를 만나보세요.",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6536",
+    "startDate": "",
+    "endDate": "",
+    "category": "콜라보·굿즈",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "스타벅스",
+    "id": "스타벅스_6524",
+    "title": "스타벅스 투명 돔 우산 3종을 만나보세요",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6524",
+    "startDate": "",
+    "endDate": "",
     "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "스타벅스 SUMMER 1 MD를 만나보세요.",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6536",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/FyIkkC_WEB_THUM_20260622110558899.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6524",
-    "name": "스타벅스 투명 돔 우산 3종을 만나보세요",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "스타벅스 투명 돔 우산 3종을 만나보세요",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6524",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/wOahkW_WEB_THUM_20260616150616891.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "스타벅스_real_6523",
-    "name": "5월 19일, 영롱한 빛의 코리아 라온 MD 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6523",
+    "title": "5월 19일, 영롱한 빛의 코리아 라온 MD 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6523",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "5월 19일, 영롱한 빛의 코리아 라온 MD 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6523",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/H9Z7YY_WEB_THUM_20260515082231906.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6516",
-    "name": "성년의 날, 스타벅스 인사카드로 마음을 전해보세요",
+    "brand": "스타벅스",
+    "id": "스타벅스_6516",
+    "title": "성년의 날, 스타벅스 인사카드로 마음을 전해보세요",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6516",
+    "startDate": "",
+    "endDate": "",
     "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "성년의 날, 스타벅스 인사카드로 마음을 전해보세요",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6516",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/K9apPO_WEB_THUM_20260511093912798.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6518",
-    "name": "스타벅스 NFT 서비스 종료 안내",
+    "brand": "스타벅스",
+    "id": "스타벅스_6518",
+    "title": "스타벅스 NFT 서비스 종료 안내",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6518",
+    "startDate": "",
+    "endDate": "",
     "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "스타벅스 NFT 서비스 종료 안내",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6518",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/CPY3G5_WEB_THUM_20260514080428147.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6514",
-    "name": "스승의 날, 스타벅스 인사카드로 마음을 전해보세요",
+    "brand": "스타벅스",
+    "id": "스타벅스_6514",
+    "title": "스승의 날, 스타벅스 인사카드로 마음을 전해보세요",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6514",
+    "startDate": "",
+    "endDate": "",
     "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "스승의 날, 스타벅스 인사카드로 마음을 전해보세요",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6514",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/K9apPO_WEB_THUM_20260511093406145.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6506",
-    "name": "새활용 아이디어 공모전",
+    "brand": "스타벅스",
+    "id": "스타벅스_6506",
+    "title": "새활용 아이디어 공모전",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6506",
+    "startDate": "",
+    "endDate": "",
     "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "새활용 아이디어 공모전",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6506",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/kMNmyP_WEB_THUM_20260508085505219.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6505",
-    "name": "매월 10일은 일회용컵 없는날",
+    "brand": "스타벅스",
+    "id": "스타벅스_6505",
+    "title": "매월 10일은 일회용컵 없는날",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6505",
+    "startDate": "",
+    "endDate": "",
     "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "매월 10일은 일회용컵 없는날",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6505",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/awjJjI_WEB_THUM_20260507083539870.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6484",
-    "name": "5월, 감사의 마음을 느린우체통에 담아보세요!",
+    "brand": "스타벅스",
+    "id": "스타벅스_6484",
+    "title": "5월, 감사의 마음을 느린우체통에 담아보세요!",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6484",
+    "startDate": "",
+    "endDate": "",
     "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "5월, 감사의 마음을 느린우체통에 담아보세요!",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6484",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/awjJjI_WEB_THUM_20260507084536147.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6470",
-    "name": "리저브 서머 출시 이벤트",
+    "brand": "스타벅스",
+    "id": "스타벅스_6470",
+    "title": "리저브 서머 출시 이벤트",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6470",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "리저브 서머 출시 이벤트",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6470",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/8OCULb_WEB_THUM_20260623083131991.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6500",
-    "name": "온라인 전용 별별꾸러미 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6500",
+    "title": "온라인 전용 별별꾸러미 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6500",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "온라인 전용 별별꾸러미 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6500",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/RjaODl_WEB_THUM_20260506082714661.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6495",
-    "name": "5월 6일, 신규 모바일 카드 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6495",
+    "title": "5월 6일, 신규 모바일 카드 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6495",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "5월 6일, 신규 모바일 카드 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6495",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/6DVqvt_WEB_THUM_20260430112500868.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6499",
-    "name": "코어 아몬드 정과 세트 1종 신규 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6499",
+    "title": "코어 아몬드 정과 세트 1종 신규 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6499",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "코어 아몬드 정과 세트 1종 신규 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6499",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/QsBvij_WEB_THUM_20260504081548593.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6497",
-    "name": "어버이날, 스타벅스 인사카드로 마음을 전해보세요",
+    "brand": "스타벅스",
+    "id": "스타벅스_6497",
+    "title": "어버이날, 스타벅스 인사카드로 마음을 전해보세요",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6497",
+    "startDate": "",
+    "endDate": "",
     "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "어버이날, 스타벅스 인사카드로 마음을 전해보세요",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6497",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/DqAvKu_WEB_THUM_20260430151556171.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6493",
-    "name": "선물을 고른다는 의미",
+    "brand": "스타벅스",
+    "id": "스타벅스_6493",
+    "title": "선물을 고른다는 의미",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6493",
+    "startDate": "",
+    "endDate": "",
     "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "선물을 고른다는 의미",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6493",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/NLh2bV_WEB_THUM_20260430095511407.png",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6490",
-    "name": "수박 주스 블렌디드 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6490",
+    "title": "수박 주스 블렌디드 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6490",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "수박 주스 블렌디드 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6490",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/QsBvij_WEB_THUM_20260504080715581.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6386",
-    "name": "5월 6일, 서울 특화 음료 확대 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6386",
+    "title": "5월 6일, 서울 특화 음료 확대 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6386",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "5월 6일, 서울 특화 음료 확대 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6386",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/EvAIZF_WEB_THUM_20260320080739926.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6496",
-    "name": "스타벅스와 함께 행복한 5월 보내세요",
+    "brand": "스타벅스",
+    "id": "스타벅스_6496",
+    "title": "스타벅스와 함께 행복한 5월 보내세요",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6496",
+    "startDate": "",
+    "endDate": "",
     "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "스타벅스와 함께 행복한 5월 보내세요",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6496",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/DqAvKu_WEB_THUM_20260430150435946.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6494",
-    "name": "서울국제정원박람회 기념 스타벅스 '쉬었다가길' 이벤트",
+    "brand": "스타벅스",
+    "id": "스타벅스_6494",
+    "title": "서울국제정원박람회 기념 스타벅스 '쉬었다가길' 이벤트",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6494",
+    "startDate": "",
+    "endDate": "",
     "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "서울국제정원박람회 기념 스타벅스 '쉬었다가길' 이벤트",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6494",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/NLh2bV_WEB_THUM_20260430100048007.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6491",
-    "name": "핑크 베어리스타 글라스 콜드컵 2종 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6491",
+    "title": "핑크 베어리스타 글라스 콜드컵 2종 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6491",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "핑크 베어리스타 글라스 콜드컵 2종 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6491",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/d7RrpG_WEB_THUM_20260611094043122.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6488",
-    "name": "각인 우산 출시 및 픽토그램 각인 서비스 런칭",
+    "brand": "스타벅스",
+    "id": "스타벅스_6488",
+    "title": "각인 우산 출시 및 픽토그램 각인 서비스 런칭",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6488",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "각인 우산 출시 및 픽토그램 각인 서비스 런칭",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6488",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/Hft8SM_WEB_THUM_20260429085005800.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6487",
-    "name": "스타벅스와 환경재단이 전하는 ‘자연과 함께 쉬었다가길’",
+    "brand": "스타벅스",
+    "id": "스타벅스_6487",
+    "title": "스타벅스와 환경재단이 전하는 ‘자연과 함께 쉬었다가길’",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6487",
+    "startDate": "",
+    "endDate": "",
     "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "스타벅스와 환경재단이 전하는 ‘자연과 함께 쉬었다가길’",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6487",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/XY4SSL_WEB_THUM_20260429084831132.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6486",
-    "name": "5월 4일, 토이 스토리 비닐 우산 2종 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6486",
+    "title": "5월 4일, 토이 스토리 비닐 우산 2종 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6486",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "5월 4일, 토이 스토리 비닐 우산 2종 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6486",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/XY4SSL_WEB_THUM_20260429083306580.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6485",
-    "name": "저당 토마토 라구 파스타 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6485",
+    "title": "저당 토마토 라구 파스타 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6485",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "저당 토마토 라구 파스타 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6485",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/XY4SSL_WEB_THUM_20260429082954667.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6476",
-    "name": "신규 콜드 브루 2종 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6476",
+    "title": "신규 콜드 브루 2종 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6476",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "신규 콜드 브루 2종 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6476",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/XY4SSL_WEB_THUM_20260429083923101.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6475",
-    "name": "콜드 폼 커스텀 옵션 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6475",
+    "title": "콜드 폼 커스텀 옵션 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6475",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "콜드 폼 커스텀 옵션 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6475",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/XY4SSL_WEB_THUM_20260429084103028.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6474",
-    "name": "5월 4일, 별마당 특화 MD 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6474",
+    "title": "5월 4일, 별마당 특화 MD 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6474",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "5월 4일, 별마당 특화 MD 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6474",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/Hft8SM_WEB_THUM_20260429091301584.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6462",
-    "name": "NEW ERA. SAME ICONS.",
+    "brand": "스타벅스",
+    "id": "스타벅스_6462",
+    "title": "NEW ERA. SAME ICONS.",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6462",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "NEW ERA. SAME ICONS.",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6462",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/TQ83sf_WEB_THUM_20260428085224993.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6473",
-    "name": "온라인 전용 커피 기프트 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6473",
+    "title": "온라인 전용 커피 기프트 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6473",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "온라인 전용 커피 기프트 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6473",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/D09Yun_WEB_THUM_20260427085209239.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6471",
-    "name": "감사의 달 MD 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6471",
+    "title": "감사의 달 MD 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6471",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "감사의 달 MD 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6471",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/9MemgM_WEB_THUM_20260427131213239.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6468",
-    "name": "4월 28일, 스타벅스 Thank You 카드 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6468",
+    "title": "4월 28일, 스타벅스 Thank You 카드 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6468",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "4월 28일, 스타벅스 Thank You 카드 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6468",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/WCCOOv_WEB_THUM_20260427083746689.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6467",
-    "name": "감사의 달 기프트 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6467",
+    "title": "감사의 달 기프트 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6467",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "감사의 달 기프트 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6467",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/D09Yun_WEB_THUM_20260427083930843.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6465",
-    "name": "감사의 달 비아&오리가미 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6465",
+    "title": "감사의 달 비아&오리가미 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6465",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "감사의 달 비아&오리가미 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6465",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/WCCOOv_WEB_THUM_20260427081943933.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6466",
-    "name": "4월 28일, 상시 기프트 3종 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6466",
+    "title": "4월 28일, 상시 기프트 3종 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6466",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "4월 28일, 상시 기프트 3종 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6466",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/qAp1xY_WEB_THUM_20260423113107496.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6438",
-    "name": "[전 매장 확대] 4월 24일, 우베 바스크 치즈 케이크 확대 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6438",
+    "title": "[전 매장 확대] 4월 24일, 우베 바스크 치즈 케이크 확대 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6438",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "[전 매장 확대] 4월 24일, 우베 바스크 치즈 케이크 확대 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6438",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/19hgGJ_WEB_THUM_20260410082430661.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "스타벅스_real_6460",
-    "name": "4월 24일, 빙수 블렌디드 출시",
+    "brand": "스타벅스",
+    "id": "스타벅스_6460",
+    "title": "4월 24일, 빙수 블렌디드 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6460",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "4월 24일, 빙수 블렌디드 출시",
-    "conditionText": "",
-    "officialUrl": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6460",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "스타벅스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://image.istarbucks.co.kr/upload/news/1RADWy_WEB_THUM_20260423080240021.jpg",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "이디야커피_real_458",
-    "name": "패션콜라보 이벤트 당첨자 발표",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "패션콜라보 이벤트 당첨자 발표",
-    "conditionText": "",
-    "officialUrl": "https://www.ediya.com/contents/?tb_name=event&bbs_section=view&Ctg=&page=1&idx=458",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "이디야커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://www.ediya.com/contents/files/bbs_event/IMG_1783928405523.thumb",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_641",
+    "title": "[안내] MGC x 사랑의 하츄핑 2 공식 콜라보 굿즈 사전예약 안내",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02NDEmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9MQ==",
+    "startDate": "",
+    "endDate": "",
+    "category": "콜라보·굿즈",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "이디야커피_real_443",
-    "name": "이디야커피 나라사랑 카드 혜택",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "이디야커피 나라사랑 카드 혜택",
-    "conditionText": "",
-    "officialUrl": "https://www.ediya.com/contents/?tb_name=event&bbs_section=view&Ctg=&page=1&idx=443",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "이디야커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://www.ediya.com/contents/files/bbs_event/IMG_1766992040844.thumb",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "이디야커피_real_457",
-    "name": "제철과일 백일장(이디야x차정은 작가) 수상자 발표",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "제철과일 백일장(이디야x차정은 작가) 수상자 발표",
-    "conditionText": "",
-    "officialUrl": "https://www.ediya.com/contents/?tb_name=event&bbs_section=view&Ctg=&page=1&idx=457",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "이디야커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://www.ediya.com/contents/files/bbs_event/IMG_1781770857156.thumb",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "이디야커피_real_456",
-    "name": "제철과일 콜라보 이벤트",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "제철과일 콜라보 이벤트",
-    "conditionText": "",
-    "officialUrl": "https://www.ediya.com/contents/?tb_name=event&bbs_section=view&Ctg=&page=1&idx=456",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "이디야커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://www.ediya.com/contents/files/bbs_event/IMG_1778559897653.thumb",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "이디야커피_real_454",
-    "name": "현대카드 M포인트위크 프로모션",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "현대카드 M포인트위크 프로모션",
-    "conditionText": "",
-    "officialUrl": "https://www.ediya.com/contents/?tb_name=event&bbs_section=view&Ctg=&page=1&idx=454",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "이디야커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://www.ediya.com/contents/files/bbs_event/IMG_1776750144786.thumb",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "이디야커피_real_453",
-    "name": "4월 이디야 멤버스 앱 픽업 주문 50% 할인",
-    "category": "할인",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "4월 이디야 멤버스 앱 픽업 주문 50% 할인",
-    "conditionText": "",
-    "officialUrl": "https://www.ediya.com/contents/?tb_name=event&bbs_section=view&Ctg=&page=1&idx=453",
-    "isCoupon": true,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "이디야커피": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://www.ediya.com/contents/files/bbs_event/IMG_1776326185401.thumb",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "이디야커피_real_452",
-    "name": "이디야에서 포켓몬을 만나보세요!",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "이디야에서 포켓몬을 만나보세요!",
-    "conditionText": "",
-    "officialUrl": "https://www.ediya.com/contents/?tb_name=event&bbs_section=view&Ctg=&page=1&idx=452",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "이디야커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://www.ediya.com/contents/files/bbs_event/IMG_1774225665302.thumb",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "이디야커피_real_451",
-    "name": "봄음료 홈페이지 이벤트 당첨자 리스트",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "봄음료 홈페이지 이벤트 당첨자 리스트",
-    "conditionText": "",
-    "officialUrl": "https://www.ediya.com/contents/?tb_name=event&bbs_section=view&Ctg=&page=1&idx=451",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "이디야커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://www.ediya.com/contents/files/bbs_event/IMG_1773794054675.thumb",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "이디야커피_real_450",
-    "name": "이디야 멤버스 신규가입 이벤트",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "이디야 멤버스 신규가입 이벤트",
-    "conditionText": "",
-    "officialUrl": "https://www.ediya.com/contents/?tb_name=event&bbs_section=view&Ctg=&page=1&idx=450",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "이디야커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://www.ediya.com/contents/files/bbs_event/IMG_1772162076604.thumb",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "이디야커피_real_448",
-    "name": "대한민국 방방곡곡 우리땅 봄한잔",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "대한민국 방방곡곡 우리땅 봄한잔",
-    "conditionText": "",
-    "officialUrl": "https://www.ediya.com/contents/?tb_name=event&bbs_section=view&Ctg=&page=1&idx=448",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "이디야커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://www.ediya.com/contents/files/bbs_event/IMG_1772067199427.thumb",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "이디야커피_real_447",
-    "name": "2월 이디야 멤버스 프로모션(픽업주문 선착순 50% 할인)",
-    "category": "할인",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "2월 이디야 멤버스 프로모션(픽업주문 선착순 50% 할인)",
-    "conditionText": "",
-    "officialUrl": "https://www.ediya.com/contents/?tb_name=event&bbs_section=view&Ctg=&page=2&idx=447",
-    "isCoupon": true,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "이디야커피": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://www.ediya.com/contents/files/bbs_event/IMG_1769567968851.thumb",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "이디야커피_real_445",
-    "name": "EDIYA COFFEE X RILAKKUMA 리락쿠마 친구들이 이디야 딸기 매장에 방...",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "EDIYA COFFEE X RILAKKUMA 리락쿠마 친구들이 이디야 딸기 매장에 방...",
-    "conditionText": "",
-    "officialUrl": "https://www.ediya.com/contents/?tb_name=event&bbs_section=view&Ctg=&page=2&idx=445",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "이디야커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://www.ediya.com/contents/files/bbs_event/IMG_1767855858807.thumb",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "이디야커피_real_444",
-    "name": "이디야 최애메뉴 PICK! EVENT 당첨자 발표",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "이디야 최애메뉴 PICK! EVENT 당첨자 발표",
-    "conditionText": "",
-    "officialUrl": "https://www.ediya.com/contents/?tb_name=event&bbs_section=view&Ctg=&page=2&idx=444",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "이디야커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://www.ediya.com/contents/files/bbs_event/IMG_1767578123778.thumb",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "이디야커피_real_442",
-    "name": "이디야커피 고객 감사 이벤트",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "이디야커피 고객 감사 이벤트",
-    "conditionText": "",
-    "officialUrl": "https://www.ediya.com/contents/?tb_name=event&bbs_section=view&Ctg=&page=2&idx=442",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "이디야커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://www.ediya.com/contents/files/bbs_event/IMG_1766991916649.thumb",
-        "startDate": "",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "할리스_real_548",
-    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>♥해피썸머♥ 베스트 메뉴 4종 1+1</span>",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>♥해피썸머♥ 베스트 메뉴 4종 1+1</span>",
-    "conditionText": "",
-    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=548",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "할리스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 1,
-        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202607161027412570.png",
-        "startDate": "2026-07-20",
-        "endDate": "2026-07-22"
-      }
-    }
-  },
-  {
-    "id": "할리스_real_545",
-    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>★시원하게 빠져드는, 블랙 음료 2종 출시! </span>",
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_640",
+    "title": "[출시] MGC x 사랑의 하츄핑2 공식 콜라보 굿즈 출시",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02NDAmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9MQ==",
+    "startDate": "",
+    "endDate": "",
     "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>★시원하게 빠져드는, 블랙 음료 2종 출시! </span>",
-    "conditionText": "",
-    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=545",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "할리스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 70,
-        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202607090530173650.png",
-        "startDate": "2026-07-15",
-        "endDate": "2026-09-29"
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "할리스_real_544",
-    "name": "<span style=\"\"><span class=\"sort\">멤버십 이벤트</span>7월 신메뉴 구매 시, 크라운 더블 적립 ★★</span>",
-    "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "<span style=\"\"><span class=\"sort\">멤버십 이벤트</span>7월 신메뉴 구매 시, 크라운 더블 적립 ★★</span>",
-    "conditionText": "",
-    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=544",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "할리스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 7,
-        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202607060503472140.png",
-        "startDate": "2026-07-15",
-        "endDate": "2026-07-28"
-      }
-    }
-  },
-  {
-    "id": "할리스_real_543",
-    "name": "<span style=\"\"><span class=\"sort\">멤버십 이벤트</span>★할리스 멤버십 회원을 위한 7월의 선물★</span>",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "<span style=\"\"><span class=\"sort\">멤버십 이벤트</span>★할리스 멤버십 회원을 위한 7월의 선물★</span>",
-    "conditionText": "",
-    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=543",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "할리스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 10,
-        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606301026168710.png",
-        "startDate": "2026-07-01",
-        "endDate": "2026-07-31"
-      }
-    }
-  },
-  {
-    "id": "할리스_real_542",
-    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>Move your flavor, 할리스X반스 콜라보 MD 출시! </span>",
-    "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>Move your flavor, 할리스X반스 콜라보 MD 출시! </span>",
-    "conditionText": "",
-    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=542",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "할리스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 35,
-        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606190416379430.jpg",
-        "startDate": "2026-06-24",
-        "endDate": "2026-08-25"
-      }
-    }
-  },
-  {
-    "id": "할리스_real_540",
-    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>Check your flavor, 할리스X반스 콜라보 시즌 한정 메뉴 출시! </span>",
-    "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>Check your flavor, 할리스X반스 콜라보 시즌 한정 메뉴 출시! </span>",
-    "conditionText": "",
-    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=540",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "할리스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 35,
-        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606160927103690.jpg",
-        "startDate": "2026-06-24",
-        "endDate": "2026-08-25"
-      }
-    }
-  },
-  {
-    "id": "할리스_real_537",
-    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>★할리스 스마트 매장 런칭 기념 프로모션★</span>",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>★할리스 스마트 매장 런칭 기념 프로모션★</span>",
-    "conditionText": "",
-    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=537",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "할리스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 0,
-        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606151157470250.jpg",
-        "startDate": "2026-06-22",
-        "endDate": "2026-07-21"
-      }
-    }
-  },
-  {
-    "id": "할리스_real_534",
-    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>여름을 즐기는 수박 한 잔, 수박 음료 3종 출시! </span>",
-    "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>여름을 즐기는 수박 한 잔, 수박 음료 3종 출시! </span>",
-    "conditionText": "",
-    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=534",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "할리스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 35,
-        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606011143425970.jpg",
-        "startDate": "2026-06-02",
-        "endDate": "2026-08-25"
-      }
-    }
-  },
-  {
-    "id": "할리스_real_526",
-    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>할리스 빙수 5종과 함께, ICE & NICE SUMMER !</span>",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>할리스 빙수 5종과 함께, ICE & NICE SUMMER !</span>",
-    "conditionText": "",
-    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=526",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "할리스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 41,
-        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202605080225251600.jpg",
-        "startDate": "2026-05-13",
-        "endDate": "2026-08-31"
-      }
-    }
-  },
-  {
-    "id": "할리스_real_525",
-    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>Back to the ★할리치노★, 할리치노 3종 출시!</span>",
-    "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>Back to the ★할리치노★, 할리치노 3종 출시!</span>",
-    "conditionText": "",
-    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=525",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "할리스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 41,
-        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202605080222128020.jpg",
-        "startDate": "2026-05-13",
-        "endDate": "2026-08-31"
-      }
-    }
-  },
-  {
-    "id": "할리스_real_518",
-    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>★모빌카드 10% 즉시 할인 프로모션 안내★</span>",
-    "category": "할인",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>★모빌카드 10% 즉시 할인 프로모션 안내★</span>",
-    "conditionText": "",
-    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=518",
-    "isCoupon": true,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "할리스": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": 163,
-        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202604161111057800.png",
-        "startDate": "2026-04-27",
-        "endDate": "2026-12-31"
-      }
-    }
-  },
-  {
-    "id": "할리스_real_541",
-    "name": "<span style=\"\"><span class=\"sort\">멤버십 이벤트</span>반스 콜라보 신메뉴 구매 시, 크라운 더블 적립 ★★</span>",
-    "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "<span style=\"\"><span class=\"sort\">멤버십 이벤트</span>반스 콜라보 신메뉴 구매 시, 크라운 더블 적립 ★★</span>",
-    "conditionText": "",
-    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=541",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "할리스": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": -14,
-        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606160930275340.png",
-        "startDate": "2026-06-24",
-        "endDate": "2026-07-07"
-      }
-    }
-  },
-  {
-    "id": "할리스_real_539",
-    "name": "<span style=\"\"><span class=\"sort\">멤버십 이벤트</span>6월이 가기 전에, 멤버십 쿠폰팩 라스트위크★</span>",
-    "category": "할인",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "<span style=\"\"><span class=\"sort\">멤버십 이벤트</span>6월이 가기 전에, 멤버십 쿠폰팩 라스트위크★</span>",
-    "conditionText": "",
-    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=539",
-    "isCoupon": true,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "할리스": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": -21,
-        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202606160914113420.png",
-        "startDate": "2026-06-24",
-        "endDate": "2026-06-30"
-      }
-    }
-  },
-  {
-    "id": "할리스_real_533",
-    "name": "<span style=\"\"><span class=\"sort\">매장이벤트</span>쉿, 지금 우리 매장은 이벤트중♡</span>",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "<span style=\"\"><span class=\"sort\">매장이벤트</span>쉿, 지금 우리 매장은 이벤트중♡</span>",
-    "conditionText": "",
-    "officialUrl": "https://www.hollys.co.kr/news/event/view.do?idx=533",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "할리스": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": -21,
-        "image": "https://admin.hollys.co.kr/upload/news/event/newsEvent_202605290536486710.png",
-        "startDate": "2026-06-02",
-        "endDate": "2026-06-30"
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_315349",
-    "name": "토이스토리 X 미키와 친구들 콜라보 프로모션",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "토이스토리 X 미키와 친구들 콜라보 프로모션",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/315349",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/349/315/600x600.crop.jpg?t=1784073386",
-        "startDate": "2026-07-15",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_315056",
-    "name": "JUICY SUMMER 신메뉴 출시",
-    "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "JUICY SUMMER 신메뉴 출시",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/315056",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/056/315/600x600.crop.jpg?t=1783923267",
-        "startDate": "2026-07-13",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_307023",
-    "name": "6월 18일엔 CHILL&FILL 출시",
-    "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "6월 18일엔 CHILL&FILL 출시",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/307023",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/023/307/600x600.crop.jpg?t=1781683391",
-        "startDate": "2026-06-17",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_306715",
-    "name": "로스트아크 APP 이벤트 당첨자 발표 안내",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "로스트아크 APP 이벤트 당첨자 발표 안내",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/306715",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/715/306/600x600.crop.jpg?t=1781656175",
-        "startDate": "2026-06-17",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_302226",
-    "name": "컴포즈 컵빙 시즌 500원 할인 프로모션",
-    "category": "할인",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "컴포즈 컵빙 시즌 500원 할인 프로모션",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/302226",
-    "isCoupon": true,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/226/302/600x600.crop.jpg?t=1780960426",
-        "startDate": "2026-06-09",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_296506",
-    "name": "컴포즈커피 X 로스트아크 콜라보 프로모션",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "컴포즈커피 X 로스트아크 콜라보 프로모션",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/296506",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/506/296/600x600.crop.jpg?t=1779237017",
-        "startDate": "2026-05-12",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_296210",
-    "name": "컴포즈커피 X 김원훈 숏 시리즈 공개",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "컴포즈커피 X 김원훈 숏 시리즈 공개",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/296210",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/210/296/600x600.crop.jpg?t=1779157217",
-        "startDate": "2026-05-11",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_296158",
-    "name": "그 여름, 우리의 쿨포즈 4종 출시",
-    "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "그 여름, 우리의 쿨포즈 4종 출시",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/296158",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/158/296/600x600.crop.jpg?t=1779847195",
-        "startDate": "2026-05-11",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_295055",
-    "name": "엘포인트 제휴 기념 이벤트",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "엘포인트 제휴 기념 이벤트",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/295055",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/055/295/600x600.crop.jpg?t=1777851818",
-        "startDate": "2026-05-04",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_293264",
-    "name": "절미절미 SNS 시식단 EVENT",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "절미절미 SNS 시식단 EVENT",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/293264",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/264/293/600x600.crop.jpg?t=1776844487",
-        "startDate": "2026-04-22",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_291492",
-    "name": "컴포즈 2026 VIP 멤버십 프로모션 안내",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "컴포즈 2026 VIP 멤버십 프로모션 안내",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/291492",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/492/291/600x600.crop.jpg?t=1776071038",
-        "startDate": "2026-04-13",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_287922",
-    "name": "카카오페이 첫 결제 시 아메리카노 100원",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "카카오페이 첫 결제 시 아메리카노 100원",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/287922",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/922/287/600x600.crop.jpg?t=1774398485",
-        "startDate": "2026-03-23",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_287463",
-    "name": "에어리 아메리카노 출시",
-    "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "에어리 아메리카노 출시",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/287463",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/463/287/600x600.crop.jpg?t=1773971063",
-        "startDate": "2026-03-20",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_287141",
-    "name": "매샷추 할인 프로모션",
-    "category": "할인",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "매샷추 할인 프로모션",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/287141",
-    "isCoupon": true,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/141/287/600x600.crop.jpg?t=1779373353",
-        "startDate": "2026-03-18",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_285660",
-    "name": "데일리 말차 4종 출시",
-    "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "데일리 말차 4종 출시",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/285660",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/660/285/600x600.crop.jpg?t=1773970922",
-        "startDate": "2026-03-10",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_284189",
-    "name": "NEW 달콤한 선택 500원 할인 프로모션",
-    "category": "할인",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "NEW 달콤한 선택 500원 할인 프로모션",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/284189",
-    "isCoupon": true,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/189/284/600x600.crop.jpg?t=1772060600",
-        "startDate": "2026-02-26",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_282765",
-    "name": "당근페이 어항꾸미기 프로모션2",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "당근페이 어항꾸미기 프로모션2",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/282765",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/765/282/600x600.crop.jpg?t=1770950641",
-        "startDate": "2026-02-13",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_281844",
-    "name": "명조 이벤트 1. 콜라보 랜덤 굿즈 세트",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "명조 이벤트 1. 콜라보 랜덤 굿즈 세트",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/281844",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/844/281/600x600.crop.jpg?t=1770377319",
-        "startDate": "2026-02-06",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_279432",
-    "name": "명조 이벤트 2. APP 스탬프 프로모션",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "명조 이벤트 2. APP 스탬프 프로모션",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/279432",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/432/279/600x600.crop.jpg?t=1770377372",
-        "startDate": "2026-01-19",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_281804",
-    "name": "NEW 올데이 세트 2종 할인 프로모션",
-    "category": "할인",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "NEW 올데이 세트 2종 할인 프로모션",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/281804",
-    "isCoupon": true,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/804/281/600x600.crop.jpg?t=1770625586",
-        "startDate": "2026-02-06",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_280492",
-    "name": "고객 만족도 1위 기념 아메리카노 1천원",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "고객 만족도 1위 기념 아메리카노 1천원",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/280492",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/492/280/600x600.crop.jpg?t=1769481704",
-        "startDate": "2026-01-27",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_280459",
-    "name": "OK캐쉬백, 엘포인트 제휴 포인트 사용 안내",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "OK캐쉬백, 엘포인트 제휴 포인트 사용 안내",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/280459",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/459/280/600x600.crop.jpg?t=1769477844",
-        "startDate": "2026-01-27",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_278751",
-    "name": "당근페이 어항꾸미기 프로모션",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "당근페이 어항꾸미기 프로모션",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/278751",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/751/278/600x600.crop.jpg?t=1769394282",
-        "startDate": "2025-10-31",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_277244",
-    "name": "2026년 컴포즈커피 VIP 멤버십 안내",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "2026년 컴포즈커피 VIP 멤버십 안내",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/277244",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/244/277/600x600.crop.jpg?t=1767309992",
-        "startDate": "2025-12-30",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_275477",
-    "name": "징글베리 딸기 음료 4종 출시",
-    "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "징글베리 딸기 음료 4종 출시",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/275477",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/477/275/600x600.crop.jpg?t=1778500151",
-        "startDate": "2025-12-15",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_273794",
-    "name": "컴포즈커피X부여군X위기브 고향사랑기부 이벤트",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "컴포즈커피X부여군X위기브 고향사랑기부 이벤트",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/273794",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/794/273/600x600.crop.jpg?t=1766989139",
-        "startDate": "2025-12-02",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_263402",
-    "name": "당근과 컴포즈커피가 함께 깎았당!",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "당근과 컴포즈커피가 함께 깎았당!",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/263402",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/402/263/600x600.crop.jpg?t=1768441016",
-        "startDate": "2025-10-31",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_250407",
-    "name": "민생회복소비쿠폰에 특별한 혜택을 더하다.",
-    "category": "할인",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "민생회복소비쿠폰에 특별한 혜택을 더하다.",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/250407",
-    "isCoupon": true,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "할인",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/407/250/600x600.crop.jpg?t=1761749608",
-        "startDate": "2025-08-01",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_249466",
-    "name": "컴포즈커피 X 산리오 굿즈 프로모션",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "컴포즈커피 X 산리오 굿즈 프로모션",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/249466",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/466/249/600x600.crop.jpg?t=1763427225",
-        "startDate": "2025-07-28",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_243884",
-    "name": "컴포즈커피 X 브레드이발소 우산 프로모션",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "컴포즈커피 X 브레드이발소 우산 프로모션",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/243884",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/884/243/600x600.crop.jpg?t=1761749608",
-        "startDate": "2025-07-03",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_238957",
-    "name": "컴포즈커피 X 명조 컴보 출시 굿즈 증정 이벤트",
-    "category": "신메뉴",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "컴포즈커피 X 명조 컴보 출시 굿즈 증정 이벤트",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/238957",
-    "isCoupon": false,
-    "isNewMenu": true,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "신메뉴",
-        "isNew": true,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/957/238/600x600.crop.jpg?t=1761749608",
-        "startDate": "2025-06-05",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_229303",
-    "name": "컴포즈커피 X 스티치 굿즈 프로모션",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "컴포즈커피 X 스티치 굿즈 프로모션",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/229303",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/303/229/600x600.crop.jpg?t=1761749609",
-        "startDate": "2025-04-28",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_215351",
-    "name": "컴포즈커피 X 브레드이발소 굿즈 증정 이벤트",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "컴포즈커피 X 브레드이발소 굿즈 증정 이벤트",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/215351",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/351/215/600x600.crop.jpg?t=1761749610",
-        "startDate": "2025-03-21",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_214587",
-    "name": "컴포즈 VIP 멤버십 프로모션 안내",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "컴포즈 VIP 멤버십 프로모션 안내",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/214587",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/587/214/600x600.crop.jpg?t=1776059435",
-        "startDate": "2025-03-18",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_194021",
-    "name": "[시즌메뉴 프로모션] 겨울을 부탁해!",
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_636",
+    "title": "[이벤트] 오싹하게 시원한 여름 프로모션",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02MzYmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9MQ==",
+    "startDate": "",
+    "endDate": "",
     "category": "시즌",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "[시즌메뉴 프로모션] 겨울을 부탁해!",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/194021",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": true,
-    "events": {
-      "컴포즈커피": {
-        "type": "시즌",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/021/194/600x600.crop.jpg?t=1761749610",
-        "startDate": "2024-12-09",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "컴포즈커피_real_189502",
-    "name": "2024 마마 어워즈 당첨자 안내",
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_635",
+    "title": "[안내] MGC x NCT WISH 콜라보 굿즈 사전예약 안내",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02MzUmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9MQ==",
+    "startDate": "",
+    "endDate": "",
+    "category": "콜라보·굿즈",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_634",
+    "title": "[출시] MGC x NCT WISH 콜라보 굿즈 출시 안내",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02MzQmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9MQ==",
+    "startDate": "",
+    "endDate": "",
+    "category": "신메뉴",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_633",
+    "title": "[이벤트] 7월 메가MGC커피 X 하나페이 할인 EVENT",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02MzMmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9MQ==",
+    "startDate": "",
+    "endDate": "",
+    "category": "쿠폰·할인",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_631",
+    "title": "[이벤트] 7월 메가MGC커피 X 카카오페이 할인 EVENT",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02MzEmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9MQ==",
+    "startDate": "",
+    "endDate": "",
+    "category": "쿠폰·할인",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_629",
+    "title": "[이벤트] 메가MGC커피 X 신한라이프 당첨 EVENT",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02MjkmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9MQ==",
+    "startDate": "",
+    "endDate": "",
     "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "2024 마마 어워즈 당첨자 안내",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/189502",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/502/189/600x600.crop.jpg?t=1763429414",
-        "startDate": "2024-11-19",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "컴포즈커피_real_185732",
-    "name": "컴포즈커피, 창업비 지원 특별 프로모션",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "컴포즈커피, 창업비 지원 특별 프로모션",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/185732",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/732/185/600x600.crop.jpg?t=1761749610",
-        "startDate": "2024-11-01",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_168363",
-    "name": "괌정부관광청 X 컴포즈 럭키박스 이벤트",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "괌정부관광청 X 컴포즈 럭키박스 이벤트",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/168363",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/363/168/600x600.crop.jpg?t=1761749610",
-        "startDate": "2024-08-21",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_115606",
-    "name": "컴포즈 VIP 멤버십 프로모션 안내",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "컴포즈 VIP 멤버십 프로모션 안내",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/115606",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/606/115/600x600.crop.jpg?t=1761749611",
-        "startDate": "2024-01-31",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_95665",
-    "name": "2023 에어부산 럭키박스 당첨자 안내",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "2023 에어부산 럭키박스 당첨자 안내",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/95665",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/665/095/600x600.crop.jpg?t=1761752503",
-        "startDate": "2023-11-13",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_57076",
-    "name": "4월, 네이버페이 포인트·머니 결제 이벤트",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "4월, 네이버페이 포인트·머니 결제 이벤트",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/57076",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/076/057/600x600.crop.jpg?t=1761750594",
-        "startDate": "2023-03-23",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_55144",
-    "name": "컴포즈커피 2000호점 오픈 기념 럭키박스 이벤트",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "컴포즈커피 2000호점 오픈 기념 럭키박스 이벤트",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/55144",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/144/055/600x600.crop.jpg?t=1761750594",
-        "startDate": "2023-03-06",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_115591",
-    "name": "컴포즈 VIP 멤버십 프로모션 안내",
-    "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "컴포즈 VIP 멤버십 프로모션 안내",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/115591",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/591/115/600x600.crop.jpg?t=1761750594",
-        "startDate": "2023-01-20",
-        "endDate": ""
-      }
-    }
-  },
-  {
-    "id": "컴포즈커피_real_30004",
-    "name": "6월, 시즌메뉴 구매 시 팝콘 증정!",
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_628",
+    "title": "[이벤트] SMGC 2 : 여름을 노래해",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02MjgmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9MQ==",
+    "startDate": "",
+    "endDate": "",
     "category": "시즌",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "6월, 시즌메뉴 구매 시 팝콘 증정!",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/30004",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": true,
-    "events": {
-      "컴포즈커피": {
-        "type": "시즌",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/004/030/600x600.crop.jpg?t=1761752502",
-        "startDate": "2022-06-16",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   },
   {
-    "id": "컴포즈커피_real_22344",
-    "name": "4월, 페이코 15% 무제한 적립 이벤트",
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_627",
+    "title": "[이벤트] 7월 메가MGC커피 X 네이버페이 적립 EVENT",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02MjcmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9MQ==",
+    "startDate": "",
+    "endDate": "",
+    "category": "멤버십·앱",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_624",
+    "title": "[이벤트] 7월 메가MGC커피 X PAYCO 적립/할인 EVENT",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02MjQmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9MQ==",
+    "startDate": "",
+    "endDate": "",
+    "category": "쿠폰·할인",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_623",
+    "title": "[이벤트] 7월 메가MGC커피 X 신한 SOL페이 적립 EVENT",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02MjMmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9MQ==",
+    "startDate": "",
+    "endDate": "",
+    "category": "멤버십·앱",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_616",
+    "title": "[이벤트] SMGC 2 : 승리를 노래해",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02MTYmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mg==",
+    "startDate": "",
+    "endDate": "",
     "category": "이벤트",
-    "price": 0,
-    "saving": 0,
-    "discountPrice": 0,
-    "discountRate": 0,
-    "eventTitle": "4월, 페이코 15% 무제한 적립 이벤트",
-    "conditionText": "",
-    "officialUrl": "https://composecoffee.com/event/22344",
-    "isCoupon": false,
-    "isNewMenu": false,
-    "isSeasonMenu": false,
-    "events": {
-      "컴포즈커피": {
-        "type": "이벤트",
-        "isNew": false,
-        "daysLeft": 999,
-        "image": "https://composecoffee.com/files/thumbnails/344/022/600x600.crop.jpg?t=1761752503",
-        "startDate": "2022-04-04",
-        "endDate": ""
-      }
-    }
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_614",
+    "title": "[출시] ARIH is Coming MEGA",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02MTQmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mg==",
+    "startDate": "",
+    "endDate": "",
+    "category": "신메뉴",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_598",
+    "title": "[출시] MGC x 호빵맨 초코 케이크 & 스퀴시 키링 세트",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD01OTgmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mg==",
+    "startDate": "",
+    "endDate": "",
+    "category": "신메뉴",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_593",
+    "title": "[이벤트] SMGC 2 : FIND MY WISH",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD01OTMmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mg==",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_590",
+    "title": "[이벤트] SMGC 2 : 여름을 노래해",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD01OTAmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mg==",
+    "startDate": "",
+    "endDate": "",
+    "category": "시즌",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_574",
+    "title": "[제휴] 상시 제휴 혜택",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD01NzQmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mg==",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_558",
+    "title": "[당첨자발표] 슈퍼주니어 팬사인회 프리퀀시 이벤트",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD01NTgmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mg==",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_550",
+    "title": "[이벤트] 고구마빵 합류! 한정 수량 파격 특가",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD01NTAmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mg==",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_546",
+    "title": "[제휴] 메가MGC커피 X IBK나라사랑카드  제휴 혜택",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD01NDYmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mg==",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_536",
+    "title": "[제휴] 메가MGC커피 X  KT구독팩 출시",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD01MzYmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mg==",
+    "startDate": "",
+    "endDate": "",
+    "category": "신메뉴",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_534",
+    "title": "[제휴] 이제 MGC에서도 페이코 식권 사용 가능!",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD01MzQmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mg==",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_525",
+    "title": "[제휴] 메가MGC커피 X 현대카드 현대M포인트 최대 20% 사용",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD01MjUmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mg==",
+    "startDate": "",
+    "endDate": "",
+    "category": "쿠폰·할인",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_501",
+    "title": "[이벤트] SMGC : WELCOME SUPER-MGC",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD01MDEmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mw==",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_492",
+    "title": "[출시] MGC X RIIZE 콜라보 굿즈 2종 출시",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD00OTImYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mw==",
+    "startDate": "",
+    "endDate": "",
+    "category": "신메뉴",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_489",
+    "title": "[당첨자발표] RIIZE 프리퀀시 이벤트",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD00ODkmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mw==",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_435",
+    "title": "[제휴] LG U+ 구독서비스 '유독 Pick2'",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD00MzUmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mw==",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_434",
+    "title": "[제휴] 메가MGC커피에서 CJ ONE 포인트 적립&사용 가능!",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD00MzQmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mw==",
+    "startDate": "",
+    "endDate": "",
+    "category": "멤버십·앱",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_430",
+    "title": "[이벤트] 메가MGC커피에서 기아멤버스 포인트 사용 가능!",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD00MzAmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mw==",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_424",
+    "title": "[이벤트] SMGC : MEGA RIIZE SAGA",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD00MjQmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mw==",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_414",
+    "title": "MEGA WISH DAY! NCT WISH MD 출시",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD00MTQmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mw==",
+    "startDate": "",
+    "endDate": "",
+    "category": "신메뉴",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_402",
+    "title": "SMGC 캠페인! RIIZE ODYSSEY MEGA SMini 사전예약",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD00MDImYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mw==",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "이디야커피",
+    "id": "이디야커피_458",
+    "title": "패션콜라보 이벤트 당첨자 발표",
+    "link": "https://www.ediya.com/contents/?tb_name=event&bbs_section=view&Ctg=&page=1&idx=458",
+    "startDate": "",
+    "endDate": "",
+    "category": "콜라보·굿즈",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "이디야커피",
+    "id": "이디야커피_443",
+    "title": "이디야커피 나라사랑 카드 혜택",
+    "link": "https://www.ediya.com/contents/?tb_name=event&bbs_section=view&Ctg=&page=1&idx=443",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "이디야커피",
+    "id": "이디야커피_457",
+    "title": "제철과일 백일장(이디야x차정은 작가) 수상자 발표",
+    "link": "https://www.ediya.com/contents/?tb_name=event&bbs_section=view&Ctg=&page=1&idx=457",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "이디야커피",
+    "id": "이디야커피_456",
+    "title": "제철과일 콜라보 이벤트",
+    "link": "https://www.ediya.com/contents/?tb_name=event&bbs_section=view&Ctg=&page=1&idx=456",
+    "startDate": "",
+    "endDate": "",
+    "category": "콜라보·굿즈",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "이디야커피",
+    "id": "이디야커피_454",
+    "title": "현대카드 M포인트위크 프로모션",
+    "link": "https://www.ediya.com/contents/?tb_name=event&bbs_section=view&Ctg=&page=1&idx=454",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "이디야커피",
+    "id": "이디야커피_453",
+    "title": "4월 이디야 멤버스 앱 픽업 주문 50% 할인",
+    "link": "https://www.ediya.com/contents/?tb_name=event&bbs_section=view&Ctg=&page=1&idx=453",
+    "startDate": "",
+    "endDate": "",
+    "category": "쿠폰·할인",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "이디야커피",
+    "id": "이디야커피_452",
+    "title": "이디야에서 포켓몬을 만나보세요!",
+    "link": "https://www.ediya.com/contents/?tb_name=event&bbs_section=view&Ctg=&page=1&idx=452",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "이디야커피",
+    "id": "이디야커피_451",
+    "title": "봄음료 홈페이지 이벤트 당첨자 리스트",
+    "link": "https://www.ediya.com/contents/?tb_name=event&bbs_section=view&Ctg=&page=1&idx=451",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "이디야커피",
+    "id": "이디야커피_450",
+    "title": "이디야 멤버스 신규가입 이벤트",
+    "link": "https://www.ediya.com/contents/?tb_name=event&bbs_section=view&Ctg=&page=1&idx=450",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "이디야커피",
+    "id": "이디야커피_448",
+    "title": "대한민국 방방곡곡 우리땅 봄한잔",
+    "link": "https://www.ediya.com/contents/?tb_name=event&bbs_section=view&Ctg=&page=1&idx=448",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "이디야커피",
+    "id": "이디야커피_447",
+    "title": "2월 이디야 멤버스 프로모션(픽업주문 선착순 50% 할인)",
+    "link": "https://www.ediya.com/contents/?tb_name=event&bbs_section=view&Ctg=&page=2&idx=447",
+    "startDate": "",
+    "endDate": "",
+    "category": "쿠폰·할인",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "이디야커피",
+    "id": "이디야커피_445",
+    "title": "EDIYA COFFEE X RILAKKUMA 리락쿠마 친구들이 이디야 딸기 매장에 방...",
+    "link": "https://www.ediya.com/contents/?tb_name=event&bbs_section=view&Ctg=&page=2&idx=445",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "이디야커피",
+    "id": "이디야커피_444",
+    "title": "이디야 최애메뉴 PICK! EVENT 당첨자 발표",
+    "link": "https://www.ediya.com/contents/?tb_name=event&bbs_section=view&Ctg=&page=2&idx=444",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "이디야커피",
+    "id": "이디야커피_442",
+    "title": "이디야커피 고객 감사 이벤트",
+    "link": "https://www.ediya.com/contents/?tb_name=event&bbs_section=view&Ctg=&page=2&idx=442",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "할리스",
+    "id": "할리스_548",
+    "title": "♥해피썸머♥ 베스트 메뉴 4종 1+1",
+    "link": "https://www.hollys.co.kr/news/event/view.do?idx=548",
+    "startDate": "2026-07-20",
+    "endDate": "2026-07-22",
+    "category": "쿠폰·할인",
+    "daysLeft": 2,
+    "isNew": true,
+    "ongoing": true
+  },
+  {
+    "brand": "할리스",
+    "id": "할리스_545",
+    "title": "★시원하게 빠져드는, 블랙 음료 2종 출시!",
+    "link": "https://www.hollys.co.kr/news/event/view.do?idx=545",
+    "startDate": "2026-07-15",
+    "endDate": "2026-09-29",
+    "category": "신메뉴",
+    "daysLeft": 71,
+    "isNew": true,
+    "ongoing": true
+  },
+  {
+    "brand": "할리스",
+    "id": "할리스_544",
+    "title": "7월 신메뉴 구매 시, 크라운 더블 적립 ★★",
+    "link": "https://www.hollys.co.kr/news/event/view.do?idx=544",
+    "startDate": "2026-07-15",
+    "endDate": "2026-07-28",
+    "category": "신메뉴",
+    "daysLeft": 8,
+    "isNew": true,
+    "ongoing": true
+  },
+  {
+    "brand": "할리스",
+    "id": "할리스_543",
+    "title": "★할리스 멤버십 회원을 위한 7월의 선물★",
+    "link": "https://www.hollys.co.kr/news/event/view.do?idx=543",
+    "startDate": "2026-07-01",
+    "endDate": "2026-07-31",
+    "category": "멤버십·앱",
+    "daysLeft": 11,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "할리스",
+    "id": "할리스_542",
+    "title": "Move your flavor, 할리스X반스 콜라보 MD 출시!",
+    "link": "https://www.hollys.co.kr/news/event/view.do?idx=542",
+    "startDate": "2026-06-24",
+    "endDate": "2026-08-25",
+    "category": "신메뉴",
+    "daysLeft": 36,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "할리스",
+    "id": "할리스_540",
+    "title": "Check your flavor, 할리스X반스 콜라보 시즌 한정 메뉴 출시!",
+    "link": "https://www.hollys.co.kr/news/event/view.do?idx=540",
+    "startDate": "2026-06-24",
+    "endDate": "2026-08-25",
+    "category": "신메뉴",
+    "daysLeft": 36,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "할리스",
+    "id": "할리스_537",
+    "title": "★할리스 스마트 매장 런칭 기념 프로모션★",
+    "link": "https://www.hollys.co.kr/news/event/view.do?idx=537",
+    "startDate": "2026-06-22",
+    "endDate": "2026-07-21",
+    "category": "신메뉴",
+    "daysLeft": 1,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "할리스",
+    "id": "할리스_534",
+    "title": "여름을 즐기는 수박 한 잔, 수박 음료 3종 출시!",
+    "link": "https://www.hollys.co.kr/news/event/view.do?idx=534",
+    "startDate": "2026-06-02",
+    "endDate": "2026-08-25",
+    "category": "신메뉴",
+    "daysLeft": 36,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "할리스",
+    "id": "할리스_526",
+    "title": "할리스 빙수 5종과 함께, ICE & NICE SUMMER !",
+    "link": "https://www.hollys.co.kr/news/event/view.do?idx=526",
+    "startDate": "2026-05-13",
+    "endDate": "2026-08-31",
+    "category": "이벤트",
+    "daysLeft": 42,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "할리스",
+    "id": "할리스_525",
+    "title": "Back to the ★할리치노★, 할리치노 3종 출시!",
+    "link": "https://www.hollys.co.kr/news/event/view.do?idx=525",
+    "startDate": "2026-05-13",
+    "endDate": "2026-08-31",
+    "category": "신메뉴",
+    "daysLeft": 42,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "할리스",
+    "id": "할리스_518",
+    "title": "★모빌카드 10% 즉시 할인 프로모션 안내★",
+    "link": "https://www.hollys.co.kr/news/event/view.do?idx=518",
+    "startDate": "2026-04-27",
+    "endDate": "2026-12-31",
+    "category": "쿠폰·할인",
+    "daysLeft": 164,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "할리스",
+    "id": "할리스_541",
+    "title": "반스 콜라보 신메뉴 구매 시, 크라운 더블 적립 ★★",
+    "link": "https://www.hollys.co.kr/news/event/view.do?idx=541",
+    "startDate": "2026-06-24",
+    "endDate": "2026-07-07",
+    "category": "신메뉴",
+    "daysLeft": -13,
+    "isNew": false,
+    "ongoing": false
+  },
+  {
+    "brand": "할리스",
+    "id": "할리스_539",
+    "title": "6월이 가기 전에, 멤버십 쿠폰팩 라스트위크★",
+    "link": "https://www.hollys.co.kr/news/event/view.do?idx=539",
+    "startDate": "2026-06-24",
+    "endDate": "2026-06-30",
+    "category": "쿠폰·할인",
+    "daysLeft": -20,
+    "isNew": false,
+    "ongoing": false
+  },
+  {
+    "brand": "할리스",
+    "id": "할리스_533",
+    "title": "쉿, 지금 우리 매장은 이벤트중♡",
+    "link": "https://www.hollys.co.kr/news/event/view.do?idx=533",
+    "startDate": "2026-06-02",
+    "endDate": "2026-06-30",
+    "category": "이벤트",
+    "daysLeft": -20,
+    "isNew": false,
+    "ongoing": false
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_315349",
+    "title": "토이스토리 X 미키와 친구들 콜라보 프로모션",
+    "link": "https://composecoffee.com/event/315349",
+    "startDate": "2026-07-15",
+    "endDate": "",
+    "category": "콜라보·굿즈",
+    "daysLeft": null,
+    "isNew": true,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_315056",
+    "title": "JUICY SUMMER 신메뉴 출시",
+    "link": "https://composecoffee.com/event/315056",
+    "startDate": "2026-07-13",
+    "endDate": "",
+    "category": "신메뉴",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_307023",
+    "title": "6월 18일엔 CHILL&FILL 출시",
+    "link": "https://composecoffee.com/event/307023",
+    "startDate": "2026-06-17",
+    "endDate": "",
+    "category": "신메뉴",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_306715",
+    "title": "로스트아크 APP 이벤트 당첨자 발표 안내",
+    "link": "https://composecoffee.com/event/306715",
+    "startDate": "2026-06-17",
+    "endDate": "",
+    "category": "멤버십·앱",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_302226",
+    "title": "컴포즈 컵빙 시즌 500원 할인 프로모션",
+    "link": "https://composecoffee.com/event/302226",
+    "startDate": "2026-06-09",
+    "endDate": "",
+    "category": "시즌",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_296506",
+    "title": "컴포즈커피 X 로스트아크 콜라보 프로모션",
+    "link": "https://composecoffee.com/event/296506",
+    "startDate": "2026-05-12",
+    "endDate": "",
+    "category": "콜라보·굿즈",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_296210",
+    "title": "컴포즈커피 X 김원훈 숏 시리즈 공개",
+    "link": "https://composecoffee.com/event/296210",
+    "startDate": "2026-05-11",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_296158",
+    "title": "그 여름, 우리의 쿨포즈 4종 출시",
+    "link": "https://composecoffee.com/event/296158",
+    "startDate": "2026-05-11",
+    "endDate": "",
+    "category": "신메뉴",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_295055",
+    "title": "엘포인트 제휴 기념 이벤트",
+    "link": "https://composecoffee.com/event/295055",
+    "startDate": "2026-05-04",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_293264",
+    "title": "절미절미 SNS 시식단 EVENT",
+    "link": "https://composecoffee.com/event/293264",
+    "startDate": "2026-04-22",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_291492",
+    "title": "컴포즈 2026 VIP 멤버십 프로모션 안내",
+    "link": "https://composecoffee.com/event/291492",
+    "startDate": "2026-04-13",
+    "endDate": "",
+    "category": "멤버십·앱",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_287922",
+    "title": "카카오페이 첫 결제 시 아메리카노 100원",
+    "link": "https://composecoffee.com/event/287922",
+    "startDate": "2026-03-23",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_287463",
+    "title": "에어리 아메리카노 출시",
+    "link": "https://composecoffee.com/event/287463",
+    "startDate": "2026-03-20",
+    "endDate": "",
+    "category": "신메뉴",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_287141",
+    "title": "매샷추 할인 프로모션",
+    "link": "https://composecoffee.com/event/287141",
+    "startDate": "2026-03-18",
+    "endDate": "",
+    "category": "쿠폰·할인",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_285660",
+    "title": "데일리 말차 4종 출시",
+    "link": "https://composecoffee.com/event/285660",
+    "startDate": "2026-03-10",
+    "endDate": "",
+    "category": "신메뉴",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_284189",
+    "title": "NEW 달콤한 선택 500원 할인 프로모션",
+    "link": "https://composecoffee.com/event/284189",
+    "startDate": "2026-02-26",
+    "endDate": "",
+    "category": "신메뉴",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_282765",
+    "title": "당근페이 어항꾸미기 프로모션2",
+    "link": "https://composecoffee.com/event/282765",
+    "startDate": "2026-02-13",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_281844",
+    "title": "명조 이벤트 1. 콜라보 랜덤 굿즈 세트",
+    "link": "https://composecoffee.com/event/281844",
+    "startDate": "2026-02-06",
+    "endDate": "",
+    "category": "콜라보·굿즈",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_279432",
+    "title": "명조 이벤트 2. APP 스탬프 프로모션",
+    "link": "https://composecoffee.com/event/279432",
+    "startDate": "2026-01-19",
+    "endDate": "",
+    "category": "멤버십·앱",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_281804",
+    "title": "NEW 올데이 세트 2종 할인 프로모션",
+    "link": "https://composecoffee.com/event/281804",
+    "startDate": "2026-02-06",
+    "endDate": "",
+    "category": "신메뉴",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_280492",
+    "title": "고객 만족도 1위 기념 아메리카노 1천원",
+    "link": "https://composecoffee.com/event/280492",
+    "startDate": "2026-01-27",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_280459",
+    "title": "OK캐쉬백, 엘포인트 제휴 포인트 사용 안내",
+    "link": "https://composecoffee.com/event/280459",
+    "startDate": "2026-01-27",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_278751",
+    "title": "당근페이 어항꾸미기 프로모션",
+    "link": "https://composecoffee.com/event/278751",
+    "startDate": "2025-10-31",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_277244",
+    "title": "2026년 컴포즈커피 VIP 멤버십 안내",
+    "link": "https://composecoffee.com/event/277244",
+    "startDate": "2025-12-30",
+    "endDate": "",
+    "category": "멤버십·앱",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_275477",
+    "title": "징글베리 딸기 음료 4종 출시",
+    "link": "https://composecoffee.com/event/275477",
+    "startDate": "2025-12-15",
+    "endDate": "",
+    "category": "신메뉴",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_273794",
+    "title": "컴포즈커피X부여군X위기브 고향사랑기부 이벤트",
+    "link": "https://composecoffee.com/event/273794",
+    "startDate": "2025-12-02",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_263402",
+    "title": "당근과 컴포즈커피가 함께 깎았당!",
+    "link": "https://composecoffee.com/event/263402",
+    "startDate": "2025-10-31",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_250407",
+    "title": "민생회복소비쿠폰에 특별한 혜택을 더하다.",
+    "link": "https://composecoffee.com/event/250407",
+    "startDate": "2025-08-01",
+    "endDate": "",
+    "category": "쿠폰·할인",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_249466",
+    "title": "컴포즈커피 X 산리오 굿즈 프로모션",
+    "link": "https://composecoffee.com/event/249466",
+    "startDate": "2025-07-28",
+    "endDate": "",
+    "category": "콜라보·굿즈",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_243884",
+    "title": "컴포즈커피 X 브레드이발소 우산 프로모션",
+    "link": "https://composecoffee.com/event/243884",
+    "startDate": "2025-07-03",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_238957",
+    "title": "컴포즈커피 X 명조 컴보 출시 굿즈 증정 이벤트",
+    "link": "https://composecoffee.com/event/238957",
+    "startDate": "2025-06-05",
+    "endDate": "",
+    "category": "신메뉴",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_229303",
+    "title": "컴포즈커피 X 스티치 굿즈 프로모션",
+    "link": "https://composecoffee.com/event/229303",
+    "startDate": "2025-04-28",
+    "endDate": "",
+    "category": "콜라보·굿즈",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_215351",
+    "title": "컴포즈커피 X 브레드이발소 굿즈 증정 이벤트",
+    "link": "https://composecoffee.com/event/215351",
+    "startDate": "2025-03-21",
+    "endDate": "",
+    "category": "쿠폰·할인",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_214587",
+    "title": "컴포즈 VIP 멤버십 프로모션 안내",
+    "link": "https://composecoffee.com/event/214587",
+    "startDate": "2025-03-18",
+    "endDate": "",
+    "category": "멤버십·앱",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_194021",
+    "title": "[시즌메뉴 프로모션] 겨울을 부탁해!",
+    "link": "https://composecoffee.com/event/194021",
+    "startDate": "2024-12-09",
+    "endDate": "",
+    "category": "시즌",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_189502",
+    "title": "2024 마마 어워즈 당첨자 안내",
+    "link": "https://composecoffee.com/event/189502",
+    "startDate": "2024-11-19",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_185732",
+    "title": "컴포즈커피, 창업비 지원 특별 프로모션",
+    "link": "https://composecoffee.com/event/185732",
+    "startDate": "2024-11-01",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_168363",
+    "title": "괌정부관광청 X 컴포즈 럭키박스 이벤트",
+    "link": "https://composecoffee.com/event/168363",
+    "startDate": "2024-08-21",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_115606",
+    "title": "컴포즈 VIP 멤버십 프로모션 안내",
+    "link": "https://composecoffee.com/event/115606",
+    "startDate": "2024-01-31",
+    "endDate": "",
+    "category": "멤버십·앱",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_95665",
+    "title": "2023 에어부산 럭키박스 당첨자 안내",
+    "link": "https://composecoffee.com/event/95665",
+    "startDate": "2023-11-13",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_57076",
+    "title": "4월, 네이버페이 포인트·머니 결제 이벤트",
+    "link": "https://composecoffee.com/event/57076",
+    "startDate": "2023-03-23",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_55144",
+    "title": "컴포즈커피 2000호점 오픈 기념 럭키박스 이벤트",
+    "link": "https://composecoffee.com/event/55144",
+    "startDate": "2023-03-06",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_115591",
+    "title": "컴포즈 VIP 멤버십 프로모션 안내",
+    "link": "https://composecoffee.com/event/115591",
+    "startDate": "2023-01-20",
+    "endDate": "",
+    "category": "멤버십·앱",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_30004",
+    "title": "6월, 시즌메뉴 구매 시 팝콘 증정!",
+    "link": "https://composecoffee.com/event/30004",
+    "startDate": "2022-06-16",
+    "endDate": "",
+    "category": "시즌",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "컴포즈커피",
+    "id": "컴포즈커피_22344",
+    "title": "4월, 페이코 15% 무제한 적립 이벤트",
+    "link": "https://composecoffee.com/event/22344",
+    "startDate": "2022-04-04",
+    "endDate": "",
+    "category": "쿠폰·할인",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   }
 ]
