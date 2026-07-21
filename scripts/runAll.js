@@ -18,6 +18,10 @@ const { crawlMammoth } = require('./crawlers/mammoth');
 const { crawlAngelinus } = require('./crawlers/angelinus');
 const { crawlPaulBassett } = require('./crawlers/paulbassett');
 const { crawlTomntoms } = require('./crawlers/tomntoms');
+const { crawlTenPercent } = require('./crawlers/tenpercent');
+const { crawlTheVenti } = require('./crawlers/theventi');
+const { crawlGamsung } = require('./crawlers/gamsung');
+const { crawlGongcha } = require('./crawlers/gongcha');
 
 const DEALS_FILE = path.join(__dirname, '..', '카페 행사', 'deals.json');
 
@@ -32,6 +36,10 @@ const CRAWLERS = [
   { brand: '엔제리너스', fn: crawlAngelinus },
   { brand: '폴 바셋', fn: crawlPaulBassett },
   { brand: '탐앤탐스', fn: crawlTomntoms },
+  { brand: '더벤티', fn: crawlTheVenti },
+  { brand: '공차', fn: crawlGongcha },
+  { brand: '텐퍼센트커피', fn: crawlTenPercent },
+  { brand: '감성커피', fn: crawlGamsung },
   { brand: '커피빈', fn: crawlCoffeeBean },
 ];
 
