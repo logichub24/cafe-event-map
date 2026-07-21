@@ -141,16 +141,27 @@ function showInterstitial(onAfter, options) {
   });
 }
 
-// 리워드 광고 공통. onEarned = 끝까지 시청 시 콜백. 광고 없으면 false 반환.
-function requestRewardAd(onEarned, onDismiss) {
-  if (!rewardAdReady) return false;
-  let earned = false;
+// 리워드 광고 공통.
+// onGranted는 어떤 경로로 끝나든 정확히 한 번 호출된다. 반환값은 광고를 띄웠는지 여부.
+//
+// 예전에는 userEarnedReward 이벤트가 왔을 때만 보상을 줬는데, 그 이벤트가 오지 않으면
+// (SDK 미발행, dismissed 유실, 표시 실패 등) 사용자는 광고만 보고 아무것도 못 얻었다.
+// 실제로 "5km를 눌러도 광고만 나오고 반경이 안 바뀌는" 문제가 이 때문이었다.
+// 보상이라고 해야 검색 반경·찜 한도 해제라 엄격히 막을 이유가 없고,
+// 광고 노출은 이미 발생했으므로 흐름이 끝나면 지급한다.
+function requestRewardAd(onGranted) {
+  let granted = false;
+  const grant = () => { if (granted) return; granted = true; onGranted(); };
+
+  // 광고가 준비되지 않았으면(웹 미리보기 등) 기다리게 하지 않고 바로 지급
+  if (!rewardAdReady) { grant(); return false; }
+
   let shown = false;
-  return runFullScreenAd({
+  runFullScreenAd({
     adGroupId: AD_CONFIG.rewarded,
     onEvent: (event) => {
       if (event.type === 'show' || event.type === 'impression') shown = true;
-      if (event.type === 'userEarnedReward') { earned = true; onEarned(); }
+      if (event.type === 'userEarnedReward') grant();
     },
     onDone: () => {
       // 리워드는 사용자가 자청한 광고라 세션 상한에는 넣지 않는다.
@@ -158,10 +169,10 @@ function requestRewardAd(onEarned, onDismiss) {
       if (shown) lastAdAt = Date.now();
       rewardAdReady = false;
       loadRewardAd();
-      // 보상을 받았으면 onDismiss(실패 안내)를 부르지 않는다
-      if (!earned && onDismiss) onDismiss();
+      grant(); // 보상 이벤트가 없었더라도 여기서 반드시 지급된다
     },
   });
+  return true;
 }
 
 // 인라인 스크립트(매장 클릭 4회, 지도 브랜드 필터 3회)에서 호출할 수 있게 전역 노출
@@ -182,45 +193,25 @@ window.onBrandChanged = function onBrandChanged() {
 
 // ── 리워드 2: 찜 목록 무제한 (오늘 하루) ──────────────────────────
 window.watchRewardAdForWish = function watchRewardAdForWish() {
-  const succeeded = requestRewardAd(
-    () => {
-      localStorage.setItem('cvs_wishUnlocked', todayStr());
-      window.closeWishLimitModal?.();
-      // 대기 중이던 찜 아이템 처리
-      if (window._pendingLikeId) {
-        const id = window._pendingLikeId;
-        window._pendingLikeId = null;
-        window.toggleLike?.(id);
-      }
-      window.showToast?.('광고 시청 완료! 오늘 하루 찜 목록을 무제한으로 사용할 수 있어요 💝');
-    },
-    () => { window.closeWishLimitModal?.(); }
-  );
-  if (!succeeded) {
-    // 광고 미준비 시 무료 허용 (웹 환경)
+  requestRewardAd(() => {
     localStorage.setItem('cvs_wishUnlocked', todayStr());
     window.closeWishLimitModal?.();
+    // 대기 중이던 찜 아이템 처리
     if (window._pendingLikeId) {
       const id = window._pendingLikeId;
       window._pendingLikeId = null;
       window.toggleLike?.(id);
     }
-  }
+    window.showToast?.('오늘 하루 찜 목록을 무제한으로 사용할 수 있어요 💝');
+  });
 };
 
 // ── 리워드 3: 5km 반경 검색 ───────────────────────────────────────
 window.watchRewardAdForRadius = function watchRewardAdForRadius() {
-  const succeeded = requestRewardAd(
-    () => {
-      window.setRadius?.(5000);
-      window.showToast?.('광고 시청 완료! 반경 5km 검색이 열렸습니다 🗺️');
-    },
-    () => { window.showToast?.('광고를 끝까지 시청해야 5km 검색이 열립니다.'); }
-  );
-  if (!succeeded) {
-    // 광고 미준비 시 무료 허용 (웹 환경)
+  requestRewardAd(() => {
     window.setRadius?.(5000);
-  }
+    window.showToast?.('반경 5km 검색이 열렸습니다 🗺️');
+  });
 };
 
 // ── 토스 SDK 유틸 ─────────────────────────────────────────────────
