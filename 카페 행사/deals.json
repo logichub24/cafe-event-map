@@ -589,6 +589,18 @@
   },
   {
     "brand": "메가MGC커피",
+    "id": "메가MGC커피_646",
+    "title": "[이벤트] 7월 메가MGC커피 X 카카오페이 EVENT",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02NDYmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9MQ==",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
     "id": "메가MGC커피_641",
     "title": "[안내] MGC x 사랑의 하츄핑 2 공식 콜라보 굿즈 사전예약 안내",
     "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02NDEmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9MQ==",
@@ -711,7 +723,7 @@
     "brand": "메가MGC커피",
     "id": "메가MGC커피_624",
     "title": "[이벤트] 7월 메가MGC커피 X PAYCO 적립/할인 EVENT",
-    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02MjQmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9MQ==",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02MjQmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mg==",
     "startDate": "",
     "endDate": "",
     "category": "쿠폰·할인",
@@ -855,7 +867,7 @@
     "brand": "메가MGC커피",
     "id": "메가MGC커피_534",
     "title": "[제휴] 이제 MGC에서도 페이코 식권 사용 가능!",
-    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD01MzQmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mg==",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD01MzQmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mw==",
     "startDate": "",
     "endDate": "",
     "category": "이벤트",
@@ -967,18 +979,6 @@
     "startDate": "",
     "endDate": "",
     "category": "신메뉴",
-    "daysLeft": null,
-    "isNew": false,
-    "ongoing": true
-  },
-  {
-    "brand": "메가MGC커피",
-    "id": "메가MGC커피_402",
-    "title": "SMGC 캠페인! RIIZE ODYSSEY MEGA SMini 사전예약",
-    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD00MDImYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mw==",
-    "startDate": "",
-    "endDate": "",
-    "category": "이벤트",
     "daysLeft": null,
     "isNew": false,
     "ongoing": true
@@ -1279,7 +1279,7 @@
     "startDate": "2026-07-24",
     "endDate": "2026-08-21",
     "category": "신메뉴",
-    "daysLeft": 27,
+    "daysLeft": 26,
     "isNew": true,
     "ongoing": true
   },
@@ -1291,7 +1291,7 @@
     "startDate": "2026-07-25",
     "endDate": "2026-07-31",
     "category": "쿠폰·할인",
-    "daysLeft": 6,
+    "daysLeft": 5,
     "isNew": true,
     "ongoing": true
   },
@@ -1303,8 +1303,8 @@
     "startDate": "2026-07-20",
     "endDate": "2026-12-31",
     "category": "이벤트",
-    "daysLeft": 159,
-    "isNew": true,
+    "daysLeft": 158,
+    "isNew": false,
     "ongoing": true
   },
   {
@@ -1315,7 +1315,7 @@
     "startDate": "2026-07-16",
     "endDate": "2026-12-31",
     "category": "이벤트",
-    "daysLeft": 159,
+    "daysLeft": 158,
     "isNew": false,
     "ongoing": true
   },
@@ -1327,7 +1327,7 @@
     "startDate": "2026-07-15",
     "endDate": "2026-09-29",
     "category": "신메뉴",
-    "daysLeft": 66,
+    "daysLeft": 65,
     "isNew": false,
     "ongoing": true
   },
@@ -1339,7 +1339,7 @@
     "startDate": "2026-07-15",
     "endDate": "2026-07-28",
     "category": "신메뉴",
-    "daysLeft": 3,
+    "daysLeft": 2,
     "isNew": false,
     "ongoing": true
   },
@@ -1351,7 +1351,7 @@
     "startDate": "2026-07-01",
     "endDate": "2026-07-31",
     "category": "멤버십·앱",
-    "daysLeft": 6,
+    "daysLeft": 5,
     "isNew": false,
     "ongoing": true
   },
@@ -1363,7 +1363,7 @@
     "startDate": "2026-06-24",
     "endDate": "2026-08-25",
     "category": "신메뉴",
-    "daysLeft": 31,
+    "daysLeft": 30,
     "isNew": false,
     "ongoing": true
   },
@@ -1375,7 +1375,7 @@
     "startDate": "2026-06-24",
     "endDate": "2026-08-25",
     "category": "신메뉴",
-    "daysLeft": 31,
+    "daysLeft": 30,
     "isNew": false,
     "ongoing": true
   },
@@ -1387,7 +1387,7 @@
     "startDate": "2026-06-02",
     "endDate": "2026-08-25",
     "category": "신메뉴",
-    "daysLeft": 31,
+    "daysLeft": 30,
     "isNew": false,
     "ongoing": true
   },
@@ -1399,7 +1399,7 @@
     "startDate": "2026-05-13",
     "endDate": "2026-08-31",
     "category": "이벤트",
-    "daysLeft": 37,
+    "daysLeft": 36,
     "isNew": false,
     "ongoing": true
   },
@@ -1411,7 +1411,7 @@
     "startDate": "2026-05-13",
     "endDate": "2026-08-31",
     "category": "신메뉴",
-    "daysLeft": 37,
+    "daysLeft": 36,
     "isNew": false,
     "ongoing": true
   },
@@ -1423,7 +1423,7 @@
     "startDate": "2026-04-27",
     "endDate": "2026-12-31",
     "category": "쿠폰·할인",
-    "daysLeft": 159,
+    "daysLeft": 158,
     "isNew": false,
     "ongoing": true
   },
@@ -1435,8 +1435,8 @@
     "startDate": "2026-07-20",
     "endDate": "2026-07-22",
     "category": "쿠폰·할인",
-    "daysLeft": -3,
-    "isNew": true,
+    "daysLeft": -4,
+    "isNew": false,
     "ongoing": false
   },
   {
@@ -1447,7 +1447,7 @@
     "startDate": "2026-06-22",
     "endDate": "2026-07-21",
     "category": "신메뉴",
-    "daysLeft": -4,
+    "daysLeft": -5,
     "isNew": false,
     "ongoing": false
   },
@@ -1459,7 +1459,7 @@
     "startDate": "2026-06-24",
     "endDate": "2026-07-07",
     "category": "신메뉴",
-    "daysLeft": -18,
+    "daysLeft": -19,
     "isNew": false,
     "ongoing": false
   },
@@ -1591,7 +1591,7 @@
     "startDate": "2026-07-16",
     "endDate": "2026-09-30",
     "category": "이벤트",
-    "daysLeft": 67,
+    "daysLeft": 66,
     "isNew": false,
     "ongoing": true
   },
@@ -1603,7 +1603,7 @@
     "startDate": "2026-06-05",
     "endDate": "2026-08-31",
     "category": "이벤트",
-    "daysLeft": 37,
+    "daysLeft": 36,
     "isNew": false,
     "ongoing": true
   },
@@ -1615,7 +1615,7 @@
     "startDate": "2026-06-05",
     "endDate": "2026-08-31",
     "category": "이벤트",
-    "daysLeft": 37,
+    "daysLeft": 36,
     "isNew": false,
     "ongoing": true
   },
@@ -1627,7 +1627,7 @@
     "startDate": "2026-06-05",
     "endDate": "2026-09-15",
     "category": "이벤트",
-    "daysLeft": 52,
+    "daysLeft": 51,
     "isNew": false,
     "ongoing": true
   },
@@ -1639,8 +1639,116 @@
     "startDate": "2026-04-16",
     "endDate": "2026-09-30",
     "category": "이벤트",
-    "daysLeft": 67,
+    "daysLeft": 66,
     "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "폴 바셋",
+    "id": "폴 바셋_4629",
+    "title": "SWEET YELLOW, SUMMER",
+    "link": "https://www.baristapaulbassett.co.kr/whatsNews/event/View.pb?eventSeq=4629",
+    "startDate": "2026-07-16",
+    "endDate": "2026-09-02",
+    "category": "이벤트",
+    "daysLeft": 38,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "폴 바셋",
+    "id": "폴 바셋_4625",
+    "title": "[프로모션] 폴 바셋 알림 받고! 혜택 더하기",
+    "link": "https://www.baristapaulbassett.co.kr/whatsNews/event/View.pb?eventSeq=4625",
+    "startDate": "2026-07-13",
+    "endDate": "2026-08-11",
+    "category": "이벤트",
+    "daysLeft": 16,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "폴 바셋",
+    "id": "폴 바셋_4605",
+    "title": "[프로모션] DT데이 앱 할인 프로모션",
+    "link": "https://www.baristapaulbassett.co.kr/whatsNews/event/View.pb?eventSeq=4605",
+    "startDate": "2026-07-01",
+    "endDate": "2026-08-31",
+    "category": "쿠폰·할인",
+    "daysLeft": 36,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "폴 바셋",
+    "id": "폴 바셋_4564",
+    "title": "[프로모션] 폴 바셋 카드 첫 구매 이벤트",
+    "link": "https://www.baristapaulbassett.co.kr/whatsNews/event/View.pb?eventSeq=4564",
+    "startDate": "2026-06-16",
+    "endDate": "2026-08-31",
+    "category": "이벤트",
+    "daysLeft": 36,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "폴 바셋",
+    "id": "폴 바셋_4544",
+    "title": "[신제품] ICE CREAM & BINGSU",
+    "link": "https://www.baristapaulbassett.co.kr/whatsNews/event/View.pb?eventSeq=4544",
+    "startDate": "2026-05-28",
+    "endDate": "2026-08-31",
+    "category": "신메뉴",
+    "daysLeft": 36,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "폴 바셋",
+    "id": "폴 바셋_4525",
+    "title": "[프로모션] 5만원 이상 자동 충전 시, 1+1 쿠폰 증정",
+    "link": "https://www.baristapaulbassett.co.kr/whatsNews/event/View.pb?eventSeq=4525",
+    "startDate": "2026-06-01",
+    "endDate": "2026-08-31",
+    "category": "쿠폰·할인",
+    "daysLeft": 36,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "폴 바셋",
+    "id": "폴 바셋_4488",
+    "title": "[신제품] 폴 바셋 X 소일베이커 소일 머그 2종 출시",
+    "link": "https://www.baristapaulbassett.co.kr/whatsNews/event/View.pb?eventSeq=4488",
+    "startDate": "2026-05-06",
+    "endDate": "2036-12-31",
+    "category": "신메뉴",
+    "daysLeft": 3811,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "폴 바셋",
+    "id": "폴 바셋_4632",
+    "title": "[롯데백화점 평촌점] 리뉴얼 오픈 이벤트 (26.07.30~26.08.02)",
+    "link": "https://www.baristapaulbassett.co.kr/whatsNews/event/View.pb?eventSeq=4632",
+    "startDate": "2026-07-24",
+    "endDate": "2026-08-02",
+    "category": "이벤트",
+    "daysLeft": 7,
+    "isNew": true,
+    "ongoing": true
+  },
+  {
+    "brand": "폴 바셋",
+    "id": "폴 바셋_4631",
+    "title": "[롯데월드몰점] 오픈 이벤트 (26.07.31~26.08.02)",
+    "link": "https://www.baristapaulbassett.co.kr/whatsNews/event/View.pb?eventSeq=4631",
+    "startDate": "2026-07-24",
+    "endDate": "2026-08-02",
+    "category": "이벤트",
+    "daysLeft": 7,
+    "isNew": true,
     "ongoing": true
   },
   {
@@ -1651,7 +1759,7 @@
     "startDate": "2026-01-01",
     "endDate": "2028-01-08",
     "category": "이벤트",
-    "daysLeft": 532,
+    "daysLeft": 531,
     "isNew": false,
     "ongoing": true
   },
@@ -1663,8 +1771,8 @@
     "startDate": "2026-07-20",
     "endDate": "2026-07-31",
     "category": "멤버십·앱",
-    "daysLeft": 6,
-    "isNew": true,
+    "daysLeft": 5,
+    "isNew": false,
     "ongoing": true
   },
   {
@@ -1675,7 +1783,7 @@
     "startDate": "2026-07-07",
     "endDate": "2026-07-31",
     "category": "쿠폰·할인",
-    "daysLeft": 6,
+    "daysLeft": 5,
     "isNew": false,
     "ongoing": true
   },
@@ -1687,7 +1795,7 @@
     "startDate": "2026-05-19",
     "endDate": "2026-12-31",
     "category": "이벤트",
-    "daysLeft": 159,
+    "daysLeft": 158,
     "isNew": false,
     "ongoing": true
   },
@@ -1699,7 +1807,7 @@
     "startDate": "2026-03-16",
     "endDate": "2026-12-31",
     "category": "쿠폰·할인",
-    "daysLeft": 159,
+    "daysLeft": 158,
     "isNew": false,
     "ongoing": true
   },
@@ -1711,7 +1819,7 @@
     "startDate": "2026-07-09",
     "endDate": "2026-07-09",
     "category": "쿠폰·할인",
-    "daysLeft": -16,
+    "daysLeft": -17,
     "isNew": false,
     "ongoing": false
   },
@@ -1723,7 +1831,7 @@
     "startDate": "2026-06-22",
     "endDate": "2026-06-30",
     "category": "쿠폰·할인",
-    "daysLeft": -25,
+    "daysLeft": -26,
     "isNew": false,
     "ongoing": false
   },
@@ -1735,7 +1843,7 @@
     "startDate": "2026-06-17",
     "endDate": "2026-06-30",
     "category": "쿠폰·할인",
-    "daysLeft": -25,
+    "daysLeft": -26,
     "isNew": false,
     "ongoing": false
   },
@@ -1747,7 +1855,7 @@
     "startDate": "2026-06-15",
     "endDate": "2026-06-15",
     "category": "쿠폰·할인",
-    "daysLeft": -40,
+    "daysLeft": -41,
     "isNew": false,
     "ongoing": false
   },
@@ -1759,7 +1867,7 @@
     "startDate": "2026-06-08",
     "endDate": "2026-06-10",
     "category": "쿠폰·할인",
-    "daysLeft": -45,
+    "daysLeft": -46,
     "isNew": false,
     "ongoing": false
   },
@@ -1771,7 +1879,7 @@
     "startDate": "2026-07-13",
     "endDate": "2026-07-17",
     "category": "쿠폰·할인",
-    "daysLeft": -8,
+    "daysLeft": -9,
     "isNew": false,
     "ongoing": false
   },
@@ -2301,114 +2409,6 @@
     "category": "신메뉴",
     "daysLeft": null,
     "isNew": false,
-    "ongoing": true
-  },
-  {
-    "brand": "폴 바셋",
-    "id": "폴 바셋_4629",
-    "title": "SWEET YELLOW, SUMMER",
-    "link": "https://www.baristapaulbassett.co.kr/whatsNews/event/View.pb?eventSeq=4629",
-    "startDate": "2026-07-16",
-    "endDate": "2026-09-02",
-    "category": "이벤트",
-    "daysLeft": 40,
-    "isNew": false,
-    "ongoing": true
-  },
-  {
-    "brand": "폴 바셋",
-    "id": "폴 바셋_4625",
-    "title": "[프로모션] 폴 바셋 알림 받고! 혜택 더하기",
-    "link": "https://www.baristapaulbassett.co.kr/whatsNews/event/View.pb?eventSeq=4625",
-    "startDate": "2026-07-13",
-    "endDate": "2026-08-11",
-    "category": "이벤트",
-    "daysLeft": 18,
-    "isNew": false,
-    "ongoing": true
-  },
-  {
-    "brand": "폴 바셋",
-    "id": "폴 바셋_4605",
-    "title": "[프로모션] DT데이 앱 할인 프로모션",
-    "link": "https://www.baristapaulbassett.co.kr/whatsNews/event/View.pb?eventSeq=4605",
-    "startDate": "2026-07-01",
-    "endDate": "2026-08-31",
-    "category": "쿠폰·할인",
-    "daysLeft": 38,
-    "isNew": false,
-    "ongoing": true
-  },
-  {
-    "brand": "폴 바셋",
-    "id": "폴 바셋_4564",
-    "title": "[프로모션] 폴 바셋 카드 첫 구매 이벤트",
-    "link": "https://www.baristapaulbassett.co.kr/whatsNews/event/View.pb?eventSeq=4564",
-    "startDate": "2026-06-16",
-    "endDate": "2026-08-31",
-    "category": "이벤트",
-    "daysLeft": 38,
-    "isNew": false,
-    "ongoing": true
-  },
-  {
-    "brand": "폴 바셋",
-    "id": "폴 바셋_4544",
-    "title": "[신제품] ICE CREAM & BINGSU",
-    "link": "https://www.baristapaulbassett.co.kr/whatsNews/event/View.pb?eventSeq=4544",
-    "startDate": "2026-05-28",
-    "endDate": "2026-08-31",
-    "category": "신메뉴",
-    "daysLeft": 38,
-    "isNew": false,
-    "ongoing": true
-  },
-  {
-    "brand": "폴 바셋",
-    "id": "폴 바셋_4525",
-    "title": "[프로모션] 5만원 이상 자동 충전 시, 1+1 쿠폰 증정",
-    "link": "https://www.baristapaulbassett.co.kr/whatsNews/event/View.pb?eventSeq=4525",
-    "startDate": "2026-06-01",
-    "endDate": "2026-08-31",
-    "category": "쿠폰·할인",
-    "daysLeft": 38,
-    "isNew": false,
-    "ongoing": true
-  },
-  {
-    "brand": "폴 바셋",
-    "id": "폴 바셋_4488",
-    "title": "[신제품] 폴 바셋 X 소일베이커 소일 머그 2종 출시",
-    "link": "https://www.baristapaulbassett.co.kr/whatsNews/event/View.pb?eventSeq=4488",
-    "startDate": "2026-05-06",
-    "endDate": "2036-12-31",
-    "category": "신메뉴",
-    "daysLeft": 3813,
-    "isNew": false,
-    "ongoing": true
-  },
-  {
-    "brand": "폴 바셋",
-    "id": "폴 바셋_4632",
-    "title": "[롯데백화점 평촌점] 리뉴얼 오픈 이벤트 (26.07.30~26.08.02)",
-    "link": "https://www.baristapaulbassett.co.kr/whatsNews/event/View.pb?eventSeq=4632",
-    "startDate": "2026-07-24",
-    "endDate": "2026-08-02",
-    "category": "이벤트",
-    "daysLeft": 9,
-    "isNew": true,
-    "ongoing": true
-  },
-  {
-    "brand": "폴 바셋",
-    "id": "폴 바셋_4631",
-    "title": "[롯데월드몰점] 오픈 이벤트 (26.07.31~26.08.02)",
-    "link": "https://www.baristapaulbassett.co.kr/whatsNews/event/View.pb?eventSeq=4631",
-    "startDate": "2026-07-24",
-    "endDate": "2026-08-02",
-    "category": "이벤트",
-    "daysLeft": 9,
-    "isNew": true,
     "ongoing": true
   },
   {
