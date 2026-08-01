@@ -965,10 +965,23 @@
             loadStoresInRadius();
         }
 
-        // 토스인앱 등 외부 빌드 환경(WebView 패키지)에 넣어도 데이터는 항상 GitHub Pages의 최신본을
-        // 실시간으로 받아오도록 절대경로를 쓴다. GitHub Pages 자체에서 열 때도 동일 출처라 그대로 동작함.
-        // 상대경로: 같은 폴더의 deals.json/stores를 로드. file://로 열면 fetch 실패 → 임베드 데모 DB 사용
-        const DATA_BASE_URL = '';
+        // 행사·매장 데이터는 매일 04시 크론이 GitHub Pages에만 갱신한다.
+        // 토스인앱 번들(.ait)은 build-toss.js가 넣은 빌드 시점 사본을 품고 있어서,
+        // 상대경로로만 읽으면 재배포하기 전까지 배포한 날 데이터에 멈춘다.
+        // → Pages 최신본을 먼저 받고, 실패하면 번들 사본(상대경로)으로 폴백한다.
+        //   Pages에서 열 때는 동일 출처라 그대로 동작하고, 네트워크가 끊겨도 마지막 배포분은 보여준다.
+        const LIVE_DATA_URL = 'https://logichub24.github.io/cafe-event-map/';
+
+        async function fetchData(path, opts) {
+            for (const base of [LIVE_DATA_URL, '']) {
+                try {
+                    const res = await fetch(base + path, opts);
+                    if (res.ok) return await res.json();
+                } catch (e) { /* 다음 후보로 */ }
+            }
+            console.log(`${path} 로드 실패 - 원격·번들 모두 응답 없음`);
+            return null;
+        }
 
         document.addEventListener('DOMContentLoaded', () => {
             loadSavedData();
@@ -980,9 +993,9 @@
             // stores/전국.json: 소상공인시장진흥공단 상가정보 API 실매장 좌표.
             // brands.json: 브랜드 + 색상/공식 링크(마커·라벨·안내용).
             Promise.all([
-                fetch(DATA_BASE_URL + 'deals.json?v=' + (new Date().toISOString().slice(0,10).replace(/-/g,'')) + '_4', {cache:'no-store'}).then(res => res.ok ? res.json() : null).catch(() => null),
-                fetch(DATA_BASE_URL + 'stores/전국.json').then(res => res.ok ? res.json() : null).catch(() => null),
-                fetch(DATA_BASE_URL + 'brands.json').then(res => res.ok ? res.json() : null).catch(() => null),
+                fetchData('deals.json?v=' + (new Date().toISOString().slice(0,10).replace(/-/g,'')) + '_4', {cache:'no-store'}),
+                fetchData('stores/전국.json'),
+                fetchData('brands.json'),
             ]).then(async ([deals, stores, brands]) => {
                 if (brands && brands.length > 0) applyBrands(brands);
                 if (deals && deals.length > 0) MASTER_DB = deals;
@@ -1076,17 +1089,12 @@
             if (!nearest) nearest = nearestProvinceByDistance(lat, lng);
             if (!nearest || nearest.file === loadedProvinceFile) return false;
 
-            try {
-                const res = await fetch(DATA_BASE_URL + 'stores/' + nearest.file);
-                if (!res.ok) throw new Error('store shard fetch failed');
-                REAL_STORES = await res.json();
-                loadedProvinceFile = nearest.file;
-                buildStoresFromRealData();
-                return true;
-            } catch (e) {
-                console.log(`${nearest.file} 로드 실패 - 매장 데이터 갱신 안 됨`);
-                return false;
-            }
+            const shard = await fetchData('stores/' + nearest.file);
+            if (!shard) return false;
+            REAL_STORES = shard;
+            loadedProvinceFile = nearest.file;
+            buildStoresFromRealData();
+            return true;
         }
 
         // 매장 좌표(REAL_STORES) + 행사 데이터(MASTER_DB)를 결합해 지도에 쓸 매장 목록을 만든다.
