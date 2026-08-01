@@ -92,9 +92,13 @@ self.addEventListener('notificationclick', e => {
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
 
-  // 매일 갱신되는 데이터는 네트워크 우선 → 실패 시 캐시 폴백.
-  // brands.json도 여기 포함한다. 캐시 우선으로 두면 브랜드를 추가해도 반영되지 않는다.
-  if (url.pathname.includes('deals.json') || url.pathname.includes('brands.json') || url.pathname.includes('/stores/')) {
+  // 앱 코드(HTML/JS)와 매일 갱신되는 데이터는 네트워크 우선 → 실패 시 캐시 폴백.
+  // 앱 코드를 캐시 우선으로 두면 CACHE 이름을 올리기 전까지 수정이 기존 사용자에게
+  // 영영 가지 않는다. 버전 상수를 사람이 기억해서 올리는 방식은 너무 쉽게 깨진다.
+  // brands.json도 캐시 우선이면 브랜드를 추가해도 반영되지 않는다.
+  const isAppShell = e.request.mode === 'navigate' || /\.(html|js)$/.test(url.pathname);
+  const isLiveData = /deals\.json|brands\.json|\/stores\//.test(url.pathname);
+  if (isAppShell || isLiveData) {
     e.respondWith(
       fetch(e.request)
         .then(res => { caches.open(CACHE).then(c => c.put(e.request, res.clone())); return res; })
