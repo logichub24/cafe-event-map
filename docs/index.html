@@ -3,7 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>카페행사맵</title>
+    <title>카페행사맵 - 카페 행사·쿠폰·신메뉴 모아보기</title>
+    <!-- GitHub Pages는 검색 유입 경로인데 메타태그가 없어 색인이 안 잡히고 있었다.
+         공유(카카오톡·슬랙 등) 시 미리보기 카드도 이 태그들로 만들어진다. -->
+    <meta name="description" content="스타벅스·메가MGC·컴포즈·이디야 등 카페 브랜드 16곳의 행사·쿠폰·신메뉴를 한 번에. 내 주변 매장을 지도에서 찾아보세요.">
+    <link rel="canonical" href="https://logichub24.github.io/cafe-event-map/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="카페행사맵">
+    <meta property="og:title" content="카페행사맵 - 카페 행사·쿠폰·신메뉴 모아보기">
+    <meta property="og:description" content="카페 브랜드 16곳의 행사를 한 번에. 내 주변 매장을 지도에서 찾아보세요.">
+    <meta property="og:url" content="https://logichub24.github.io/cafe-event-map/">
+    <!-- og:image는 아이콘 파일이 배포본에 들어간 뒤에 추가할 것.
+         현재 icon-32/180/192/512.png가 전부 404라(소스 폴더에 파일이 없다) 넣으면 깨진 카드가 된다. -->
     <link rel="icon" type="image/png" sizes="32x32" href="icon-32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
     <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
@@ -236,8 +247,10 @@
                 <button onclick="openTabModal('top10Modal', 'top10')" class="bg-white border border-gray-100 rounded-full pl-1 pr-3 py-1 flex items-center gap-1.5 shadow-sm shrink-0 hover:bg-gray-50 active:scale-95 transition">
                     <div class="w-6 h-6 rounded-full bg-yellow-100 flex items-center justify-center text-[10px]">🥇</div>
                     <div class="text-left flex flex-col">
-                        <span class="text-[10px] font-black text-gray-900 leading-none mt-0.5">하겐다즈 파인트</span>
-                        <span class="text-[8px] text-blue-600 font-bold leading-none mt-1">15,900원 절약</span>
+                        <!-- updateTopDealChip이 실데이터로 덮어쓴다. 로드 전·실패 시 보이는 문구라
+                             지어낸 상품명을 두지 않는다(옛 편의점 앱 잔재 '하겐다즈 파인트/15,900원 절약'을 걷어냄). -->
+                        <span class="text-[10px] font-black text-gray-900 leading-none mt-0.5">마감 임박 행사</span>
+                        <span class="text-[8px] text-blue-600 font-bold leading-none mt-1">불러오는 중</span>
                     </div>
                 </button>
                 <button onclick="openTabModal('allDealsModal', 'alldeals')" class="bg-white border border-gray-100 rounded-full pl-1 pr-3 py-1 flex items-center gap-1.5 shadow-sm shrink-0 hover:bg-gray-50 active:scale-95 transition">
@@ -412,7 +425,7 @@
                     <button onclick="goHome()" class="text-gray-500 hover:text-gray-800 p-2"><i class="fa-solid fa-arrow-left text-xl"></i></button>
                     <div>
                         <h3 class="font-black text-lg text-gray-900"><i class="fa-solid fa-store text-blue-500 mr-1"></i> 주변 매장 랭킹</h3>
-                        <p class="text-[10px] text-gray-500 font-bold leading-tight">현재 반경 내 행사 상품이 많은 순서</p>
+                        <p class="text-[10px] text-gray-500 font-bold leading-tight">현재 반경 내 가까운 순서</p>
                     </div>
                 </div>
                 <div class="flex-1 overflow-y-auto p-4 pb-4 space-y-3" id="nearbyRankingList"></div>
@@ -426,8 +439,8 @@
                 <div class="p-4 border-b border-gray-100 flex items-center gap-3 bg-white sticky top-0 z-20 shrink-0 rounded-t-[24px]">
                     <button onclick="goHome()" class="text-gray-500 hover:text-gray-800 p-2"><i class="fa-solid fa-arrow-left text-xl"></i></button>
                     <div>
-                        <h3 class="font-black text-lg text-gray-900"><i class="fa-solid fa-fire text-rose-500 mr-1"></i> 역대급 가성비 TOP 10</h3>
-                        <p class="text-[10px] text-gray-500 font-bold leading-tight">할인 금액이 가장 큰 마스터 상품 랭킹</p>
+                        <h3 class="font-black text-lg text-gray-900"><i class="fa-solid fa-hourglass-half text-rose-500 mr-1"></i> 마감 임박 행사</h3>
+                        <p class="text-[10px] text-gray-500 font-bold leading-tight">종료일이 공개된 행사 중 임박한 순</p>
                     </div>
                 </div>
                 <div class="flex-1 overflow-y-auto p-2 pb-4 space-y-2" id="top10List"></div>
@@ -932,7 +945,7 @@
             return all.map(d => {
                 const brand = detectBrandFromName(d.place_name) || d.place_name;
                 const deals = MASTER_DB.filter(p => p.brand === brand);
-                return { brand, name: d.place_name, lat: parseFloat(d.y), lng: parseFloat(d.x), address: d.road_address_name || d.address_name, phone: d.phone, deals, itemCount: deals.length };
+                return { brand, name: d.place_name, lat: parseFloat(d.y), lng: parseFloat(d.x), address: d.road_address_name || d.address_name, phone: d.phone, deals };
             });
         }
 
@@ -965,10 +978,44 @@
             loadStoresInRadius();
         }
 
-        // 토스인앱 등 외부 빌드 환경(WebView 패키지)에 넣어도 데이터는 항상 GitHub Pages의 최신본을
-        // 실시간으로 받아오도록 절대경로를 쓴다. GitHub Pages 자체에서 열 때도 동일 출처라 그대로 동작함.
-        // 상대경로: 같은 폴더의 deals.json/stores를 로드. file://로 열면 fetch 실패 → 임베드 데모 DB 사용
-        const DATA_BASE_URL = '';
+        // 행사·매장 데이터는 매일 04시 크론이 GitHub Pages에만 갱신한다.
+        // 토스인앱 번들(.ait)은 build-toss.js가 넣은 빌드 시점 사본을 품고 있어서,
+        // 상대경로로만 읽으면 재배포하기 전까지 배포한 날 데이터에 멈춘다.
+        // → Pages 최신본을 먼저 받고, 실패하면 번들 사본(상대경로)으로 폴백한다.
+        //   Pages에서 열 때는 동일 출처라 그대로 동작하고, 네트워크가 끊겨도 마지막 배포분은 보여준다.
+        const LIVE_DATA_URL = 'https://logichub24.github.io/cafe-event-map/';
+
+        async function fetchData(path, opts) {
+            for (const base of [LIVE_DATA_URL, '']) {
+                try {
+                    const res = await fetch(base + path, opts);
+                    if (res.ok) return await res.json();
+                } catch (e) { /* 다음 후보로 */ }
+            }
+            console.log(`${path} 로드 실패 - 원격·번들 모두 응답 없음`);
+            return null;
+        }
+
+        // deals.json의 daysLeft는 크롤 시점에 박힌 값이라 그대로 쓰면 안 된다.
+        //  - runAll.js가 Math.ceil로 계산하는데, 끝난 지 24시간 안 된 행사는 -0이 나온다.
+        //    -0 === 0 이라 "종료"가 아니라 "오늘마감"으로 렌더됐다(7/31 마감이 8/1에도 오늘마감).
+        //  - 크롤러가 0건인 브랜드는 예전 데이터를 그대로 이어받으므로(runAll.js 안전장치)
+        //    값이 며칠씩 묵는다. 실제로 7/20 종료 행사가 daysLeft=0으로 남아 있었다.
+        // → 화면에서 KST 달력 날짜 차이로 다시 계산하고, 끝난 행사는 목록에서 뺀다.
+        const kstDay = ms => Math.floor((ms + 9 * 3600000) / 86400000);
+
+        function refreshDaysLeft(deals) {
+            const today = kstDay(Date.now());
+            const kept = deals.filter(d => {
+                const end = d.endDate ? new Date(d.endDate + 'T00:00:00+09:00') : null;
+                if (!end || isNaN(end)) { d.daysLeft = null; return true; }  // 종료일 미공지 = 상시 진행
+                d.daysLeft = kstDay(end.getTime()) - today;
+                return d.daysLeft >= 0;
+            });
+            const dropped = deals.length - kept.length;
+            if (dropped > 0) console.log(`종료된 행사 ${dropped}건 제외 - ${kept.length}건 표시`);
+            return kept;
+        }
 
         document.addEventListener('DOMContentLoaded', () => {
             loadSavedData();
@@ -980,14 +1027,16 @@
             // stores/전국.json: 소상공인시장진흥공단 상가정보 API 실매장 좌표.
             // brands.json: 브랜드 + 색상/공식 링크(마커·라벨·안내용).
             Promise.all([
-                fetch(DATA_BASE_URL + 'deals.json?v=' + (new Date().toISOString().slice(0,10).replace(/-/g,'')) + '_4', {cache:'no-store'}).then(res => res.ok ? res.json() : null).catch(() => null),
-                fetch(DATA_BASE_URL + 'stores/전국.json').then(res => res.ok ? res.json() : null).catch(() => null),
-                fetch(DATA_BASE_URL + 'brands.json').then(res => res.ok ? res.json() : null).catch(() => null),
+                fetchData('deals.json?v=' + (new Date().toISOString().slice(0,10).replace(/-/g,'')) + '_4', {cache:'no-store'}),
+                fetchData('stores/전국.json'),
+                fetchData('brands.json'),
             ]).then(async ([deals, stores, brands]) => {
                 if (brands && brands.length > 0) applyBrands(brands);
-                if (deals && deals.length > 0) MASTER_DB = deals;
+                if (deals && deals.length > 0) MASTER_DB = refreshDaysLeft(deals);
                 else console.log("deals.json 로드 실패 - 행사 없음 상태로 표시(데모 데이터를 쓰지 않는다)");
                 computeIsNew();
+                // 앱 열림. 행사 건수를 같이 남겨 "데이터가 비어 보이는 세션"을 구분한다.
+                window.aitLog?.('screen', { log_name: 'app_open', deals: MASTER_DB.length });
 
                 if (stores && stores.length > 0) {
                     REAL_STORES = stores;
@@ -1076,24 +1125,19 @@
             if (!nearest) nearest = nearestProvinceByDistance(lat, lng);
             if (!nearest || nearest.file === loadedProvinceFile) return false;
 
-            try {
-                const res = await fetch(DATA_BASE_URL + 'stores/' + nearest.file);
-                if (!res.ok) throw new Error('store shard fetch failed');
-                REAL_STORES = await res.json();
-                loadedProvinceFile = nearest.file;
-                buildStoresFromRealData();
-                return true;
-            } catch (e) {
-                console.log(`${nearest.file} 로드 실패 - 매장 데이터 갱신 안 됨`);
-                return false;
-            }
+            const shard = await fetchData('stores/' + nearest.file);
+            if (!shard) return false;
+            REAL_STORES = shard;
+            loadedProvinceFile = nearest.file;
+            buildStoresFromRealData();
+            return true;
         }
 
         // 매장 좌표(REAL_STORES) + 행사 데이터(MASTER_DB)를 결합해 지도에 쓸 매장 목록을 만든다.
         function buildStoresFromRealData() {
             allStoresDB = REAL_STORES.map(store => {
                 const storeDeals = MASTER_DB.filter(p => p.brand === store.brand);
-                return { ...store, deals: storeDeals, itemCount: storeDeals.length };
+                return { ...store, deals: storeDeals };
             });
         }
 
@@ -1456,6 +1500,7 @@
         }
 
         function openTabModal(id, navId) {
+            window.aitLog?.('click', { log_name: 'tab_open', tab: navId });
             closeSheet();
             hideAllTabModals();
             document.getElementById(id).classList.add('active');
@@ -1578,6 +1623,8 @@
         };
 
         function openOfficial(url) {
+            // 브랜드 공식 페이지로 나가는 시점. 이 앱에서 전환에 가장 가까운 행동이다.
+            window.aitLog?.('click', { log_name: 'official_link', ok: !!url });
             if (!url) { showToast('공식 이벤트 링크가 없습니다.'); return; }
             if (typeof onNavigateToMap === 'function') { onNavigateToMap(url); return; } // 광고 후 외부 링크 이동
             window.open(url, '_blank');
@@ -1809,7 +1856,18 @@
         }
 
         function renderTop10() {
-            let sorted = [...MASTER_DB].sort((a,b) => dealSortKey(a) - dealSortKey(b)).slice(0, 10);
+            // 예전 제목은 '역대급 가성비 TOP 10', 부제는 '할인 금액이 가장 큰 순'이었는데
+            // 할인 금액 필드는 가짜 데이터 정리 때 전량 삭제돼 존재하지 않는다.
+            // 실제 정렬은 예나 지금이나 dealSortKey, 즉 마감 임박순이라 화면 문구를 사실에 맞췄다.
+            // 종료일이 없는 행사(전체의 85%)는 임박 여부를 말할 수 없으므로 애초에 제외한다.
+            const sorted = MASTER_DB
+                .filter(p => typeof p.daysLeft === 'number')
+                .sort((a, b) => dealSortKey(a) - dealSortKey(b))
+                .slice(0, 10);
+            if (sorted.length === 0) {
+                document.getElementById('top10List').innerHTML = `<div class="text-center text-gray-400 py-10 font-medium">종료일이 공개된 행사가 없습니다.</div>`;
+                return;
+            }
             document.getElementById('top10List').innerHTML = sorted.map((p, i) => `
                 <div class="flex items-center">
                     <div class="w-8 flex items-center justify-center font-black text-xl italic ${i<3?'text-rose-500':'text-gray-400'}">${i+1}</div>
@@ -1818,8 +1876,17 @@
             `).join('');
         }
 
+        const formatDistance = m => m < 1000 ? `${Math.round(m)}m` : `${(m / 1000).toFixed(1)}km`;
+
         function renderNearbyRanking() {
-            const sorted = [...storeMarkersData].sort((a,b) => b.itemCount - a.itemCount);
+            // 예전에는 행사 건수로 정렬하고 "진행행사 N개"를 보여줬다. 그런데 행사는 브랜드 단위라
+            // (buildStoresFromRealData가 brand로만 필터) 같은 브랜드 매장은 건수가 전부 같다.
+            // 실측: 반경 내 14개 브랜드 전부 건수 종류가 1개(스타벅스 매장 12곳이 모두 "50개").
+            // 매장 랭킹이 아니라 브랜드 순서였던 셈이라, 화면 이름대로 가까운 순으로 세운다.
+            const center = map.getCenter();
+            const sorted = [...storeMarkersData]
+                .map(s => ({ ...s, distance: map.distance(center, [s.lat, s.lng]) }))
+                .sort((a, b) => a.distance - b.distance);
             if(sorted.length === 0) {
                 document.getElementById('nearbyRankingList').innerHTML = `<div class="text-center text-gray-400 py-10 font-medium flex flex-col items-center"><i class="fa-solid fa-store-slash text-4xl mb-3 text-gray-300"></i>현재 반경에 매장이 없습니다.<br>지도를 이동하거나 반경을 넓혀보세요.</div>`;
                 return;
@@ -1830,14 +1897,17 @@
                     <div class="flex items-center gap-3">
                         <div class="w-8 font-black text-lg ${i<3?'text-yellow-500':'text-gray-400'} italic text-center">${i+1}</div>
                         <div class="w-10 h-10 rounded-full font-black text-sm flex items-center justify-center shrink-0" style="${brandChipStyle(store.brand)}">${brandLabel(store.brand)}</div>
-                        <div>
-                            <h4 class="font-bold text-gray-900 line-clamp-1">${store.name}</h4>
-                            <p class="text-[10px] text-gray-500 mt-0.5">선택 시 매장으로 이동 (약 ${Math.round(map.distance(map.getCenter(), [store.lat, store.lng]))}m)</p>
+                        <div class="min-w-0">
+                            <div class="flex items-center gap-1.5">
+                                <h4 class="font-bold text-gray-900 line-clamp-1">${store.name}</h4>
+                                ${!store.deals?.length ? `<span class="shrink-0 bg-gray-200 text-gray-500 text-[9px] font-bold px-1.5 py-0.5 rounded">행사 없음</span>` : ''}
+                            </div>
+                            <p class="text-[10px] text-gray-500 mt-0.5">선택 시 매장으로 이동</p>
                         </div>
                     </div>
                     <div class="bg-emerald-50 border border-emerald-100 px-3 py-1.5 rounded-lg flex flex-col items-center shrink-0">
-                        <span class="text-[10px] text-emerald-600 font-bold">진행행사</span>
-                        <span class="text-sm font-black text-emerald-700">${store.itemCount}개</span>
+                        <span class="text-[10px] text-emerald-600 font-bold">거리</span>
+                        <span class="text-sm font-black text-emerald-700">${formatDistance(store.distance)}</span>
                     </div>
                 </div>
                 `;
@@ -1993,6 +2063,8 @@
 
         // 최근 본 상품 추적
         function addToRecentlyViewed(id) {
+            // 행사 카드 클릭. 카드가 눌리는 유일한 경로라 여기 하나면 충분하다.
+            window.aitLog?.('click', { log_name: 'deal_card', brand: (id || '').split('_')[0] });
             recentlyViewed = [id, ...recentlyViewed.filter(x => x !== id)].slice(0, 20);
             try { localStorage.setItem('cvs_recentlyViewed', JSON.stringify(recentlyViewed)); } catch(e) {}
         }
@@ -2317,8 +2389,11 @@
 
         // ── 인기 행사 칩 동적화 ────────────────────────────────────────────
         function updateTopDealChip() {
-            if (!MASTER_DB || MASTER_DB.length === 0) return;
-            const top = [...MASTER_DB].sort((a, b) => dealSortKey(a) - dealSortKey(b))[0];
+            // 칩을 누르면 '마감 임박 행사'(renderTop10)가 열리므로 기준을 똑같이 맞춘다.
+            // 종료일이 없는 행사를 1위로 올리면 칩과 목록의 1위가 어긋난다.
+            const top = (MASTER_DB || [])
+                .filter(p => typeof p.daysLeft === 'number')
+                .sort((a, b) => dealSortKey(a) - dealSortKey(b))[0];
             if (!top) return;
             const chipName = document.querySelector('#app-container .flex.overflow-x-auto button:first-child .text-\\[10px\\].font-black');
             const chipSaving = document.querySelector('#app-container .flex.overflow-x-auto button:first-child .text-\\[8px\\].text-blue-600');

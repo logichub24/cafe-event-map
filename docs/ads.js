@@ -1875,10 +1875,109 @@ var init_dist3 = __esm({
   }
 });
 
+// node_modules/@apps-in-toss/web-analytics/dist/index.js
+var extractDateFromUUIDv7, getReferrer, getGroupId2, Analytics;
+var init_dist4 = __esm({
+  "node_modules/@apps-in-toss/web-analytics/dist/index.js"() {
+    init_dist3();
+    extractDateFromUUIDv7 = (uuid) => {
+      const timestampHex = uuid.split("-").join("").slice(0, 12);
+      const timestamp = Number.parseInt(timestampHex, 16);
+      return new Date(timestamp);
+    };
+    getReferrer = () => {
+      try {
+        const referrer = new URL(getSchemeUri());
+        return referrer.searchParams.get("referrer");
+      } catch {
+        return "";
+      }
+    };
+    getGroupId2 = () => {
+      try {
+        const url = new URL(location.href);
+        if (url.protocol !== "https:") {
+          throw new Error("Invalid URL");
+        }
+        return {
+          groupId: url.pathname,
+          search: url.search.startsWith("?") ? url.search.substring(1) : url.search
+        };
+      } catch {
+        return {
+          groupId: "unknown",
+          search: "unknown"
+        };
+      }
+    };
+    Analytics = {
+      screen: (params = {}) => {
+        const { groupId, search } = getGroupId2();
+        if (groupId === "unknown") {
+          return;
+        }
+        const { log_name, ...otherParams } = params;
+        return eventLog({
+          ...params,
+          log_type: "screen",
+          log_name: log_name ?? `${groupId}::screen`,
+          params: {
+            search,
+            referrer: getReferrer(),
+            document_title: document.title,
+            deployment_id: env.getDeploymentId(),
+            deployment_timestamp: extractDateFromUUIDv7(env.getDeploymentId()).getTime(),
+            ...otherParams
+          }
+        });
+      },
+      impression: (params = {}) => {
+        const { groupId, search } = getGroupId2();
+        if (groupId === "unknown") {
+          return;
+        }
+        const { log_name, ...otherParams } = params;
+        return eventLog({
+          log_type: "event",
+          log_name: log_name ?? `${groupId}::impression`,
+          params: {
+            ...otherParams,
+            search,
+            referrer: getReferrer(),
+            deployment_id: env.getDeploymentId(),
+            deployment_timestamp: extractDateFromUUIDv7(env.getDeploymentId()).getTime(),
+            event_type: "impression"
+          }
+        });
+      },
+      click: (params = {}) => {
+        const { groupId, search } = getGroupId2();
+        if (groupId === "unknown") {
+          return;
+        }
+        const { log_name, ...otherParams } = params;
+        return eventLog({
+          log_type: "event",
+          log_name: log_name ?? `${groupId}::click`,
+          params: {
+            ...otherParams,
+            search,
+            referrer: getReferrer(),
+            deployment_id: env.getDeploymentId(),
+            deployment_timestamp: extractDateFromUUIDv7(env.getDeploymentId()).getTime(),
+            event_type: "click"
+          }
+        });
+      }
+    };
+  }
+});
+
 // 카페 행사/ads.js
 var require_ads = __commonJS({
   "\uCE74\uD398 \uD589\uC0AC/ads.js"() {
     init_dist3();
+    init_dist4();
     var AD_CONFIG = {
       banner: "ait.v2.live.6ee2e927b62c4a18",
       interstitial: "ait.v2.live.de853f34f3674829",
@@ -2023,6 +2122,13 @@ var require_ads = __commonJS({
       return true;
     }
     window.showInterstitial = showInterstitial;
+    window.aitLog = function aitLog(kind, params) {
+      try {
+        const fn = kind === "screen" ? Analytics.screen : Analytics.click;
+        fn?.(params);
+      } catch (e) {
+      }
+    };
     window.onNavigateToMap = function onNavigateToMap(url) {
       showInterstitial(() => {
         location.href = url;

@@ -1,16 +1,25 @@
-const CACHE = 'cafe-v1';
+// 배포할 때마다 올린다. activate가 이 이름과 다른 캐시만 지우므로,
+// 안 올리면 앱 코드(index.html/ads.js) 업데이트가 기존 사용자에게 영영 가지 않는다.
+const CACHE = 'cafe-v2';
+
+// build-toss.js가 1_1.html을 index.html로 복사한다. 예전에는 여기가 './1_1.html'이라
+// 배포본에 없는 파일을 요구했고, cross-origin CDN까지 섞여 있어 addAll이 통째로 거부됐다.
+// 그 결과 install이 실패해 서비스워커가 한 번도 설치된 적이 없었다(알림 기능까지 같이 죽어 있었다).
+// 외부 CDN은 여기 넣지 않는다 — 런타임 fetch 핸들러가 알아서 캐싱한다.
 const PRECACHE = [
   './',
-  './1_1.html',
+  './index.html',
   './ads.js',
-  'https://cdn.tailwindcss.com',
-  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
-  'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css',
-  'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js',
 ];
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(PRECACHE)).then(() => self.skipWaiting()));
+  // addAll은 하나만 실패해도 전체를 거부한다. 파일명이 또 어긋나도 서비스워커가
+  // 통째로 죽지 않도록 개별 요청으로 넣고 실패는 무시한다.
+  e.waitUntil(
+    caches.open(CACHE)
+      .then(c => Promise.allSettled(PRECACHE.map(u => c.add(u))))
+      .then(() => self.skipWaiting())
+  );
 });
 
 self.addEventListener('activate', e => {
@@ -83,8 +92,13 @@ self.addEventListener('notificationclick', e => {
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
 
-  // deals.json / stores/ 는 네트워크 우선 → 실패 시 캐시 폴백
-  if (url.pathname.includes('deals.json') || url.pathname.includes('/stores/')) {
+  // 앱 코드(HTML/JS)와 매일 갱신되는 데이터는 네트워크 우선 → 실패 시 캐시 폴백.
+  // 앱 코드를 캐시 우선으로 두면 CACHE 이름을 올리기 전까지 수정이 기존 사용자에게
+  // 영영 가지 않는다. 버전 상수를 사람이 기억해서 올리는 방식은 너무 쉽게 깨진다.
+  // brands.json도 캐시 우선이면 브랜드를 추가해도 반영되지 않는다.
+  const isAppShell = e.request.mode === 'navigate' || /\.(html|js)$/.test(url.pathname);
+  const isLiveData = /deals\.json|brands\.json|\/stores\//.test(url.pathname);
+  if (isAppShell || isLiveData) {
     e.respondWith(
       fetch(e.request)
         .then(res => { caches.open(CACHE).then(c => c.put(e.request, res.clone())); return res; })
