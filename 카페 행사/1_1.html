@@ -983,6 +983,27 @@
             return null;
         }
 
+        // deals.json의 daysLeft는 크롤 시점에 박힌 값이라 그대로 쓰면 안 된다.
+        //  - runAll.js가 Math.ceil로 계산하는데, 끝난 지 24시간 안 된 행사는 -0이 나온다.
+        //    -0 === 0 이라 "종료"가 아니라 "오늘마감"으로 렌더됐다(7/31 마감이 8/1에도 오늘마감).
+        //  - 크롤러가 0건인 브랜드는 예전 데이터를 그대로 이어받으므로(runAll.js 안전장치)
+        //    값이 며칠씩 묵는다. 실제로 7/20 종료 행사가 daysLeft=0으로 남아 있었다.
+        // → 화면에서 KST 달력 날짜 차이로 다시 계산하고, 끝난 행사는 목록에서 뺀다.
+        const kstDay = ms => Math.floor((ms + 9 * 3600000) / 86400000);
+
+        function refreshDaysLeft(deals) {
+            const today = kstDay(Date.now());
+            const kept = deals.filter(d => {
+                const end = d.endDate ? new Date(d.endDate + 'T00:00:00+09:00') : null;
+                if (!end || isNaN(end)) { d.daysLeft = null; return true; }  // 종료일 미공지 = 상시 진행
+                d.daysLeft = kstDay(end.getTime()) - today;
+                return d.daysLeft >= 0;
+            });
+            const dropped = deals.length - kept.length;
+            if (dropped > 0) console.log(`종료된 행사 ${dropped}건 제외 - ${kept.length}건 표시`);
+            return kept;
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             loadSavedData();
 
@@ -998,7 +1019,7 @@
                 fetchData('brands.json'),
             ]).then(async ([deals, stores, brands]) => {
                 if (brands && brands.length > 0) applyBrands(brands);
-                if (deals && deals.length > 0) MASTER_DB = deals;
+                if (deals && deals.length > 0) MASTER_DB = refreshDaysLeft(deals);
                 else console.log("deals.json 로드 실패 - 행사 없음 상태로 표시(데모 데이터를 쓰지 않는다)");
                 computeIsNew();
 

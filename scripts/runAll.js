@@ -51,6 +51,12 @@ const CRAWLERS = [
 // 행사와 무관한 공지(약관·개인정보·가격 인상 등)는 이벤트 앱에 노이즈라 제외한다.
 const NON_EVENT_RE = /약관|개인정보|처리방침|가격\s*인상|서비스\s*(종료|중단)|점검\s*안내|휴무|채용|공고|저작권|사칭|주의\s*안내/;
 
+// 더리터·텐퍼센트는 종료된 행사를 게시판에서 내리지 않고 제목에 표시만 한다.
+// (더리터 '<종료> ...' 접두, 텐퍼센트 '... (※이벤트 종료)' 접미)
+// endDate가 없어 daysLeft로는 걸러지지 않아 2024년 행사까지 '상시 진행'으로 노출됐다.
+// '판매 종료 예정 안내', '기존 앱 종료 안내'처럼 진행 중인 공지는 걸리지 않도록 표기 형태만 좁게 잡는다.
+const ENDED_TITLE_RE = /^\s*<\s*종료\s*>|\(※[^)]*종료\s*\)/;
+
 // 제목 키워드로 카테고리 추정. 위에서부터 먼저 매칭되는 것으로 분류한다.
 const CATEGORY_RULES = [
   ['신메뉴', /신메뉴|신제품|출시|런칭|NEW\b/i],
@@ -70,12 +76,17 @@ function todayStr() {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 }
 
-/** 종료일까지 남은 일수. 종료일이 없으면 null(상시 진행). */
+/** KST 달력 날짜 번호. 시간 차가 아니라 날짜 차로 세기 위한 값. */
+const kstDay = ms => Math.floor((ms + 9 * 3600000) / 86400000);
+
+/** 종료일까지 남은 일수(KST 달력 날짜 기준). 종료일이 없으면 null(상시 진행). */
+// 예전에는 Math.ceil로 시간 차를 올림했는데, 끝난 지 24시간이 안 된 행사가 -0이 됐다.
+// -0 === 0 이라 소비 측에서 "종료"가 아니라 "오늘 마감"으로 읽혔다.
 function daysUntil(endDate) {
   if (!endDate) return null;
-  const end = new Date(endDate + 'T23:59:59+09:00');
+  const end = new Date(endDate + 'T00:00:00+09:00');
   if (isNaN(end)) return null;
-  return Math.ceil((end - new Date()) / 86400000);
+  return kstDay(end.getTime()) - kstDay(Date.now());
 }
 
 /** 시작일이 최근 7일 이내면 신규로 본다. */
@@ -112,7 +123,8 @@ async function run() {
       const items = await fn();
       const valid = (items || [])
         .filter(x => x && x.title && x.link)      // 출처 없는 항목은 버린다
-        .filter(x => !NON_EVENT_RE.test(x.title)); // 행사와 무관한 공지 제외
+        .filter(x => !NON_EVENT_RE.test(x.title))  // 행사와 무관한 공지 제외
+        .filter(x => !ENDED_TITLE_RE.test(x.title)); // 제목에 종료라고 적힌 행사 제외
       if (valid.length === 0) { failed.push(brand); console.log(' 0건'); }
       else { collected.push(...valid.map(enrich)); console.log(` ${valid.length}건`); }
     } catch (e) {
