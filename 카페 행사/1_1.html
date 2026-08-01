@@ -412,7 +412,7 @@
                     <button onclick="goHome()" class="text-gray-500 hover:text-gray-800 p-2"><i class="fa-solid fa-arrow-left text-xl"></i></button>
                     <div>
                         <h3 class="font-black text-lg text-gray-900"><i class="fa-solid fa-store text-blue-500 mr-1"></i> 주변 매장 랭킹</h3>
-                        <p class="text-[10px] text-gray-500 font-bold leading-tight">현재 반경 내 행사 상품이 많은 순서</p>
+                        <p class="text-[10px] text-gray-500 font-bold leading-tight">현재 반경 내 가까운 순서</p>
                     </div>
                 </div>
                 <div class="flex-1 overflow-y-auto p-4 pb-4 space-y-3" id="nearbyRankingList"></div>
@@ -932,7 +932,7 @@
             return all.map(d => {
                 const brand = detectBrandFromName(d.place_name) || d.place_name;
                 const deals = MASTER_DB.filter(p => p.brand === brand);
-                return { brand, name: d.place_name, lat: parseFloat(d.y), lng: parseFloat(d.x), address: d.road_address_name || d.address_name, phone: d.phone, deals, itemCount: deals.length };
+                return { brand, name: d.place_name, lat: parseFloat(d.y), lng: parseFloat(d.x), address: d.road_address_name || d.address_name, phone: d.phone, deals };
             });
         }
 
@@ -1124,7 +1124,7 @@
         function buildStoresFromRealData() {
             allStoresDB = REAL_STORES.map(store => {
                 const storeDeals = MASTER_DB.filter(p => p.brand === store.brand);
-                return { ...store, deals: storeDeals, itemCount: storeDeals.length };
+                return { ...store, deals: storeDeals };
             });
         }
 
@@ -1852,8 +1852,17 @@
             `).join('');
         }
 
+        const formatDistance = m => m < 1000 ? `${Math.round(m)}m` : `${(m / 1000).toFixed(1)}km`;
+
         function renderNearbyRanking() {
-            const sorted = [...storeMarkersData].sort((a,b) => b.itemCount - a.itemCount);
+            // 예전에는 행사 건수로 정렬하고 "진행행사 N개"를 보여줬다. 그런데 행사는 브랜드 단위라
+            // (buildStoresFromRealData가 brand로만 필터) 같은 브랜드 매장은 건수가 전부 같다.
+            // 실측: 반경 내 14개 브랜드 전부 건수 종류가 1개(스타벅스 매장 12곳이 모두 "50개").
+            // 매장 랭킹이 아니라 브랜드 순서였던 셈이라, 화면 이름대로 가까운 순으로 세운다.
+            const center = map.getCenter();
+            const sorted = [...storeMarkersData]
+                .map(s => ({ ...s, distance: map.distance(center, [s.lat, s.lng]) }))
+                .sort((a, b) => a.distance - b.distance);
             if(sorted.length === 0) {
                 document.getElementById('nearbyRankingList').innerHTML = `<div class="text-center text-gray-400 py-10 font-medium flex flex-col items-center"><i class="fa-solid fa-store-slash text-4xl mb-3 text-gray-300"></i>현재 반경에 매장이 없습니다.<br>지도를 이동하거나 반경을 넓혀보세요.</div>`;
                 return;
@@ -1866,12 +1875,12 @@
                         <div class="w-10 h-10 rounded-full font-black text-sm flex items-center justify-center shrink-0" style="${brandChipStyle(store.brand)}">${brandLabel(store.brand)}</div>
                         <div>
                             <h4 class="font-bold text-gray-900 line-clamp-1">${store.name}</h4>
-                            <p class="text-[10px] text-gray-500 mt-0.5">선택 시 매장으로 이동 (약 ${Math.round(map.distance(map.getCenter(), [store.lat, store.lng]))}m)</p>
+                            <p class="text-[10px] text-gray-500 mt-0.5">선택 시 매장으로 이동</p>
                         </div>
                     </div>
                     <div class="bg-emerald-50 border border-emerald-100 px-3 py-1.5 rounded-lg flex flex-col items-center shrink-0">
-                        <span class="text-[10px] text-emerald-600 font-bold">진행행사</span>
-                        <span class="text-sm font-black text-emerald-700">${store.itemCount}개</span>
+                        <span class="text-[10px] text-emerald-600 font-bold">거리</span>
+                        <span class="text-sm font-black text-emerald-700">${formatDistance(store.distance)}</span>
                     </div>
                 </div>
                 `;
