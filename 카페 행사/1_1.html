@@ -1873,8 +1873,11 @@
                     <div class="flex items-center gap-3">
                         <div class="w-8 font-black text-lg ${i<3?'text-yellow-500':'text-gray-400'} italic text-center">${i+1}</div>
                         <div class="w-10 h-10 rounded-full font-black text-sm flex items-center justify-center shrink-0" style="${brandChipStyle(store.brand)}">${brandLabel(store.brand)}</div>
-                        <div>
-                            <h4 class="font-bold text-gray-900 line-clamp-1">${store.name}</h4>
+                        <div class="min-w-0">
+                            <div class="flex items-center gap-1.5">
+                                <h4 class="font-bold text-gray-900 line-clamp-1">${store.name}</h4>
+                                ${!store.deals?.length ? `<span class="shrink-0 bg-gray-200 text-gray-500 text-[9px] font-bold px-1.5 py-0.5 rounded">행사 없음</span>` : ''}
+                            </div>
                             <p class="text-[10px] text-gray-500 mt-0.5">선택 시 매장으로 이동</p>
                         </div>
                     </div>
