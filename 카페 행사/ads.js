@@ -1,7 +1,8 @@
-// 토스인앱(Apps in Toss) 광고 SDK 연동.
+// 토스인앱(Apps in Toss) 광고 SDK + 행동 로그 연동.
 // 일반 브라우저(GitHub Pages 등)에서는 isSupported()가 false라 전부 조용히 no-op되고,
 // 토스 앱 WebView 안에서 열렸을 때만 실제 광고가 붙는다.
 import { TossAds, loadFullScreenAd, showFullScreenAd, share, getCurrentLocation, Accuracy } from '@apps-in-toss/web-bridge';
+import { Analytics } from '@apps-in-toss/web-analytics';
 
 const AD_CONFIG = {
   banner:       'ait.v2.live.6ee2e927b62c4a18',
@@ -177,6 +178,18 @@ function requestRewardAd(onGranted) {
 
 // 인라인 스크립트(매장 클릭 4회, 지도 브랜드 필터 3회)에서 호출할 수 있게 전역 노출
 window.showInterstitial = showInterstitial;
+
+// ── 행동 로그 ─────────────────────────────────────────────────────
+// 지금까지 계측이 하나도 없어서 "유입이 없는 건지, 들어와서 나가는 건지"를 구분할 수 없었다.
+// 최소 네 지점만 남긴다: 앱 열림 → 탭 전환 → 행사 카드 클릭 → 공식 링크 이동.
+// Analytics도 토스 밖에서는 undefined를 돌려주고 아무것도 안 하지만,
+// SDK가 통째로 없는 환경(파일 직접 열기 등)까지 대비해 호출부를 감싼다.
+window.aitLog = function aitLog(kind, params) {
+  try {
+    const fn = kind === 'screen' ? Analytics.screen : Analytics.click;
+    fn?.(params);
+  } catch (e) { /* 로그 실패가 화면을 막지 않게 한다 */ }
+};
 
 // ── 전면광고 트리거 1: 길찾기 ──────────────────────────────────────
 // 앱을 떠나는 시점이라 광고 가치가 가장 높아 빈도 제한 예외로 둔다.

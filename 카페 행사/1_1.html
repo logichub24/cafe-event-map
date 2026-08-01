@@ -1022,6 +1022,8 @@
                 if (deals && deals.length > 0) MASTER_DB = refreshDaysLeft(deals);
                 else console.log("deals.json 로드 실패 - 행사 없음 상태로 표시(데모 데이터를 쓰지 않는다)");
                 computeIsNew();
+                // 앱 열림. 행사 건수를 같이 남겨 "데이터가 비어 보이는 세션"을 구분한다.
+                window.aitLog?.('screen', { log_name: 'app_open', deals: MASTER_DB.length });
 
                 if (stores && stores.length > 0) {
                     REAL_STORES = stores;
@@ -1485,6 +1487,7 @@
         }
 
         function openTabModal(id, navId) {
+            window.aitLog?.('click', { log_name: 'tab_open', tab: navId });
             closeSheet();
             hideAllTabModals();
             document.getElementById(id).classList.add('active');
@@ -1607,6 +1610,8 @@
         };
 
         function openOfficial(url) {
+            // 브랜드 공식 페이지로 나가는 시점. 이 앱에서 전환에 가장 가까운 행동이다.
+            window.aitLog?.('click', { log_name: 'official_link', ok: !!url });
             if (!url) { showToast('공식 이벤트 링크가 없습니다.'); return; }
             if (typeof onNavigateToMap === 'function') { onNavigateToMap(url); return; } // 광고 후 외부 링크 이동
             window.open(url, '_blank');
@@ -2022,6 +2027,8 @@
 
         // 최근 본 상품 추적
         function addToRecentlyViewed(id) {
+            // 행사 카드 클릭. 카드가 눌리는 유일한 경로라 여기 하나면 충분하다.
+            window.aitLog?.('click', { log_name: 'deal_card', brand: (id || '').split('_')[0] });
             recentlyViewed = [id, ...recentlyViewed.filter(x => x !== id)].slice(0, 20);
             try { localStorage.setItem('cvs_recentlyViewed', JSON.stringify(recentlyViewed)); } catch(e) {}
         }
