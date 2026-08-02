@@ -7,6 +7,9 @@
 const fs = require('fs');
 const path = require('path');
 
+// 차단 감지 목록. 브랜드별로 앞뒤를 비교해 "차단 0건"과 "행사가 없어서 0건"을 구분한다.
+const { blockedUrls } = require('./crawlers/_http');
+
 const { crawlStarbucks } = require('./crawlers/starbucks');
 const { crawlEdiya } = require('./crawlers/ediya');
 const { crawlCompose } = require('./crawlers/compose');
@@ -26,6 +29,15 @@ const { crawlTheLiter } = require('./crawlers/theliter');
 const { crawlHasamdong } = require('./crawlers/hasamdong');
 
 const DEALS_FILE = path.join(__dirname, '..', '카페 행사', 'deals.json');
+
+// 브랜드별 마지막 수집 성공일. 안전장치(0건이면 기존 유지)가 실패를 조용히 삼키기 때문에
+// 이 파일이 없으면 크롤러가 언제부터 깨졌는지 알 수가 없다.
+// 실제로 더벤티가 열흘 넘게 옛 데이터를 실어 나르는데도 아무도 몰랐다.
+const STATUS_FILE = path.join(__dirname, '..', '카페 행사', 'crawl-status.json');
+
+// 이 일수를 넘겨 0건이면 크롤러가 깨진 것으로 보고 경고한다.
+// 브랜드가 새 행사를 안 올려서 0건인 경우와 구분하려고 넉넉히 잡았다.
+const STALE_DAYS = 14;
 
 const CRAWLERS = [
   { brand: '스타벅스', fn: crawlStarbucks },
@@ -116,11 +128,14 @@ function enrich(d) {
 async function run() {
   const collected = [];
   const failed = [];
+  const blocked = new Set(); // 차단 응답을 받은 브랜드
 
   for (const { brand, fn } of CRAWLERS) {
     process.stdout.write(`  [${brand}] 수집 중...`);
+    const blockedBefore = blockedUrls.length;
     try {
       const items = await fn();
+      if (blockedUrls.length > blockedBefore) blocked.add(brand);
       const valid = (items || [])
         .filter(x => x && x.title && x.link)      // 출처 없는 항목은 버린다
         .filter(x => !NON_EVENT_RE.test(x.title))  // 행사와 무관한 공지 제외
@@ -149,9 +164,38 @@ async function run() {
   const final = [...collected, ...kept];
   fs.writeFileSync(DEALS_FILE, JSON.stringify(final, null, 2), 'utf-8');
 
+  // 브랜드별 마지막 성공일을 갱신하고, 오래 0건인 브랜드를 드러낸다.
+  let status = {};
+  try { status = JSON.parse(fs.readFileSync(STATUS_FILE, 'utf-8')); } catch (e) {}
+  const today = todayStr();
+  for (const b of freshBrands) status[b] = { lastSuccess: today, lastCount: collected.filter(d => d.brand === b).length };
+  fs.writeFileSync(STATUS_FILE, JSON.stringify(status, null, 2), 'utf-8');
+
   console.log(`\n수집 ${freshBrands.size}개 브랜드: ${collected.length}건`);
-  if (failed.length) console.log(`0건(기존 유지): ${failed.join(', ')}`);
-  console.log(`deals.json 총 ${final.length}건 (${todayStr()})`);
+  if (failed.length) {
+    console.log(`0건(기존 유지): ${failed.join(', ')}`);
+    // 차단당한 브랜드는 즉시 알린다. 응답 자체가 안 오므로 며칠을 기다릴 이유가 없다.
+    const blockedFailed = failed.filter(b => blocked.has(b));
+    if (blockedFailed.length) {
+      console.log(`\n[차단] ${blockedFailed.join(', ')} — 사이트가 접근을 막고 있습니다.`);
+      console.log('        크롤러를 고쳐도 해결되지 않습니다. 옛 데이터가 계속 배포됩니다.');
+    }
+    // 나머지는 오래 0건일 때만 경고한다. 커피빈처럼 진행 중 행사가 없어 0건인 경우가 정상이라
+    // 매번 알리면 경고가 무뎌진다.
+    const stale = [];
+    for (const b of failed) {
+      if (blocked.has(b)) continue;
+      const last = status[b] && status[b].lastSuccess;
+      if (!last) continue; // 기록이 쌓이기 전에는 판단하지 않는다
+      const days = kstDay(Date.now()) - kstDay(new Date(last + 'T00:00:00+09:00').getTime());
+      if (days >= STALE_DAYS) stale.push(`${b}(${days}일째)`);
+    }
+    if (stale.length) {
+      console.log(`\n[경고] ${STALE_DAYS}일 넘게 0건인 브랜드: ${stale.join(', ')}`);
+      console.log('        크롤러가 깨졌을 가능성이 높습니다. 옛 데이터가 계속 배포되는 중입니다.');
+    }
+  }
+  console.log(`deals.json 총 ${final.length}건 (${today})`);
 
   const byBrand = {};
   const byCat = {};
