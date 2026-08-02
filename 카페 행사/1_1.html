@@ -1300,8 +1300,12 @@
                 const dist = map.distance(center, [store.lat, store.lng]);
                 if (dist > currentRadius) return;
                 storeMarkersData.push(store);
+                // 행사 0건인 매장은 흐리게. 주변랭킹 목록은 '행사 없음' 뱃지로 구분하는데
+                // 지도에는 구분이 없어 같은 매장이 화면마다 다르게 보였다.
+                // 40px 마커에 글자를 더하면 뭉개지므로 명도로만 낮춘다.
+                const dimmed = store.deals && store.deals.length === 0 ? 'opacity:.45;' : '';
                 const iconHtml = hasBrand
-                    ? `<div class="custom-marker" style="width:40px;height:40px;font-size:11px;z-index:20;${brandChipStyle(store.brand)}">${brandLabel(store.brand)}</div>`
+                    ? `<div class="custom-marker" style="width:40px;height:40px;font-size:11px;z-index:20;${dimmed}${brandChipStyle(store.brand)}">${brandLabel(store.brand)}</div>`
                     : `<div class="custom-marker" style="width:36px;height:36px;font-size:10px;z-index:10;background:#6b7280;color:#fff;border:2px solid #fff;box-shadow:0 2px 5px rgba(0,0,0,0.3)">카페</div>`;
                 const icon = L.divIcon({ className: 'bg-transparent', html: iconHtml, iconSize: [40, 40], iconAnchor: [20, 20] });
                 const marker = L.marker([store.lat, store.lng], {icon}).addTo(map);
