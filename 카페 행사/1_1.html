@@ -1020,8 +1020,14 @@
         document.addEventListener('DOMContentLoaded', () => {
             loadSavedData();
 
-            // 지도 초기화·위치 획득·타일 로딩을 fetch와 병렬로 즉시 시작
-            requestAnimationFrame(() => initMap());
+            // 지도 초기화·위치 획득·타일 로딩을 fetch와 병렬로 즉시 시작.
+            // rAF는 화면이 합성되지 않으면(백그라운드 탭 등) 콜백이 아예 안 돈다.
+            // 실제로 배포본 검증 중 지도가 통째로 안 뜨는 상황을 재현했다.
+            // 그래서 rAF와 타이머 중 먼저 오는 쪽으로 한 번만 초기화한다.
+            let mapInitDone = false;
+            const initMapOnce = () => { if (mapInitDone) return; mapInitDone = true; initMap(); };
+            requestAnimationFrame(initMapOnce);
+            setTimeout(initMapOnce, 500);
 
             // deals.json: 브랜드 공식 페이지에서 크롤링한 실제 행사(scripts/runAll.js).
             // stores/전국.json: 소상공인시장진흥공단 상가정보 API 실매장 좌표.
