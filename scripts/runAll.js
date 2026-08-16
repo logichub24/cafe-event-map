@@ -83,9 +83,11 @@ function guessCategory(title) {
   return '이벤트';
 }
 
+// KST 기준 오늘. 로컬 시각을 쓰면 CI(UTC)에서 하루 전 날짜가 나온다.
+// 크론이 04시 KST = 전날 19시 UTC에 돌기 때문에 crawl-status.json의
+// lastSuccess가 매번 하루씩 밀려 기록되고, 경과일 계산도 그만큼 부풀려졌다.
 function todayStr() {
-  const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  return new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10);
 }
 
 /** KST 달력 날짜 번호. 시간 차가 아니라 날짜 차로 세기 위한 값. */
