@@ -685,18 +685,6 @@
   },
   {
     "brand": "메가MGC커피",
-    "id": "메가MGC커피_636",
-    "title": "[이벤트] 오싹하게 시원한 여름 프로모션",
-    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02MzYmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9MQ==",
-    "startDate": "",
-    "endDate": "",
-    "category": "시즌",
-    "daysLeft": null,
-    "isNew": false,
-    "ongoing": true
-  },
-  {
-    "brand": "메가MGC커피",
     "id": "메가MGC커피_635",
     "title": "[안내] MGC x NCT WISH 콜라보 굿즈 사전예약 안내",
     "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02MzUmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9MQ==",
@@ -723,7 +711,7 @@
     "brand": "메가MGC커피",
     "id": "메가MGC커피_629",
     "title": "[이벤트] 메가MGC커피 X 신한라이프 당첨 EVENT",
-    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02MjkmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mg==",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02MjkmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9MQ==",
     "startDate": "",
     "endDate": "",
     "category": "이벤트",
@@ -867,7 +855,7 @@
     "brand": "메가MGC커피",
     "id": "메가MGC커피_534",
     "title": "[제휴] 이제 MGC에서도 페이코 식권 사용 가능!",
-    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD01MzQmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mw==",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD01MzQmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mg==",
     "startDate": "",
     "endDate": "",
     "category": "이벤트",
@@ -979,6 +967,18 @@
     "startDate": "",
     "endDate": "",
     "category": "신메뉴",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_402",
+    "title": "SMGC 캠페인! RIIZE ODYSSEY MEGA SMini 사전예약",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD00MDImYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mw==",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
     "daysLeft": null,
     "isNew": false,
     "ongoing": true
@@ -1273,13 +1273,25 @@
   },
   {
     "brand": "할리스",
+    "id": "할리스_554",
+    "title": "할리스♥리센느, 첫 만남 기념! Welcome 50% 쿠폰",
+    "link": "https://www.hollys.co.kr/news/event/view.do?idx=554",
+    "startDate": "2026-08-18",
+    "endDate": "2026-09-08",
+    "category": "쿠폰·할인",
+    "daysLeft": 21,
+    "isNew": true,
+    "ongoing": true
+  },
+  {
+    "brand": "할리스",
     "id": "할리스_552",
     "title": "★할리스 멤버십 회원을 위한 8월의 선물★",
     "link": "https://www.hollys.co.kr/news/event/view.do?idx=552",
     "startDate": "2026-08-01",
     "endDate": "2026-08-31",
     "category": "멤버십·앱",
-    "daysLeft": 14,
+    "daysLeft": 13,
     "isNew": false,
     "ongoing": true
   },
@@ -1291,7 +1303,7 @@
     "startDate": "2026-08-01",
     "endDate": "2026-09-30",
     "category": "이벤트",
-    "daysLeft": 44,
+    "daysLeft": 43,
     "isNew": false,
     "ongoing": true
   },
@@ -1303,7 +1315,7 @@
     "startDate": "2026-07-24",
     "endDate": "2026-08-21",
     "category": "신메뉴",
-    "daysLeft": 4,
+    "daysLeft": 3,
     "isNew": false,
     "ongoing": true
   },
@@ -1315,7 +1327,7 @@
     "startDate": "2026-07-20",
     "endDate": "2026-12-31",
     "category": "이벤트",
-    "daysLeft": 136,
+    "daysLeft": 135,
     "isNew": false,
     "ongoing": true
   },
@@ -1327,7 +1339,7 @@
     "startDate": "2026-07-16",
     "endDate": "2026-12-31",
     "category": "이벤트",
-    "daysLeft": 136,
+    "daysLeft": 135,
     "isNew": false,
     "ongoing": true
   },
@@ -1339,7 +1351,7 @@
     "startDate": "2026-07-15",
     "endDate": "2026-09-29",
     "category": "신메뉴",
-    "daysLeft": 43,
+    "daysLeft": 42,
     "isNew": false,
     "ongoing": true
   },
@@ -1351,7 +1363,7 @@
     "startDate": "2026-06-24",
     "endDate": "2026-08-25",
     "category": "신메뉴",
-    "daysLeft": 8,
+    "daysLeft": 7,
     "isNew": false,
     "ongoing": true
   },
@@ -1363,7 +1375,7 @@
     "startDate": "2026-06-24",
     "endDate": "2026-08-25",
     "category": "신메뉴",
-    "daysLeft": 8,
+    "daysLeft": 7,
     "isNew": false,
     "ongoing": true
   },
@@ -1375,7 +1387,7 @@
     "startDate": "2026-06-02",
     "endDate": "2026-08-25",
     "category": "신메뉴",
-    "daysLeft": 8,
+    "daysLeft": 7,
     "isNew": false,
     "ongoing": true
   },
@@ -1387,7 +1399,7 @@
     "startDate": "2026-05-13",
     "endDate": "2026-08-31",
     "category": "이벤트",
-    "daysLeft": 14,
+    "daysLeft": 13,
     "isNew": false,
     "ongoing": true
   },
@@ -1399,7 +1411,7 @@
     "startDate": "2026-05-13",
     "endDate": "2026-08-31",
     "category": "신메뉴",
-    "daysLeft": 14,
+    "daysLeft": 13,
     "isNew": false,
     "ongoing": true
   },
@@ -1411,7 +1423,7 @@
     "startDate": "2026-04-27",
     "endDate": "2026-12-31",
     "category": "쿠폰·할인",
-    "daysLeft": 136,
+    "daysLeft": 135,
     "isNew": false,
     "ongoing": true
   },
@@ -1423,7 +1435,7 @@
     "startDate": "2026-07-25",
     "endDate": "2026-07-31",
     "category": "쿠폰·할인",
-    "daysLeft": -17,
+    "daysLeft": -18,
     "isNew": false,
     "ongoing": false
   },
@@ -1435,7 +1447,7 @@
     "startDate": "2026-07-01",
     "endDate": "2026-07-31",
     "category": "멤버십·앱",
-    "daysLeft": -17,
+    "daysLeft": -18,
     "isNew": false,
     "ongoing": false
   },
@@ -1447,7 +1459,7 @@
     "startDate": "2026-07-15",
     "endDate": "2026-07-28",
     "category": "신메뉴",
-    "daysLeft": -20,
+    "daysLeft": -21,
     "isNew": false,
     "ongoing": false
   },
@@ -1579,7 +1591,7 @@
     "startDate": "2026-08-06",
     "endDate": "2026-09-30",
     "category": "이벤트",
-    "daysLeft": 44,
+    "daysLeft": 43,
     "isNew": false,
     "ongoing": true
   },
@@ -1591,7 +1603,7 @@
     "startDate": "2026-07-16",
     "endDate": "2026-09-02",
     "category": "이벤트",
-    "daysLeft": 16,
+    "daysLeft": 15,
     "isNew": false,
     "ongoing": true
   },
@@ -1603,7 +1615,7 @@
     "startDate": "2026-07-01",
     "endDate": "2026-08-31",
     "category": "쿠폰·할인",
-    "daysLeft": 14,
+    "daysLeft": 13,
     "isNew": false,
     "ongoing": true
   },
@@ -1615,7 +1627,7 @@
     "startDate": "2026-06-16",
     "endDate": "2026-08-31",
     "category": "이벤트",
-    "daysLeft": 14,
+    "daysLeft": 13,
     "isNew": false,
     "ongoing": true
   },
@@ -1627,7 +1639,7 @@
     "startDate": "2026-05-28",
     "endDate": "2026-08-31",
     "category": "신메뉴",
-    "daysLeft": 14,
+    "daysLeft": 13,
     "isNew": false,
     "ongoing": true
   },
@@ -1639,7 +1651,7 @@
     "startDate": "2026-06-01",
     "endDate": "2026-08-31",
     "category": "쿠폰·할인",
-    "daysLeft": 14,
+    "daysLeft": 13,
     "isNew": false,
     "ongoing": true
   },
@@ -1651,7 +1663,7 @@
     "startDate": "2026-05-06",
     "endDate": "2036-12-31",
     "category": "신메뉴",
-    "daysLeft": 3789,
+    "daysLeft": 3788,
     "isNew": false,
     "ongoing": true
   },
@@ -1663,7 +1675,7 @@
     "startDate": "2026-01-01",
     "endDate": "2028-01-08",
     "category": "이벤트",
-    "daysLeft": 509,
+    "daysLeft": 508,
     "isNew": false,
     "ongoing": true
   },
@@ -1675,7 +1687,7 @@
     "startDate": "2026-08-13",
     "endDate": "2026-08-31",
     "category": "멤버십·앱",
-    "daysLeft": 14,
+    "daysLeft": 13,
     "isNew": true,
     "ongoing": true
   },
@@ -1687,19 +1699,7 @@
     "startDate": "2026-08-01",
     "endDate": "2026-08-31",
     "category": "쿠폰·할인",
-    "daysLeft": 14,
-    "isNew": false,
-    "ongoing": true
-  },
-  {
-    "brand": "공차",
-    "id": "공차_OC4zfjE3IEtU64us",
-    "title": "8.3~17 KT달달혜택! kt멤버십 회원 대상 인기음료 6종 50% 할인!",
-    "link": "https://www.gong-cha.co.kr/brand/content/eventlist?scroll=y",
-    "startDate": "2026-08-03",
-    "endDate": "2026-08-17",
-    "category": "쿠폰·할인",
-    "daysLeft": 0,
+    "daysLeft": 13,
     "isNew": false,
     "ongoing": true
   },
@@ -1711,7 +1711,7 @@
     "startDate": "2026-08-13",
     "endDate": "2026-08-31",
     "category": "쿠폰·할인",
-    "daysLeft": 14,
+    "daysLeft": 13,
     "isNew": true,
     "ongoing": true
   },
@@ -1723,7 +1723,7 @@
     "startDate": "2026-05-19",
     "endDate": "2026-12-31",
     "category": "이벤트",
-    "daysLeft": 136,
+    "daysLeft": 135,
     "isNew": false,
     "ongoing": true
   },
@@ -1735,7 +1735,7 @@
     "startDate": "2026-03-16",
     "endDate": "2026-12-31",
     "category": "쿠폰·할인",
-    "daysLeft": 136,
+    "daysLeft": 135,
     "isNew": false,
     "ongoing": true
   },
@@ -1747,8 +1747,20 @@
     "startDate": "2026-08-13",
     "endDate": "2026-08-13",
     "category": "쿠폰·할인",
-    "daysLeft": -4,
+    "daysLeft": -5,
     "isNew": true,
+    "ongoing": false
+  },
+  {
+    "brand": "공차",
+    "id": "공차_OC4zfjE3IEtU64us",
+    "title": "8.3~17 KT달달혜택! kt멤버십 회원 대상 인기음료 6종 50% 할인!",
+    "link": "https://www.gong-cha.co.kr/brand/content/eventlist?scroll=y",
+    "startDate": "2026-08-03",
+    "endDate": "2026-08-17",
+    "category": "쿠폰·할인",
+    "daysLeft": -1,
+    "isNew": false,
     "ongoing": false
   },
   {
@@ -1759,7 +1771,7 @@
     "startDate": "2026-07-20",
     "endDate": "2026-07-31",
     "category": "멤버십·앱",
-    "daysLeft": -17,
+    "daysLeft": -18,
     "isNew": false,
     "ongoing": false
   },
@@ -1771,7 +1783,7 @@
     "startDate": "2026-07-09",
     "endDate": "2026-07-09",
     "category": "쿠폰·할인",
-    "daysLeft": -39,
+    "daysLeft": -40,
     "isNew": false,
     "ongoing": false
   },
@@ -1783,7 +1795,7 @@
     "startDate": "2026-06-22",
     "endDate": "2026-06-30",
     "category": "쿠폰·할인",
-    "daysLeft": -48,
+    "daysLeft": -49,
     "isNew": false,
     "ongoing": false
   },
