@@ -467,7 +467,7 @@
 
         <!-- 매장 상품 바텀 시트 (높이 55vh로 맵과 공존) -->
         <div id="bottomSheet" class="bottom-sheet pointer-events-auto">
-            <div class="w-full flex justify-center py-3 cursor-pointer shrink-0" onclick="closeSheet()">
+            <div class="w-full flex justify-center py-3 cursor-pointer shrink-0" onclick="closeSheet(true)">
                 <div class="w-12 h-1.5 bg-gray-300 rounded-full"></div>
             </div>
             <div class="px-4 pb-3 border-b border-gray-100 shrink-0">
@@ -486,7 +486,7 @@
                             <i class="fa-solid fa-route text-base"></i>
                             <span class="text-[10px] font-bold">길찾기</span>
                         </button>
-                        <button onclick="closeSheet()" class="flex flex-col items-center justify-center gap-1 bg-gray-100 text-gray-500 w-14 py-2 rounded-xl hover:bg-gray-200 transition active:scale-95">
+                        <button onclick="closeSheet(true)" class="flex flex-col items-center justify-center gap-1 bg-gray-100 text-gray-500 w-14 py-2 rounded-xl hover:bg-gray-200 transition active:scale-95">
                             <i class="fa-solid fa-xmark text-base"></i>
                             <span class="text-[10px] font-bold">닫기</span>
                         </button>
@@ -913,6 +913,11 @@
         window.purchasedHistory = purchasedHistory; // ads.js(보상형 광고)에서 최근 적립 내역을 참조하기 위해 노출 
         let storeMarkersData = [], mapMarkers = [];
         let isUserPanning = false, currentRadius = 500, searchCircle = null, dealTypeFilter = null;
+        // 매장 상세를 열면 지도가 그 매장으로 날아간다(openStore의 flyTo).
+        // 닫을 때 원래 보던 화면으로 돌려놓지 않으면 사용자가 반경·위치를 처음부터 다시 잡아야 한다.
+        let preStoreView = null;        // 매장 상세 열기 직전의 지도 중심·줌
+        let userDraggedInSheet = false; // 시트를 연 뒤 사용자가 직접 지도를 끌었는지
+        let isProgrammaticMove = false; // flyTo 등 코드가 지도를 옮기는 중
         let searchBrandFilter = null, recentlyViewed = [], mapBrandFilter = null;
         let nearbyPreviewTimer = null;
         let likeChangeItems = [];
@@ -1221,8 +1226,10 @@
             }).addTo(map);
 
             map.on('move', () => { searchCircle.setLatLng(map.getCenter()); });
-            map.on('dragstart', () => { isUserPanning = true; });
-            map.on('zoomstart', () => { isUserPanning = true; });
+            // flyTo는 zoomstart를 발생시킨다. 그대로 두면 매장을 클릭했을 뿐인데
+            // '이 지역 재검색' 버튼이 떠서 검색 영역이 바뀐 것처럼 보인다(실측 확인).
+            map.on('dragstart', () => { isUserPanning = true; if (preStoreView) userDraggedInSheet = true; });
+            map.on('zoomstart', () => { if (!isProgrammaticMove) isUserPanning = true; });
             map.on('moveend', () => {
                 if (isUserPanning) {
                     const btn = document.getElementById('reSearchBtn');
@@ -1574,14 +1581,26 @@
         }
 
         // [개선 1 적용] 지도 오프셋 적용하여 마커와 바텀시트 공존
+        // 코드가 옮기는 지도 이동. 사용자 조작으로 오인되지 않게 표시해둔다.
+        function flyToProgrammatic(center, zoom, opts) {
+            isProgrammaticMove = true;
+            map.flyTo(center, zoom, opts);
+            map.once('moveend', () => { isProgrammaticMove = false; });
+        }
+
         function openStore(store) {
             _storeClickCount++;
             if (_storeClickCount % 4 === 0 && typeof showInterstitial === 'function') {
                 showInterstitial(null);
             }
             activeStore = store;
+            // 시트에서 다른 매장으로 이동해도 '맨 처음 보던 화면'을 유지한다(덮어쓰지 않는다).
+            if (!preStoreView) {
+                preStoreView = { center: map.getCenter(), zoom: map.getZoom() };
+                userDraggedInSheet = false;
+            }
             // 바텀시트가 55vh 이므로 중심축을 약간 남쪽(위도 마이너스)으로 보정
-            map.flyTo([store.lat - 0.0015, store.lng], 17, { duration: 0.5 });
+            flyToProgrammatic([store.lat - 0.0015, store.lng], 17, { duration: 0.5 });
 
             const logoEl = document.getElementById('bsStoreLogo');
             logoEl.className = `w-10 h-10 rounded-full flex items-center justify-center font-black text-sm shadow-inner`;
@@ -1600,7 +1619,17 @@
             document.getElementById('bottomSheet').classList.add('active');
         }
 
-        function closeSheet() { document.getElementById('bottomSheet').classList.remove('active'); }
+        // restoreView=true 는 시트의 닫기 버튼·핸들로 닫은 경우에만 준다.
+        // 지도를 눌러 닫는 경로(mousedown/touchstart)에서 복원하면, 끌기 시작 시점에
+        // 지도가 되돌아가 사용자 조작과 싸우게 된다.
+        function closeSheet(restoreView) {
+            document.getElementById('bottomSheet').classList.remove('active');
+            if (restoreView === true && preStoreView && !userDraggedInSheet) {
+                flyToProgrammatic(preStoreView.center, preStoreView.zoom, { duration: 0.4 });
+            }
+            preStoreView = null;
+            userDraggedInSheet = false;
+        }
 
         function callStore() {
             if (!activeStore || !activeStore.phone) return;
