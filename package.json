@@ -6,11 +6,15 @@
   "scripts": {
     "fetch:stores": "node scripts/fetchStores.js",
     "gen:events": "node scripts/genSampleData.js",
-    "dev": "node scripts/devserver.js",
-    "build:toss": "node scripts/build-toss.js"
+    "dev": "node scripts/build-toss.js",
+    "build:toss": "node scripts/build-toss.js",
+    "build": "node scripts/build-toss.js && ait build",
+    "serve": "node scripts/devserver.js"
   },
   "devDependencies": {
-    "@apps-in-toss/web-framework": "^2.9.2"
+    "@apps-in-toss/devtools": "^3.0.5",
+    "@apps-in-toss/web-framework": "^3.0.5",
+    "esbuild": "^0.25.5"
   },
   "dependencies": {
     "is-plain-obj": "^4.1.0"

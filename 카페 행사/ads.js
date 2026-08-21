@@ -1,8 +1,18 @@
 // 토스인앱(Apps in Toss) 광고 SDK + 행동 로그 연동.
 // 일반 브라우저(GitHub Pages 등)에서는 isSupported()가 false라 전부 조용히 no-op되고,
 // 토스 앱 WebView 안에서 열렸을 때만 실제 광고가 붙는다.
-import { TossAds, loadFullScreenAd, showFullScreenAd, share, getCurrentLocation, Accuracy } from '@apps-in-toss/web-bridge';
-import { Analytics } from '@apps-in-toss/web-analytics';
+// SDK 3.x에서 @apps-in-toss/web-bridge 와 web-analytics 가 없어지고
+// @apps-in-toss/web-framework 하나로 통합됐다. import를 한 줄로 합친다.
+import { TossAds, loadFullScreenAd, showFullScreenAd, share, getCurrentLocation, Accuracy, Analytics } from '@apps-in-toss/web-framework';
+
+// SDK 3.x의 isSupported()는 토스 밖에서 false를 반환하지 않는다.
+// window.__appsInTossConstants 가 undefined라 TypeError를 던진다(2.x는 조용히 false였다).
+// 실측: loadFullScreenAd / showFullScreenAd 는 예외, TossAds.initialize 는 false 반환.
+// 감싸지 않으면 일반 브라우저(GitHub Pages)에서 콘솔 오류가 계속 난다.
+const isSupported = (fn) => {
+  try { return typeof fn?.isSupported === 'function' && fn.isSupported() === true; }
+  catch (e) { return false; }
+};
 
 const AD_CONFIG = {
   banner:       'ait.v2.live.6ee2e927b62c4a18',
@@ -40,7 +50,7 @@ function todayStr() {
 }
 
 function loadInterstitial() {
-  if (!loadFullScreenAd.isSupported || !loadFullScreenAd.isSupported()) return;
+  if (!isSupported(loadFullScreenAd)) return;
   loadFullScreenAd({
     options: { adGroupId: AD_CONFIG.interstitial },
     onEvent: (event) => { if (event.type === 'loaded') interstitialReady = true; },
@@ -49,7 +59,7 @@ function loadInterstitial() {
 }
 
 function loadRewardAd() {
-  if (!loadFullScreenAd.isSupported || !loadFullScreenAd.isSupported()) return;
+  if (!isSupported(loadFullScreenAd)) return;
   loadFullScreenAd({
     options: { adGroupId: AD_CONFIG.rewarded },
     onEvent: (event) => {
@@ -228,16 +238,21 @@ window.watchRewardAdForRadius = function watchRewardAdForRadius() {
 };
 
 // ── 토스 SDK 유틸 ─────────────────────────────────────────────────
+// 호출부가 전부 `.catch()`로 받는데, 3.x의 share()는 토스 밖에서 **동기 예외**를 던진다
+// ("apps-in-toss 웹뷰 환경이 아니에요"). 동기 예외는 .catch에 안 걸려 그대로 터진다.
+// 항상 Promise를 돌려주도록 감싸서 호출부 계약을 지킨다.
 window.tossShare = function tossShare(message) {
-  return share({ message });
+  try { return Promise.resolve(share({ message })); }
+  catch (e) { return Promise.reject(e); }
 };
 
 window.tossGetCurrentLocation = function tossGetCurrentLocation() {
-  return getCurrentLocation({ accuracy: Accuracy.Balanced });
+  try { return Promise.resolve(getCurrentLocation({ accuracy: Accuracy.Balanced })); }
+  catch (e) { return Promise.reject(e); }
 };
 
 function init() {
-  if (!TossAds.initialize.isSupported || !TossAds.initialize.isSupported()) return;
+  if (!isSupported(TossAds.initialize)) return;
   document.body.classList.add('in-toss-app');
   TossAds.initialize({
     callbacks: {
