@@ -2698,5 +2698,41 @@
     "daysLeft": 32,
     "isNew": false,
     "ongoing": true
+  },
+  {
+    "brand": "봄봄",
+    "id": "봄봄_224381225044",
+    "title": "카페봄봄랩 한정 블루베리 3종 디저트 메뉴",
+    "link": "https://blog.naver.com/cafe-bombom/224381225044",
+    "startDate": "2026-08-17",
+    "endDate": "",
+    "category": "신메뉴",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "봄봄",
+    "id": "봄봄_224348470657",
+    "title": "카페봄봄 신메뉴 비가열착즙 과채주스 3종",
+    "link": "https://blog.naver.com/cafe-bombom/224348470657",
+    "startDate": "2026-07-16",
+    "endDate": "",
+    "category": "신메뉴",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "봄봄",
+    "id": "봄봄_224342620011",
+    "title": "카페봄봄 신메뉴 썸머선셋 시리즈",
+    "link": "https://blog.naver.com/cafe-bombom/224342620011",
+    "startDate": "2026-07-10",
+    "endDate": "",
+    "category": "시즌",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
   }
 ]
