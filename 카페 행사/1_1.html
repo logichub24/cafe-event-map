@@ -817,8 +817,10 @@
                 </div>
                 <!-- 브랜드 / 유형 필터를 각각 한 줄씩. 한 줄에 몰면 다음 그룹 버튼이 잘려 보인다. -->
                 <div class="border-b border-gray-100 shrink-0 bg-white">
-                    <div id="allDealsFilterBar" class="flex gap-2 px-3 pt-2 pb-1.5 overflow-x-auto hide-scrollbar items-center"></div>
-                    <div id="allDealsTypeBar" class="flex gap-2 px-3 pb-2 overflow-x-auto hide-scrollbar items-center"></div>
+                    <div class="px-3 pt-2 text-[10px] font-black text-gray-400">브랜드</div>
+                    <div id="allDealsFilterBar" class="flex gap-2 px-3 pt-1 pb-1.5 overflow-x-auto hide-scrollbar items-center"></div>
+                    <div class="px-3 pt-1 text-[10px] font-black text-gray-400">혜택</div>
+                    <div id="allDealsTypeBar" class="flex gap-2 px-3 pt-1 pb-2 overflow-x-auto hide-scrollbar items-center"></div>
                 </div>
                 <div class="flex-1 overflow-y-auto p-2 pb-4 space-y-2" id="allDealsList"></div>
             </div>
@@ -1802,12 +1804,12 @@
             return d.daysLeft;                                   // 임박한 순
         }
 
-        function ddayBadge(d) {
+function ddayBadge(d) {
             if (typeof d.daysLeft !== 'number') return '';
             if (d.daysLeft < 0) return `<span class="bg-gray-200 text-gray-500 text-[9px] font-bold px-1.5 py-0.5 rounded">종료</span>`;
-            if (d.daysLeft === 0) return `<span class="bg-rose-500 text-white text-[9px] font-black px-1.5 py-0.5 rounded animate-pulse">오늘마감</span>`;
+            if (d.daysLeft === 0) return `<span class="bg-rose-500 text-white text-[9px] font-black px-1.5 py-0.5 rounded">D-DAY</span>`;
             if (d.daysLeft <= 3) return `<span class="bg-orange-500 text-white text-[9px] font-black px-1.5 py-0.5 rounded">D-${d.daysLeft}</span>`;
-            return `<span class="bg-white/25 text-white text-[9px] font-bold px-1.5 py-0.5 rounded">D-${d.daysLeft}</span>`;
+            return '';
         }
 
         // 행사 카드. 실데이터(제목·기간·출처)만 보여주고 홍보 이미지는 쓰지 않는다.
@@ -1818,28 +1820,23 @@
             const brand = product.brand || specificBrand || '';
             const cat = product.category || '이벤트';
             const ts = TYPE_STYLE[cat] || { cls: 'bg-gray-500', emoji: '🏷️' };
-            const emoji = EMOJI_MAP[cat] || '☕';
+            const point = (BRAND_INFO[brand] && BRAND_INFO[brand].color) || '#6b7280';
+            const ending = product.daysLeft === 0 ? '오늘 종료' : dealPeriodText(product);
 
             return `
-            <div class="deal-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 relative mb-2" onclick="addToRecentlyViewed('${product.id}')">
-                <div class="relative w-full h-20 overflow-hidden" style="${brandBanner(brand)}">
-                    <span class="absolute -right-2 -bottom-4 text-[64px] opacity-20 -rotate-12 select-none pointer-events-none">${emoji}</span>
-                    ${miniSceneHTML(product.id)}
-                    <div class="absolute top-2 left-3 flex items-center gap-1.5">
-                        <span class="text-white font-black text-[13px] drop-shadow-sm">${brand}</span>
-                        ${product.isNew ? '<span class="bg-white text-emerald-600 text-[9px] font-black px-1.5 py-0.5 rounded">NEW</span>' : ''}
+            <div class="deal-card bg-white rounded-2xl shadow-sm border border-gray-100 relative mb-2 overflow-hidden" style="border-left:4px solid ${point}" onclick="addToRecentlyViewed('${product.id}')">
+                <div class="px-3.5 py-3">
+                    <div class="flex items-center gap-1.5 mb-2">
+                        <span class="font-black text-[12px] text-gray-800">${brand}</span>
+                        <span class="${ts.cls} text-white text-[9px] font-black px-1.5 py-0.5 rounded">${ts.emoji} ${cat}</span>
+                        ${product.isNew ? '<span class="bg-emerald-50 text-emerald-600 text-[9px] font-black px-1.5 py-0.5 rounded">NEW</span>' : ''}
+                        <span class="ml-auto">${ddayBadge(product)}</span>
+                        <button aria-label="찜하기" onclick="event.stopPropagation(); toggleLike('${product.id}')" class="w-7 h-7 bg-gray-50 rounded-full flex items-center justify-center"><i class="${heartCls} text-xs"></i></button>
                     </div>
-                    <div class="absolute bottom-2 left-3">
-                        <span class="${ts.cls} text-white text-[10px] font-black px-2 py-0.5 rounded shadow-sm">${ts.emoji} ${cat}</span>
-                    </div>
-                    <span class="absolute top-2 right-2">${ddayBadge(product)}</span>
-                    <button onclick="event.stopPropagation(); toggleLike('${product.id}')" class="absolute bottom-2 right-2 w-7 h-7 bg-white/90 rounded-full flex items-center justify-center shadow"><i class="${heartCls} text-xs"></i></button>
-                </div>
-                <div class="px-3 pt-2.5 pb-2.5">
-                    <h4 class="font-black text-[14px] text-gray-900 leading-snug line-clamp-2">${product.title || ''}</h4>
-                    <div class="flex items-center justify-between mt-2">
-                        <span class="text-[10px] text-gray-400 font-medium"><i class="fa-regular fa-clock mr-1"></i>${dealPeriodText(product)}</span>
-                        <button onclick="event.stopPropagation(); openOfficial('${product.link || ''}')" class="text-[10px] font-bold text-blue-600 hover:text-blue-700">공식 보기 <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i></button>
+                    <h4 class="font-black text-[15px] text-gray-900 leading-snug line-clamp-2">${product.title || ''}</h4>
+                    <div class="flex items-center justify-between mt-2.5">
+                        <span class="text-[10px] text-gray-500 font-medium"><i class="fa-regular fa-calendar mr-1"></i>${dealPeriodText(product)}${product.daysLeft === 0 ? ' · 오늘 종료' : ''}</span>
+                        <button onclick="event.stopPropagation(); openOfficial('${product.link || ''}')" class="text-[10px] font-black text-blue-600 hover:text-blue-700">공식 행사 보기 〉</button>
                     </div>
                 </div>
             </div>
@@ -2482,11 +2479,29 @@
         }
 
         // 전체 딜 목록 렌더링
+        function diversifyBrands(items) {
+            const groups = new Map();
+            items.forEach(item => {
+                const key = item.brand || '';
+                if (!groups.has(key)) groups.set(key, []);
+                groups.get(key).push(item);
+            });
+            const result = [];
+            while (groups.size) {
+                for (const [brand, group] of groups) {
+                    result.push(group.shift());
+                    if (!group.length) groups.delete(brand);
+                }
+            }
+            return result;
+        }
+
         function renderAllDeals() {
             const list = document.getElementById('allDealsList');
             let items = [...MASTER_DB].sort((a, b) => dealSortKey(a) - dealSortKey(b));
             if (allDealsFilterBrand) items = items.filter(p => p.brand === allDealsFilterBrand);
             if (allDealsFilterType) items = items.filter(p => p.category === allDealsFilterType);
+            if (!allDealsFilterBrand) items = diversifyBrands(items);
             if (items.length === 0) {
                 list.innerHTML = `<div class="p-8 text-center text-gray-400 font-medium">해당 조건의 상품이 없습니다.</div>`;
                 return;
