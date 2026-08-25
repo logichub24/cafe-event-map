@@ -2734,5 +2734,11 @@
     "daysLeft": null,
     "isNew": false,
     "ongoing": true
-  }
+  },
+  {"brand":"투썸플레이스","id":"투썸_260712","title":"밤&고구마 생크림 케이크 출시","link":"https://mo.twosome.co.kr/ev/eventDtl.do?annoSeqNo=260712","startDate":"2026-08-14","endDate":"2026-09-13","category":"신메뉴","daysLeft":null,"isNew":false,"ongoing":true},
+  {"brand":"투썸플레이스","id":"투썸_260805","title":"레몬 커피 신제품 출시","link":"https://mo.twosome.co.kr/ev/eventDtl.do?annoSeqNo=260805","startDate":"2026-08-14","endDate":"2026-08-31","category":"신메뉴","daysLeft":null,"isNew":false,"ongoing":true},
+  {"brand":"투썸플레이스","id":"투썸_260803","title":"앱 한정 자몽생 미니+아메리카노(R) 할인","link":"https://mo.twosome.co.kr/ev/eventDtl.do?annoSeqNo=260803","startDate":"2026-08-07","endDate":"2026-09-30","category":"쿠폰·할인","daysLeft":null,"isNew":false,"ongoing":true},
+  {"brand":"투썸플레이스","id":"투썸_260711","title":"불닭 콜라보레이션 신제품 출시","link":"https://mo.twosome.co.kr/ev/eventDtl.do?annoSeqNo=260711","startDate":"2026-08-05","endDate":"2026-12-31","category":"콜라보·굿즈","daysLeft":null,"isNew":false,"ongoing":true},
+  {"brand":"투썸플레이스","id":"투썸_260713","title":"하프 카페인 콜드브루 신제품 출시","link":"https://mo.twosome.co.kr/ev/eventDtl.do?annoSeqNo=260713","startDate":"2026-08-03","endDate":"2026-10-31","category":"신메뉴","daysLeft":null,"isNew":false,"ongoing":true},
+  {"brand":"투썸플레이스","id":"투썸_260114","title":"여름 시즌 프라페 신제품 출시","link":"https://mo.twosome.co.kr/ev/eventDtl.do?annoSeqNo=260114","startDate":"2026-06-01","endDate":"2026-09-30","category":"시즌","daysLeft":null,"isNew":false,"ongoing":true}
 ]
