@@ -1,7 +1,10 @@
 node_modules/
 .env
+.env.local
 dist/
 *.ait
+*.log
+.DS_Store
 .granite/
 .claude/
 checklist.md
