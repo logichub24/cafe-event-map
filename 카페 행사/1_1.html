@@ -113,10 +113,19 @@
         }
         .tab-modal.active .tab-modal-content { transform: translateY(0); }
 
-        /* 첫 화면인 행사는 시트가 아닌 탭 페이지다. 배경을 덮는 진입 모달로 보이지 않게 한다. */
-        #allDealsModal.default-page.active .tab-modal-bg { display: none; }
-        #allDealsModal.default-page.active .tab-modal-content {
+        /* 하단 탭은 시트가 아닌 전체 화면 페이지로 연다. */
+        .tab-page.active .tab-modal-bg { display: none; }
+        .tab-page.active {
+            position: fixed; inset: 0 0 var(--nav-space) 0; z-index: 6000;
+        }
+        .tab-page.active .tab-modal-content {
             height: 100%; border-radius: 0; box-shadow: none;
+        }
+
+        #app-container > nav { position: fixed; z-index: 7000; }
+        @media (min-width: 431px) {
+            .tab-page.active { left: 50%; right: auto; width: 390px; transform: translateX(-50%); top: 4vh; bottom: calc(4vh + var(--nav-space)); }
+            #app-container > nav { left: calc(50% - 195px) !important; right: auto !important; width: 366px; bottom: calc(4vh + var(--nav-gap) + var(--safe-b)) !important; }
         }
 
         /* ── 행사 카드 배너 중앙 미니 씬 ──────────────────────────────
@@ -387,7 +396,7 @@
 
 
         <!-- 1. 비교검색 모달 -->
-        <div id="searchModal" class="tab-modal">
+        <div id="searchModal" class="tab-modal tab-page">
             <div class="tab-modal-bg" onclick="goHome()"></div>
             <div class="tab-modal-content">
                 <div class="p-4 border-b border-gray-100 flex items-center gap-3 bg-white sticky top-0 z-20 shrink-0 rounded-t-[24px]">
@@ -415,7 +424,7 @@
         </div>
 
         <!-- 2. 찜목록 모달 -->
-        <div id="wishlistModal" class="tab-modal">
+        <div id="wishlistModal" class="tab-modal tab-page">
             <div class="tab-modal-bg" onclick="goHome()"></div>
             <div class="tab-modal-content">
                 <div class="p-4 border-b border-gray-100 flex items-center gap-3 bg-white sticky top-0 z-20 shrink-0 rounded-t-[24px]">
@@ -439,7 +448,7 @@
         </div>
 
         <!-- 3. 주변랭킹 모달 -->
-        <div id="nearbyRankingModal" class="tab-modal">
+        <div id="nearbyRankingModal" class="tab-modal tab-page">
             <div class="tab-modal-bg" onclick="goHome()"></div>
             <div class="tab-modal-content">
                 <div class="p-4 border-b border-gray-100 flex items-center gap-3 bg-white sticky top-0 z-20 shrink-0 rounded-t-[24px]">
@@ -793,7 +802,7 @@
         </div>
 
         <!-- 전체 딜 목록 모달 -->
-        <div id="allDealsModal" class="tab-modal">
+        <div id="allDealsModal" class="tab-modal tab-page">
             <div class="tab-modal-bg" onclick="goHome()"></div>
             <div class="tab-modal-content">
                 <div class="p-4 border-b border-gray-100 flex items-center gap-3 bg-white sticky top-0 z-20 shrink-0 rounded-t-[24px]">
@@ -1558,7 +1567,6 @@
 
         function showEventsPage() {
             openTabModal('allDealsModal', 'alldeals');
-            document.getElementById('allDealsModal').classList.add('default-page');
         }
 
         // 매장 편의정보 메타(칩·필터 공용). key는 store.services의 키. (대형약국 앱의 3-state 패턴 이식)
