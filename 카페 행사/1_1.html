@@ -113,6 +113,12 @@
         }
         .tab-modal.active .tab-modal-content { transform: translateY(0); }
 
+        /* 첫 화면인 행사는 시트가 아닌 탭 페이지다. 배경을 덮는 진입 모달로 보이지 않게 한다. */
+        #allDealsModal.default-page.active .tab-modal-bg { display: none; }
+        #allDealsModal.default-page.active .tab-modal-content {
+            height: 100%; border-radius: 0; box-shadow: none;
+        }
+
         /* ── 행사 카드 배너 중앙 미니 씬 ──────────────────────────────
            스플래시(캔버스 11종)의 콘셉트만 가져와 CSS로 재구현했다.
            카드가 수십 장 동시에 보이므로 캔버스 rAF 루프 대신 CSS 애니메이션을 쓰고,
@@ -348,6 +354,10 @@
 
         <!-- 하단 네비게이션 바 -->
         <nav style="left: var(--nav-gap); right: var(--nav-gap); bottom: calc(var(--nav-gap) + var(--safe-b)); height: var(--nav-h);" class="absolute rounded-[20px] bg-white border border-gray-100 z-[4000] flex justify-around items-center px-1 shadow-[0_6px_20px_rgba(0,0,0,0.12)] overflow-hidden">
+            <button id="nav-alldeals" onclick="showEventsPage()" class="nav-btn flex flex-col items-center justify-center w-full h-full text-blue-600 transition relative">
+                <i class="fa-solid fa-tags text-[18px] mb-1"></i>
+                <span class="text-[9px] font-black tracking-tight">행사</span>
+            </button>
             <button id="nav-home" onclick="goHome()" class="nav-btn flex flex-col items-center justify-center w-full h-full text-blue-600 transition">
                 <i class="fa-solid fa-map-location-dot text-[18px] mb-1"></i>
                 <span class="text-[9px] font-black tracking-tight">지도</span>
@@ -364,12 +374,6 @@
                 <i class="fa-solid fa-heart text-[18px] mb-1"></i>
                 <span class="text-[9px] font-bold tracking-tight">찜목록</span>
                 <span id="wishBadge" class="absolute top-1.5 right-[15px] bg-rose-500 text-white text-[8px] font-bold w-3.5 h-3.5 flex items-center justify-center rounded-full hidden shadow-sm ring-1 ring-white">0</span>
-            </button>
-            <!-- 예전 '내지갑'(누적 절약액) 자리. 실제 행사 데이터에는 할인 금액이 없어
-                 항상 0원이 되므로, 전체 행사 목록으로 대체했다. -->
-            <button id="nav-alldeals" onclick="openTabModal('allDealsModal', 'alldeals')" class="nav-btn flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-gray-900 transition relative">
-                <i class="fa-solid fa-tags text-[18px] mb-1"></i>
-                <span class="text-[9px] font-bold tracking-tight">전체행사</span>
             </button>
         </nav>
 
@@ -1092,6 +1096,7 @@
             renderCategories();
             renderMapFilterBar();
             renderStaticBrandFilters();
+            showEventsPage();
             document.getElementById('map').addEventListener('mousedown', closeSheet);
             document.getElementById('map').addEventListener('touchstart', closeSheet);
             window.addEventListener('resize', () => { if(map) map.invalidateSize(); });
@@ -1549,6 +1554,11 @@
             hideAllTabModals();
             closeSheet();
             setActiveNav('home');
+        }
+
+        function showEventsPage() {
+            openTabModal('allDealsModal', 'alldeals');
+            document.getElementById('allDealsModal').classList.add('default-page');
         }
 
         // 매장 편의정보 메타(칩·필터 공용). key는 store.services의 키. (대형약국 앱의 3-state 패턴 이식)
@@ -2950,6 +2960,10 @@
     <!-- ══ 스플래시 (최초 1회 랜덤 11종) ══════════════════════════════ -->
     <script>
     (function(){
+        // 심사 기준: 첫 실행을 포함해 진입 직후 화면을 덮는 자동 스플래시는 노출하지 않는다.
+        // 안내는 설정의 "시작 안내 다시 보기"에서 사용자가 직접 연다.
+        return;
+
         const SPLASH_KEY = 'splashV1';
         const HIST_KEY   = 'splashHist';
         if (localStorage.getItem(SPLASH_KEY)) return;
