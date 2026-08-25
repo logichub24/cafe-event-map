@@ -98,7 +98,7 @@
             z-index: 3000; display: flex; flex-direction: column; justify-content: flex-end;
             pointer-events: none; overflow: hidden;
         }
-        .tab-modal.active { pointer-events: auto; z-index: 3100; }
+        .tab-modal.active { pointer-events: auto; z-index: 8000; }
         
         .tab-modal-bg {
             position: absolute; inset: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px);
@@ -460,10 +460,10 @@
 
         <!-- 4. TOP10 모달 -->
         <div id="top10Modal" class="tab-modal">
-            <div class="tab-modal-bg" onclick="goHome()"></div>
+            <div class="tab-modal-bg" onclick="closeQuickDeals()"></div>
             <div class="tab-modal-content">
                 <div class="p-4 border-b border-gray-100 flex items-center gap-3 bg-white sticky top-0 z-20 shrink-0 rounded-t-[24px]">
-                    <button onclick="goHome()" class="text-gray-500 hover:text-gray-800 p-2"><i class="fa-solid fa-arrow-left text-xl"></i></button>
+                    <button aria-label="닫기" onclick="closeQuickDeals()" class="text-gray-500 hover:text-gray-800 p-2"><i class="fa-solid fa-xmark text-xl"></i></button>
                     <div>
                         <h3 id="quickDealsTitle" class="font-black text-lg text-gray-900"><i class="fa-solid fa-hourglass-half text-rose-500 mr-1"></i> 마감 임박 행사</h3>
                         <p id="quickDealsDescription" class="text-[10px] text-gray-500 font-bold leading-tight">종료일이 공개된 행사 중 임박한 순</p>
@@ -1998,8 +1998,7 @@ function ddayBadge(d) {
         function showTodayDeals(kind) {
             const isNew = kind === 'new';
             const items = MASTER_DB.filter(p => isNew ? p.isNew : p.daysLeft === 0);
-            hideAllTabModals();
-            closeSheet();
+            showEventsPage();
             document.getElementById('top10Modal').classList.add('active');
             document.getElementById('quickDealsTitle').innerHTML = isNew
                 ? '<i class="fa-solid fa-sparkles text-emerald-500 mr-1"></i> 오늘 새 행사'
@@ -2010,6 +2009,10 @@ function ddayBadge(d) {
             document.getElementById('top10List').innerHTML = items.length
                 ? items.map(p => createProductHTML(p, 'quick')).join('')
                 : `<div class="text-center text-gray-400 py-10 font-medium">${isNew ? '오늘 새 행사가 없습니다.' : '오늘 종료 행사가 없습니다.'}</div>`;
+        }
+
+        function closeQuickDeals() {
+            document.getElementById('top10Modal').classList.remove('active');
         }
 
         const formatDistance = m => m < 1000 ? `${Math.round(m)}m` : `${(m / 1000).toFixed(1)}km`;
