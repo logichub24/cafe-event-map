@@ -2544,7 +2544,7 @@ function ddayBadge(d) {
                 list.innerHTML = `<div class="p-8 text-center text-gray-400 font-medium">해당 조건의 상품이 없습니다.</div>`;
                 return;
             }
-            const weatherHead = weatherEventKeywords ? `<div class="px-1 pb-1 text-[11px] font-black text-blue-600">☀️ 날씨 맞춤 행사 ${items.length}개</div>` : '';
+            const weatherHead = weatherEventKeywords ? `<div class="flex items-center justify-between px-1 pb-1 text-[11px] font-black text-blue-600"><span>☀️ 날씨 맞춤 행사 ${items.length}개</span><button onclick="clearWeatherEvents()" class="text-gray-400">전체 보기 ×</button></div>` : '';
             list.innerHTML = weatherHead + items.map(p => createProductHTML(p, 'search', allDealsFilterBrand)).join('');
         }
 
@@ -2830,10 +2830,9 @@ function ddayBadge(d) {
 
         let weatherEventKeywords = null;
         function getWeatherRecommendation(w) {
-            const hour = new Date().getHours();
             let result;
             if (w.temp >= 33) result = { message:'아주 더운 날, 시원한 메뉴가 잘 어울려요', menus:['🍋 에이드','🥭 스무디','🍧 빙수'], keywords:['에이드','스무디','프라페','블렌디드','빙수','아이스'] };
-            else if (w.temp >= 27) result = { message:'더운 날엔 시원하고 가벼운 메뉴를 추천해요', menus:['🧊 아이스 아메리카노','🍋 에이드','🫘 콜드브루'], keywords:['아이스','아메리카노','에이드','콜드브루','스무디'] };
+            else if (w.temp >= 27) result = { message:'더운 날엔 시원한 메뉴가 잘 어울려요', menus:['🧊 아이스 아메리카노','🍋 에이드','🥤 콜드브루'], keywords:['아이스','아메리카노','에이드','콜드브루','스무디'] };
             else if (w.temp >= 23) result = { message:'가볍게 즐기기 좋은 날씨예요', menus:['🧊 아이스 커피','🍵 티','✨ 시즌 음료'], keywords:['아이스','커피','티','시즌'] };
             else if (w.temp >= 18) result = { message:'커피와 디저트 즐기기 좋은 날씨예요', menus:['☕ 아메리카노','🥛 카페라떼','🍰 디저트'], keywords:['아메리카노','라떼','디저트','케이크'] };
             else if (w.temp >= 13) result = { message:'조금 쌀쌀해요. 따뜻한 메뉴가 좋아요', menus:['☕ 따뜻한 아메리카노','🥛 카페라떼','🍵 차'], keywords:['아메리카노','라떼','티','차'] };
@@ -2841,12 +2840,18 @@ function ddayBadge(d) {
             const info = wmoInfo(w.code);
             if (info.label.includes('눈')) return { message:'눈 오는 날, 따뜻하고 달콤한 메뉴를 추천해요', menus:['🍫 핫초코','🥛 카페라떼','✨ 시즌 메뉴'], keywords:['핫초코','라떼','시즌','디저트'] };
             if (w.rain && w.temp < 27) return { message:'비 오는 날엔 따뜻한 커피와 디저트가 좋아요', menus:['🥛 카페라떼','☕ 아메리카노','🍰 디저트'], keywords:['라떼','아메리카노','디저트','케이크'] };
-            if (hour >= 22) result.message = '늦은 시간엔 가볍게 즐길 메뉴를 골라봤어요';
-            else if (hour >= 5 && hour <= 10) result.message = '하루를 시작하기 좋은 메뉴를 골라봤어요';
             return result;
         }
 
-        function weatherRelatedEvents(keywords) { return MASTER_DB.filter(p => keywords.some(k => `${p.title || ''} ${p.category || ''}`.toLowerCase().includes(k.toLowerCase()))); }
+        function weatherRelatedEvents(keywords) {
+            return MASTER_DB.map(p => {
+                const text = `${p.title || ''} ${p.category || ''}`.toLowerCase();
+                let score = keywords.filter(k => text.includes(k.toLowerCase())).length * 5;
+                if (['쿠폰·할인','신메뉴'].includes(p.category)) score += 2;
+                if (/가격\s*(조정|인상|변경)|안내/.test(text)) score -= 5;
+                return { p, score };
+            }).filter(({ score }) => score >= 5).sort((a, b) => b.score - a.score).map(({ p }) => p);
+        }
 
         function toggleWeatherPopover() {
             const w = window._weatherData, popover = document.getElementById('weatherPopover');
@@ -2869,6 +2874,8 @@ function ddayBadge(d) {
             allDealsFilterBrand = null; allDealsFilterType = null;
             closeWeatherPopover(); showEventsPage();
         }
+
+        function clearWeatherEvents() { weatherEventKeywords = null; renderAllDeals(); }
 
         function weatherScore(deal) {
             const w = window._weatherData;
