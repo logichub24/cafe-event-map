@@ -279,22 +279,22 @@
                     <div class="text-left flex flex-col">
                         <!-- updateTopDealChip이 실데이터로 덮어쓴다. 로드 전·실패 시 보이는 문구라
                              지어낸 상품명을 두지 않는다(옛 편의점 앱 잔재 '하겐다즈 파인트/15,900원 절약'을 걷어냄). -->
-                        <span class="text-[10px] font-black text-gray-900 leading-none mt-0.5">마감 임박 행사</span>
-                        <span class="text-[8px] text-blue-600 font-bold leading-none mt-1">불러오는 중</span>
+                        <span data-top-deal-name class="text-[10px] font-black text-gray-900 leading-none mt-0.5">마감 임박 행사</span>
+                        <span data-top-deal-meta class="text-[8px] text-blue-600 font-bold leading-none mt-1">불러오는 중</span>
                     </div>
                 </button>
                 <button onclick="openTabModal('allDealsModal', 'alldeals')" class="bg-white border border-gray-100 rounded-full pl-1 pr-3 py-1 flex items-center gap-1.5 shadow-sm shrink-0 hover:bg-gray-50 active:scale-95 transition">
                     <div class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center text-[10px]">✨</div>
                     <div class="text-left flex flex-col">
                         <span class="text-[10px] font-black text-gray-900 leading-none mt-0.5">오늘 새 행사</span>
-                        <span id="newDealCount" class="text-[8px] text-emerald-600 font-bold leading-none mt-1">0개</span>
+                        <span class="new-deal-count text-[8px] text-emerald-600 font-bold leading-none mt-1">0개</span>
                     </div>
                 </button>
                 <button onclick="showToast('오늘 마감되는 행사입니다.')" class="bg-white border border-gray-100 rounded-full pl-1 pr-3 py-1 flex items-center gap-1.5 shadow-sm shrink-0 hover:bg-gray-50 active:scale-95 transition">
                     <div class="w-6 h-6 rounded-full bg-rose-100 flex items-center justify-center text-[10px]">🚨</div>
                     <div class="text-left flex flex-col">
                         <span class="text-[10px] font-black text-gray-900 leading-none mt-0.5">오늘 종료</span>
-                        <span id="endingDealCount" class="text-[8px] text-rose-600 font-bold leading-none mt-1">0개</span>
+                        <span class="ending-deal-count text-[8px] text-rose-600 font-bold leading-none mt-1">0개</span>
                     </div>
                 </button>
             </div>
@@ -801,11 +801,19 @@
         <!-- 전체 딜 목록 모달 -->
         <div id="allDealsModal" class="tab-page">
             <div class="tab-modal-content">
-                <div class="p-4 border-b border-gray-100 flex items-center gap-3 bg-white sticky top-0 z-20 shrink-0 rounded-t-[24px]">
-                    <div class="flex-1">
-                        <h3 class="font-black text-lg text-gray-900"><i class="fa-solid fa-list text-blue-500 mr-1"></i> 전체 행사 목록</h3>
-                        <p class="text-[10px] text-gray-500 font-bold leading-tight">카페 행사를 브랜드/유형별로 필터</p>
-                    </div>
+                <div class="flex overflow-x-auto hide-scrollbar px-3 py-3 gap-2 border-b border-gray-100 bg-white shrink-0">
+                    <button onclick="openTabModal('top10Modal', 'top10')" class="bg-white border border-gray-100 rounded-full pl-1 pr-3 py-1 flex items-center gap-1.5 shadow-sm shrink-0 hover:bg-gray-50 active:scale-95 transition">
+                        <div class="w-6 h-6 rounded-full bg-yellow-100 flex items-center justify-center text-[10px]">🥇</div>
+                        <div class="text-left flex flex-col"><span data-top-deal-name class="text-[10px] font-black text-gray-900 leading-none mt-0.5">마감 임박 행사</span><span data-top-deal-meta class="text-[8px] text-blue-600 font-bold leading-none mt-1">불러오는 중</span></div>
+                    </button>
+                    <button onclick="showEventsPage()" class="bg-white border border-gray-100 rounded-full pl-1 pr-3 py-1 flex items-center gap-1.5 shadow-sm shrink-0 hover:bg-gray-50 active:scale-95 transition">
+                        <div class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center text-[10px]">✨</div>
+                        <div class="text-left flex flex-col"><span class="text-[10px] font-black text-gray-900 leading-none mt-0.5">오늘 새 행사</span><span class="new-deal-count text-[8px] text-emerald-600 font-bold leading-none mt-1">0개</span></div>
+                    </button>
+                    <button onclick="showToast('오늘 마감되는 행사입니다.')" class="bg-white border border-gray-100 rounded-full pl-1 pr-3 py-1 flex items-center gap-1.5 shadow-sm shrink-0 hover:bg-gray-50 active:scale-95 transition">
+                        <div class="w-6 h-6 rounded-full bg-rose-100 flex items-center justify-center text-[10px]">🚨</div>
+                        <div class="text-left flex flex-col"><span class="text-[10px] font-black text-gray-900 leading-none mt-0.5">오늘 종료</span><span class="ending-deal-count text-[8px] text-rose-600 font-bold leading-none mt-1">0개</span></div>
+                    </button>
                 </div>
                 <!-- 브랜드 / 유형 필터를 각각 한 줄씩. 한 줄에 몰면 다음 그룹 버튼이 잘려 보인다. -->
                 <div class="border-b border-gray-100 shrink-0 bg-white">
@@ -1206,8 +1214,8 @@
         function updateDashboardCounts() {
             const newCount = MASTER_DB.filter(p => p.isNew).length;
             const endingCount = MASTER_DB.filter(p => p.daysLeft === 0).length;
-            document.getElementById('newDealCount').innerText = `${newCount}개`;
-            document.getElementById('endingDealCount').innerText = `${endingCount}개`;
+            document.querySelectorAll('.new-deal-count').forEach(el => el.innerText = `${newCount}개`);
+            document.querySelectorAll('.ending-deal-count').forEach(el => el.innerText = `${endingCount}개`);
         }
 
 
@@ -2505,11 +2513,11 @@
                 .filter(p => typeof p.daysLeft === 'number')
                 .sort((a, b) => dealSortKey(a) - dealSortKey(b))[0];
             if (!top) return;
-            const chipName = document.querySelector('#app-container .flex.overflow-x-auto button:first-child .text-\\[10px\\].font-black');
-            const chipSaving = document.querySelector('#app-container .flex.overflow-x-auto button:first-child .text-\\[8px\\].text-blue-600');
+            const chipName = document.querySelectorAll('[data-top-deal-name]');
+            const chipSaving = document.querySelectorAll('[data-top-deal-meta]');
             const t = top.title || '';
-            if (chipName) chipName.textContent = t.length > 10 ? t.slice(0, 10) + '…' : t;
-            if (chipSaving) chipSaving.textContent = typeof top.daysLeft === 'number' && top.daysLeft >= 0 ? `D-${top.daysLeft} 마감` : top.brand;
+            chipName.forEach(el => el.textContent = t.length > 10 ? t.slice(0, 10) + '…' : t);
+            chipSaving.forEach(el => el.textContent = typeof top.daysLeft === 'number' && top.daysLeft >= 0 ? `D-${top.daysLeft} 마감` : top.brand);
         }
 
         // ── 주변 카페 행사 미리보기 ────────────────────────────────────────
