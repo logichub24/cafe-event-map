@@ -118,15 +118,16 @@
         .tab-page.active { display: flex; }
         .tab-page.active .tab-modal-bg { display: none; }
         .tab-page.active {
-            position: fixed; inset: 0 0 var(--nav-space) 0; z-index: 6000;
+            position: fixed; inset: 0; z-index: 6000;
         }
         .tab-page.active .tab-modal-content {
-            height: 100%; border-radius: 0; box-shadow: none; transform: none;
+            height: 100%; padding-bottom: var(--nav-space); box-sizing: border-box;
+            border-radius: 0; box-shadow: none; transform: none;
         }
 
         #app-container > nav { position: fixed; z-index: 7000; }
         @media (min-width: 431px) {
-            .tab-page.active { left: 50%; right: auto; width: 390px; transform: translateX(-50%); top: 4vh; bottom: calc(4vh + var(--nav-space)); }
+            .tab-page.active { left: 50%; right: auto; width: 390px; transform: translateX(-50%); top: 4vh; bottom: 4vh; }
             #app-container > nav { left: calc(50% - 195px) !important; right: auto !important; width: 366px; bottom: calc(4vh + var(--nav-gap) + var(--safe-b)) !important; }
         }
 
