@@ -799,7 +799,7 @@
         <!-- 전체 딜 목록 모달 -->
         <div id="allDealsModal" class="tab-page">
             <div class="tab-modal-content">
-                <div class="flex overflow-x-auto hide-scrollbar px-3 py-3 gap-2 border-b border-gray-100 bg-white shrink-0">
+                <div class="flex overflow-x-auto hide-scrollbar px-3 py-2 gap-2 border-b border-gray-100 bg-white shrink-0">
                     <button onclick="openTabModal('top10Modal', 'top10')" class="bg-white border border-gray-100 rounded-full pl-1 pr-3 py-1 flex items-center gap-1.5 shadow-sm shrink-0 hover:bg-gray-50 active:scale-95 transition">
                         <div class="w-6 h-6 rounded-full bg-yellow-100 flex items-center justify-center text-[10px]">🥇</div>
                         <div class="text-left flex flex-col"><span class="text-[10px] font-black text-gray-900 leading-none mt-0.5">진행중 행사</span><span class="active-deal-count text-[8px] text-blue-600 font-bold leading-none mt-1">0개</span></div>
@@ -815,10 +815,10 @@
                 </div>
                 <!-- 브랜드 / 유형 필터를 각각 한 줄씩. 한 줄에 몰면 다음 그룹 버튼이 잘려 보인다. -->
                 <div class="border-b border-gray-100 shrink-0 bg-white">
-                    <div class="px-3 pt-2 text-[10px] font-black text-gray-400">브랜드</div>
-                    <div id="allDealsFilterBar" class="flex gap-2 px-3 pt-1 pb-1.5 overflow-x-auto hide-scrollbar items-center"></div>
-                    <div class="px-3 pt-1 text-[10px] font-black text-gray-400">혜택</div>
-                    <div id="allDealsTypeBar" class="flex gap-2 px-3 pt-1 pb-2 overflow-x-auto hide-scrollbar items-center"></div>
+                    <div class="px-3 pt-1.5 text-[10px] font-black text-gray-400">브랜드</div>
+                    <div id="allDealsFilterBar" class="flex gap-2 px-3 pt-0.5 pb-1 overflow-x-auto hide-scrollbar items-center"></div>
+                    <div class="px-3 pt-0.5 text-[10px] font-black text-gray-400">혜택</div>
+                    <div id="allDealsTypeBar" class="flex gap-2 px-3 pt-0.5 pb-1.5 overflow-x-auto hide-scrollbar items-center"></div>
                 </div>
                 <div class="flex-1 overflow-y-auto p-2 pb-4 space-y-2" id="allDealsList"></div>
             </div>
