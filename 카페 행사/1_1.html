@@ -302,11 +302,17 @@
             <div id="mapFilterBar" class="flex overflow-x-auto hide-scrollbar px-3 gap-1.5 pointer-events-auto pb-1 items-center"></div>
             <!-- 실시간 날씨 칩 -->
             <div id="weatherBar" class="px-3 pb-2 pointer-events-auto hidden">
-                <div class="inline-flex items-center gap-1.5 bg-white/95 rounded-full px-3 py-1 shadow-sm border border-gray-100">
+                <button type="button" onclick="toggleWeatherPopover()" aria-expanded="false" aria-controls="weatherPopover" class="inline-flex items-center gap-1.5 bg-white/95 rounded-full px-3 py-1 shadow-sm border border-gray-100 active:scale-95 transition">
                     <span id="weatherIcon" class="text-sm weather-icon-anim">🌤</span>
                     <span id="weatherTemp" class="text-[11px] font-black text-gray-800">--°C</span>
                     <span class="w-px h-3 bg-gray-200"></span>
                     <span id="weatherDesc" class="text-[10px] font-medium text-gray-400">날씨 확인 중</span>
+                </button>
+                <div id="weatherPopover" class="hidden mt-2 w-[270px] max-w-[calc(100vw-32px)] rounded-2xl border border-gray-200 bg-white p-3.5 shadow-lg">
+                    <div id="weatherPopoverTitle" class="text-[13px] font-black text-gray-800"></div>
+                    <p id="weatherPopoverMessage" class="mt-1 text-[12px] font-medium text-gray-500"></p>
+                    <div id="weatherRecommendationList" class="mt-2 space-y-1 text-[13px] font-semibold text-gray-700"></div>
+                    <button id="weatherEventsButton" type="button" onclick="showWeatherEvents()" class="mt-3 hidden text-[11px] font-black text-blue-600">관련 행사 보기 〉</button>
                 </div>
             </div>
         </div>
@@ -1114,8 +1120,12 @@
             renderMapFilterBar();
             renderStaticBrandFilters();
             showEventsPage();
-            document.getElementById('map').addEventListener('mousedown', closeSheet);
-            document.getElementById('map').addEventListener('touchstart', closeSheet);
+            const closeMapOverlays = event => {
+                if (event.target.closest('#weatherBar')) return;
+                closeSheet(); closeWeatherPopover();
+            };
+            document.getElementById('map').addEventListener('mousedown', closeMapOverlays);
+            document.getElementById('map').addEventListener('touchstart', closeMapOverlays);
             window.addEventListener('resize', () => { if(map) map.invalidateSize(); });
             // 온보딩은 진입 시 자동으로 띄우지 않는다.
             // 토스 심사에서 "접속 직후 화면을 덮는 것이 자동 노출"은 다크패턴으로 반려된다.
@@ -1572,6 +1582,7 @@
         function openTabPage(id, navId) {
             window.aitLog?.('click', { log_name: 'tab_open', tab: navId });
             closeSheet();
+            closeWeatherPopover();
             hideAllTabModals();
             document.getElementById(id).classList.add('active');
             setActiveNav(navId);
@@ -2491,12 +2502,14 @@ function ddayBadge(d) {
         }
 
         function setAllDealsFilterBrand(value) {
+            weatherEventKeywords = null;
             if (value !== null && value !== allDealsFilterBrand && typeof onBrandChanged === 'function') onBrandChanged();
             allDealsFilterBrand = value;
             renderAllDealsFilterBar();
             renderAllDeals();
         }
         function setAllDealsFilterType(value) {
+            weatherEventKeywords = null;
             allDealsFilterType = value;
             renderAllDealsFilterBar();
             renderAllDeals();
@@ -2523,6 +2536,7 @@ function ddayBadge(d) {
         function renderAllDeals() {
             const list = document.getElementById('allDealsList');
             let items = [...MASTER_DB].sort((a, b) => dealSortKey(a) - dealSortKey(b));
+            if (weatherEventKeywords) items = weatherRelatedEvents(weatherEventKeywords);
             if (allDealsFilterBrand) items = items.filter(p => p.brand === allDealsFilterBrand);
             if (allDealsFilterType) items = items.filter(p => p.category === allDealsFilterType);
             if (!allDealsFilterBrand) items = diversifyBrands(items);
@@ -2530,7 +2544,8 @@ function ddayBadge(d) {
                 list.innerHTML = `<div class="p-8 text-center text-gray-400 font-medium">해당 조건의 상품이 없습니다.</div>`;
                 return;
             }
-            list.innerHTML = items.map(p => createProductHTML(p, 'search', allDealsFilterBrand)).join('');
+            const weatherHead = weatherEventKeywords ? `<div class="px-1 pb-1 text-[11px] font-black text-blue-600">☀️ 날씨 맞춤 행사 ${items.length}개</div>` : '';
+            list.innerHTML = weatherHead + items.map(p => createProductHTML(p, 'search', allDealsFilterBrand)).join('');
         }
 
         // ──────────────────────────────────────────────────────────────────
@@ -2811,6 +2826,48 @@ function ddayBadge(d) {
             document.getElementById('weatherTemp').textContent = `${w.temp}°C`;
             document.getElementById('weatherDesc').textContent = info.label;
             document.getElementById('weatherBar').classList.remove('hidden');
+        }
+
+        let weatherEventKeywords = null;
+        function getWeatherRecommendation(w) {
+            const hour = new Date().getHours();
+            let result;
+            if (w.temp >= 33) result = { message:'아주 더운 날, 시원한 메뉴가 잘 어울려요', menus:['🍋 에이드','🥭 스무디','🍧 빙수'], keywords:['에이드','스무디','프라페','블렌디드','빙수','아이스'] };
+            else if (w.temp >= 27) result = { message:'더운 날엔 시원하고 가벼운 메뉴를 추천해요', menus:['🧊 아이스 아메리카노','🍋 에이드','🫘 콜드브루'], keywords:['아이스','아메리카노','에이드','콜드브루','스무디'] };
+            else if (w.temp >= 23) result = { message:'가볍게 즐기기 좋은 날씨예요', menus:['🧊 아이스 커피','🍵 티','✨ 시즌 음료'], keywords:['아이스','커피','티','시즌'] };
+            else if (w.temp >= 18) result = { message:'커피와 디저트 즐기기 좋은 날씨예요', menus:['☕ 아메리카노','🥛 카페라떼','🍰 디저트'], keywords:['아메리카노','라떼','디저트','케이크'] };
+            else if (w.temp >= 13) result = { message:'조금 쌀쌀해요. 따뜻한 메뉴가 좋아요', menus:['☕ 따뜻한 아메리카노','🥛 카페라떼','🍵 차'], keywords:['아메리카노','라떼','티','차'] };
+            else result = { message:'추운 날, 따뜻한 한 잔을 추천해요', menus:['🍫 핫초코','🥛 따뜻한 라떼','🧋 밀크티'], keywords:['핫초코','라떼','밀크티','티'] };
+            const info = wmoInfo(w.code);
+            if (info.label.includes('눈')) return { message:'눈 오는 날, 따뜻하고 달콤한 메뉴를 추천해요', menus:['🍫 핫초코','🥛 카페라떼','✨ 시즌 메뉴'], keywords:['핫초코','라떼','시즌','디저트'] };
+            if (w.rain && w.temp < 27) return { message:'비 오는 날엔 따뜻한 커피와 디저트가 좋아요', menus:['🥛 카페라떼','☕ 아메리카노','🍰 디저트'], keywords:['라떼','아메리카노','디저트','케이크'] };
+            if (hour >= 22) result.message = '늦은 시간엔 가볍게 즐길 메뉴를 골라봤어요';
+            else if (hour >= 5 && hour <= 10) result.message = '하루를 시작하기 좋은 메뉴를 골라봤어요';
+            return result;
+        }
+
+        function weatherRelatedEvents(keywords) { return MASTER_DB.filter(p => keywords.some(k => `${p.title || ''} ${p.category || ''}`.toLowerCase().includes(k.toLowerCase()))); }
+
+        function toggleWeatherPopover() {
+            const w = window._weatherData, popover = document.getElementById('weatherPopover');
+            if (!w) return;
+            if (!popover.classList.contains('hidden')) return closeWeatherPopover();
+            const recommendation = getWeatherRecommendation(w), info = wmoInfo(w.code), related = weatherRelatedEvents(recommendation.keywords);
+            document.getElementById('weatherPopoverTitle').textContent = `${info.icon} ${w.temp}°C · ${info.label}`;
+            document.getElementById('weatherPopoverMessage').textContent = recommendation.message;
+            document.getElementById('weatherRecommendationList').innerHTML = recommendation.menus.map(menu => `<div>${menu}</div>`).join('');
+            const cta = document.getElementById('weatherEventsButton');
+            cta.textContent = `관련 행사 ${related.length}개 보기 〉`; cta.classList.toggle('hidden', related.length === 0);
+            weatherEventKeywords = recommendation.keywords;
+            popover.classList.remove('hidden'); document.querySelector('#weatherBar button').setAttribute('aria-expanded', 'true');
+        }
+
+        function closeWeatherPopover() { document.getElementById('weatherPopover')?.classList.add('hidden'); document.querySelector('#weatherBar button')?.setAttribute('aria-expanded', 'false'); }
+
+        function showWeatherEvents() {
+            if (!weatherEventKeywords) return;
+            allDealsFilterBrand = null; allDealsFilterType = null;
+            closeWeatherPopover(); showEventsPage();
         }
 
         function weatherScore(deal) {
