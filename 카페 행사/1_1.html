@@ -277,10 +277,8 @@
                 <button onclick="openTabModal('top10Modal', 'top10')" class="bg-white border border-gray-100 rounded-full pl-1 pr-3 py-1 flex items-center gap-1.5 shadow-sm shrink-0 hover:bg-gray-50 active:scale-95 transition">
                     <div class="w-6 h-6 rounded-full bg-yellow-100 flex items-center justify-center text-[10px]">🥇</div>
                     <div class="text-left flex flex-col">
-                        <!-- updateTopDealChip이 실데이터로 덮어쓴다. 로드 전·실패 시 보이는 문구라
-                             지어낸 상품명을 두지 않는다(옛 편의점 앱 잔재 '하겐다즈 파인트/15,900원 절약'을 걷어냄). -->
-                        <span data-top-deal-name class="text-[10px] font-black text-gray-900 leading-none mt-0.5">마감 임박 행사</span>
-                        <span data-top-deal-meta class="text-[8px] text-blue-600 font-bold leading-none mt-1">불러오는 중</span>
+                        <span class="text-[10px] font-black text-gray-900 leading-none mt-0.5">진행중 행사</span>
+                        <span class="active-deal-count text-[8px] text-blue-600 font-bold leading-none mt-1">0개</span>
                     </div>
                 </button>
                 <button onclick="openTabModal('allDealsModal', 'alldeals')" class="bg-white border border-gray-100 rounded-full pl-1 pr-3 py-1 flex items-center gap-1.5 shadow-sm shrink-0 hover:bg-gray-50 active:scale-95 transition">
@@ -804,7 +802,7 @@
                 <div class="flex overflow-x-auto hide-scrollbar px-3 py-3 gap-2 border-b border-gray-100 bg-white shrink-0">
                     <button onclick="openTabModal('top10Modal', 'top10')" class="bg-white border border-gray-100 rounded-full pl-1 pr-3 py-1 flex items-center gap-1.5 shadow-sm shrink-0 hover:bg-gray-50 active:scale-95 transition">
                         <div class="w-6 h-6 rounded-full bg-yellow-100 flex items-center justify-center text-[10px]">🥇</div>
-                        <div class="text-left flex flex-col"><span data-top-deal-name class="text-[10px] font-black text-gray-900 leading-none mt-0.5">마감 임박 행사</span><span data-top-deal-meta class="text-[8px] text-blue-600 font-bold leading-none mt-1">불러오는 중</span></div>
+                        <div class="text-left flex flex-col"><span class="text-[10px] font-black text-gray-900 leading-none mt-0.5">진행중 행사</span><span class="active-deal-count text-[8px] text-blue-600 font-bold leading-none mt-1">0개</span></div>
                     </button>
                     <button onclick="showEventsPage()" class="bg-white border border-gray-100 rounded-full pl-1 pr-3 py-1 flex items-center gap-1.5 shadow-sm shrink-0 hover:bg-gray-50 active:scale-95 transition">
                         <div class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center text-[10px]">✨</div>
@@ -1216,6 +1214,8 @@
         function updateDashboardCounts() {
             const newCount = MASTER_DB.filter(p => p.isNew).length;
             const endingCount = MASTER_DB.filter(p => p.daysLeft === 0).length;
+            const activeCount = MASTER_DB.filter(p => p.daysLeft === null || p.daysLeft >= 0).length;
+            document.querySelectorAll('.active-deal-count').forEach(el => el.innerText = `${activeCount}개`);
             document.querySelectorAll('.new-deal-count').forEach(el => el.innerText = `${newCount}개`);
             document.querySelectorAll('.ending-deal-count').forEach(el => el.innerText = `${endingCount}개`);
         }
@@ -1829,8 +1829,7 @@ function ddayBadge(d) {
                     <div class="flex items-center gap-1.5 mb-2">
                         <span class="font-black text-[12px] text-gray-800">${brand}</span>
                         <span class="${ts.cls} text-white text-[9px] font-black px-1.5 py-0.5 rounded">${ts.emoji} ${cat}</span>
-                        ${product.isNew ? '<span class="bg-emerald-50 text-emerald-600 text-[9px] font-black px-1.5 py-0.5 rounded">NEW</span>' : ''}
-                        <span class="ml-auto">${ddayBadge(product)}</span>
+                        <span class="ml-auto">${ddayBadge(product) || (product.isNew ? '<span class="bg-emerald-50 text-emerald-600 text-[9px] font-black px-1.5 py-0.5 rounded">NEW</span>' : '')}</span>
                         <button aria-label="찜하기" onclick="event.stopPropagation(); toggleLike('${product.id}')" class="w-7 h-7 bg-gray-50 rounded-full flex items-center justify-center"><i class="${heartCls} text-xs"></i></button>
                     </div>
                     <h4 class="font-black text-[15px] text-gray-900 leading-snug line-clamp-2">${product.title || ''}</h4>
@@ -2158,21 +2157,14 @@ function ddayBadge(d) {
 
         // ── 신규 기능 함수들 ──────────────────────────────────────────────
 
-        // isNew 보정.
-        // 크롤러가 실제 시작일로 계산한 isNew를 우선한다. 시작일이 없는 행사만
-        // "이전 방문 때 없던 항목"인지로 판단한다.
-        // (예전엔 무조건 덮어써서, 한 달 전 시작한 행사도 브랜드가 새로 추가되면 NEW가 됐다)
+        // NEW는 실제 시작일 기준 3일 이내만 표시한다.
         function computeIsNew() {
             try {
-                const knownKey = 'cvs_knownProductIds';
-                const known = new Set(JSON.parse(localStorage.getItem(knownKey) || '[]'));
-                if (known.size > 0) {
-                    MASTER_DB.forEach(p => {
-                        if (p.startDate) return;              // 시작일이 있으면 크롤러 판정을 신뢰
-                        if (!known.has(p.id)) p.isNew = true;  // 시작일 미상일 때만 신규로 표시
-                    });
-                }
-                localStorage.setItem(knownKey, JSON.stringify(MASTER_DB.map(p => p.id)));
+                const today = kstDay(Date.now());
+                MASTER_DB.forEach(p => {
+                    const start = p.startDate ? new Date(p.startDate + 'T00:00:00+09:00') : null;
+                    p.isNew = !!start && !isNaN(start) && today - kstDay(start.getTime()) >= 0 && today - kstDay(start.getTime()) <= 3;
+                });
             } catch(e) {}
         }
 
