@@ -114,12 +114,14 @@
         .tab-modal.active .tab-modal-content { transform: translateY(0); }
 
         /* 하단 탭은 시트가 아닌 전체 화면 페이지로 연다. */
+        .tab-page { display: none; }
+        .tab-page.active { display: flex; }
         .tab-page.active .tab-modal-bg { display: none; }
         .tab-page.active {
             position: fixed; inset: 0 0 var(--nav-space) 0; z-index: 6000;
         }
         .tab-page.active .tab-modal-content {
-            height: 100%; border-radius: 0; box-shadow: none;
+            height: 100%; border-radius: 0; box-shadow: none; transform: none;
         }
 
         #app-container > nav { position: fixed; z-index: 7000; }
@@ -371,15 +373,15 @@
                 <i class="fa-solid fa-map-location-dot text-[18px] mb-1"></i>
                 <span class="text-[9px] font-black tracking-tight">지도</span>
             </button>
-            <button id="nav-search" onclick="openTabModal('searchModal', 'search')" class="nav-btn flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-gray-900 transition">
+            <button id="nav-search" onclick="openTabPage('searchModal', 'search')" class="nav-btn flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-gray-900 transition">
                 <i class="fa-solid fa-magnifying-glass text-[18px] mb-1 text-indigo-500"></i>
                 <span class="text-[9px] font-bold tracking-tight text-indigo-600">검색</span>
             </button>
-            <button id="nav-nearby" onclick="openTabModal('nearbyRankingModal', 'nearby')" class="nav-btn flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-gray-900 transition">
+            <button id="nav-nearby" onclick="openTabPage('nearbyRankingModal', 'nearby')" class="nav-btn flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-gray-900 transition">
                 <i class="fa-solid fa-store text-[18px] mb-1"></i>
                 <span class="text-[9px] font-bold tracking-tight">주변랭킹</span>
             </button>
-            <button id="nav-wishlist" onclick="openTabModal('wishlistModal', 'wishlist')" class="nav-btn flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-gray-900 transition relative">
+            <button id="nav-wishlist" onclick="openTabPage('wishlistModal', 'wishlist')" class="nav-btn flex flex-col items-center justify-center w-full h-full text-gray-400 hover:text-gray-900 transition relative">
                 <i class="fa-solid fa-heart text-[18px] mb-1"></i>
                 <span class="text-[9px] font-bold tracking-tight">찜목록</span>
                 <span id="wishBadge" class="absolute top-1.5 right-[15px] bg-rose-500 text-white text-[8px] font-bold w-3.5 h-3.5 flex items-center justify-center rounded-full hidden shadow-sm ring-1 ring-white">0</span>
@@ -396,7 +398,7 @@
 
 
         <!-- 1. 비교검색 모달 -->
-        <div id="searchModal" class="tab-modal tab-page">
+        <div id="searchModal" class="tab-page">
             <div class="tab-modal-bg" onclick="goHome()"></div>
             <div class="tab-modal-content">
                 <div class="p-4 border-b border-gray-100 flex items-center gap-3 bg-white sticky top-0 z-20 shrink-0 rounded-t-[24px]">
@@ -424,7 +426,7 @@
         </div>
 
         <!-- 2. 찜목록 모달 -->
-        <div id="wishlistModal" class="tab-modal tab-page">
+        <div id="wishlistModal" class="tab-page">
             <div class="tab-modal-bg" onclick="goHome()"></div>
             <div class="tab-modal-content">
                 <div class="p-4 border-b border-gray-100 flex items-center gap-3 bg-white sticky top-0 z-20 shrink-0 rounded-t-[24px]">
@@ -448,7 +450,7 @@
         </div>
 
         <!-- 3. 주변랭킹 모달 -->
-        <div id="nearbyRankingModal" class="tab-modal tab-page">
+        <div id="nearbyRankingModal" class="tab-page">
             <div class="tab-modal-bg" onclick="goHome()"></div>
             <div class="tab-modal-content">
                 <div class="p-4 border-b border-gray-100 flex items-center gap-3 bg-white sticky top-0 z-20 shrink-0 rounded-t-[24px]">
@@ -802,7 +804,7 @@
         </div>
 
         <!-- 전체 딜 목록 모달 -->
-        <div id="allDealsModal" class="tab-modal tab-page">
+        <div id="allDealsModal" class="tab-page">
             <div class="tab-modal-bg" onclick="goHome()"></div>
             <div class="tab-modal-content">
                 <div class="p-4 border-b border-gray-100 flex items-center gap-3 bg-white sticky top-0 z-20 shrink-0 rounded-t-[24px]">
@@ -1559,6 +1561,19 @@
             else if(id === 'allDealsModal') renderAllDeals();
         }
 
+        function openTabPage(id, navId) {
+            window.aitLog?.('click', { log_name: 'tab_open', tab: navId });
+            closeSheet();
+            hideAllTabModals();
+            document.getElementById(id).classList.add('active');
+            setActiveNav(navId);
+
+            if(id === 'searchModal') setTimeout(() => document.getElementById('searchInput').focus(), 100);
+            else if(id === 'wishlistModal') renderWishlist();
+            else if(id === 'nearbyRankingModal') renderNearbyRanking();
+            else if(id === 'allDealsModal') renderAllDeals();
+        }
+
         function goHome() {
             hideAllTabModals();
             closeSheet();
@@ -1566,7 +1581,7 @@
         }
 
         function showEventsPage() {
-            openTabModal('allDealsModal', 'alldeals');
+            openTabPage('allDealsModal', 'alldeals');
         }
 
         // 매장 편의정보 메타(칩·필터 공용). key는 store.services의 키. (대형약국 앱의 3-state 패턴 이식)
