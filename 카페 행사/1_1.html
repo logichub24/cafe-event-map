@@ -1028,7 +1028,8 @@
         const LIVE_DATA_URL = 'https://logichub24.github.io/cafe-event-map/';
 
         async function fetchData(path, opts) {
-            for (const base of [LIVE_DATA_URL, '']) {
+            const bases = location.hostname === 'localhost' ? ['', LIVE_DATA_URL] : [LIVE_DATA_URL, ''];
+            for (const base of bases) {
                 try {
                     const res = await fetch(base + path, opts);
                     if (res.ok) return await res.json();
