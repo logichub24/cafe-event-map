@@ -278,8 +278,8 @@
                 <button onclick="openTabModal('top10Modal', 'top10')" class="bg-white border border-gray-100 rounded-full pl-1 pr-3 py-1 flex items-center gap-1.5 shadow-sm shrink-0 hover:bg-gray-50 active:scale-95 transition">
                     <div class="w-6 h-6 rounded-full bg-yellow-100 flex items-center justify-center text-[10px]">🥇</div>
                     <div class="text-left flex flex-col">
-                        <span class="text-[10px] font-black text-gray-900 leading-none mt-0.5">진행중 행사</span>
-                        <span class="active-deal-count text-[8px] text-blue-600 font-bold leading-none mt-1">0개</span>
+                        <span class="text-[10px] font-black text-gray-900 leading-none mt-0.5">진행 중 행사</span>
+                        <span class="active-deal-count text-[10px] text-blue-600 font-black leading-none mt-1">0개</span>
                     </div>
                 </button>
                 <button onclick="openTabModal('allDealsModal', 'alldeals')" class="bg-white border border-gray-100 rounded-full pl-1 pr-3 py-1 flex items-center gap-1.5 shadow-sm shrink-0 hover:bg-gray-50 active:scale-95 transition">
@@ -803,7 +803,7 @@
                 <div class="flex overflow-x-auto hide-scrollbar px-3 py-2 gap-2 border-b border-gray-100 bg-white shrink-0">
                     <button onclick="openTabModal('top10Modal', 'top10')" class="bg-white border border-gray-100 rounded-full pl-1 pr-3 py-1 flex items-center gap-1.5 shadow-sm shrink-0 hover:bg-gray-50 active:scale-95 transition">
                         <div class="w-6 h-6 rounded-full bg-yellow-100 flex items-center justify-center text-[10px]">🥇</div>
-                        <div class="text-left flex flex-col"><span class="text-[10px] font-black text-gray-900 leading-none mt-0.5">진행중 행사</span><span class="active-deal-count text-[8px] text-blue-600 font-bold leading-none mt-1">0개</span></div>
+                        <div class="text-left flex flex-col"><span class="text-[10px] font-black text-gray-900 leading-none mt-0.5">진행 중 행사</span><span class="active-deal-count text-[10px] text-blue-600 font-black leading-none mt-1">0개</span></div>
                     </button>
                     <button onclick="showEventsPage()" class="bg-white border border-gray-100 rounded-full pl-1 pr-3 py-1 flex items-center gap-1.5 shadow-sm shrink-0 hover:bg-gray-50 active:scale-95 transition">
                         <div class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center text-[10px]">✨</div>
@@ -2386,7 +2386,7 @@ function ddayBadge(d) {
                 html += `<button onclick="${fnName}('${b}')" class="px-2.5 py-1 rounded-full text-[11px] font-black shrink-0 border shadow-sm" style="${active ? brandChipStyle(b) + ';border-color:transparent' : 'background:#fff;color:' + inactiveColor + ';border-color:#e5e7eb'}">${brandLabel(b)}</button>`;
             });
             const pickerActive = activeBrand && !FILTER_BAR_BRANDS.includes(activeBrand);
-            html += `<button onclick="openBrandPicker('${fnName}')" class="px-2.5 py-1 rounded-full text-[11px] font-black shrink-0 border inline-flex items-center gap-1 ${pickerActive ? 'bg-gray-900 text-white border-gray-900' : 'bg-white text-gray-500 border-gray-200'}"><i class="fa-solid fa-sliders text-[10px]"></i>브랜드</button>`;
+            html += `<button onclick="openBrandPicker('${fnName}')" class="px-2.5 py-1 rounded-full text-[11px] font-black shrink-0 border inline-flex items-center gap-1 ${pickerActive ? 'bg-gray-900 text-white border-gray-900' : 'bg-white text-gray-500 border-gray-200'}">+ 브랜드</button>`;
             return html;
         }
 
