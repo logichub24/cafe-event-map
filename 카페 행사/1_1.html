@@ -1029,15 +1029,13 @@
             loadStoresInRadius();
         }
 
-        // 행사·매장 데이터는 매일 04시 크론이 GitHub Pages에만 갱신한다.
-        // 토스인앱 번들(.ait)은 build-toss.js가 넣은 빌드 시점 사본을 품고 있어서,
-        // 상대경로로만 읽으면 재배포하기 전까지 배포한 날 데이터에 멈춘다.
-        // → Pages 최신본을 먼저 받고, 실패하면 번들 사본(상대경로)으로 폴백한다.
-        //   Pages에서 열 때는 동일 출처라 그대로 동작하고, 네트워크가 끊겨도 마지막 배포분은 보여준다.
+        // 배포본에 포함된 행사·매장 데이터를 우선 사용한다.
+        // 그래야 QR 테스트와 실제 .ait가 같은 데이터를 표시한다.
+        // 상대경로를 읽을 수 없는 환경에서만 GitHub Pages를 폴백으로 사용한다.
         const LIVE_DATA_URL = 'https://logichub24.github.io/cafe-event-map/';
 
         async function fetchData(path, opts) {
-            const bases = location.hostname === 'localhost' ? ['', LIVE_DATA_URL] : [LIVE_DATA_URL, ''];
+            const bases = ['', LIVE_DATA_URL];
             for (const base of bases) {
                 try {
                     const res = await fetch(base + path, opts);
