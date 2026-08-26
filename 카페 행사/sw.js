@@ -1,6 +1,6 @@
 // 배포할 때마다 올린다. activate가 이 이름과 다른 캐시만 지우므로,
 // 안 올리면 앱 코드(index.html/ads.js) 업데이트가 기존 사용자에게 영영 가지 않는다.
-const CACHE = 'cafe-v2';
+const CACHE = 'cafe-v3';
 
 // build-toss.js가 1_1.html을 index.html로 복사한다. 예전에는 여기가 './1_1.html'이라
 // 배포본에 없는 파일을 요구했고, cross-origin CDN까지 섞여 있어 addAll이 통째로 거부됐다.
