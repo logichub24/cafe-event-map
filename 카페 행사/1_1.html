@@ -1443,7 +1443,6 @@
         function closeSettings() {
             document.getElementById('settingsModal').classList.add('hidden');
             document.getElementById('settingsModal').classList.remove('flex');
-            goHome();
         }
 
         function resetWishlist() {
@@ -3048,7 +3047,6 @@ function ddayBadge(d) {
         }
 
         function openSettings() {
-            hideAllTabModals();
             document.getElementById('settingsModal').classList.remove('hidden');
             document.getElementById('settingsModal').classList.add('flex');
             // 알림 권한 버튼 상태 동기화
