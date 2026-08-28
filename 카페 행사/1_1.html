@@ -535,42 +535,6 @@
         </div>
 
         <!-- 내 지갑(저금통) 모달 -->
-        <div id="savingsModal" class="absolute inset-0 bg-black/70 ui-overlay hidden flex-col items-center justify-center p-4 z-[6000]">
-            <div class="bg-white rounded-[2rem] w-full max-w-sm overflow-hidden shadow-2xl transform transition-all border border-gray-200">
-                <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-6 text-center relative border-b border-gray-700">
-                    <button onclick="closeSavings()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition"><i class="fa-solid fa-xmark text-xl"></i></button>
-                    <div class="w-16 h-16 bg-gray-700 rounded-full mx-auto flex items-center justify-center text-3xl mb-3 shadow-inner border border-gray-600">🐷</div>
-                    <h3 class="text-gray-300 text-sm font-bold">나의 누적 카페 할인 절약액</h3>
-                    <p class="text-white text-3xl font-black mt-1"><span id="totalSaved">0</span><span class="text-xl font-bold text-gray-400 ml-1">원</span></p>
-                </div>
-                <div class="overflow-y-auto hide-scrollbar flex flex-col bg-gray-50" style="max-height:60vh">
-                    <div class="p-5 flex flex-col gap-3">
-                    <!-- 이번 주 행사 캘린더 -->
-                    <div id="weekCalendarBox" class="w-full bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
-                        <p class="text-xs font-black text-gray-500 mb-3 flex items-center gap-1.5"><i class="fa-solid fa-calendar-week text-blue-500"></i> 이번 주 행사 캘린더</p>
-                        <div id="weekCalendar" class="flex gap-1 justify-between"></div>
-                        <p class="text-[10px] text-gray-400 mt-2 text-center">카페 행사 정보는 매일 갱신됩니다</p>
-                    </div>
-                    <div id="dailyChartBox" class="w-full bg-white rounded-2xl p-4 shadow-sm border border-gray-100 hidden">
-                        <p class="text-xs font-black text-gray-500 mb-3">최근 7일 절약 현황</p>
-                        <div id="dailyChart" class="flex items-end gap-1 h-16"></div>
-                    </div>
-                    <div class="w-full bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex flex-col" style="max-height:180px">
-                        <h4 class="text-sm font-bold text-gray-800 border-b pb-2 mb-3 flex justify-between items-center shrink-0">
-                            <span>최근 담은 내역</span>
-                            <button onclick="clearSavings()" class="text-[10px] bg-gray-100 text-gray-500 px-2 py-1 rounded hover:bg-red-50 hover:text-red-500 transition font-bold">내역 초기화</button>
-                        </h4>
-                        <ul id="savingsHistory" class="space-y-3 overflow-y-auto flex-1 pr-2 hide-scrollbar">
-                            <li class="text-center text-xs text-gray-400 py-4">상품의 [+] 버튼을 눌러 담아보세요.</li>
-                        </ul>
-                    </div>
-                    <button onclick="closeSavings()" class="w-full py-3.5 bg-gray-900 text-white font-bold rounded-xl shadow-md shrink-0 hover:bg-gray-800 active:scale-95 transition">확인 완료</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 첫 실행 온보딩: 행사 데이터 특성 안내 -->
         <div id="onboardingModal" class="absolute inset-0 bg-black/70 hidden flex-col items-center justify-center p-5 z-[7000]">
             <div class="bg-white rounded-[2rem] w-full max-w-sm overflow-hidden shadow-2xl">
                 <div class="bg-gradient-to-br from-emerald-600 to-green-700 p-6 text-center">
@@ -669,9 +633,8 @@
                     </div>
                     <div>
                         <p class="text-sm font-bold text-gray-800 mb-2">내 데이터</p>
-                        <div class="grid grid-cols-2 gap-2">
+                        <div class="grid grid-cols-1 gap-2">
                             <button onclick="resetWishlist()" class="text-xs font-bold py-2.5 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 active:scale-95 transition">찜 목록 초기화</button>
-                            <button onclick="clearSavings()" class="text-xs font-bold py-2.5 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 active:scale-95 transition">절약 포인트 내역 초기화</button>
                         </div>
                     </div>
                     <div>
@@ -685,37 +648,6 @@
         </div>
 
         <!-- 월간 절약 리포트 모달 -->
-        <div id="monthlyReportModal" class="absolute inset-0 bg-black/70 hidden flex-col items-center justify-center p-5 z-[7500]">
-            <div class="bg-white rounded-[2rem] w-full max-w-sm overflow-hidden shadow-2xl">
-                <div class="bg-gradient-to-br from-indigo-600 to-blue-600 p-6 text-center relative">
-                    <div class="text-4xl mb-2">📊</div>
-                    <h3 class="text-white text-lg font-black" id="reportTitle">지난달 절약 리포트</h3>
-                    <p class="text-indigo-200 text-sm mt-1" id="reportMonth"></p>
-                </div>
-                <div class="p-6 space-y-4">
-                    <div class="bg-indigo-50 rounded-2xl p-4 text-center">
-                        <p class="text-xs text-indigo-400 font-bold">총 절약 금액</p>
-                        <p class="text-3xl font-black text-indigo-700 mt-1"><span id="reportTotalSavings">0</span><span class="text-lg font-bold text-indigo-400 ml-1">원</span></p>
-                    </div>
-                    <div class="grid grid-cols-2 gap-3">
-                        <div class="bg-gray-50 rounded-xl p-3 text-center">
-                            <p class="text-[10px] text-gray-400 font-bold">담은 상품 수</p>
-                            <p class="text-xl font-black text-gray-800 mt-1"><span id="reportItemCount">0</span><span class="text-sm text-gray-400 ml-0.5">개</span></p>
-                        </div>
-                        <div class="bg-gray-50 rounded-xl p-3 text-center">
-                            <p class="text-[10px] text-gray-400 font-bold">찜 목록</p>
-                            <p class="text-xl font-black text-gray-800 mt-1"><span id="reportLikedCount">0</span><span class="text-sm text-gray-400 ml-0.5">개</span></p>
-                        </div>
-                    </div>
-                    <p class="text-xs text-gray-500 text-center" id="reportMsg"></p>
-                </div>
-                <div class="px-6 pb-6">
-                    <button onclick="closeMonthlyReport()" class="w-full py-3.5 bg-gray-900 text-white font-bold rounded-xl shadow-md hover:bg-gray-800 active:scale-95 transition">확인 완료</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- 찜 한도 초과 리워드 팝업 -->
         <div id="wishLimitModal" class="absolute inset-0 bg-black/70 hidden flex-col items-center justify-center p-5 z-[7500]">
             <div class="bg-white rounded-[2rem] w-full max-w-sm overflow-hidden shadow-2xl">
                 <div class="bg-gradient-to-br from-rose-500 to-pink-600 p-6 text-center">
@@ -943,8 +875,7 @@
         const EVENT_TYPES = ['신메뉴', '쿠폰·할인', '이벤트', '시즌', '콜라보·굿즈', '멤버십·앱'];
 
         let map, activeStore = null, activeCategory = '전체';
-        let totalSavings = 0, likedItems = new Set(), purchasedHistory = [];
-        window.purchasedHistory = purchasedHistory; // ads.js(보상형 광고)에서 최근 적립 내역을 참조하기 위해 노출 
+        let likedItems = new Set();
         let storeMarkersData = [], mapMarkers = [];
         let isUserPanning = false, currentRadius = 500, searchCircle = null, dealTypeFilter = null;
         // 매장 상세를 열면 지도가 그 매장으로 날아간다(openStore의 flyTo).
@@ -1209,25 +1140,18 @@
 
         function loadSavedData() {
             try {
-                const savedSavings = localStorage.getItem('cvs_totalSavings');
-                if(savedSavings) totalSavings = parseInt(savedSavings);
-                const savedHistory = localStorage.getItem('cvs_history');
-                if(savedHistory) purchasedHistory = JSON.parse(savedHistory);
                 const savedLikes = localStorage.getItem('cvs_likes');
                 if(savedLikes) likedItems = new Set(JSON.parse(savedLikes));
                 const savedRecently = localStorage.getItem('cvs_recentlyViewed');
                 if(savedRecently) recentlyViewed = JSON.parse(savedRecently);
                 showNonBrandCafes = localStorage.getItem('cvs_showNonBrandCafes') === '1';
 
-                document.getElementById('totalSaved').textContent = totalSavings.toLocaleString();
                 updateBadgeUI();
             } catch(e) {}
         }
 
         function saveLocalData() {
             try {
-                localStorage.setItem('cvs_totalSavings', totalSavings);
-                localStorage.setItem('cvs_history', JSON.stringify(purchasedHistory));
                 localStorage.setItem('cvs_likes', JSON.stringify([...likedItems]));
             } catch(e) {}
         }
@@ -2052,51 +1976,6 @@ function ddayBadge(d) {
                 `;
             }).join('');
         }
-
-        function openSavings() {
-            hideAllTabModals();
-            document.getElementById('savingsModal').classList.remove('hidden');
-            document.getElementById('savingsModal').classList.add('flex');
-            setActiveNav('savings');
-            renderSavingsHistory();
-            renderDailySavingsChart();
-            renderWeekCalendar();
-        }
-        function closeSavings() { 
-            document.getElementById('savingsModal').classList.add('hidden'); 
-            document.getElementById('savingsModal').classList.remove('flex'); 
-            goHome();
-        }
-
-        function addSavings(amount, name, id) {
-            totalSavings += amount;
-            document.getElementById('totalSaved').textContent = totalSavings.toLocaleString();
-            purchasedHistory.unshift({name, amount});
-            if (id) addToRecentlyViewed(id);
-            recordDailySavings(amount);
-            saveLocalData();
-            showToast(`${amount.toLocaleString()}원을 절약했습니다!`);
-            renderSavingsHistory();
-        }
-
-        function clearSavings() {
-            // alert(), confirm() 금지 정책에 따라 즉시 삭제 및 토스트 알림으로 대체
-            totalSavings = 0; purchasedHistory = [];
-            document.getElementById('totalSaved').textContent = "0";
-            saveLocalData();
-            renderSavingsHistory();
-            showToast("지갑 내역이 모두 초기화되었습니다.");
-        }
-
-        function renderSavingsHistory() {
-            const ul = document.getElementById('savingsHistory');
-            if(purchasedHistory.length === 0) {
-                ul.innerHTML = '<li class="text-center text-xs text-gray-400 py-4">상품의 [+] 버튼을 눌러 담아보세요.</li>';
-                return;
-            }
-            ul.innerHTML = purchasedHistory.map(item => `<li class="flex justify-between items-center text-sm border-b border-gray-50 pb-2"><span class="text-gray-700 font-bold truncate pr-2">${item.name}</span><span class="text-blue-600 font-black shrink-0">+${item.amount.toLocaleString()}원</span></li>`).join('');
-        }
-
         const WISH_FREE_LIMIT = 10;
 
         function toggleLike(id) {
@@ -2144,36 +2023,6 @@ function ddayBadge(d) {
             if(likedItems.size > 0) { badge.innerText = likedItems.size; badge.classList.remove('hidden'); }
             else { badge.classList.add('hidden'); }
         }
-
-        function renderWeekCalendar() {
-            const cal = document.getElementById('weekCalendar');
-            if (!cal) return;
-            const today = new Date();
-            const dow = today.getDay(); // 0=일
-            // 이번 주 월요일부터 일요일까지
-            const monday = new Date(today);
-            monday.setDate(today.getDate() - (dow === 0 ? 6 : dow - 1));
-            const DAY_LABELS = ['월','화','수','목','금','토','일'];
-            const newCount = MASTER_DB.filter(p => p.isNew).length;
-            const endingCount = MASTER_DB.filter(p => p.daysLeft === 0).length;
-            cal.innerHTML = DAY_LABELS.map((label, i) => {
-                const d = new Date(monday);
-                d.setDate(monday.getDate() + i);
-                const isToday = d.toDateString() === today.toDateString();
-                const isMonday = i === 0;
-                const isSunday = i === 6;
-                let badge = '';
-                if (isMonday) badge = `<span class="text-[8px] text-blue-600 font-black leading-none mt-0.5 block">새행사<br>${newCount}개</span>`;
-                if (isSunday) badge = `<span class="text-[8px] text-rose-500 font-black leading-none mt-0.5 block">마감<br>${endingCount || MASTER_DB.length}개</span>`;
-                return `
-                <div class="flex-1 flex flex-col items-center py-1.5 rounded-xl ${isToday ? 'bg-blue-600 text-white' : 'bg-gray-50 text-gray-600'} min-w-0">
-                    <span class="text-[9px] font-bold">${label}</span>
-                    <span class="text-xs font-black mt-0.5">${d.getDate()}</span>
-                    ${badge}
-                </div>`;
-            }).join('');
-        }
-
         function applyDaysLeft() {
             // 예전엔 종료일이 없는 행사에 "이번 주 일요일까지"라는 마감일을 임의로 붙였다.
             // 브랜드가 공지하지 않은 마감일을 지어내는 것이라 제거했다.
@@ -2247,27 +2096,6 @@ function ddayBadge(d) {
         }
 
         // 절약 차트 렌더링
-        function renderDailySavingsChart() {
-            const box = document.getElementById('dailyChartBox');
-            const chartEl = document.getElementById('dailyChart');
-            try {
-                const stats = JSON.parse(localStorage.getItem('cvs_dailySavings') || '{}');
-                const entries = Object.entries(stats).sort((a, b) => a[0].localeCompare(b[0])).slice(-7);
-                if (entries.length === 0) { box.classList.add('hidden'); return; }
-                box.classList.remove('hidden');
-                const max = Math.max(...entries.map(([, v]) => v), 1);
-                chartEl.innerHTML = entries.map(([date, val]) => {
-                    const h = Math.max(4, Math.round((val / max) * 56));
-                    const label = date.slice(5); // MM-DD
-                    return `<div class="flex flex-col items-center flex-1 gap-1">
-                        <span class="text-[8px] font-bold text-blue-600">${val >= 1000 ? (val/1000).toFixed(1)+'k' : val}</span>
-                        <div class="w-full rounded-t-sm bg-blue-400" style="height:${h}px"></div>
-                        <span class="text-[8px] text-gray-400 font-medium">${label}</span>
-                    </div>`;
-                }).join('');
-            } catch(e) { box.classList.add('hidden'); }
-        }
-
         // 브랜드 검색 필터 토글
         let isListView = false, listViewBrand = null;
 
@@ -2903,38 +2731,6 @@ function ddayBadge(d) {
         }
 
         // ── 월간 절약 리포트 ───────────────────────────────────────────────
-        function maybeShowMonthlyReport() {
-            const now = new Date();
-            const thisMonth = `${now.getFullYear()}-${now.getMonth() + 1}`;
-            const lastShown = localStorage.getItem('cvs_reportShown');
-            if (lastShown === thisMonth) return;
-            // 전달 데이터가 있어야 리포트 의미 있음
-            if (totalSavings === 0 && purchasedHistory.length === 0) return;
-            localStorage.setItem('cvs_reportShown', thisMonth);
-
-            const prevMonth = now.getMonth() === 0 ? 12 : now.getMonth();
-            const prevYear = now.getMonth() === 0 ? now.getFullYear() - 1 : now.getFullYear();
-            document.getElementById('reportMonth').textContent = `${prevYear}년 ${prevMonth}월 활동 요약`;
-            document.getElementById('reportTotalSavings').textContent = totalSavings.toLocaleString();
-            document.getElementById('reportItemCount').textContent = purchasedHistory.length;
-            document.getElementById('reportLikedCount').textContent = likedItems.size;
-            const msgs = [
-                '이번 달도 알뜰하게 카페 즐기셨네요! 🎉',
-                '절약 습관이 쌓이고 있어요. 이번 달도 화이팅! 💪',
-                '꾸준한 행사 확인이 절약의 비결이에요 🏆',
-            ];
-            document.getElementById('reportMsg').textContent = msgs[prevMonth % msgs.length];
-            const modal = document.getElementById('monthlyReportModal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
-
-        function closeMonthlyReport() {
-            const modal = document.getElementById('monthlyReportModal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }
-
         // ── 알림(Service Worker Push) ──────────────────────────────────────
         let notifSettings = { newDeal: false, ending: false };
         let visitDays = new Set();
@@ -3054,10 +2850,6 @@ function ddayBadge(d) {
             updateTopDealChip();
             checkLikedChanges();
             maybeShowDdayBanner();
-            // 월간 리포트는 첫 실행 다음날 이후 월 변경 시 표시 (온보딩 직후 방해 안 함)
-            if (localStorage.getItem('cvs_onboarded')) {
-                setTimeout(maybeShowMonthlyReport, 1500);
-            }
             scheduleAllNotifications();
         }
     </script>
