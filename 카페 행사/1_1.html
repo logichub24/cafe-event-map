@@ -33,6 +33,9 @@
         }
 
         /* PC 환경 모바일 뷰어 시뮬레이션 */
+        /* PC 미리보기에서는 앱이 390px 프레임 안에 그려진다. 프레임 왼쪽 끝은 calc(50% - 195px)이고,
+           탭바는 폭 366px(=390-12*2)이므로 좌우 12px씩 들어와야 대칭이 된다 → calc(50% - 183px).
+           195px로 두면 좌 0 / 우 24로 치우친다. (실기기는 431px 미만이라 이 규칙을 타지 않는다) */
         @media (min-width: 431px) {
             #app-container {
                 width: 390px; height: 844px; max-height: 92vh; border-radius: 40px;
@@ -129,7 +132,7 @@
         #app-container > nav { position: fixed; z-index: 7000; }
         @media (min-width: 431px) {
             .tab-page.active { left: 50%; right: auto; width: 390px; transform: translateX(-50%); top: 4vh; bottom: 4vh; }
-            #app-container > nav { left: calc(50% - 195px) !important; right: auto !important; width: 366px; bottom: calc(4vh + var(--nav-gap) + var(--safe-b)) !important; }
+            #app-container > nav { left: calc(50% - 183px) !important; right: auto !important; width: 366px; bottom: calc(4vh + var(--nav-gap) + var(--safe-b)) !important; }
         }
 
         /* ── 행사 카드 배너 중앙 미니 씬 ──────────────────────────────
@@ -1739,11 +1742,6 @@
         }
 
         // 브랜드 색으로 배너 그라데이션을 만든다. 브랜드 홍보 이미지는 저작권 문제로 쓰지 않는다.
-        function brandBanner(brand) {
-            const c = (BRAND_INFO[brand] && BRAND_INFO[brand].color) || '#6b7280';
-            return `background-color:${c};background-image:linear-gradient(135deg,rgba(255,255,255,0.20),rgba(0,0,0,0.30))`;
-        }
-
         // 배너 중앙 미니 씬 8종. 스플래시 콘셉트를 CSS로 옮긴 것으로, 캔버스를 쓰지 않는다.
         const MINI_SCENES = [
             // ① 커피드롭
@@ -1774,13 +1772,6 @@
         ];
 
         // 행사 id로 씬을 고정 배정한다. 매 렌더마다 바뀌면 스크롤할 때 어지럽다.
-        function miniSceneHTML(id) {
-            let h = 0;
-            const s = String(id || '');
-            for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
-            return `<span class="mini-scene">${MINI_SCENES[h % MINI_SCENES.length]()}</span>`;
-        }
-
         // 뷰포트에 들어온 카드에만 .in-view를 붙여 애니메이션을 돌린다.
         // 카드가 여러 화면에서 동적으로 생기므로 MutationObserver로 자동 등록한다.
         let _cardObserver = null;
@@ -1859,19 +1850,6 @@ function ddayBadge(d) {
             </div>
             `;
         }
-
-        function shareDeal(name, saving) {
-            const shareText = `☕ 카페 행사 발견!\n[${name}] 지금 이용하면 ${saving.toLocaleString()}원 절약할 수 있어요! (카페행사맵)`;
-            if (document.body.classList.contains('in-toss-app') && typeof tossShare === 'function') {
-                tossShare(shareText).catch(() => {});
-            } else if (navigator.share) {
-                navigator.share({ title: '카페행사맵', text: shareText }).catch(err => {});
-            } else {
-                const ta = document.createElement('textarea'); ta.value = shareText; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
-                showToast('행사 내용이 복사되었습니다!');
-            }
-        }
-
         function renderDeals() {
             if(!activeStore) return;
             const list = document.getElementById('dealsList');
@@ -3144,7 +3122,6 @@ function ddayBadge(d) {
 
         // ── 공통 헬퍼 ──────────────────────────────────────────────────
         const RATE = 1.15; // 애니메이션 속도 배율 (+15%)
-        function lerp(a,b,t){return a+(b-a)*t;}
         function sparkles(ctx,list){
             list.forEach(s=>{
                 ctx.save();
