@@ -601,18 +601,6 @@
   },
   {
     "brand": "메가MGC커피",
-    "id": "메가MGC커피_678",
-    "title": "[이벤트] 카카오페이 굿딜 틴즈 50% 할인 EVENT",
-    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02NzgmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9MQ==",
-    "startDate": "",
-    "endDate": "",
-    "category": "쿠폰·할인",
-    "daysLeft": null,
-    "isNew": false,
-    "ongoing": true
-  },
-  {
-    "brand": "메가MGC커피",
     "id": "메가MGC커피_677",
     "title": "[이벤트] 네이버 멤버십 웰컴 혜택",
     "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02NzcmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9MQ==",
@@ -723,7 +711,7 @@
     "brand": "메가MGC커피",
     "id": "메가MGC커피_640",
     "title": "[출시] MGC x 사랑의 하츄핑2 공식 콜라보 굿즈 출시",
-    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02NDAmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mg==",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02NDAmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9MQ==",
     "startDate": "",
     "endDate": "",
     "category": "신메뉴",
@@ -867,7 +855,7 @@
     "brand": "메가MGC커피",
     "id": "메가MGC커피_546",
     "title": "[제휴] 메가MGC커피 X IBK나라사랑카드  제휴 혜택",
-    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD01NDYmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mw==",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD01NDYmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mg==",
     "startDate": "",
     "endDate": "",
     "category": "이벤트",
@@ -976,6 +964,18 @@
     "id": "메가MGC커피_430",
     "title": "[이벤트] 메가MGC커피에서 기아멤버스 포인트 사용 가능!",
     "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD00MzAmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mw==",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_424",
+    "title": "[이벤트] SMGC : MEGA RIIZE SAGA",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD00MjQmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mw==",
     "startDate": "",
     "endDate": "",
     "category": "이벤트",
@@ -1285,13 +1285,25 @@
   },
   {
     "brand": "할리스",
+    "id": "할리스_561",
+    "title": "♥ 5 DAYS, 5 TASTES ♥ 오늘의 메뉴 2천원 할인!",
+    "link": "https://www.hollys.co.kr/news/event/view.do?idx=561",
+    "startDate": "2026-09-07",
+    "endDate": "2026-09-11",
+    "category": "쿠폰·할인",
+    "daysLeft": 4,
+    "isNew": true,
+    "ongoing": true
+  },
+  {
+    "brand": "할리스",
     "id": "할리스_559",
     "title": "가을엔 K-MOOD ♥ 신메뉴 5종 출시!",
     "link": "https://www.hollys.co.kr/news/event/view.do?idx=559",
     "startDate": "2026-08-26",
     "endDate": "2026-11-03",
     "category": "신메뉴",
-    "daysLeft": 58,
+    "daysLeft": 57,
     "isNew": false,
     "ongoing": true
   },
@@ -1303,7 +1315,7 @@
     "startDate": "2026-09-01",
     "endDate": "2026-09-30",
     "category": "멤버십·앱",
-    "daysLeft": 24,
+    "daysLeft": 23,
     "isNew": true,
     "ongoing": true
   },
@@ -1315,7 +1327,7 @@
     "startDate": "2026-08-26",
     "endDate": "2026-09-08",
     "category": "신메뉴",
-    "daysLeft": 2,
+    "daysLeft": 1,
     "isNew": false,
     "ongoing": true
   },
@@ -1327,7 +1339,7 @@
     "startDate": "2026-08-26",
     "endDate": "2026-10-31",
     "category": "쿠폰·할인",
-    "daysLeft": 55,
+    "daysLeft": 54,
     "isNew": false,
     "ongoing": true
   },
@@ -1339,7 +1351,7 @@
     "startDate": "2026-08-18",
     "endDate": "2026-09-08",
     "category": "쿠폰·할인",
-    "daysLeft": 2,
+    "daysLeft": 1,
     "isNew": false,
     "ongoing": true
   },
@@ -1351,7 +1363,7 @@
     "startDate": "2026-08-01",
     "endDate": "2026-09-30",
     "category": "이벤트",
-    "daysLeft": 24,
+    "daysLeft": 23,
     "isNew": false,
     "ongoing": true
   },
@@ -1363,7 +1375,7 @@
     "startDate": "2026-07-20",
     "endDate": "2026-12-31",
     "category": "이벤트",
-    "daysLeft": 116,
+    "daysLeft": 115,
     "isNew": false,
     "ongoing": true
   },
@@ -1375,7 +1387,7 @@
     "startDate": "2026-07-16",
     "endDate": "2026-12-31",
     "category": "이벤트",
-    "daysLeft": 116,
+    "daysLeft": 115,
     "isNew": false,
     "ongoing": true
   },
@@ -1387,7 +1399,7 @@
     "startDate": "2026-07-15",
     "endDate": "2026-09-29",
     "category": "신메뉴",
-    "daysLeft": 23,
+    "daysLeft": 22,
     "isNew": false,
     "ongoing": true
   },
@@ -1399,7 +1411,7 @@
     "startDate": "2026-04-27",
     "endDate": "2026-12-31",
     "category": "쿠폰·할인",
-    "daysLeft": 116,
+    "daysLeft": 115,
     "isNew": false,
     "ongoing": true
   },
@@ -1411,7 +1423,7 @@
     "startDate": "2026-09-01",
     "endDate": "2026-09-04",
     "category": "이벤트",
-    "daysLeft": -2,
+    "daysLeft": -3,
     "isNew": true,
     "ongoing": false
   },
@@ -1423,7 +1435,7 @@
     "startDate": "2026-08-25",
     "endDate": "2026-08-31",
     "category": "쿠폰·할인",
-    "daysLeft": -6,
+    "daysLeft": -7,
     "isNew": false,
     "ongoing": false
   },
@@ -1435,7 +1447,7 @@
     "startDate": "2026-08-01",
     "endDate": "2026-08-31",
     "category": "멤버십·앱",
-    "daysLeft": -6,
+    "daysLeft": -7,
     "isNew": false,
     "ongoing": false
   },
@@ -1567,7 +1579,7 @@
     "startDate": "2026-07-16",
     "endDate": "2026-09-30",
     "category": "이벤트",
-    "daysLeft": 24,
+    "daysLeft": 23,
     "isNew": false,
     "ongoing": true
   },
@@ -1579,7 +1591,7 @@
     "startDate": "2026-06-05",
     "endDate": "2026-09-15",
     "category": "이벤트",
-    "daysLeft": 9,
+    "daysLeft": 8,
     "isNew": false,
     "ongoing": true
   },
@@ -1591,8 +1603,20 @@
     "startDate": "2026-04-16",
     "endDate": "2026-09-30",
     "category": "이벤트",
-    "daysLeft": 24,
+    "daysLeft": 23,
     "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "폴 바셋",
+    "id": "폴 바셋_4639",
+    "title": "[이벤트] 추석 모바일 Gift-Card 선물 이벤트",
+    "link": "https://www.baristapaulbassett.co.kr/whatsNews/event/View.pb?eventSeq=4639",
+    "startDate": "2026-09-07",
+    "endDate": "2026-09-26",
+    "category": "이벤트",
+    "daysLeft": 19,
+    "isNew": true,
     "ongoing": true
   },
   {
@@ -1603,7 +1627,7 @@
     "startDate": "2026-08-29",
     "endDate": "2026-10-30",
     "category": "쿠폰·할인",
-    "daysLeft": 54,
+    "daysLeft": 53,
     "isNew": false,
     "ongoing": true
   },
@@ -1615,7 +1639,7 @@
     "startDate": "2026-09-01",
     "endDate": "2026-10-31",
     "category": "쿠폰·할인",
-    "daysLeft": 55,
+    "daysLeft": 54,
     "isNew": true,
     "ongoing": true
   },
@@ -1627,7 +1651,7 @@
     "startDate": "2026-09-01",
     "endDate": "2026-10-31",
     "category": "이벤트",
-    "daysLeft": 55,
+    "daysLeft": 54,
     "isNew": true,
     "ongoing": true
   },
@@ -1639,7 +1663,7 @@
     "startDate": "2026-08-06",
     "endDate": "2026-09-30",
     "category": "이벤트",
-    "daysLeft": 24,
+    "daysLeft": 23,
     "isNew": false,
     "ongoing": true
   },
@@ -1651,7 +1675,7 @@
     "startDate": "2026-05-06",
     "endDate": "2036-12-31",
     "category": "신메뉴",
-    "daysLeft": 3769,
+    "daysLeft": 3768,
     "isNew": false,
     "ongoing": true
   },
@@ -1663,7 +1687,7 @@
     "startDate": "2026-01-01",
     "endDate": "2028-01-08",
     "category": "이벤트",
-    "daysLeft": 489,
+    "daysLeft": 488,
     "isNew": false,
     "ongoing": true
   },
@@ -1675,7 +1699,7 @@
     "startDate": "2026-09-01",
     "endDate": "2026-09-30",
     "category": "멤버십·앱",
-    "daysLeft": 24,
+    "daysLeft": 23,
     "isNew": true,
     "ongoing": true
   },
@@ -1687,7 +1711,7 @@
     "startDate": "2026-05-19",
     "endDate": "2026-12-31",
     "category": "이벤트",
-    "daysLeft": 116,
+    "daysLeft": 115,
     "isNew": false,
     "ongoing": true
   },
@@ -1699,7 +1723,7 @@
     "startDate": "2026-03-16",
     "endDate": "2026-12-31",
     "category": "쿠폰·할인",
-    "daysLeft": 116,
+    "daysLeft": 115,
     "isNew": false,
     "ongoing": true
   },
@@ -1711,7 +1735,7 @@
     "startDate": "2026-08-24",
     "endDate": "2026-08-26",
     "category": "쿠폰·할인",
-    "daysLeft": -11,
+    "daysLeft": -12,
     "isNew": false,
     "ongoing": false
   },
@@ -1723,8 +1747,8 @@
     "startDate": "2026-08-31",
     "endDate": "2026-09-02",
     "category": "쿠폰·할인",
-    "daysLeft": -4,
-    "isNew": true,
+    "daysLeft": -5,
+    "isNew": false,
     "ongoing": false
   },
   {
@@ -1735,7 +1759,7 @@
     "startDate": "2026-08-18",
     "endDate": "2026-08-31",
     "category": "멤버십·앱",
-    "daysLeft": -6,
+    "daysLeft": -7,
     "isNew": false,
     "ongoing": false
   },
@@ -1747,7 +1771,7 @@
     "startDate": "2026-08-13",
     "endDate": "2026-08-13",
     "category": "쿠폰·할인",
-    "daysLeft": -24,
+    "daysLeft": -25,
     "isNew": false,
     "ongoing": false
   },
@@ -1759,7 +1783,7 @@
     "startDate": "2026-08-01",
     "endDate": "2026-08-31",
     "category": "쿠폰·할인",
-    "daysLeft": -6,
+    "daysLeft": -7,
     "isNew": false,
     "ongoing": false
   },
@@ -1771,7 +1795,7 @@
     "startDate": "2026-08-03",
     "endDate": "2026-08-17",
     "category": "쿠폰·할인",
-    "daysLeft": -20,
+    "daysLeft": -21,
     "isNew": false,
     "ongoing": false
   },
@@ -1783,7 +1807,7 @@
     "startDate": "2026-08-13",
     "endDate": "2026-08-31",
     "category": "쿠폰·할인",
-    "daysLeft": -6,
+    "daysLeft": -7,
     "isNew": false,
     "ongoing": false
   },
