@@ -1279,7 +1279,7 @@
     "startDate": "2026-08-26",
     "endDate": "2026-11-03",
     "category": "신메뉴",
-    "daysLeft": 52,
+    "daysLeft": 51,
     "isNew": false,
     "ongoing": true
   },
@@ -1291,7 +1291,7 @@
     "startDate": "2026-09-01",
     "endDate": "2026-09-30",
     "category": "멤버십·앱",
-    "daysLeft": 18,
+    "daysLeft": 17,
     "isNew": false,
     "ongoing": true
   },
@@ -1303,7 +1303,7 @@
     "startDate": "2026-08-26",
     "endDate": "2026-10-31",
     "category": "쿠폰·할인",
-    "daysLeft": 49,
+    "daysLeft": 48,
     "isNew": false,
     "ongoing": true
   },
@@ -1315,7 +1315,7 @@
     "startDate": "2026-08-01",
     "endDate": "2026-09-30",
     "category": "이벤트",
-    "daysLeft": 18,
+    "daysLeft": 17,
     "isNew": false,
     "ongoing": true
   },
@@ -1327,7 +1327,7 @@
     "startDate": "2026-07-20",
     "endDate": "2026-12-31",
     "category": "이벤트",
-    "daysLeft": 110,
+    "daysLeft": 109,
     "isNew": false,
     "ongoing": true
   },
@@ -1339,7 +1339,7 @@
     "startDate": "2026-07-16",
     "endDate": "2026-12-31",
     "category": "이벤트",
-    "daysLeft": 110,
+    "daysLeft": 109,
     "isNew": false,
     "ongoing": true
   },
@@ -1351,7 +1351,7 @@
     "startDate": "2026-07-15",
     "endDate": "2026-09-29",
     "category": "신메뉴",
-    "daysLeft": 17,
+    "daysLeft": 16,
     "isNew": false,
     "ongoing": true
   },
@@ -1363,7 +1363,7 @@
     "startDate": "2026-04-27",
     "endDate": "2026-12-31",
     "category": "쿠폰·할인",
-    "daysLeft": 110,
+    "daysLeft": 109,
     "isNew": false,
     "ongoing": true
   },
@@ -1375,7 +1375,7 @@
     "startDate": "2026-09-07",
     "endDate": "2026-09-11",
     "category": "쿠폰·할인",
-    "daysLeft": -1,
+    "daysLeft": -2,
     "isNew": true,
     "ongoing": false
   },
@@ -1387,7 +1387,7 @@
     "startDate": "2026-08-26",
     "endDate": "2026-09-08",
     "category": "신메뉴",
-    "daysLeft": -4,
+    "daysLeft": -5,
     "isNew": false,
     "ongoing": false
   },
@@ -1399,7 +1399,7 @@
     "startDate": "2026-08-18",
     "endDate": "2026-09-08",
     "category": "쿠폰·할인",
-    "daysLeft": -4,
+    "daysLeft": -5,
     "isNew": false,
     "ongoing": false
   },
@@ -1531,7 +1531,7 @@
     "startDate": "2026-07-16",
     "endDate": "2026-09-30",
     "category": "이벤트",
-    "daysLeft": 18,
+    "daysLeft": 17,
     "isNew": false,
     "ongoing": true
   },
@@ -1543,7 +1543,7 @@
     "startDate": "2026-06-05",
     "endDate": "2026-09-15",
     "category": "이벤트",
-    "daysLeft": 3,
+    "daysLeft": 2,
     "isNew": false,
     "ongoing": true
   },
@@ -1555,7 +1555,7 @@
     "startDate": "2026-04-16",
     "endDate": "2026-09-30",
     "category": "이벤트",
-    "daysLeft": 18,
+    "daysLeft": 17,
     "isNew": false,
     "ongoing": true
   },
@@ -1567,7 +1567,7 @@
     "startDate": "2026-09-10",
     "endDate": "2026-09-17",
     "category": "신메뉴",
-    "daysLeft": 5,
+    "daysLeft": 4,
     "isNew": true,
     "ongoing": true
   },
@@ -1579,7 +1579,7 @@
     "startDate": "2026-09-10",
     "endDate": "2026-11-25",
     "category": "이벤트",
-    "daysLeft": 74,
+    "daysLeft": 73,
     "isNew": true,
     "ongoing": true
   },
@@ -1591,7 +1591,7 @@
     "startDate": "2026-09-07",
     "endDate": "2026-09-26",
     "category": "이벤트",
-    "daysLeft": 14,
+    "daysLeft": 13,
     "isNew": true,
     "ongoing": true
   },
@@ -1603,7 +1603,7 @@
     "startDate": "2026-08-29",
     "endDate": "2026-10-30",
     "category": "쿠폰·할인",
-    "daysLeft": 48,
+    "daysLeft": 47,
     "isNew": false,
     "ongoing": true
   },
@@ -1615,7 +1615,7 @@
     "startDate": "2026-09-01",
     "endDate": "2026-10-31",
     "category": "쿠폰·할인",
-    "daysLeft": 49,
+    "daysLeft": 48,
     "isNew": false,
     "ongoing": true
   },
@@ -1627,7 +1627,7 @@
     "startDate": "2026-09-01",
     "endDate": "2026-10-31",
     "category": "이벤트",
-    "daysLeft": 49,
+    "daysLeft": 48,
     "isNew": false,
     "ongoing": true
   },
@@ -1639,7 +1639,7 @@
     "startDate": "2026-08-06",
     "endDate": "2026-09-30",
     "category": "이벤트",
-    "daysLeft": 18,
+    "daysLeft": 17,
     "isNew": false,
     "ongoing": true
   },
@@ -1651,7 +1651,7 @@
     "startDate": "2026-05-06",
     "endDate": "2036-12-31",
     "category": "신메뉴",
-    "daysLeft": 3763,
+    "daysLeft": 3762,
     "isNew": false,
     "ongoing": true
   },
@@ -1663,7 +1663,7 @@
     "startDate": "2026-01-01",
     "endDate": "2028-01-08",
     "category": "이벤트",
-    "daysLeft": 483,
+    "daysLeft": 482,
     "isNew": false,
     "ongoing": true
   },
@@ -1675,7 +1675,7 @@
     "startDate": "2026-09-08",
     "endDate": "2027-09-08",
     "category": "이벤트",
-    "daysLeft": 361,
+    "daysLeft": 360,
     "isNew": true,
     "ongoing": true
   },
@@ -1687,7 +1687,7 @@
     "startDate": "2026-09-01",
     "endDate": "2026-09-30",
     "category": "멤버십·앱",
-    "daysLeft": 18,
+    "daysLeft": 17,
     "isNew": false,
     "ongoing": true
   },
@@ -1699,7 +1699,7 @@
     "startDate": "2026-05-19",
     "endDate": "2026-12-31",
     "category": "이벤트",
-    "daysLeft": 110,
+    "daysLeft": 109,
     "isNew": false,
     "ongoing": true
   },
@@ -1711,7 +1711,7 @@
     "startDate": "2026-03-16",
     "endDate": "2026-12-31",
     "category": "쿠폰·할인",
-    "daysLeft": 110,
+    "daysLeft": 109,
     "isNew": false,
     "ongoing": true
   },
@@ -1723,7 +1723,7 @@
     "startDate": "2026-09-09",
     "endDate": "2026-09-09",
     "category": "쿠폰·할인",
-    "daysLeft": -3,
+    "daysLeft": -4,
     "isNew": true,
     "ongoing": false
   },
@@ -1735,7 +1735,7 @@
     "startDate": "2026-08-24",
     "endDate": "2026-08-26",
     "category": "쿠폰·할인",
-    "daysLeft": -17,
+    "daysLeft": -18,
     "isNew": false,
     "ongoing": false
   },
@@ -1747,7 +1747,7 @@
     "startDate": "2026-08-31",
     "endDate": "2026-09-02",
     "category": "쿠폰·할인",
-    "daysLeft": -10,
+    "daysLeft": -11,
     "isNew": false,
     "ongoing": false
   },
@@ -1759,7 +1759,7 @@
     "startDate": "2026-08-18",
     "endDate": "2026-08-31",
     "category": "멤버십·앱",
-    "daysLeft": -12,
+    "daysLeft": -13,
     "isNew": false,
     "ongoing": false
   },
@@ -1771,7 +1771,7 @@
     "startDate": "2026-08-13",
     "endDate": "2026-08-13",
     "category": "쿠폰·할인",
-    "daysLeft": -30,
+    "daysLeft": -31,
     "isNew": false,
     "ongoing": false
   },
@@ -1783,7 +1783,7 @@
     "startDate": "2026-08-01",
     "endDate": "2026-08-31",
     "category": "쿠폰·할인",
-    "daysLeft": -12,
+    "daysLeft": -13,
     "isNew": false,
     "ongoing": false
   },
