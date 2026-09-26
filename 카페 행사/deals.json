@@ -1291,7 +1291,7 @@
     "startDate": "2026-09-24",
     "endDate": "2026-09-30",
     "category": "쿠폰·할인",
-    "daysLeft": 4,
+    "daysLeft": 3,
     "isNew": true,
     "ongoing": true
   },
@@ -1303,7 +1303,7 @@
     "startDate": "2026-09-14",
     "endDate": "2026-09-28",
     "category": "신메뉴",
-    "daysLeft": 2,
+    "daysLeft": 1,
     "isNew": false,
     "ongoing": true
   },
@@ -1315,7 +1315,7 @@
     "startDate": "2026-08-26",
     "endDate": "2026-11-03",
     "category": "신메뉴",
-    "daysLeft": 38,
+    "daysLeft": 37,
     "isNew": false,
     "ongoing": true
   },
@@ -1327,7 +1327,7 @@
     "startDate": "2026-09-01",
     "endDate": "2026-09-30",
     "category": "멤버십·앱",
-    "daysLeft": 4,
+    "daysLeft": 3,
     "isNew": false,
     "ongoing": true
   },
@@ -1339,7 +1339,7 @@
     "startDate": "2026-08-26",
     "endDate": "2026-10-31",
     "category": "쿠폰·할인",
-    "daysLeft": 35,
+    "daysLeft": 34,
     "isNew": false,
     "ongoing": true
   },
@@ -1351,7 +1351,7 @@
     "startDate": "2026-08-01",
     "endDate": "2026-09-30",
     "category": "이벤트",
-    "daysLeft": 4,
+    "daysLeft": 3,
     "isNew": false,
     "ongoing": true
   },
@@ -1363,7 +1363,7 @@
     "startDate": "2026-07-20",
     "endDate": "2026-12-31",
     "category": "이벤트",
-    "daysLeft": 96,
+    "daysLeft": 95,
     "isNew": false,
     "ongoing": true
   },
@@ -1375,7 +1375,7 @@
     "startDate": "2026-07-16",
     "endDate": "2026-12-31",
     "category": "이벤트",
-    "daysLeft": 96,
+    "daysLeft": 95,
     "isNew": false,
     "ongoing": true
   },
@@ -1387,7 +1387,7 @@
     "startDate": "2026-07-15",
     "endDate": "2026-09-29",
     "category": "신메뉴",
-    "daysLeft": 3,
+    "daysLeft": 2,
     "isNew": false,
     "ongoing": true
   },
@@ -1399,7 +1399,7 @@
     "startDate": "2026-04-27",
     "endDate": "2026-12-31",
     "category": "쿠폰·할인",
-    "daysLeft": 96,
+    "daysLeft": 95,
     "isNew": false,
     "ongoing": true
   },
@@ -1411,7 +1411,7 @@
     "startDate": "2026-09-07",
     "endDate": "2026-09-11",
     "category": "쿠폰·할인",
-    "daysLeft": -15,
+    "daysLeft": -16,
     "isNew": false,
     "ongoing": false
   },
@@ -1423,7 +1423,7 @@
     "startDate": "2026-08-26",
     "endDate": "2026-09-08",
     "category": "신메뉴",
-    "daysLeft": -18,
+    "daysLeft": -19,
     "isNew": false,
     "ongoing": false
   },
@@ -1435,7 +1435,7 @@
     "startDate": "2026-08-18",
     "endDate": "2026-09-08",
     "category": "쿠폰·할인",
-    "daysLeft": -18,
+    "daysLeft": -19,
     "isNew": false,
     "ongoing": false
   },
@@ -1567,7 +1567,7 @@
     "startDate": "2026-09-17",
     "endDate": "2026-09-30",
     "category": "쿠폰·할인",
-    "daysLeft": 4,
+    "daysLeft": 3,
     "isNew": false,
     "ongoing": true
   },
@@ -1579,7 +1579,7 @@
     "startDate": "2026-07-16",
     "endDate": "2026-09-30",
     "category": "이벤트",
-    "daysLeft": 4,
+    "daysLeft": 3,
     "isNew": false,
     "ongoing": true
   },
@@ -1591,7 +1591,7 @@
     "startDate": "2026-04-16",
     "endDate": "2026-09-30",
     "category": "이벤트",
-    "daysLeft": 4,
+    "daysLeft": 3,
     "isNew": false,
     "ongoing": true
   },
@@ -1603,7 +1603,7 @@
     "startDate": "2026-09-14",
     "endDate": "2026-09-28",
     "category": "멤버십·앱",
-    "daysLeft": 2,
+    "daysLeft": 1,
     "isNew": false,
     "ongoing": true
   },
@@ -1615,19 +1615,7 @@
     "startDate": "2026-09-10",
     "endDate": "2026-11-25",
     "category": "이벤트",
-    "daysLeft": 60,
-    "isNew": false,
-    "ongoing": true
-  },
-  {
-    "brand": "폴 바셋",
-    "id": "폴 바셋_4639",
-    "title": "[이벤트] 추석 모바일 Gift-Card 선물 이벤트",
-    "link": "https://www.baristapaulbassett.co.kr/whatsNews/event/View.pb?eventSeq=4639",
-    "startDate": "2026-09-07",
-    "endDate": "2026-09-26",
-    "category": "이벤트",
-    "daysLeft": 0,
+    "daysLeft": 59,
     "isNew": false,
     "ongoing": true
   },
@@ -1639,7 +1627,7 @@
     "startDate": "2026-08-29",
     "endDate": "2026-10-30",
     "category": "쿠폰·할인",
-    "daysLeft": 34,
+    "daysLeft": 33,
     "isNew": false,
     "ongoing": true
   },
@@ -1651,7 +1639,7 @@
     "startDate": "2026-09-01",
     "endDate": "2026-10-31",
     "category": "쿠폰·할인",
-    "daysLeft": 35,
+    "daysLeft": 34,
     "isNew": false,
     "ongoing": true
   },
@@ -1663,7 +1651,7 @@
     "startDate": "2026-09-01",
     "endDate": "2026-10-31",
     "category": "이벤트",
-    "daysLeft": 35,
+    "daysLeft": 34,
     "isNew": false,
     "ongoing": true
   },
@@ -1675,7 +1663,7 @@
     "startDate": "2026-08-06",
     "endDate": "2026-09-30",
     "category": "이벤트",
-    "daysLeft": 4,
+    "daysLeft": 3,
     "isNew": false,
     "ongoing": true
   },
@@ -1687,7 +1675,7 @@
     "startDate": "2026-05-06",
     "endDate": "2036-12-31",
     "category": "신메뉴",
-    "daysLeft": 3749,
+    "daysLeft": 3748,
     "isNew": false,
     "ongoing": true
   },
@@ -1699,7 +1687,7 @@
     "startDate": "2026-01-01",
     "endDate": "2028-01-08",
     "category": "이벤트",
-    "daysLeft": 469,
+    "daysLeft": 468,
     "isNew": false,
     "ongoing": true
   },
@@ -1711,7 +1699,7 @@
     "startDate": "2026-09-22",
     "endDate": "2026-09-30",
     "category": "쿠폰·할인",
-    "daysLeft": 4,
+    "daysLeft": 3,
     "isNew": true,
     "ongoing": true
   },
@@ -1723,7 +1711,7 @@
     "startDate": "2026-09-08",
     "endDate": "2027-09-08",
     "category": "이벤트",
-    "daysLeft": 347,
+    "daysLeft": 346,
     "isNew": false,
     "ongoing": true
   },
@@ -1735,7 +1723,7 @@
     "startDate": "2026-09-01",
     "endDate": "2026-09-30",
     "category": "멤버십·앱",
-    "daysLeft": 4,
+    "daysLeft": 3,
     "isNew": false,
     "ongoing": true
   },
@@ -1747,7 +1735,7 @@
     "startDate": "2026-09-14",
     "endDate": "2026-09-30",
     "category": "쿠폰·할인",
-    "daysLeft": 4,
+    "daysLeft": 3,
     "isNew": false,
     "ongoing": true
   },
@@ -1759,7 +1747,7 @@
     "startDate": "2026-05-19",
     "endDate": "2026-12-31",
     "category": "이벤트",
-    "daysLeft": 96,
+    "daysLeft": 95,
     "isNew": false,
     "ongoing": true
   },
@@ -1771,7 +1759,7 @@
     "startDate": "2026-03-16",
     "endDate": "2026-12-31",
     "category": "쿠폰·할인",
-    "daysLeft": 96,
+    "daysLeft": 95,
     "isNew": false,
     "ongoing": true
   },
@@ -1783,7 +1771,7 @@
     "startDate": "2026-09-14",
     "endDate": "2026-09-20",
     "category": "쿠폰·할인",
-    "daysLeft": -6,
+    "daysLeft": -7,
     "isNew": false,
     "ongoing": false
   },
@@ -1795,7 +1783,7 @@
     "startDate": "2026-09-09",
     "endDate": "2026-09-09",
     "category": "쿠폰·할인",
-    "daysLeft": -17,
+    "daysLeft": -18,
     "isNew": false,
     "ongoing": false
   },
@@ -1807,7 +1795,7 @@
     "startDate": "2026-08-24",
     "endDate": "2026-08-26",
     "category": "쿠폰·할인",
-    "daysLeft": -31,
+    "daysLeft": -32,
     "isNew": false,
     "ongoing": false
   },
@@ -1819,14 +1807,50 @@
     "startDate": "2026-08-31",
     "endDate": "2026-09-02",
     "category": "쿠폰·할인",
-    "daysLeft": -24,
+    "daysLeft": -25,
     "isNew": false,
     "ongoing": false
   },
   {
     "brand": "더리터",
+    "id": "더리터_174799215",
+    "title": "울산흥신소의 다양한 서비스와 혜택 N",
+    "link": "https://the-liter.com/theliter-event/?q=YToxOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjt9&bmode=view&idx=174799215&t=board",
+    "startDate": "2026-09-27",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": true,
+    "ongoing": true
+  },
+  {
+    "brand": "더리터",
+    "id": "더리터_174790516",
+    "title": "카앤피플정선점새 창 열림 N",
+    "link": "https://the-liter.com/theliter-event/?q=YToxOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjt9&bmode=view&idx=174790516&t=board",
+    "startDate": "2026-09-26",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": true,
+    "ongoing": true
+  },
+  {
+    "brand": "더리터",
+    "id": "더리터_174790312",
+    "title": "010-4636-7673 강남일프로 강남텐프로 강남쩜오 강남텐카페 강남하이퍼블릭 강남룸싸롱 강남유흥 N",
+    "link": "https://the-liter.com/theliter-event/?q=YToxOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjt9&bmode=view&idx=174790312&t=board",
+    "startDate": "2026-09-26",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": true,
+    "ongoing": true
+  },
+  {
+    "brand": "더리터",
     "id": "더리터_174760705",
-    "title": "기다리던 뉴페&ACE 복귀!!! 24시 슈퍼맨 인천 제일의 다국적 가라오케 010~~8945~~~2224 N",
+    "title": "기다리던 뉴페&ACE 복귀!!! 24시 슈퍼맨 인천 제일의 다국적 가라오케 010~~8945~~~2224",
     "link": "https://the-liter.com/theliter-event/?q=YToxOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjt9&bmode=view&idx=174760705&t=board",
     "startDate": "2026-09-25",
     "endDate": "",
@@ -1838,7 +1862,7 @@
   {
     "brand": "더리터",
     "id": "더리터_174743753",
-    "title": "베트남노래방 010 8945 2224 N",
+    "title": "베트남노래방 010 8945 2224",
     "link": "https://the-liter.com/theliter-event/?q=YToxOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjt9&bmode=view&idx=174743753&t=board",
     "startDate": "2026-09-25",
     "endDate": "",
@@ -1850,7 +1874,7 @@
   {
     "brand": "더리터",
     "id": "더리터_174741775",
-    "title": "전주흥신소의 신뢰와 전문성 N",
+    "title": "전주흥신소의 신뢰와 전문성",
     "link": "https://the-liter.com/theliter-event/?q=YToxOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjt9&bmode=view&idx=174741775&t=board",
     "startDate": "2026-09-25",
     "endDate": "",
@@ -1862,7 +1886,7 @@
   {
     "brand": "더리터",
     "id": "더리터_174739932",
-    "title": "노래방 룸 가라오케 룸싸롱 셔츠룸 N",
+    "title": "노래방 룸 가라오케 룸싸롱 셔츠룸",
     "link": "https://the-liter.com/theliter-event/?q=YToxOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjt9&bmode=view&idx=174739932&t=board",
     "startDate": "2026-09-25",
     "endDate": "",
@@ -1874,7 +1898,7 @@
   {
     "brand": "더리터",
     "id": "더리터_174737499",
-    "title": "대전·옥천·영동·세종·조치원·공주·청주·오송·오창 전국 자동차 긴급출동｜배터리·타이어 펑크·잠금해제·카라반·캠핑카 견인·운송 대전·옥천·영동·세종·조치원·공주·청주·오송....새 창 열림 N",
+    "title": "대전·옥천·영동·세종·조치원·공주·청주·오송·오창 전국 자동차 긴급출동｜배터리·타이어 펑크·잠금해제·카라반·캠핑카 견인·운송 대전·옥천·영동·세종·조치원·공주·청주·오송....새 창 열림",
     "link": "https://the-liter.com/theliter-event/?q=YToxOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjt9&bmode=view&idx=174737499&t=board",
     "startDate": "2026-09-25",
     "endDate": "",
@@ -2059,18 +2083,6 @@
     "startDate": "2026-06-01",
     "endDate": "",
     "category": "이벤트",
-    "daysLeft": null,
-    "isNew": false,
-    "ongoing": true
-  },
-  {
-    "brand": "더리터",
-    "id": "더리터_171467982",
-    "title": "더리터 여름 한정 히든 메뉴 2종 할인 이벤트",
-    "link": "https://the-liter.com/theliter-event/?q=YToxOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjt9&bmode=view&idx=171467982&t=board",
-    "startDate": "2026-05-26",
-    "endDate": "",
-    "category": "시즌",
     "daysLeft": null,
     "isNew": false,
     "ongoing": true
