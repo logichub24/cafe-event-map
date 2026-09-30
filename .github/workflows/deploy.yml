@@ -27,7 +27,7 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Refresh event data (crawl)
         # 크롤이 전부 실패(exit 1)해도 기존 deals.json으로 빌드·배포는 계속한다.

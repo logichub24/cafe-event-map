@@ -38,6 +38,9 @@ const STATUS_FILE = path.join(__dirname, '..', '카페 행사', 'crawl-status.js
 // 이 일수를 넘겨 0건이면 크롤러가 깨진 것으로 보고 경고한다.
 // 브랜드가 새 행사를 안 올려서 0건인 경우와 구분하려고 넉넉히 잡았다.
 const STALE_DAYS = 14;
+const actionWarning = message => {
+  if (process.env.GITHUB_ACTIONS) console.log(`::warning::${message}`);
+};
 
 const CRAWLERS = [
   { brand: '스타벅스', fn: crawlStarbucks },
@@ -181,6 +184,7 @@ async function run() {
     if (blockedFailed.length) {
       console.log(`\n[차단] ${blockedFailed.join(', ')} — 사이트가 접근을 막고 있습니다.`);
       console.log('        크롤러를 고쳐도 해결되지 않습니다. 옛 데이터가 계속 배포됩니다.');
+      actionWarning(`수집 차단: ${blockedFailed.join(', ')} (기존 데이터를 유지해 배포함)`);
     }
     // 나머지는 오래 0건일 때만 경고한다. 커피빈처럼 진행 중 행사가 없어 0건인 경우가 정상이라
     // 매번 알리면 경고가 무뎌진다.
@@ -195,6 +199,7 @@ async function run() {
     if (stale.length) {
       console.log(`\n[경고] ${STALE_DAYS}일 넘게 0건인 브랜드: ${stale.join(', ')}`);
       console.log('        크롤러가 깨졌을 가능성이 높습니다. 옛 데이터가 계속 배포되는 중입니다.');
+      actionWarning(`${STALE_DAYS}일 이상 미갱신: ${stale.join(', ')} (기존 데이터를 유지해 배포함)`);
     }
   }
   console.log(`deals.json 총 ${final.length}건 (${today})`);
