@@ -1,6 +1,42 @@
 [
   {
     "brand": "스타벅스",
+    "id": "스타벅스_6656",
+    "title": "10월, 개인컵 스탬프 챌린지",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6656",
+    "startDate": "",
+    "endDate": "",
+    "category": "멤버십·앱",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "스타벅스",
+    "id": "스타벅스_6652",
+    "title": "버터 카라멜 샌드 쿠키 출시",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6652",
+    "startDate": "",
+    "endDate": "",
+    "category": "신메뉴",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "스타벅스",
+    "id": "스타벅스_6644",
+    "title": "마이컵스타 이벤트",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6644",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "스타벅스",
     "id": "스타벅스_6649",
     "title": "오텀 파머스 마켓 MD",
     "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6649",
@@ -559,42 +595,6 @@
     "startDate": "",
     "endDate": "",
     "category": "신메뉴",
-    "daysLeft": null,
-    "isNew": false,
-    "ongoing": true
-  },
-  {
-    "brand": "스타벅스",
-    "id": "스타벅스_6522",
-    "title": "리저브 우베 음료 2종 출시",
-    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6522",
-    "startDate": "",
-    "endDate": "",
-    "category": "신메뉴",
-    "daysLeft": null,
-    "isNew": false,
-    "ongoing": true
-  },
-  {
-    "brand": "스타벅스",
-    "id": "스타벅스_6536",
-    "title": "스타벅스 SUMMER 1 MD를 만나보세요.",
-    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6536",
-    "startDate": "",
-    "endDate": "",
-    "category": "콜라보·굿즈",
-    "daysLeft": null,
-    "isNew": false,
-    "ongoing": true
-  },
-  {
-    "brand": "스타벅스",
-    "id": "스타벅스_6524",
-    "title": "스타벅스 투명 돔 우산 3종을 만나보세요",
-    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6524",
-    "startDate": "",
-    "endDate": "",
-    "category": "이벤트",
     "daysLeft": null,
     "isNew": false,
     "ongoing": true
@@ -1291,7 +1291,7 @@
     "startDate": "2026-10-01",
     "endDate": "2026-10-31",
     "category": "멤버십·앱",
-    "daysLeft": 30,
+    "daysLeft": 29,
     "isNew": true,
     "ongoing": true
   },
@@ -1303,7 +1303,7 @@
     "startDate": "2026-09-30",
     "endDate": "2026-12-01",
     "category": "신메뉴",
-    "daysLeft": 61,
+    "daysLeft": 60,
     "isNew": true,
     "ongoing": true
   },
@@ -1315,7 +1315,7 @@
     "startDate": "2026-09-30",
     "endDate": "2026-10-13",
     "category": "신메뉴",
-    "daysLeft": 12,
+    "daysLeft": 11,
     "isNew": true,
     "ongoing": true
   },
@@ -1327,7 +1327,7 @@
     "startDate": "2026-08-26",
     "endDate": "2026-11-03",
     "category": "신메뉴",
-    "daysLeft": 33,
+    "daysLeft": 32,
     "isNew": false,
     "ongoing": true
   },
@@ -1339,7 +1339,7 @@
     "startDate": "2026-08-26",
     "endDate": "2026-10-31",
     "category": "쿠폰·할인",
-    "daysLeft": 30,
+    "daysLeft": 29,
     "isNew": false,
     "ongoing": true
   },
@@ -1351,7 +1351,7 @@
     "startDate": "2026-07-20",
     "endDate": "2026-12-31",
     "category": "이벤트",
-    "daysLeft": 91,
+    "daysLeft": 90,
     "isNew": false,
     "ongoing": true
   },
@@ -1363,7 +1363,7 @@
     "startDate": "2026-07-16",
     "endDate": "2026-12-31",
     "category": "이벤트",
-    "daysLeft": 91,
+    "daysLeft": 90,
     "isNew": false,
     "ongoing": true
   },
@@ -1375,7 +1375,7 @@
     "startDate": "2026-04-27",
     "endDate": "2026-12-31",
     "category": "쿠폰·할인",
-    "daysLeft": 91,
+    "daysLeft": 90,
     "isNew": false,
     "ongoing": true
   },
@@ -1387,7 +1387,7 @@
     "startDate": "2026-09-24",
     "endDate": "2026-09-30",
     "category": "쿠폰·할인",
-    "daysLeft": -1,
+    "daysLeft": -2,
     "isNew": false,
     "ongoing": false
   },
@@ -1399,7 +1399,7 @@
     "startDate": "2026-09-01",
     "endDate": "2026-09-30",
     "category": "멤버십·앱",
-    "daysLeft": -1,
+    "daysLeft": -2,
     "isNew": false,
     "ongoing": false
   },
@@ -1411,20 +1411,20 @@
     "startDate": "2026-08-01",
     "endDate": "2026-09-30",
     "category": "이벤트",
-    "daysLeft": -1,
+    "daysLeft": -2,
     "isNew": false,
     "ongoing": false
   },
   {
     "brand": "매머드커피",
-    "id": "매머드커피_78",
-    "title": "매머드커피 익스프레스 영양성분표 (26.06.23 업데이트)",
-    "link": "https://mmthcoffee.com/sub/notice/view.html?noticeSeq=78",
-    "startDate": "2025-03-24",
+    "id": "매머드커피_129",
+    "title": "매머드커피 메뉴 영양성분 및 알레르기 유발 성분 안내 (2026.10.01 ver)",
+    "link": "https://mmthcoffee.com/sub/notice/view.html?noticeSeq=129",
+    "startDate": "2026-10-01",
     "endDate": "",
     "category": "이벤트",
     "daysLeft": null,
-    "isNew": false,
+    "isNew": true,
     "ongoing": true
   },
   {
@@ -1536,6 +1536,18 @@
     "ongoing": true
   },
   {
+    "brand": "엔제리너스",
+    "id": "엔제리너스_18264",
+    "title": "10월 엔제리너스 이달의 쿠폰",
+    "link": "https://www.lotteeatz.com/event/main/selectEvent/18264",
+    "startDate": "2026-10-01",
+    "endDate": "2026-10-31",
+    "category": "쿠폰·할인",
+    "daysLeft": 29,
+    "isNew": true,
+    "ongoing": true
+  },
+  {
     "brand": "폴 바셋",
     "id": "폴 바셋_4640",
     "title": "Mellow Sweet, Autumn Moment",
@@ -1543,7 +1555,7 @@
     "startDate": "2026-09-10",
     "endDate": "2026-11-25",
     "category": "이벤트",
-    "daysLeft": 55,
+    "daysLeft": 54,
     "isNew": false,
     "ongoing": true
   },
@@ -1555,7 +1567,7 @@
     "startDate": "2026-08-29",
     "endDate": "2026-10-30",
     "category": "쿠폰·할인",
-    "daysLeft": 29,
+    "daysLeft": 28,
     "isNew": false,
     "ongoing": true
   },
@@ -1567,7 +1579,7 @@
     "startDate": "2026-09-01",
     "endDate": "2026-10-31",
     "category": "쿠폰·할인",
-    "daysLeft": 30,
+    "daysLeft": 29,
     "isNew": false,
     "ongoing": true
   },
@@ -1579,7 +1591,7 @@
     "startDate": "2026-09-01",
     "endDate": "2026-10-31",
     "category": "이벤트",
-    "daysLeft": 30,
+    "daysLeft": 29,
     "isNew": false,
     "ongoing": true
   },
@@ -1591,7 +1603,7 @@
     "startDate": "2026-05-06",
     "endDate": "2036-12-31",
     "category": "신메뉴",
-    "daysLeft": 3744,
+    "daysLeft": 3743,
     "isNew": false,
     "ongoing": true
   },
@@ -1603,7 +1615,7 @@
     "startDate": "2026-01-01",
     "endDate": "2028-01-08",
     "category": "이벤트",
-    "daysLeft": 464,
+    "daysLeft": 463,
     "isNew": false,
     "ongoing": true
   },
@@ -1615,7 +1627,19 @@
     "startDate": "2026-10-01",
     "endDate": "2026-10-31",
     "category": "쿠폰·할인",
-    "daysLeft": 30,
+    "daysLeft": 29,
+    "isNew": true,
+    "ongoing": true
+  },
+  {
+    "brand": "공차",
+    "id": "공차_6rO17LCoWOuvuO2U",
+    "title": "공차X미피 콜라보 프로모션",
+    "link": "https://www.gong-cha.co.kr/brand/content/eventlist?scroll=y",
+    "startDate": "2026-10-01",
+    "endDate": "2027-10-31",
+    "category": "콜라보·굿즈",
+    "daysLeft": 394,
     "isNew": true,
     "ongoing": true
   },
@@ -1627,7 +1651,7 @@
     "startDate": "2026-10-01",
     "endDate": "2026-10-31",
     "category": "멤버십·앱",
-    "daysLeft": 30,
+    "daysLeft": 29,
     "isNew": true,
     "ongoing": true
   },
@@ -1639,7 +1663,7 @@
     "startDate": "2026-09-08",
     "endDate": "2027-09-08",
     "category": "이벤트",
-    "daysLeft": 342,
+    "daysLeft": 341,
     "isNew": false,
     "ongoing": true
   },
@@ -1651,7 +1675,7 @@
     "startDate": "2026-05-19",
     "endDate": "2026-12-31",
     "category": "이벤트",
-    "daysLeft": 91,
+    "daysLeft": 90,
     "isNew": false,
     "ongoing": true
   },
@@ -1663,21 +1687,9 @@
     "startDate": "2026-03-16",
     "endDate": "2026-12-31",
     "category": "쿠폰·할인",
-    "daysLeft": 91,
+    "daysLeft": 90,
     "isNew": false,
     "ongoing": true
-  },
-  {
-    "brand": "공차",
-    "id": "공차_6rO17LCoWOuvuO2U",
-    "title": "공차X미피 콜라보 프로모션",
-    "link": "https://www.gong-cha.co.kr/brand/content/eventlist?scroll=y",
-    "startDate": "2026-10-01",
-    "endDate": "1970-01-01",
-    "category": "콜라보·굿즈",
-    "daysLeft": -20727,
-    "isNew": true,
-    "ongoing": false
   },
   {
     "brand": "공차",
@@ -1687,7 +1699,7 @@
     "startDate": "2026-09-22",
     "endDate": "2026-09-30",
     "category": "쿠폰·할인",
-    "daysLeft": -1,
+    "daysLeft": -2,
     "isNew": false,
     "ongoing": false
   },
@@ -1699,7 +1711,7 @@
     "startDate": "2026-09-14",
     "endDate": "2026-09-20",
     "category": "쿠폰·할인",
-    "daysLeft": -11,
+    "daysLeft": -12,
     "isNew": false,
     "ongoing": false
   },
@@ -1711,7 +1723,7 @@
     "startDate": "2026-09-01",
     "endDate": "2026-09-30",
     "category": "멤버십·앱",
-    "daysLeft": -1,
+    "daysLeft": -2,
     "isNew": false,
     "ongoing": false
   },
@@ -1723,7 +1735,7 @@
     "startDate": "2026-09-09",
     "endDate": "2026-09-09",
     "category": "쿠폰·할인",
-    "daysLeft": -22,
+    "daysLeft": -23,
     "isNew": false,
     "ongoing": false
   },
@@ -1832,30 +1844,6 @@
     "endDate": "",
     "category": "이벤트",
     "daysLeft": null,
-    "isNew": false,
-    "ongoing": true
-  },
-  {
-    "brand": "엔제리너스",
-    "id": "엔제리너스_18203",
-    "title": "9월 엔제리너스 이달의 쿠폰",
-    "link": "https://www.lotteeatz.com/event/main/selectEvent/18203",
-    "startDate": "2026-09-17",
-    "endDate": "2026-09-30",
-    "category": "쿠폰·할인",
-    "daysLeft": 0,
-    "isNew": false,
-    "ongoing": true
-  },
-  {
-    "brand": "엔제리너스",
-    "id": "엔제리너스_17418",
-    "title": "엔제리너스 '저당 드링크' 제품 안내",
-    "link": "https://www.lotteeatz.com/event/main/selectEvent/17418",
-    "startDate": "2026-04-16",
-    "endDate": "2026-09-30",
-    "category": "이벤트",
-    "daysLeft": 0,
     "isNew": false,
     "ongoing": true
   },
