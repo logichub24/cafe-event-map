@@ -1,6 +1,54 @@
 [
   {
     "brand": "스타벅스",
+    "id": "스타벅스_6706",
+    "title": "매월 10일은 일회용컵 없는날",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6706",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "스타벅스",
+    "id": "스타벅스_6703",
+    "title": "조선델리 노엘 트리 케이크 사전 예약",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6703",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "스타벅스",
+    "id": "스타벅스_6700",
+    "title": "2026 크리스마스 홀케이크 사전 예약",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6700",
+    "startDate": "",
+    "endDate": "",
+    "category": "시즌",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "스타벅스",
+    "id": "스타벅스_6634",
+    "title": "MY STAR COFFEE 캠페인",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6634",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "스타벅스",
     "id": "스타벅스_6699",
     "title": "2026 별빛 라이브 11월 공연 일정",
     "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6699",
@@ -361,18 +409,6 @@
   },
   {
     "brand": "스타벅스",
-    "id": "스타벅스_6634",
-    "title": "MY STAR COFFEE 캠페인",
-    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6634",
-    "startDate": "",
-    "endDate": "",
-    "category": "이벤트",
-    "daysLeft": null,
-    "isNew": false,
-    "ongoing": true
-  },
-  {
-    "brand": "스타벅스",
     "id": "스타벅스_6642",
     "title": "9월 22일, Leaf to Coffee MD 출시",
     "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6642",
@@ -559,42 +595,6 @@
     "startDate": "",
     "endDate": "",
     "category": "이벤트",
-    "daysLeft": null,
-    "isNew": false,
-    "ongoing": true
-  },
-  {
-    "brand": "스타벅스",
-    "id": "스타벅스_6610",
-    "title": "바게트 소금빵 리뉴얼 출시",
-    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6610",
-    "startDate": "",
-    "endDate": "",
-    "category": "신메뉴",
-    "daysLeft": null,
-    "isNew": false,
-    "ongoing": true
-  },
-  {
-    "brand": "스타벅스",
-    "id": "스타벅스_4657",
-    "title": "간편하게 투 고 백",
-    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=4657",
-    "startDate": "",
-    "endDate": "",
-    "category": "이벤트",
-    "daysLeft": null,
-    "isNew": false,
-    "ongoing": true
-  },
-  {
-    "brand": "스타벅스",
-    "id": "스타벅스_6607",
-    "title": "8월 28일, 프리오텀 시즌한정 원두 출시",
-    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6607",
-    "startDate": "",
-    "endDate": "",
-    "category": "신메뉴",
     "daysLeft": null,
     "isNew": false,
     "ongoing": true
@@ -1303,8 +1303,8 @@
     "startDate": "2026-11-03",
     "endDate": "2026-11-15",
     "category": "이벤트",
-    "daysLeft": 6,
-    "isNew": true,
+    "daysLeft": 5,
+    "isNew": false,
     "ongoing": true
   },
   {
@@ -1315,7 +1315,7 @@
     "startDate": "2026-11-01",
     "endDate": "2026-11-30",
     "category": "멤버십·앱",
-    "daysLeft": 21,
+    "daysLeft": 20,
     "isNew": false,
     "ongoing": true
   },
@@ -1327,7 +1327,7 @@
     "startDate": "2026-10-27",
     "endDate": "2026-11-18",
     "category": "이벤트",
-    "daysLeft": 9,
+    "daysLeft": 8,
     "isNew": false,
     "ongoing": true
   },
@@ -1339,7 +1339,7 @@
     "startDate": "2026-10-14",
     "endDate": "2026-11-30",
     "category": "신메뉴",
-    "daysLeft": 21,
+    "daysLeft": 20,
     "isNew": false,
     "ongoing": true
   },
@@ -1351,7 +1351,7 @@
     "startDate": "2026-09-30",
     "endDate": "2026-12-01",
     "category": "신메뉴",
-    "daysLeft": 22,
+    "daysLeft": 21,
     "isNew": false,
     "ongoing": true
   },
@@ -1363,7 +1363,7 @@
     "startDate": "2026-07-20",
     "endDate": "2026-12-31",
     "category": "이벤트",
-    "daysLeft": 52,
+    "daysLeft": 51,
     "isNew": false,
     "ongoing": true
   },
@@ -1375,7 +1375,7 @@
     "startDate": "2026-07-16",
     "endDate": "2026-12-31",
     "category": "이벤트",
-    "daysLeft": 52,
+    "daysLeft": 51,
     "isNew": false,
     "ongoing": true
   },
@@ -1387,7 +1387,7 @@
     "startDate": "2026-04-27",
     "endDate": "2026-12-31",
     "category": "쿠폰·할인",
-    "daysLeft": 52,
+    "daysLeft": 51,
     "isNew": false,
     "ongoing": true
   },
@@ -1399,7 +1399,7 @@
     "startDate": "2026-08-26",
     "endDate": "2026-11-03",
     "category": "신메뉴",
-    "daysLeft": -6,
+    "daysLeft": -7,
     "isNew": false,
     "ongoing": false
   },
@@ -1411,7 +1411,7 @@
     "startDate": "2026-10-14",
     "endDate": "2026-10-31",
     "category": "이벤트",
-    "daysLeft": -9,
+    "daysLeft": -10,
     "isNew": false,
     "ongoing": false
   },
@@ -1423,7 +1423,7 @@
     "startDate": "2026-10-01",
     "endDate": "2026-10-31",
     "category": "멤버십·앱",
-    "daysLeft": -9,
+    "daysLeft": -10,
     "isNew": false,
     "ongoing": false
   },
@@ -1437,6 +1437,18 @@
     "category": "이벤트",
     "daysLeft": null,
     "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "매머드커피",
+    "id": "매머드커피_131",
+    "title": "매머드커피 HELLO! STRAWBERRY 겨울 신메뉴 4종 출시",
+    "link": "https://mmthcoffee.com/sub/notice/view.html?noticeSeq=131",
+    "startDate": "2026-11-10",
+    "endDate": "",
+    "category": "신메뉴",
+    "daysLeft": null,
+    "isNew": true,
     "ongoing": true
   },
   {
@@ -1536,30 +1548,6 @@
     "ongoing": true
   },
   {
-    "brand": "매머드커피",
-    "id": "매머드커피_121",
-    "title": "[매머드커피X몰티즈&리트리버] 콜라보 기념 릴스 콘테스트",
-    "link": "https://mmthcoffee.com/sub/notice/view.html?noticeSeq=121",
-    "startDate": "2026-07-09",
-    "endDate": "",
-    "category": "콜라보·굿즈",
-    "daysLeft": null,
-    "isNew": false,
-    "ongoing": true
-  },
-  {
-    "brand": "폴 바셋",
-    "id": "폴 바셋_4648",
-    "title": "[이벤트] 크라운 추가적립 이벤트",
-    "link": "https://www.baristapaulbassett.co.kr/whatsNews/event/View.pb?eventSeq=4648",
-    "startDate": "2026-10-27",
-    "endDate": "2026-11-09",
-    "category": "멤버십·앱",
-    "daysLeft": 0,
-    "isNew": false,
-    "ongoing": true
-  },
-  {
     "brand": "폴 바셋",
     "id": "폴 바셋_4647",
     "title": "[이벤트] 5만원 이상 자동 충전 시, 1+1 쿠폰 증정",
@@ -1567,7 +1555,7 @@
     "startDate": "2026-11-01",
     "endDate": "2026-12-31",
     "category": "쿠폰·할인",
-    "daysLeft": 52,
+    "daysLeft": 51,
     "isNew": false,
     "ongoing": true
   },
@@ -1579,7 +1567,7 @@
     "startDate": "2026-10-19",
     "endDate": "2026-11-17",
     "category": "이벤트",
-    "daysLeft": 8,
+    "daysLeft": 7,
     "isNew": false,
     "ongoing": true
   },
@@ -1591,7 +1579,7 @@
     "startDate": "2026-10-15",
     "endDate": "2026-12-15",
     "category": "신메뉴",
-    "daysLeft": 36,
+    "daysLeft": 35,
     "isNew": false,
     "ongoing": true
   },
@@ -1603,7 +1591,7 @@
     "startDate": "2026-09-22",
     "endDate": "2027-03-05",
     "category": "신메뉴",
-    "daysLeft": 116,
+    "daysLeft": 115,
     "isNew": false,
     "ongoing": true
   },
@@ -1615,7 +1603,7 @@
     "startDate": "2026-09-10",
     "endDate": "2026-11-25",
     "category": "신메뉴",
-    "daysLeft": 16,
+    "daysLeft": 15,
     "isNew": false,
     "ongoing": true
   },
@@ -1627,7 +1615,7 @@
     "startDate": "2026-10-20",
     "endDate": "2026-12-31",
     "category": "신메뉴",
-    "daysLeft": 52,
+    "daysLeft": 51,
     "isNew": false,
     "ongoing": true
   },
@@ -1639,7 +1627,7 @@
     "startDate": "2026-05-06",
     "endDate": "2036-12-31",
     "category": "신메뉴",
-    "daysLeft": 3705,
+    "daysLeft": 3704,
     "isNew": false,
     "ongoing": true
   },
@@ -1651,8 +1639,20 @@
     "startDate": "2026-01-01",
     "endDate": "2028-01-08",
     "category": "이벤트",
-    "daysLeft": 425,
+    "daysLeft": 424,
     "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "공차",
+    "id": "공차_MTEuMTAg7ZiE64yA",
+    "title": "11.10 현대 H.Point 하이라이트 공차 인기 밀크티 2종(L) 1+1 쿠폰 증정",
+    "link": "https://www.gong-cha.co.kr/brand/content/eventlist?scroll=y",
+    "startDate": "2026-11-10",
+    "endDate": "2026-11-13",
+    "category": "쿠폰·할인",
+    "daysLeft": 3,
+    "isNew": true,
     "ongoing": true
   },
   {
@@ -1663,7 +1663,7 @@
     "startDate": "2026-11-01",
     "endDate": "2026-11-30",
     "category": "쿠폰·할인",
-    "daysLeft": 21,
+    "daysLeft": 20,
     "isNew": false,
     "ongoing": true
   },
@@ -1675,7 +1675,7 @@
     "startDate": "2026-10-28",
     "endDate": "2027-10-31",
     "category": "이벤트",
-    "daysLeft": 356,
+    "daysLeft": 355,
     "isNew": false,
     "ongoing": true
   },
@@ -1687,7 +1687,7 @@
     "startDate": "2026-10-01",
     "endDate": "2027-10-31",
     "category": "콜라보·굿즈",
-    "daysLeft": 356,
+    "daysLeft": 355,
     "isNew": false,
     "ongoing": true
   },
@@ -1699,7 +1699,7 @@
     "startDate": "2026-09-08",
     "endDate": "2027-09-08",
     "category": "이벤트",
-    "daysLeft": 303,
+    "daysLeft": 302,
     "isNew": false,
     "ongoing": true
   },
@@ -1711,7 +1711,7 @@
     "startDate": "2026-05-19",
     "endDate": "2026-12-31",
     "category": "이벤트",
-    "daysLeft": 52,
+    "daysLeft": 51,
     "isNew": false,
     "ongoing": true
   },
@@ -1723,7 +1723,7 @@
     "startDate": "2026-03-16",
     "endDate": "2026-12-31",
     "category": "쿠폰·할인",
-    "daysLeft": 52,
+    "daysLeft": 51,
     "isNew": false,
     "ongoing": true
   },
@@ -1735,7 +1735,7 @@
     "startDate": "2026-10-21",
     "endDate": "2026-10-21",
     "category": "쿠폰·할인",
-    "daysLeft": -19,
+    "daysLeft": -20,
     "isNew": false,
     "ongoing": false
   },
@@ -1747,7 +1747,7 @@
     "startDate": "2026-10-28",
     "endDate": "2026-10-30",
     "category": "쿠폰·할인",
-    "daysLeft": -10,
+    "daysLeft": -11,
     "isNew": false,
     "ongoing": false
   },
@@ -1759,19 +1759,7 @@
     "startDate": "2026-10-06",
     "endDate": "2026-10-08",
     "category": "쿠폰·할인",
-    "daysLeft": -32,
-    "isNew": false,
-    "ongoing": false
-  },
-  {
-    "brand": "공차",
-    "id": "공차_MTAuMTJMTAuMTYgU",
-    "title": "10.12~10.16 SKT T day 인기음료 6종 최대 50% 할인 또는 적립",
-    "link": "https://www.gong-cha.co.kr/brand/content/eventlist?scroll=y",
-    "startDate": "2026-10-08",
-    "endDate": "2026-10-16",
-    "category": "쿠폰·할인",
-    "daysLeft": -24,
+    "daysLeft": -33,
     "isNew": false,
     "ongoing": false
   },
