@@ -1,6 +1,18 @@
 [
   {
     "brand": "스타벅스",
+    "id": "스타벅스_6718",
+    "title": "2026 온라인 스토어 케이크 사전 예약",
+    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6718",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "스타벅스",
     "id": "스타벅스_6715",
     "title": "11월19일, 헬로키티 Ph1 MD 출시",
     "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6715",
@@ -588,18 +600,6 @@
     "ongoing": true
   },
   {
-    "brand": "스타벅스",
-    "id": "스타벅스_6622",
-    "title": "세화요일 캠페인",
-    "link": "https://www.starbucks.co.kr/whats_new/newsView.do?seq=6622",
-    "startDate": "",
-    "endDate": "",
-    "category": "이벤트",
-    "daysLeft": null,
-    "isNew": false,
-    "ongoing": true
-  },
-  {
     "brand": "메가MGC커피",
     "id": "메가MGC커피_715",
     "title": "[이벤트] 메가MGC커피 X 유독 유튜브 프리미엄 반값 할인 EVENT",
@@ -673,18 +673,6 @@
   },
   {
     "brand": "메가MGC커피",
-    "id": "메가MGC커피_697",
-    "title": "[출시] 붕괴: 스타레일 콜라보 스탬프 챌린지!",
-    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02OTcmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9MQ==",
-    "startDate": "",
-    "endDate": "",
-    "category": "신메뉴",
-    "daysLeft": null,
-    "isNew": false,
-    "ongoing": true
-  },
-  {
-    "brand": "메가MGC커피",
     "id": "메가MGC커피_686",
     "title": "[이벤트] NCT 127 팬사인회 프리퀀시 안내",
     "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02ODYmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9MQ==",
@@ -747,7 +735,7 @@
     "brand": "메가MGC커피",
     "id": "메가MGC커피_666",
     "title": "[이벤트] SMGC 2 : 오늘을 노래해",
-    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02NjYmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mg==",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD02NjYmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9MQ==",
     "startDate": "",
     "endDate": "",
     "category": "이벤트",
@@ -867,7 +855,7 @@
     "brand": "메가MGC커피",
     "id": "메가MGC커피_598",
     "title": "[출시] MGC x 호빵맨 초코 케이크 & 스퀴시 키링 세트",
-    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD01OTgmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mw==",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD01OTgmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mg==",
     "startDate": "",
     "endDate": "",
     "category": "신메뉴",
@@ -1003,6 +991,18 @@
     "startDate": "",
     "endDate": "",
     "category": "신메뉴",
+    "daysLeft": null,
+    "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "메가MGC커피",
+    "id": "메가MGC커피_489",
+    "title": "[당첨자발표] RIIZE 프리퀀시 이벤트",
+    "link": "https://www.mega-mgccoffee.com/bbs/detail/?YmJzX2lkeD00ODkmYmJzX2NhdGVnb3J5PTMmYmJzX2RldGFpbF9jYXRlZ29yeT0mYmJzX3BhZ2U9Mw==",
+    "startDate": "",
+    "endDate": "",
+    "category": "이벤트",
     "daysLeft": null,
     "isNew": false,
     "ongoing": true
@@ -1327,7 +1327,7 @@
     "startDate": "2026-11-16",
     "endDate": "2026-12-31",
     "category": "쿠폰·할인",
-    "daysLeft": 44,
+    "daysLeft": 43,
     "isNew": true,
     "ongoing": true
   },
@@ -1339,8 +1339,8 @@
     "startDate": "2026-11-11",
     "endDate": "2026-11-24",
     "category": "신메뉴",
-    "daysLeft": 7,
-    "isNew": true,
+    "daysLeft": 6,
+    "isNew": false,
     "ongoing": true
   },
   {
@@ -1351,8 +1351,8 @@
     "startDate": "2026-11-11",
     "endDate": "2026-12-31",
     "category": "시즌",
-    "daysLeft": 44,
-    "isNew": true,
+    "daysLeft": 43,
+    "isNew": false,
     "ongoing": true
   },
   {
@@ -1363,7 +1363,7 @@
     "startDate": "2026-11-01",
     "endDate": "2026-11-30",
     "category": "멤버십·앱",
-    "daysLeft": 13,
+    "daysLeft": 12,
     "isNew": false,
     "ongoing": true
   },
@@ -1375,7 +1375,7 @@
     "startDate": "2026-10-27",
     "endDate": "2026-11-18",
     "category": "이벤트",
-    "daysLeft": 1,
+    "daysLeft": 0,
     "isNew": false,
     "ongoing": true
   },
@@ -1387,7 +1387,7 @@
     "startDate": "2026-10-14",
     "endDate": "2026-11-30",
     "category": "신메뉴",
-    "daysLeft": 13,
+    "daysLeft": 12,
     "isNew": false,
     "ongoing": true
   },
@@ -1399,7 +1399,7 @@
     "startDate": "2026-09-30",
     "endDate": "2026-12-01",
     "category": "신메뉴",
-    "daysLeft": 14,
+    "daysLeft": 13,
     "isNew": false,
     "ongoing": true
   },
@@ -1411,7 +1411,7 @@
     "startDate": "2026-07-20",
     "endDate": "2026-12-31",
     "category": "이벤트",
-    "daysLeft": 44,
+    "daysLeft": 43,
     "isNew": false,
     "ongoing": true
   },
@@ -1423,7 +1423,7 @@
     "startDate": "2026-07-16",
     "endDate": "2026-12-31",
     "category": "이벤트",
-    "daysLeft": 44,
+    "daysLeft": 43,
     "isNew": false,
     "ongoing": true
   },
@@ -1435,7 +1435,7 @@
     "startDate": "2026-04-27",
     "endDate": "2026-12-31",
     "category": "쿠폰·할인",
-    "daysLeft": 44,
+    "daysLeft": 43,
     "isNew": false,
     "ongoing": true
   },
@@ -1447,7 +1447,7 @@
     "startDate": "2026-11-03",
     "endDate": "2026-11-15",
     "category": "이벤트",
-    "daysLeft": -2,
+    "daysLeft": -3,
     "isNew": false,
     "ongoing": false
   },
@@ -1459,7 +1459,7 @@
     "startDate": "2026-08-26",
     "endDate": "2026-11-03",
     "category": "신메뉴",
-    "daysLeft": -14,
+    "daysLeft": -15,
     "isNew": false,
     "ongoing": false
   },
@@ -1471,7 +1471,7 @@
     "startDate": "2026-10-14",
     "endDate": "2026-10-31",
     "category": "이벤트",
-    "daysLeft": -17,
+    "daysLeft": -18,
     "isNew": false,
     "ongoing": false
   },
@@ -1603,8 +1603,8 @@
     "startDate": "2026-11-11",
     "endDate": "2026-11-30",
     "category": "쿠폰·할인",
-    "daysLeft": 13,
-    "isNew": true,
+    "daysLeft": 12,
+    "isNew": false,
     "ongoing": true
   },
   {
@@ -1615,7 +1615,7 @@
     "startDate": "2026-11-12",
     "endDate": "2026-11-27",
     "category": "쿠폰·할인",
-    "daysLeft": 10,
+    "daysLeft": 9,
     "isNew": true,
     "ongoing": true
   },
@@ -1627,19 +1627,7 @@
     "startDate": "2026-11-01",
     "endDate": "2026-12-31",
     "category": "쿠폰·할인",
-    "daysLeft": 44,
-    "isNew": false,
-    "ongoing": true
-  },
-  {
-    "brand": "폴 바셋",
-    "id": "폴 바셋_4646",
-    "title": "[이벤트] 폴 바셋 알림 받고! 혜택 더하기",
-    "link": "https://www.baristapaulbassett.co.kr/whatsNews/event/View.pb?eventSeq=4646",
-    "startDate": "2026-10-19",
-    "endDate": "2026-11-17",
-    "category": "이벤트",
-    "daysLeft": 0,
+    "daysLeft": 43,
     "isNew": false,
     "ongoing": true
   },
@@ -1651,7 +1639,7 @@
     "startDate": "2026-10-15",
     "endDate": "2026-12-15",
     "category": "신메뉴",
-    "daysLeft": 28,
+    "daysLeft": 27,
     "isNew": false,
     "ongoing": true
   },
@@ -1663,7 +1651,7 @@
     "startDate": "2026-09-22",
     "endDate": "2027-03-05",
     "category": "신메뉴",
-    "daysLeft": 108,
+    "daysLeft": 107,
     "isNew": false,
     "ongoing": true
   },
@@ -1675,7 +1663,7 @@
     "startDate": "2026-09-10",
     "endDate": "2026-11-18",
     "category": "신메뉴",
-    "daysLeft": 1,
+    "daysLeft": 0,
     "isNew": false,
     "ongoing": true
   },
@@ -1687,7 +1675,7 @@
     "startDate": "2026-10-20",
     "endDate": "2026-12-31",
     "category": "신메뉴",
-    "daysLeft": 44,
+    "daysLeft": 43,
     "isNew": false,
     "ongoing": true
   },
@@ -1699,7 +1687,7 @@
     "startDate": "2026-05-06",
     "endDate": "2036-12-31",
     "category": "신메뉴",
-    "daysLeft": 3697,
+    "daysLeft": 3696,
     "isNew": false,
     "ongoing": true
   },
@@ -1711,8 +1699,20 @@
     "startDate": "2026-01-01",
     "endDate": "2028-01-08",
     "category": "이벤트",
-    "daysLeft": 417,
+    "daysLeft": 416,
     "isNew": false,
+    "ongoing": true
+  },
+  {
+    "brand": "공차",
+    "id": "공차_7ZW066as7Ys7YSwI",
+    "title": "해리포터 프로모션",
+    "link": "https://www.gong-cha.co.kr/brand/content/eventlist?scroll=y",
+    "startDate": "2026-11-18",
+    "endDate": "2026-12-31",
+    "category": "이벤트",
+    "daysLeft": 43,
+    "isNew": true,
     "ongoing": true
   },
   {
@@ -1723,7 +1723,7 @@
     "startDate": "2026-11-16",
     "endDate": "2026-11-20",
     "category": "쿠폰·할인",
-    "daysLeft": 3,
+    "daysLeft": 2,
     "isNew": true,
     "ongoing": true
   },
@@ -1735,7 +1735,7 @@
     "startDate": "2026-11-01",
     "endDate": "2026-11-30",
     "category": "쿠폰·할인",
-    "daysLeft": 13,
+    "daysLeft": 12,
     "isNew": false,
     "ongoing": true
   },
@@ -1747,7 +1747,7 @@
     "startDate": "2026-10-28",
     "endDate": "2027-10-31",
     "category": "이벤트",
-    "daysLeft": 348,
+    "daysLeft": 347,
     "isNew": false,
     "ongoing": true
   },
@@ -1759,7 +1759,7 @@
     "startDate": "2026-11-16",
     "endDate": "2026-11-30",
     "category": "쿠폰·할인",
-    "daysLeft": 13,
+    "daysLeft": 12,
     "isNew": true,
     "ongoing": true
   },
@@ -1771,7 +1771,7 @@
     "startDate": "2026-10-01",
     "endDate": "2027-10-31",
     "category": "콜라보·굿즈",
-    "daysLeft": 348,
+    "daysLeft": 347,
     "isNew": false,
     "ongoing": true
   },
@@ -1783,7 +1783,7 @@
     "startDate": "2026-09-08",
     "endDate": "2027-09-08",
     "category": "이벤트",
-    "daysLeft": 295,
+    "daysLeft": 294,
     "isNew": false,
     "ongoing": true
   },
@@ -1795,7 +1795,7 @@
     "startDate": "2026-05-19",
     "endDate": "2026-12-31",
     "category": "이벤트",
-    "daysLeft": 44,
+    "daysLeft": 43,
     "isNew": false,
     "ongoing": true
   },
@@ -1807,7 +1807,7 @@
     "startDate": "2026-03-16",
     "endDate": "2026-12-31",
     "category": "쿠폰·할인",
-    "daysLeft": 44,
+    "daysLeft": 43,
     "isNew": false,
     "ongoing": true
   },
@@ -1819,19 +1819,7 @@
     "startDate": "2026-11-10",
     "endDate": "2026-11-13",
     "category": "쿠폰·할인",
-    "daysLeft": -4,
-    "isNew": false,
-    "ongoing": false
-  },
-  {
-    "brand": "공차",
-    "id": "공차_MTDsm5QgMjHsnbwg",
-    "title": "10월 21일 공차데이! 토핑 무료",
-    "link": "https://www.gong-cha.co.kr/brand/content/eventlist?scroll=y",
-    "startDate": "2026-10-21",
-    "endDate": "2026-10-21",
-    "category": "쿠폰·할인",
-    "daysLeft": -27,
+    "daysLeft": -5,
     "isNew": false,
     "ongoing": false
   },
